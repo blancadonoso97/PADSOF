@@ -297,6 +297,7 @@ public class Sistema implements Serializable{
 			
 			if(exp.comprobarFecha(fechaActual) == false){
 				alum.agregarAsignatura(exp.getAsignatura());
+				expulsiones.remove(this); //Si la expulsion ya no esta vigente, se elimina
 				return false;
 			}
 			
@@ -489,6 +490,20 @@ public class Sistema implements Serializable{
 	}
 	
 	/**
+	 * Elimina un tema de una asignatura
+	 * @param nombretema Nombre del tema a eliminar
+	 * @param nombreasig Nombre de la asignatura a la que pertenece
+	 * @return true si se ha eliminado de la asignatura, false en caso contrario
+	 */
+	public boolean eliminarTema(String nombretema, String nombreasig){
+		
+		
+		return this.getAsignatura(nombreasig).getTemas().remove(this.getAsignatura(nombreasig).getTema(nombretema));
+		
+		
+	}
+	
+	/**
 	 * Anade un nuevo subtema a un tema
 	 * @param nombre Nombre del subtema
 	 * @param tema Tema donde anadir el subtema
@@ -647,6 +662,19 @@ public class Sistema implements Serializable{
 		}else
 			return false;
 		
+		
+	}
+	
+	/**
+	 * Elimina unos apuntes de un tema
+	 * @param nombreasig Nombre de la asignatura a la que pertenece el tema
+	 * @param nombretema Nombre del tema al que pertenecen los apuntes
+	 * @param nombreapuntes Nombre de los apuntes
+	 * @return true si se eliminan correctamente, false en caso contrario
+	 */
+	public boolean eliminarApuntes(String nombreasig, String nombretema, String nombreapuntes){
+		
+		return this.getAsignatura(nombreasig).getTemas().remove(this.getAsignatura(nombreasig).getTema(nombretema));
 		
 	}
 	
