@@ -14,7 +14,7 @@ public class Apuntes implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Tema tema;
 	private String texto;
-	private Calendar fechaInicio = Calendar.getInstance();
+	private Calendar fechaVisible = Calendar.getInstance();
 	private boolean visible;
 	private String titulo;
 	
@@ -33,9 +33,9 @@ public class Apuntes implements Serializable{
 	public Apuntes(Tema newTema, String t1, int dia, int mes, int anyo, boolean v1, String titulo) {
 		this.tema = newTema;
 		this.texto = t1;
-		this.fechaInicio.set(Calendar.YEAR, anyo);
-		this.fechaInicio.set(Calendar.DATE, dia);
-		this.fechaInicio.set(Calendar.MONTH, mes);
+		this.fechaVisible.set(Calendar.YEAR, anyo);
+		this.fechaVisible.set(Calendar.DATE, dia);
+		this.fechaVisible.set(Calendar.MONTH, mes);
 		this.visible = v1;
 		this.titulo = titulo;
 
@@ -61,7 +61,7 @@ public class Apuntes implements Serializable{
 		
 		Calendar calendar = Calendar.getInstance(); /* Obtiene la fecha actual*/
 		
-		if (calendar.compareTo(fechaInicio) > 0){
+		if (calendar.compareTo(fechaVisible) > 0){
 			visible = true;
 			return true;
 		}else
@@ -84,7 +84,7 @@ public class Apuntes implements Serializable{
 	 * @param f1 Nueva fecha de inicio
 	 */
 	public void setFechaInicio(Calendar f1) {
-		fechaInicio = f1;
+		fechaVisible = f1;
 		return;
 	}
 
@@ -136,7 +136,7 @@ public class Apuntes implements Serializable{
 	 * @return fechaInicio
 	 */
 	public Calendar getCalendar() {
-		return fechaInicio;
+		return fechaVisible;
 	}
 
 	/**
