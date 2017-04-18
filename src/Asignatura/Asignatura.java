@@ -1,8 +1,10 @@
 package Asignatura;
 import java.io.Serializable;
 import java.util.*;
-import eCourses.Estadistica;
 import eCourses.Alumno;
+import Examen.Ejercicio;
+import Examen.Pregunta;
+import Examen.Respuesta;
 
 /**
 * 
@@ -18,7 +20,6 @@ public class Asignatura implements Serializable{
 	
 	ArrayList<Tema> temas = new ArrayList<Tema>();
 	ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
-	ArrayList<Estadistica> estadisticas = new ArrayList<Estadistica>();
 	
 	
 	/**
@@ -54,14 +55,52 @@ public class Asignatura implements Serializable{
 	}
 	
 	/**
-	 * Agrega una estadistica a la asignatura
-	 * @param est Estadistica a agregar
-	 * @return true si se anade correctamente, false en caso contrario
+	 * Calcula la nota media del alumno en la asignatura
+	 * @param al alumno del que se desea obtener su nota media en la asignatura
+	 * @return la nota media del alumno
 	 */
-	public boolean agregarEstadistica(Estadistica est){
-		return estadisticas.add(est);
+	public double NotaMediaAlumno(Alumno al){
+	
+		double nota=0;
+	
+		for(Tema t: temas){
+			
+			for(Ejercicio ej : t.getEjercicios()){
+				
+				for(Alumno a : ej.getAlumnos()){
+					if(a.equals(al)){
+						
+						for(Pregunta p : ej.getPreguntas()){
+							
+							for(Respuesta r : p.getRespuestas()){
+								if(r.getAlumno().equals(al)){
+									nota+=r.getNota();
+								}
+							}
+						}
+					}
+				}
+			}
+			
+		}
+		
+		return nota;
 	}
 	
+	/**
+	 * Calcula la nota media de todos los alumnos en la asignatura
+	 * @return devuelve la nota media
+	 */
+	public double NotaMediaAlumnos(){
+		
+		double notas = 0;
+		
+		for(Alumno a : alumnos){
+			notas+= this.NotaMediaAlumno(a);
+		}
+		
+		return notas;
+	}
 	
 	/**
 	 * Agrega un alumno a la asignatura
