@@ -40,11 +40,16 @@ public class RespuestaMultiple extends Respuesta implements Serializable{
 	public void calcularNota(){
 		double nota;
 		int preguntasTotalesCorrectas=0;
+		int preguntasInc = 0;
 		
 		for(Opcion o: pregunta.getOpciones()){
 			
 			if(o.getMarcada() && o.getEsCorrecta()){
 				preguntasCorrectas++;
+			}
+			
+			else if(o.getMarcada() && o.getEsCorrecta()==false){
+				preguntasInc++;
 			}
 		}
 		
@@ -55,12 +60,25 @@ public class RespuestaMultiple extends Respuesta implements Serializable{
 			}
 		}
 		
-		if(preguntasTotalesCorrectas == preguntasCorrectas){
+		if(preguntasTotalesCorrectas == preguntasCorrectas && preguntasInc == 0){
 			this.setNota(this.pregunta.getPuntuacion());
 			return;
 		}
 		
+		else if(preguntasTotalesCorrectas == preguntasCorrectas && preguntasInc > 0){
+		
+			nota=this.pregunta.getPuntuacion();
+			
+			(nota) /= ((double)preguntasTotalesCorrectas);
+			
+			nota*=preguntasCorrectas;
+			
+			this.setNota(nota);
+			
+			return;
+		}
 		else{
+			
 			nota=this.pregunta.getPuntuacion();
 			
 			(nota) /= ((double)preguntasTotalesCorrectas);

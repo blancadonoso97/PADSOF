@@ -131,7 +131,26 @@ public class Ejercicio implements Serializable{
 		}
 	}
 
-
+	/**
+	 * Comprueba si un alumno ha contestado a una pregunta del ejercicio
+	 * @param p pregunta a contestar o contestada
+	 * @param al alumno que comprobamos que haya contestado la pregunta
+	 * @return true si ha contestado, false si no lo ha hecho
+	 */
+	public boolean preguntaContestadaAlumno(Pregunta p , Alumno al){
+		
+		for(Pregunta preg : preguntas){
+			if(preg.equals(p)){
+				for(Respuesta r : preg.getRespuestas()){
+					if(r.getAlumno().equals(al)){
+						return true;
+					}
+				}
+			}
+		}
+		
+		return false;
+	}
 	/**
 	 * Get de la fecha de finalizacion del ejercicio
 	 * @return fechaFin
@@ -271,6 +290,39 @@ public class Ejercicio implements Serializable{
 		return preguntas;
 	}
 	
+	/**
+	 * Devuelve el porcentaje de alumnos que han realizado un ejercicio
+	 * @param ej Ejercicio a comprobar
+	 * @return 100*res Porcentaje
+	 */
+	public double getPorcentajeAlumnosRealizado(){
+		double res;
+		
+		res = (double) this.getNAlumnos() / tema.getAsignatura().getAlumnos().size();
+		
+		return 100*res;
+	}
+	
+	/**
+	 * Devuelve el porcentaje de alumnos que han contestado un ejercicio correctamente
+	 * @param ej Ejercicio a comprobar
+	 * @return res*100 Porcentaje
+	 */
+	public double getPorcentajeAlumnosReCorrectamente(){
+		int alumnosExaminadosCorr = 0;
+		double res;
+		
+		for(Alumno al: this.getAlumnos()){
+			if(this.calcularNota(al) == this.getPeso()){
+				alumnosExaminadosCorr++;
+			}
+		}
+		
+		 res =(double) alumnosExaminadosCorr / this.getAlumnos().size();
+		 
+		 return res*100;
+	}
+	
 
 	/**
 	 * Realiza el ejercicio
@@ -286,7 +338,7 @@ public class Ejercicio implements Serializable{
 			
 		}
 		
-		if(this.visible==true){
+		if(this.visible == true){
 			
 			for(Alumno al: alumnos){
 			
