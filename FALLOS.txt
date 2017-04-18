@@ -14,12 +14,8 @@
 
         - La carga y guardado de datos no es transparente al usuario de la clase Sistema (la GUI).
 
-        - Se comprueba el login en el constructor. No es un buen diseño.
+        - Se comprueba el login en el constructor. No es un buen diseño. IMPORTANTE REVISAR
 
-        - No hay método de logout.
-
-        - Deberíais comprobar si existe el fichero de datos de la aplicación, y cargar los alumnos de alumnos.txt
-        solo si no hay datos.
 
 5 - Gestión Matrículas
 
@@ -27,11 +23,7 @@
 
         - Las expulsiones no tienen por qué tener fecha asociada. El profesor decide cuando acepta al alumno de nuevo.
 
-        - Faltaría borrar las expulsiones cuando terminan.
-
 6 - Gestión Asignaturas
-
-        - No es posible borrar temas ni apuntes.
 
         - Los apuntes no tienen fecha de visibilidad.
 
