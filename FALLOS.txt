@@ -45,10 +45,3 @@
 
         - Las preguntas pueden restar puntos si se contestan de forma incorrecta.
 
-        - No está implementado el cálculo de la nota en una asigantura para un estudiante.
-
-8 - Estadísticas
-
-        - La clase estadística sobra. Podéis meter los métodos como métodos de ejercicio.
-
-        - Es mejor tener un método que diga si ha contestado a una pregunta un alumno. Ahora usáis la nota, lo que es un poco raro.s
