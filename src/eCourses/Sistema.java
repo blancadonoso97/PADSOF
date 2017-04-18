@@ -42,13 +42,23 @@ public class Sistema implements Serializable{
 	 * @param archivoAlum Archivo con los datos de los alumnos
 	 */
 	public Sistema(String newId, String newCont, String archivoProf, String archivoAlum) throws IOException, ClassNotFoundException{
-
-		this.cargarDatosProfesor(archivoProf);
-		this.cargarAlumnos(archivoAlum);
+	
+		String Fichero = "sistema.txt";
+		File fichero = new File(Fichero);
 		
-		/*Comprueba si el id/email y contrasena pertenecen a un alumno o profesor*/
+		if (fichero.exists()){
+			
+			Sistema.cargarSistema("sistema.txt");
+			
+		}else{
+			this.cargarDatosProfesor(archivoProf);
+			this.cargarAlumnos(archivoAlum);
+		}
+			
+		
+		/*Comprueba si el id/email y contrasena pertenecen a un alumno o profesor
 		this.comprobarLogIn(newId, newCont);	
-
+		*/
 	}
 
 	/**
@@ -211,6 +221,22 @@ public class Sistema implements Serializable{
 		
 		/* Si sale del bucle quiere decir que el id y contrasena no pertencen a un alumno por lo que prueba con el profesor*/
 		return this.comprobarEsProfesor(id, contra);		
+		
+	}
+	
+	/**
+	 * Cierra la sesion y guarda el estado de la aplicacion
+	 * @param archivo Archivo donde guardar el sistema
+	 * @throws IOException
+	 */
+	public void logOut(String archivo) throws IOException{
+		
+		logIn = false;
+		esProfesor = false;
+		alumnoLog = null;
+		this.guardarSistema(archivo);
+		
+		return;
 		
 	}
 	
@@ -399,33 +425,11 @@ public class Sistema implements Serializable{
 	 * @throws InvalidEmailAddressException 
 	 */
 	public boolean agregarAsignatura(String nombre, boolean visibilidad) throws InvalidEmailAddressException, FailedInternetConnectionException {
-
-		boolean error = false;
 		
 		if (esProfesor) {
 
 			Asignatura asig = new Asignatura(nombre, visibilidad);
-			this.asignaturas.add(asig);
-			
-			/* Si la asignatura esta visible avisa a los alumnos de su creacion*/
-			if(asig.esVisible()){
-				
-				/* Envia una notificacion a cada alumno del sistema de que la asignatura ha sido creada*/
-				for (Alumno a : alumnos){
-					try{
-						enviarNotificacion(a, "Nueva asignatura", "La asignatura " + nombre + " ha sido creada\n");
-					}catch (Exception e){
-						error = true;
-					}
-					
-				}
-				
-			}
-			
-			if (error){
-				throw new FailedInternetConnectionException("Error al enviar el correo\n");
-			}
-			
+			this.asignaturas.add(asig);		
 			return true;
 			
 			
