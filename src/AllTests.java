@@ -14,7 +14,6 @@ import Examen.RespuestaMultipleTest;
 import Examen.RespuestaRedactarTest;
 import Examen.RespuestaTestTest;
 import eCourses.AlumnoTest;
-import eCourses.EstadisticaTest;
 import eCourses.ExpulsionTest;
 import eCourses.SistemaTest;
 import eCourses.SolicitudMatriculaTest;
@@ -32,7 +31,6 @@ import eCourses.SolicitudMatriculaTest;
 	AsignaturaTest.class,
 	TemaTest.class,
 	AlumnoTest.class,
-	EstadisticaTest.class,
 	ExpulsionTest.class,
 	SistemaTest.class,
 	SolicitudMatriculaTest.class,

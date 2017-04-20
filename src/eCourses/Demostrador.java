@@ -256,12 +256,6 @@ public class Demostrador {
 		sistema.getAlumnoLog().getAsignatura("Adsof").getTema("Tema 1").getEjercicio("Ejercicio 1").realizarEjercicio(sistema.getAlumnoLog(),opcionesAlum2);
 		System.out.println("El alumno ha sacado en el ejercicio un: " + sistema.getAlumnoLog().getAsignatura("Adsof").getTema("Tema 1").getEjercicio("Ejercicio 1").calcularNota(sistema.getAlumnoLog()));
 		
-		Estadistica est = new Estadistica(sistema.getAsignatura("Adsof"));
-		sistema.getAsignatura("Adsof").agregarEstadistica(est);
-		
-		System.out.println("Han realizado un "+ est.getPorcentajeAlumnosRealizado(sistema.getAsignatura("Adsof").getTema("Tema 1").getEjercicio("Ejercicio 1"))+"% de los alumnos matriculados en la asignatura el ejercicio");
-		System.out.println("Un "+est.getPorcentajeAlumnosReCorrectamente(sistema.getAsignatura("Adsof").getTema("Tema 1").getEjercicio("Ejercicio 1"))+"% han realizado correctamente todo el ejercicio");
-		
 		/* Carga el sistema
 		 * esProfesor = false
 		 * logIn = false
