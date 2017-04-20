@@ -313,8 +313,6 @@ public class Sistema implements Serializable{
 	 * @throws InvalidEmailAddressException 
 	 */
 	public boolean aceptarMatricula(SolicitudMatricula mat) throws InvalidEmailAddressException, FailedInternetConnectionException {
-
-		boolean error = false;
 		
 		if(esProfesor){
 
@@ -323,20 +321,11 @@ public class Sistema implements Serializable{
 			getAlumno(mat.getAlumno().getId()).agregarAsignatura(getAsignatura(mat.getAsignatura().getNombre()));
 			getAsignatura(mat.getAsignatura().getNombre()).agregarAlumno(getAlumno(mat.getAlumno().getId()));
 				
-			try{
-				enviarNotificacion(mat.getAlumno(), "Matricula", "Su matricula en la asignatura " + mat.getAsignatura().getNombre() + " ha sido aceptada\n");
-			}catch (Exception e){
-				error = true;
-			}
-				
-			if (error){
-				throw new FailedInternetConnectionException("Error al enviar el correo\n");
-			}
-				
+			enviarNotificacion(mat.getAlumno(), "Matricula", "Su matricula en la asignatura " + mat.getAsignatura().getNombre() + " ha sido aceptada\n");
+
 			return true;	
 		}
 		
-
 		return false;
 
 	}
@@ -349,24 +338,14 @@ public class Sistema implements Serializable{
 	 * @throws FailedInternetConnectionException
 	 */
 	public boolean denegarMatricula(SolicitudMatricula mat) throws InvalidEmailAddressException, FailedInternetConnectionException{
-		
-		boolean error = false;
-		
+				
 		if(esProfesor){
 			
 			mat.setMatricula(false);
 			mat.getAlumno().eliminarSolicitud(mat);
-			
-			try{
-				enviarNotificacion(mat.getAlumno(), "Matricula", "Su matricula en la asignatura " + mat.getAsignatura().getNombre() + " ha sido denegada\n");
-			}catch (Exception e){
-				error = true;
-			}
-			
-			if (error){
-				throw new FailedInternetConnectionException("Error al enviar el correo\n");
-			}
-			
+
+			enviarNotificacion(mat.getAlumno(), "Matricula", "Su matricula en la asignatura " + mat.getAsignatura().getNombre() + " ha sido denegada\n");
+
 			return true;
 		}
 		
@@ -382,8 +361,6 @@ public class Sistema implements Serializable{
 	 * @throws InvalidEmailAddressException 
 	 */
 	public boolean expulsarAlumno(Expulsion exp) throws InvalidEmailAddressException, FailedInternetConnectionException {
-
-		boolean error = false;
 		
 		if(esProfesor){
 			
@@ -392,15 +369,7 @@ public class Sistema implements Serializable{
 				exp.setExpulsado(true);
 				exp.getAlumno().eliminarAsignatura(exp.getAsignatura());
 				
-				try{
-					enviarNotificacion(exp.getAlumno(), "Expulsion", "Ha sido expulsado de la asignatura: " + exp.getAsignatura().getNombre() + "\n");
-				}catch (Exception e){
-					error = true;
-				}
-				
-				if (error){
-					throw new FailedInternetConnectionException("Error al enviar el correo\n");
-				}
+				enviarNotificacion(exp.getAlumno(), "Expulsion", "Ha sido expulsado de la asignatura: " + exp.getAsignatura().getNombre() + "\n");
 				
 				return true;
 			}
@@ -447,8 +416,6 @@ public class Sistema implements Serializable{
 	 */
 	public boolean agregarTema (String nombre, Asignatura asig, boolean visibilidad) throws InvalidEmailAddressException, FailedInternetConnectionException{
 		
-		boolean error = false;
-		
 		if(esProfesor){
 			
 			Tema tema = new Tema (asig, nombre, visibilidad);
@@ -464,20 +431,12 @@ public class Sistema implements Serializable{
 			ArrayList<Alumno> alum = asig.getAlumnos();
 			
 			if(tema.esVisible()){
-				
-				try{
-					for (Alumno a : alum){
+
+				for (Alumno a : alum){
 						enviarNotificacion(a, "Nuevo tema", "La asignatura" + asig.getNombre() + "contiene el nuevo tema" + nombre);
-					}
-				}catch (Exception e){
-					error = true;
 				}
 				
 			}
-			
-			if (error){
-				throw new FailedInternetConnectionException("Error al enviar el correo\n");
-			}		
 		
 			return true;
 			
@@ -494,9 +453,7 @@ public class Sistema implements Serializable{
 	 */
 	public boolean eliminarTema(String nombretema, String nombreasig){
 		
-		
 		return this.getAsignatura(nombreasig).getTemas().remove(this.getAsignatura(nombreasig).getTema(nombretema));
-		
 		
 	}
 	
@@ -510,8 +467,6 @@ public class Sistema implements Serializable{
 	 * @throws InvalidEmailAddressException 
 	 */
 	public boolean agregarSubtema(String nombre, Tema tema, boolean visibilidad) throws InvalidEmailAddressException, FailedInternetConnectionException{
-		
-		boolean error = false;
 		
 		if(esProfesor){
 			
@@ -528,21 +483,13 @@ public class Sistema implements Serializable{
 			ArrayList<Alumno> alum = tema.getAsignatura().getAlumnos();
 		
 			if(subtema.esVisible()){
-				
-				try{
-					for (Alumno a : alum){
+
+				for (Alumno a : alum){
 						enviarNotificacion(a, "Nuevo subtema", "El tema " + tema.getNombre() + " contiene el nuevo subtema " + nombre);
-					}
-				}catch (Exception e){
-					error = true;
 				}
 				
 			}
-			
-			if (error){
-				throw new FailedInternetConnectionException("Error al enviar el correo\n");
-			}
-			
+
 			return true;
 			
 		}else
@@ -567,9 +514,7 @@ public class Sistema implements Serializable{
 	 * @throws FailedInternetConnectionException
 	 */
 	public boolean agregarEjercicio(Tema tema, double peso, int diaI, int mesI, int anyoI, int diaF, int mesF, int anyoF, String nombre) throws InvalidEmailAddressException, FailedInternetConnectionException{
-		
-		boolean error = false;
-		
+			
 		if(this.esProfesor){
 			
 			Ejercicio ejercicio = new Ejercicio (tema, peso, diaI, mesI, anyoI, diaF, mesF, anyoF, nombre);
@@ -586,20 +531,13 @@ public class Sistema implements Serializable{
 		
 			if(ejercicio.getVisible()){
 				
-				try{
-					for (Alumno a : alum){
+				for (Alumno a : alum){
 						enviarNotificacion(a, "Nuevo ejercicio", "El tema " + tema.getNombre() + " contiene un nuevo ejercicio " + nombre);
-					}
-				}catch (Exception e){
-					error = true;
 				}
+
 				
 			}
-			
-			if (error){
-				throw new FailedInternetConnectionException("Error al enviar el correo\n");
-			}
-			
+
 			return true;
 			
 			
@@ -622,9 +560,7 @@ public class Sistema implements Serializable{
 	 * @throws InvalidEmailAddressException 
 	 */
 	public boolean agregarApuntes(Tema tema, String contenido, int dia, int mes, int anyo, boolean v1, String titulo) throws InvalidEmailAddressException, FailedInternetConnectionException{
-		
-		boolean error = false;
-		
+				
 		if(esProfesor){
 			
 			Apuntes apuntes = new Apuntes (tema, contenido, dia, mes, anyo, v1, titulo);
@@ -639,21 +575,14 @@ public class Sistema implements Serializable{
 			ArrayList<Alumno> alum = tema.getAsignatura().getAlumnos();
 			
 			if(apuntes.getVisible()){
-				
-				try{
-					for (Alumno a : alum){
+
+				for (Alumno a : alum){
 						enviarNotificacion(a, "Nuevos apuntes", "El tema " + tema.getNombre() + " contiene los nuevos apuntes " + titulo);
-					}
-				}catch (Exception e){
-					error = true;
 				}
+
 				
 			}
-			
-			if (error){
-				throw new FailedInternetConnectionException("Error al enviar el correo\n");
-			}
-			
+						
 			return true;
 			
 		}else
