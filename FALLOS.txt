@@ -19,8 +19,6 @@
 
 5 - Gestión Matrículas
 
-        - Capturáis excepciones que luego volvéis a lanzar al aceptar martrícula. Es incorrecto.
-
 6 - Gestión Asignaturas
 
         - Los apuntes no tienen fecha de visibilidad.
