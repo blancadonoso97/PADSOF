@@ -83,7 +83,7 @@ public class SistemaTest {
 		eCourses = Sistema.cargarSistema("sistematest.txt");
 		eCourses.comprobarLogIn("0001", "passprof");
 		eCourses.aceptarMatricula(eCourses.getMatricula("1297", "Asignatura"));
-		Expulsion exp1 = new Expulsion(false, 1, 1, 2017, 1, 1, 2018, eCourses.getAlumno("1297"), eCourses.getAsignatura("Asignatura"));
+		Expulsion exp1 = new Expulsion(false, eCourses.getAlumno("1297"), eCourses.getAsignatura("Asignatura"));
 		eCourses.expulsarAlumno(exp1);
 		assertEquals(true, eCourses.comprobarExpulsion(eCourses.getAlumno("1297"), eCourses.getAsignatura("Asignatura"), exp1));
 	}
@@ -107,7 +107,7 @@ public class SistemaTest {
 		eCourses.agregarSolicitud(eCourses.getAsignatura("Asignatura"));
 		eCourses.comprobarLogIn("0001", "passprof");
 		eCourses.aceptarMatricula(eCourses.getMatricula("1297", "Asignatura"));
-		Expulsion exp1 = new Expulsion(false, 1, 1, 2017, 1, 1, 2018, eCourses.getAlumno("1297"), eCourses.getAsignatura("Asignatura"));
+		Expulsion exp1 = new Expulsion(false, eCourses.getAlumno("1297"), eCourses.getAsignatura("Asignatura"));
 		assertEquals(true, eCourses.expulsarAlumno(exp1));
 	}
 

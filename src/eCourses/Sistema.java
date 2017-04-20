@@ -3,7 +3,6 @@ package eCourses;
 import java.io.*;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import Asignatura.Apuntes;
 import Asignatura.Asignatura;
@@ -292,10 +291,8 @@ public class Sistema implements Serializable{
 	public boolean comprobarExpulsion(Alumno alum, Asignatura asig, Expulsion exp){
 		
 		if(exp.getAlumno().equals(alum) && exp.getAsignatura().equals(asig)){
-			
-			Calendar fechaActual = Calendar.getInstance(); //Obtiene la fecha actual
-			
-			if(exp.comprobarFecha(fechaActual) == false){
+						
+			if(exp.getExpulsado() == false){
 				alum.agregarAsignatura(exp.getAsignatura());
 				expulsiones.remove(this); //Si la expulsion ya no esta vigente, se elimina
 				return false;

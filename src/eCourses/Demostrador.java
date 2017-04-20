@@ -271,7 +271,7 @@ public class Demostrador {
 		System.out.println("Log In = " + sistema.getLogIn());
 		
 		/* El profesor expulsa al alumno 1289 de la asignatura Adsof*/
-		Expulsion exp1 = new Expulsion(false, 1, 1, 2017, 1, 1, 2018, sistema.getAlumno("1289"), sistema.getAsignatura("Adsof"));
+		Expulsion exp1 = new Expulsion(false, sistema.getAlumno("1289"), sistema.getAsignatura("Adsof"));
 		
 		sistema.expulsarAlumno(exp1);
 		
