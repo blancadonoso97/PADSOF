@@ -21,8 +21,6 @@
 
         - Capturáis excepciones que luego volvéis a lanzar al aceptar martrícula. Es incorrecto.
 
-        - Las expulsiones no tienen por qué tener fecha asociada. El profesor decide cuando acepta al alumno de nuevo.
-
 6 - Gestión Asignaturas
 
         - Los apuntes no tienen fecha de visibilidad.
