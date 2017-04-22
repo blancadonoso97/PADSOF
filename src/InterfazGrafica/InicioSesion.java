@@ -1,7 +1,7 @@
 package InterfazGrafica;
 
+import java.awt.BorderLayout;
 import java.awt.Container;
-import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -18,17 +18,19 @@ public class InicioSesion extends JFrame{
 	public static void main (String args[]){
 		
 		JFrame ventana = new JFrame("Bienvenido a eCourses");
+		
+		ventana.setLayout(new BorderLayout());
 
 		Container contenedor = ventana.getContentPane();
 		
-		contenedor.setLayout(new FlowLayout());
+		contenedor.setLayout(new BorderLayout());
 		
 		JPanel panel = new PanelInicioSesion();
 		
-		contenedor.add(panel);
+		contenedor.add(panel, BorderLayout.CENTER);
 		
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		ventana.setSize(900,700);
+		ventana.setSize(500, 500);
 		ventana.setVisible(true);
 		
 	}
