@@ -35,14 +35,32 @@ public class RespuestaTest extends Respuesta implements Serializable{
 	 */
 	public void calcularNota(){
 		
-		for(Opcion o: pregunta.getOpciones()){
-			if(o.getMarcada()==true && o.getEsCorrecta()==true){
-				this.setNota(this.pregunta.getPuntuacion());
-				return;
-			}
-		}
+	double nota;
+	int preguntasCor=0;
+	int preguntasInc = 0;
 		
-		return;
+	for(Opcion o: pregunta.getOpciones()){
+			
+		if(o.getMarcada() && o.getEsCorrecta()){
+			preguntasCor++;
+		}
+			
+		else if(o.getMarcada() && o.getEsCorrecta()==false){
+			preguntasInc++;
+		}
+		else if(o.getMarcada()==false && o.getEsCorrecta()){
+			preguntasInc++;
+		}
+	}
+		
+	
+	preguntasCor*= pregunta.getPuntuacionCorrecta();
+	preguntasInc*=pregunta.getPuntuacionIncorrecta();
+	nota = preguntasCor - preguntasInc;
+	
+	this.setNota(nota);
+	return;
+
 	}
 	
 	

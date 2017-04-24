@@ -15,7 +15,6 @@ public class RespuestaMultiple extends Respuesta implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private PreguntaMultiple pregunta;
-	private int preguntasCorrectas;
 	
 	
 	/**
@@ -39,57 +38,30 @@ public class RespuestaMultiple extends Respuesta implements Serializable{
 	 */
 	public void calcularNota(){
 		double nota;
-		int preguntasTotalesCorrectas=0;
+		int preguntasCor=0;
 		int preguntasInc = 0;
 		
 		for(Opcion o: pregunta.getOpciones()){
 			
 			if(o.getMarcada() && o.getEsCorrecta()){
-				preguntasCorrectas++;
+				preguntasCor++;
 			}
 			
 			else if(o.getMarcada() && o.getEsCorrecta()==false){
 				preguntasInc++;
 			}
-		}
-		
-		for(Opcion o: pregunta.getOpciones()){
-			
-			if(o.getEsCorrecta()){
-				preguntasTotalesCorrectas++;
+			else if(o.getMarcada()==false && o.getEsCorrecta()){
+				preguntasInc++;
 			}
 		}
 		
-		if(preguntasTotalesCorrectas == preguntasCorrectas && preguntasInc == 0){
-			this.setNota(this.pregunta.getPuntuacion());
-			return;
-		}
-		
-		else if(preguntasTotalesCorrectas == preguntasCorrectas && preguntasInc > 0){
-		
-			nota=this.pregunta.getPuntuacion();
-			
-			(nota) /= ((double)preguntasTotalesCorrectas);
-			
-			nota*=preguntasCorrectas;
-			
-			this.setNota(nota);
-			
-			return;
-		}
-		else{
-			
-			nota=this.pregunta.getPuntuacion();
-			
-			(nota) /= ((double)preguntasTotalesCorrectas);
-			
-			nota*=preguntasCorrectas;
-			
-			this.setNota(nota);
-			
-			return;
-		}
-	}
 	
+	preguntasCor*= pregunta.getPuntuacionCorrecta();
+	preguntasInc*=pregunta.getPuntuacionIncorrecta();
+	nota = preguntasCor - preguntasInc;
+	
+	this.setNota(nota);
+	return;
+	}
 	
 }

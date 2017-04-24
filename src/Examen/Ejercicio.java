@@ -3,6 +3,7 @@ package Examen;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 
 import Asignatura.Tema;
 import eCourses.Alumno;
@@ -24,7 +25,6 @@ public class Ejercicio implements Serializable{
 	private Calendar fechaFin = Calendar.getInstance();
 	private String nombre;
 	private Tema tema;
-
 	ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
 	ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
 	
@@ -54,6 +54,7 @@ public class Ejercicio implements Serializable{
 		this.nombre = newNombre;
 		this.visible=getVisible();
 		
+		
 
 	}
 
@@ -72,7 +73,7 @@ public class Ejercicio implements Serializable{
 	 * @param v1 Nueva visibilidad del ejercicio
 	 */
 	public void setVisible(boolean v1) {
-		visible = v1;
+		this.visible = v1;
 		return;
 	}
 
@@ -123,11 +124,11 @@ public class Ejercicio implements Serializable{
 		Calendar calendar = Calendar.getInstance(); /* Obtiene la fecha actual*/
 		
 		if (calendar.compareTo(fechaInicio)>0 && calendar.compareTo(fechaFin)<0){
-			visible = true;
-			return true;
+			this.visible = true;
+			return visible;
 		}else{
-			visible = false;
-			return false;
+			this.visible = false;
+			return visible;
 		}
 	}
 
@@ -233,7 +234,9 @@ public class Ejercicio implements Serializable{
 				}
 			}
 		}
-		
+		if(nota<0){
+			nota = 0;
+		}
 		return nota;
 	}
 
@@ -243,9 +246,17 @@ public class Ejercicio implements Serializable{
 	 * @return true si se agrega correctamente, false en caso contrario
 	 */
 	public boolean AgregarPregunta(Pregunta pregunta) {
+		for(Pregunta p : preguntas){
+			if(p.equals(pregunta)){
+				return false;
+			}
+		}
 		
-		return preguntas.add(pregunta);
-	
+		 if(preguntas.add(pregunta)){
+			 return true;
+		 }
+		 
+		 return false;
 	}
 
 	/**
@@ -257,7 +268,9 @@ public class Ejercicio implements Serializable{
 		
 		for (Pregunta a : preguntas) {
 			if (a.equals(pregunta)) {
-				return preguntas.remove(a);
+				 if(preguntas.remove(a)){
+					 return true;
+				 }
 			}
 		}
 		
@@ -265,22 +278,24 @@ public class Ejercicio implements Serializable{
 
 	}
 	
+	
 	/**
 	 * Obtienen una pregunta del ejercicio a partir de su nombre
 	 * @param nombrePregun Nombre de la pregunta
 	 * @return la pregunta si se encuentra en el ejercicio, null en caso contrario
 	 */
-	public Pregunta getPregunta(String nombrePregun){
+	public Pregunta getPregunta(String enunciado){
 		
 		for(Pregunta preg: preguntas){
 			
-			if(preg.getEnunciado().equals(nombrePregun)){
+			if(preg.getEnunciado().equals(enunciado)){
 				return preg;
 			}
 		}
 		
 		return null;
 	}
+	
 	
 	/**
 	 * Devuelve el conjunto de preguntas en el ejercicio
@@ -289,6 +304,7 @@ public class Ejercicio implements Serializable{
 	public ArrayList<Pregunta> getPreguntas(){
 		return preguntas;
 	}
+	
 	
 	/**
 	 * Devuelve el porcentaje de alumnos que han realizado un ejercicio
@@ -302,6 +318,7 @@ public class Ejercicio implements Serializable{
 		
 		return 100*res;
 	}
+	
 	
 	/**
 	 * Devuelve el porcentaje de alumnos que han contestado un ejercicio correctamente
@@ -332,13 +349,15 @@ public class Ejercicio implements Serializable{
 	 */
 	public boolean realizarEjercicio(Alumno alumno,ArrayList<Opcion> opciones){
 	
+		
+		
 		if(alumno == null){
-			
-			return false;
-			
+			return false;	
 		}
 		
-		if(this.visible == true){
+		
+		
+		if(this.getVisible() == true){
 			
 			for(Alumno al: alumnos){
 			
@@ -349,6 +368,8 @@ public class Ejercicio implements Serializable{
 				
 			}
 		
+			Collections.shuffle(preguntas);
+			
 			for(Pregunta p: preguntas){
 				if(p.getTipoPregunta() == 1){
 					//Multiple
@@ -383,8 +404,6 @@ public class Ejercicio implements Serializable{
 			return true;
 			
 		}
-		
-		
 			
 		return false;
 		

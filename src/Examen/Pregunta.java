@@ -15,9 +15,11 @@ public abstract class Pregunta implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	Ejercicio ejercicio;
-	private double puntuacion;
+	private double puntuacionCorrectas;
 	private String enunciado;
 	private int tipoPregunta;
+	private double puntuacionIncorrectas;
+	ArrayList<Opcion> opciones = new ArrayList<Opcion>();
 	
 
 	ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
@@ -29,20 +31,18 @@ public abstract class Pregunta implements Serializable{
 	 * @param punt Puntuacion total
 	 * @param ejercicio Ejercicio al que pertenece
 	 */
-	public Pregunta(String pregunta, double punt,Ejercicio ejercicio) {
-		this.puntuacion = punt;
+	public Pregunta(String pregunta, double puntC,double puntI,Ejercicio ejercicio,ArrayList<Opcion> op) {
+		this.puntuacionCorrectas=puntC;
+		this.puntuacionIncorrectas=puntI;
 		this.ejercicio=ejercicio;
 		this.enunciado = pregunta;
 		
+		for(Opcion o : op){
+			opciones.add(o);
+		}
+		
 	}
 
-	/**
-	 * Devuelve la puntuacion de la pregunta
-	 * @return puntuacion
-	 */
-	public double getPuntuacion() {
-		return puntuacion;
-	}
 
 	/**
 	 * Devuelve el enunciado de la pregunta
@@ -51,7 +51,15 @@ public abstract class Pregunta implements Serializable{
 	public String getEnunciado() {
 		return enunciado;
 	}
-
+	
+	public double getPuntuacionCorrecta(){
+		return puntuacionCorrectas;
+	}
+	
+	public double getPuntuacionIncorrecta(){
+		return puntuacionIncorrectas;
+	}
+	
 	/**
 	 * Set del tipo de pregunta
 	 * @param tipo Tipo de pregunta
@@ -77,14 +85,6 @@ public abstract class Pregunta implements Serializable{
 		return ejercicio;
 	}
 
-	/**
-	 * Modifica la puntuacion de la pregunta
-	 * @param pn Nueva puntuacion
-	 */
-	public void setPuntuacion(float pn) {
-		puntuacion = pn;
-		return;
-	}
 
 	/**
 	 * Modifica el enunciado de la pregunta

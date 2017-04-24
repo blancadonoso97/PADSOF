@@ -2,6 +2,7 @@ package Examen;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import eCourses.Alumno;
 
@@ -13,7 +14,6 @@ import eCourses.Alumno;
 public class PreguntaTest extends Pregunta implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	ArrayList<Opcion> opciones = new ArrayList<Opcion>();
 	
 	/**
 	 * Constructor de la clase PreguntaTest
@@ -22,15 +22,9 @@ public class PreguntaTest extends Pregunta implements Serializable{
 	 * @param ejercicio Ejercicio al que pertenece
 	 * @param op Array de opciones de la pregunta
 	 */
-	public PreguntaTest(String pregunta,double punt,Ejercicio ejercicio,ArrayList<Opcion> op) {
+	public PreguntaTest(String pregunta,double puntC,double puntI,Ejercicio ejercicio,ArrayList<Opcion> op) {
 		
-	    super(pregunta,punt,ejercicio);
-		
-	    for(Opcion op1:op){
-			opciones.add(op1);
-		}
-	    
-	    
+	    super(pregunta,puntC,puntI,ejercicio,op);
 	    this.setTipoPregunta(3);
 	}
 
@@ -41,15 +35,16 @@ public class PreguntaTest extends Pregunta implements Serializable{
 	 */
 	public boolean contestarPregunta(Opcion op,Alumno al){
 		
-	RespuestaTest respT;
+		RespuestaTest respT;
+		Collections.shuffle(opciones);
 	
-				op.setMarcada(true);
+		op.setMarcada(true);
 				
-				respT =  new RespuestaTest(this,al);
-				respT.calcularNota();
-				anyadirRespuesta(respT);
+		respT =  new RespuestaTest(this,al);
+		respT.calcularNota();
+		anyadirRespuesta(respT);
 				
-				return true;
+		return true;
 			
 	
 	}
@@ -93,6 +88,8 @@ public class PreguntaTest extends Pregunta implements Serializable{
 	 * @return el alumno, null en caso contrario
 	 */
 	public Alumno getAlumno(RespuestaTest respM){
+		
+		
 		for(Respuesta re:respuestas){
 			if(re.equals(respM)){
 				return re.getAlumno();

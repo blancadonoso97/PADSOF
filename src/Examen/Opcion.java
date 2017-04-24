@@ -17,7 +17,7 @@ public class Opcion implements Serializable{
 	private boolean esCorrecta;
 	private Pregunta preg;
 	private boolean marcada;
-
+	
 	/**
 	 * Constructor de la clase Opcion
 	 * 
@@ -25,11 +25,12 @@ public class Opcion implements Serializable{
 	 * @param correcta Si la opcion es correcta o no
 	 * @param preg Pregunta a la que pertenece la opcion
 	 */
-	public Opcion(String enunciado, boolean correcta,Pregunta preg) {
+	public Opcion(String enunciado, boolean correcta,Pregunta preg,int ident) {
 		this.enunciado = enunciado;
 		this.esCorrecta = correcta;
 		this.marcada = false;
 		this.preg = preg;
+	
 	}
 
 	/**
@@ -40,6 +41,8 @@ public class Opcion implements Serializable{
 		return enunciado;
 	}
 	
+
+
 	/**
 	 * Devuelve la pregunta a la que pertenece la opcion
 	 * @return preg

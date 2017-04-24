@@ -2,6 +2,7 @@ package Examen;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import eCourses.Alumno;
 
@@ -13,9 +14,7 @@ import eCourses.Alumno;
  */
 public class PreguntaMultiple extends Pregunta implements Serializable{
 	
-	
 	private static final long serialVersionUID = 1L;
-	private ArrayList<Opcion> opciones = new ArrayList<Opcion>();
 
 
 	/**
@@ -25,14 +24,9 @@ public class PreguntaMultiple extends Pregunta implements Serializable{
 	 * @param ejercicio Ejercicio al que pertenece
 	 * @param op Opciones de la pregunta
 	 */
-	public PreguntaMultiple(String pregunta,double punt,Ejercicio ejercicio,ArrayList<Opcion> op) {
+	public PreguntaMultiple(String pregunta,double puntC,double puntI,Ejercicio ejercicio,ArrayList<Opcion> op) {
 		
-	    super(pregunta,punt,ejercicio);
-		
-	    for(Opcion op1:op){
-			opciones.add(op1);
-		}
-	  
+	    super(pregunta,puntC,puntI,ejercicio,op);
 	    this.setTipoPregunta(1);
 	}
 	
@@ -45,6 +39,8 @@ public class PreguntaMultiple extends Pregunta implements Serializable{
 	public void contestarPregunta(ArrayList<Opcion> op,Alumno alum) {
 		
 		RespuestaMultiple respM;
+		
+		Collections.shuffle(opciones);
 		
 		for (Opcion op1 : opciones) {
 			for (Opcion o : op) {
@@ -92,11 +88,17 @@ public class PreguntaMultiple extends Pregunta implements Serializable{
 	 * @return el alumno, null en caso contrario
 	 */
 	public Alumno getAlumno(RespuestaMultiple respM){
+	
 		for(Respuesta re:respuestas){
+		
 			if(re.equals(respM)){
 				return re.getAlumno();
 			}
+			
 		}
+		
 		return null;
 	}
+	
+	
 }

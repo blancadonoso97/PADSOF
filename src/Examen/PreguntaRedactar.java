@@ -3,6 +3,7 @@ package Examen;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import eCourses.Alumno;
 
@@ -16,7 +17,7 @@ public class PreguntaRedactar extends Pregunta implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
-	ArrayList<Opcion> opciones = new ArrayList<Opcion>();
+
 	
 	/**
 	 * Constructor de la clase PreguntaRedactar
@@ -25,12 +26,8 @@ public class PreguntaRedactar extends Pregunta implements Serializable{
 	 * @param ejercicio Ejercicio al que pertenece
 	 * @param op Array de opciones que contiene
 	 */
-	public PreguntaRedactar(String pregunta,double punt,Ejercicio ejercicio,ArrayList<Opcion> op){
-		super(pregunta,punt,ejercicio);
-		
-	    for(Opcion op1:op){
-			opciones.add(op1);
-		}
+	public PreguntaRedactar(String pregunta,double puntC,double puntI,Ejercicio ejercicio,ArrayList<Opcion> op){
+		super(pregunta,puntC,puntI,ejercicio,op);
 	    
 	    this.setTipoPregunta(2);
 	}
@@ -41,6 +38,7 @@ public class PreguntaRedactar extends Pregunta implements Serializable{
 	 * @param resp Respuesta del alumno
 	 */
 	public void contestarPregunta(Alumno alum, String resp){
+		Collections.shuffle(opciones);
 		
 		RespuestaRedactar respR = new RespuestaRedactar(this,alum,resp);
 		respR.calcularNota();
