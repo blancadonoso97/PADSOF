@@ -51,11 +51,7 @@ public class Sistema implements Serializable{
 			this.cargarDatosProfesor(archivoProf);
 			this.cargarAlumnos(archivoAlum);
 		}
-			
-		
-		/*Comprueba si el id/email y contrasena pertenecen a un alumno o profesor
-		this.comprobarLogIn(newId, newCont);	
-		*/
+
 	}
 
 	/**

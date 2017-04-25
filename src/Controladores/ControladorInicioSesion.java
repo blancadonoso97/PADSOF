@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import InterfazGrafica.InicioSesion;
 import InterfazGrafica.PanelInicioSesion;
-import eCourses.Sistema;
 
 /**
  * Clase para definir el controlador de la ventana Inicio Sesion
@@ -16,17 +16,20 @@ import eCourses.Sistema;
  */
 public class ControladorInicioSesion implements ActionListener{
 
-	private Sistema sistema;
+	private InicioSesion ventana;
 	private PanelInicioSesion panel;
 	
-	public ControladorInicioSesion(Sistema sist, PanelInicioSesion pan){
+	/**
+	 * Constructor de la clase ControladorInicioSesion
+	 * @param sist Sistema (eCourses)
+	 * @param pan Panel asociado al controlador
+	 */
+	public ControladorInicioSesion(InicioSesion vent, PanelInicioSesion pan){
 	
-		this.sistema = sist;
+		this.ventana = vent;
 		this.panel = pan;
 		
 	}
-	
-	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -36,30 +39,18 @@ public class ControladorInicioSesion implements ActionListener{
 			 return;
 		 }
 		
-		 if(sistema.comprobarLogIn(panel.getId(), panel.getPass()) == false){
+		 if(ventana.getSistema().comprobarLogIn(panel.getId(), panel.getPass()) == false){
 			 JOptionPane.showMessageDialog(panel, "Error al iniciar sesion", "Error", JOptionPane.ERROR_MESSAGE);
 			 return;
 		 }
-		
-		
-		
-		// En funcion de si es alumno o profesor mostrara una vista u otra
-		
-		
+		 
+		if(ventana.getSistema().getEsProfesor()){
+			
+		}
 		
 		
 		
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

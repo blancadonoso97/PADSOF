@@ -1,10 +1,9 @@
 package InterfazGrafica;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Container;
 import java.awt.Toolkit;
-import java.io.IOException;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,29 +13,40 @@ import Controladores.ControladorInicioSesion;
 import eCourses.Sistema;
 
 /**
- * Clase para definir la ventana de inicio de sesion (log in)
+ * Clase para definir la ventana principal del programa
  * @author Miguel Angel Bouzada, Blanca Martinez Donoso
  *
  */
 public class InicioSesion extends JFrame{
 
 	private static final long serialVersionUID = 1L;
+	
+	private Sistema sistema;
+	
+	private static JPanel cartas;
 
-	public static void main (String args[]) throws ClassNotFoundException, IOException{
+	public InicioSesion(Sistema sist){
 		
-		JFrame ventana = new JFrame("Bienvenido a eCourses");
+		this.sistema = sist;
 		
-		ventana.setLayout(new BorderLayout());
+		cartas = new JPanel(new CardLayout());
 		
-		Sistema sistema = new Sistema("archivoProf.txt", "archivoAlum.txt");
+		this.setLayout(new CardLayout());
 
-		Container contenedor = ventana.getContentPane();
+		Container contenedor = this.getContentPane();
 		
 		contenedor.setLayout(new BorderLayout());
 		
+		// Panel de inicio de sesion
 		JPanel panel = new PanelInicioSesion();
 		
 		contenedor.add(panel, BorderLayout.CENTER);
+		
+		cartas.add(panel);
+		
+		// Panel del profesor
+		
+		// Panel del alumno
 		
 		ImageIcon image = new ImageIcon("eCourses.png");
 		JLabel label = new JLabel("", image, JLabel.CENTER);
@@ -45,22 +55,47 @@ public class InicioSesion extends JFrame{
 		
 		contenedor.add(panelImage, BorderLayout.NORTH);
 		
-		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		// Escala la ventana al tamaño maximo del monitor
 		Toolkit tk = Toolkit.getDefaultToolkit();  
 		int xSize = ((int) tk.getScreenSize().getWidth());  
 		int ySize = ((int) tk.getScreenSize().getHeight());  
-		ventana.setSize(xSize,ySize);
+		this.setSize(xSize,ySize);
 	
-		ventana.setVisible(true);
+		this.setVisible(true);
 		
 		// Anade el controlador para el boton de inicio
-		ControladorInicioSesion controlador = new ControladorInicioSesion(sistema, (PanelInicioSesion) panel);
+		ControladorInicioSesion controlador = new ControladorInicioSesion(this,(PanelInicioSesion) panel);
 		
 		// Configurar el panel con el controlador
 		((PanelInicioSesion) panel).setControlador(controlador);
 		
+<<<<<<< HEAD
 	}	
+=======
+	}
+	
+	public void cambiarCarta(){
+		
+	}
+	
+	/**
+	 * Obtiene el sistema asociado a la ventana
+	 * @return sistema
+	 */
+	public Sistema getSistema(){
+		return sistema;
+	}
+	
+	/**
+	 * Obtiene el conjunto de cartas (paneles) de la ventana
+	 * @return cartas
+	 */
+	public JPanel getCartas(){
+		return cartas;
+	}
+	
+>>>>>>> f00058da80fdf00493c5f4fb973a0b441d1659dc
 
 }
