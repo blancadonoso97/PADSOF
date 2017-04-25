@@ -510,12 +510,14 @@ public class Sistema implements Serializable{
 	 * @return true si se ha creado y anadido, false en caso contrario
 	 * @throws InvalidEmailAddressException
 	 * @throws FailedInternetConnectionException
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
-	public boolean agregarEjercicio(Tema tema, double peso, int diaI, int mesI, int anyoI, int diaF, int mesF, int anyoF, String nombre) throws InvalidEmailAddressException, FailedInternetConnectionException{
+	public boolean agregarEjercicio(Tema tema,boolean ordenado,double peso, int diaI, int mesI, int anyoI, int diaF, int mesF, int anyoF, String nombre) throws InvalidEmailAddressException, FailedInternetConnectionException, ClassNotFoundException, IOException{
 			
 		if(this.esProfesor){
 			
-			Ejercicio ejercicio = new Ejercicio (tema, peso, diaI, mesI, anyoI, diaF, mesF, anyoF, nombre);
+			Ejercicio ejercicio = new Ejercicio (tema, ordenado, peso, diaI, mesI, anyoI, diaF, mesF, anyoF, nombre);
 			
 			tema.agregarEjercicio(ejercicio);
 			

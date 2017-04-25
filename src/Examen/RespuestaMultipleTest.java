@@ -35,8 +35,8 @@ public class RespuestaMultipleTest {
 		asi = new Asignatura("cirel",true);
 		tema1 = new Tema(asi,"tema1",true);
 
-		ej1 = new Ejercicio(tema1,8,1,3,2016,5,4,2017,"Examen");
-		pregM = new PreguntaMultiple("Mi coche es rojo",(1/3),ej1,opcionesPregunta);	
+		ej1 = new Ejercicio(tema1,false, 8,1,3,2016,5,4,2017,"Examen");
+		pregM = new PreguntaMultiple("Mi coche es rojo",(1/3),0, ej1,opcionesPregunta);	
 		alumno = new Alumno("Blanca","Donoso","blanca.martinezdonoso@estudiante.uam.es","89549","lamaslista");
 		op1 = new Opcion("blanco",false,pregM);
 		op2 = new Opcion("gris",true,pregM); 

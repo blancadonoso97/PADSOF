@@ -61,7 +61,6 @@ public class InicioSesion extends JFrame{
 		// Configurar el panel con el controlador
 		((PanelInicioSesion) panel).setControlador(controlador);
 		
-	}
-	
+	}	
 
 }

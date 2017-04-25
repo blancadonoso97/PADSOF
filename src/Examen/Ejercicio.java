@@ -1,5 +1,6 @@
 package Examen;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -7,6 +8,9 @@ import java.util.Collections;
 
 import Asignatura.Tema;
 import eCourses.Alumno;
+import eCourses.Sistema;
+import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 /**
  * 
@@ -27,6 +31,7 @@ public class Ejercicio implements Serializable{
 	private Tema tema;
 	ArrayList<Pregunta> preguntas = new ArrayList<Pregunta>();
 	ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
+	private boolean ordenado;
 	
 	
 	/**
@@ -40,8 +45,12 @@ public class Ejercicio implements Serializable{
 	 * @param mesF Mes fin
 	 * @param anyoF Anyo fin
 	 * @param newNombre Nombre del ejercicio
+	 * @throws IOException 
+	 * @throws FailedInternetConnectionException 
+	 * @throws InvalidEmailAddressException 
+	 * @throws ClassNotFoundException 
 	 */
-	public Ejercicio(Tema newTema, double peso, int diaI, int mesI, int anyoI, int diaF, int mesF, int anyoF,String newNombre) {
+	public Ejercicio(Tema newTema,boolean ord, double peso, int diaI, int mesI, int anyoI, int diaF, int mesF, int anyoF,String newNombre) throws ClassNotFoundException, InvalidEmailAddressException, FailedInternetConnectionException, IOException {
 
 		this.tema = newTema;
 		this.peso = peso;
@@ -53,8 +62,7 @@ public class Ejercicio implements Serializable{
 		this.fechaFin.set(Calendar.DATE, diaF);
 		this.nombre = newNombre;
 		this.visible=getVisible();
-		
-		
+		this.ordenado = ord;
 
 	}
 
@@ -63,6 +71,10 @@ public class Ejercicio implements Serializable{
 	 * @param p1 Nuevo peso del ejercicio
 	 */
 	public void setPeso(double p1) {
+		
+		if(alumnos.size()>0) {
+			return;
+		}
 		peso = p1;
 		return;
 	}
@@ -107,6 +119,7 @@ public class Ejercicio implements Serializable{
 	 * @return el alumno si se encuentra en el ejercicio, null en caso contrario
 	 */
 	public Alumno getAlumno(String nombreAl){
+		
 		for(Alumno a: alumnos){
 			if(a.getNombre().equals(nombreAl)){
 				return a;
@@ -118,13 +131,39 @@ public class Ejercicio implements Serializable{
 	/**
 	 * Get de la visibilidad del ejercicio
 	 * @return visible
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 * @throws FailedInternetConnectionException 
+	 * @throws InvalidEmailAddressException 
 	 */
-	public boolean getVisible() {
+	public boolean getVisible() throws ClassNotFoundException, IOException, InvalidEmailAddressException, FailedInternetConnectionException {
 		
 		Calendar calendar = Calendar.getInstance(); /* Obtiene la fecha actual*/
+		Sistema sist = new Sistema("archivoProf.txt", "archivoAlum.txt");
 		
 		if (calendar.compareTo(fechaInicio)>0 && calendar.compareTo(fechaFin)<0){
-			this.visible = true;
+			
+			if(!tema.esVisible()){
+				tema.setVisibilidad(true);
+				
+				for(Tema t: tema.getTemas()){
+					if(!t.esVisible()){
+						t.setVisibilidad(true);
+					}
+				}
+				
+				if(!tema.getAsignatura().getVisible()){
+					tema.getAsignatura().setVisible(true);
+				}
+			}
+			if(!this.visible){
+
+				for (Alumno a : tema.getAsignatura().getAlumnos()){
+					sist.enviarNotificacion(a, "Nuevo ejercicio", "El tema " + tema.getNombre() + " contiene un nuevo ejercicio " + nombre);
+				}
+			
+			}
+			this.visible=true;
 			return visible;
 		}else{
 			this.visible = false;
@@ -151,6 +190,10 @@ public class Ejercicio implements Serializable{
 		}
 		
 		return false;
+	}
+	
+	public boolean getOrdenado(){
+		return this.ordenado;
 	}
 	/**
 	 * Get de la fecha de finalizacion del ejercicio
@@ -199,6 +242,11 @@ public class Ejercicio implements Serializable{
 	 * @param anyo Nuevo anyo para la fecha de inicio
 	 */
 	public void setFechaInicio(int dia, int mes, int anyo) {
+		
+		if(alumnos.size()>0) {
+			return;
+		}
+		
 		fechaInicio.set(Calendar.YEAR, anyo);
 		fechaInicio.set(Calendar.MONTH, mes);
 		fechaInicio.set(Calendar.DATE, dia);
@@ -213,6 +261,11 @@ public class Ejercicio implements Serializable{
 	 * @param anyo Nuevo anyo para la fecha de fin
 	 */
 	public void setFechaFin(int dia, int mes, int anyo) {
+		
+		if(alumnos.size()>0) {
+			return;
+		}
+		
 		fechaFin.set(Calendar.YEAR, anyo);
 		fechaFin.set(Calendar.MONTH, mes);
 		fechaFin.set(Calendar.DATE, dia);
@@ -246,6 +299,11 @@ public class Ejercicio implements Serializable{
 	 * @return true si se agrega correctamente, false en caso contrario
 	 */
 	public boolean AgregarPregunta(Pregunta pregunta) {
+		
+		if(alumnos.size()>0) {
+			return false;
+		}
+		
 		for(Pregunta p : preguntas){
 			if(p.equals(pregunta)){
 				return false;
@@ -266,6 +324,9 @@ public class Ejercicio implements Serializable{
 	 */
 	public boolean BorrarPregunta(Pregunta pregunta) {
 		
+		if(alumnos.size()>0) {
+			return false;
+		}
 		for (Pregunta a : preguntas) {
 			if (a.equals(pregunta)) {
 				 if(preguntas.remove(a)){
@@ -346,16 +407,16 @@ public class Ejercicio implements Serializable{
 	 * @param alumno Alumno que contesta
 	 * @param opciones Opciones que envia el alumno como contestadas
 	 * @return true si se contesta correctamente, false en caso contrario
+	 * @throws IOException 
+	 * @throws FailedInternetConnectionException 
+	 * @throws InvalidEmailAddressException 
+	 * @throws ClassNotFoundException 
 	 */
-	public boolean realizarEjercicio(Alumno alumno,ArrayList<Opcion> opciones){
-	
-		
+	public boolean realizarEjercicio(Alumno alumno,ArrayList<Opcion> opciones) throws ClassNotFoundException, InvalidEmailAddressException, FailedInternetConnectionException, IOException{
 		
 		if(alumno == null){
 			return false;	
 		}
-		
-		
 		
 		if(this.getVisible() == true){
 			
@@ -367,8 +428,10 @@ public class Ejercicio implements Serializable{
 				}
 				
 			}
-		
-			Collections.shuffle(preguntas);
+			
+			if(!this.ordenado){
+				Collections.shuffle(preguntas);
+			}
 			
 			for(Pregunta p: preguntas){
 				if(p.getTipoPregunta() == 1){

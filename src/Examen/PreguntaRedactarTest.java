@@ -39,8 +39,8 @@ public class PreguntaRedactarTest {
 		opcionesPregunta.add(op1);
 		opcionesPregunta.add(op2);
 		opcionesPregunta.add(op3);
-		ej1 = new Ejercicio(tema1,8,1,3,2016,5,4,2017,"Examen");
-		pregR = new PreguntaRedactar("Mi coche es rojo",(1/3),ej1,opcionesPregunta);	
+		ej1 = new Ejercicio(tema1,true, 8,1,3,2016,5,4,2017,"Examen");
+		pregR = new PreguntaRedactar("Mi coche es rojo",(1/3),0, ej1,opcionesPregunta);	
 		alumno = new Alumno("Blanca","Donoso","blanca.martinezdonoso@estudiante.uam.es","89549","lamaslista");
 	}
 	

@@ -38,8 +38,11 @@ public class PreguntaRedactar extends Pregunta implements Serializable{
 	 * @param resp Respuesta del alumno
 	 */
 	public void contestarPregunta(Alumno alum, String resp){
-		Collections.shuffle(opciones);
-		
+	
+		if(!ejercicio.getOrdenado()){
+			Collections.shuffle(opciones);
+		}
+
 		RespuestaRedactar respR = new RespuestaRedactar(this,alum,resp);
 		respR.calcularNota();
 		this.anyadirRespuesta(respR);

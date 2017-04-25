@@ -40,12 +40,13 @@ public class RespuestaRedactar extends Respuesta implements Serializable {
 		for(Opcion o: pregunta.getOpciones()){
 			
 			if(o.getEnunciado().equals(respAlu) && o.getEsCorrecta()){
-				this.setNota(this.pregunta.getPuntuacion());
+				this.setNota(this.pregunta.getPuntuacionCorrecta());
 				return;
 				
 			}
 		}
 		
+		this.setNota(this.pregunta.getPuntuacionIncorrecta());
 		return;
 	}
 	

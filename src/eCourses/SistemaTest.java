@@ -127,8 +127,8 @@ public class SistemaTest {
 	}
 	
 	@Test
-	public void testAgregarEjercicio() throws InvalidEmailAddressException, FailedInternetConnectionException {
-		assertEquals(true, eCourses.agregarEjercicio(eCourses.getTema("Tema 2"), 10, 1, 1, 2017, 1, 1, 2018, "Ejercicio 1"));
+	public void testAgregarEjercicio() throws InvalidEmailAddressException, FailedInternetConnectionException, ClassNotFoundException, IOException {
+		assertEquals(true, eCourses.agregarEjercicio(eCourses.getTema("Tema 2"), true, 10, 1, 1, 2017, 1, 1, 2018, "Ejercicio 1"));
 	}
 	
 	@Test

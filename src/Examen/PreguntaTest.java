@@ -36,7 +36,10 @@ public class PreguntaTest extends Pregunta implements Serializable{
 	public boolean contestarPregunta(Opcion op,Alumno al){
 		
 		RespuestaTest respT;
-		Collections.shuffle(opciones);
+		
+		if(!ejercicio.getOrdenado()){
+			Collections.shuffle(opciones);
+		}
 	
 		op.setMarcada(true);
 				

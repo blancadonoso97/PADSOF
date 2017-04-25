@@ -46,6 +46,9 @@ public class Tema implements Serializable{
 		
 	}
 	
+	public ArrayList<Tema> getTemas(){
+		return temas;
+	}
 	/**
 	 * Agrega un apunte al tema
 	 * @param apunte Apuntes a agregar

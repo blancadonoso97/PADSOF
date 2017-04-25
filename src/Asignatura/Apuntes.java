@@ -1,6 +1,12 @@
 package Asignatura;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Calendar;
+
+import eCourses.Alumno;
+import eCourses.Sistema;
+import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 /**
 * 
@@ -44,8 +50,12 @@ public class Apuntes implements Serializable{
 	/**
 	 * Muestra el contenido de los apuntes (texto)
 	 * Comprueba que sean visibles antes de mostrarlos
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
+	 * @throws FailedInternetConnectionException 
+	 * @throws InvalidEmailAddressException 
 	 */
-	public void mostrarApuntes() {
+	public void mostrarApuntes() throws InvalidEmailAddressException, FailedInternetConnectionException, ClassNotFoundException, IOException {
 		
 		if(this.comprobarVisible()){
 			System.out.println(texto);
@@ -56,13 +66,40 @@ public class Apuntes implements Serializable{
 	/**
 	 * Comprueba con la fecha actual si los apuntes pueden estar visibles o no
 	 * @return true si estan visibles, false en caso contrario
+	 * @throws FailedInternetConnectionException 
+	 * @throws InvalidEmailAddressException 
+	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
-	public boolean comprobarVisible(){
+	public boolean comprobarVisible() throws InvalidEmailAddressException, FailedInternetConnectionException, ClassNotFoundException, IOException{
 		
 		Calendar calendar = Calendar.getInstance(); /* Obtiene la fecha actual*/
+		Sistema sist = new Sistema("archivoProf.txt", "archivoAlum.txt");
 		
 		if (calendar.compareTo(fechaVisible) > 0){
-			visible = true;
+			
+			if(!tema.esVisible()){
+				tema.setVisibilidad(true);
+				
+				for(Tema t: tema.getTemas()){
+					if(!t.esVisible()){
+						t.setVisibilidad(true);
+					}
+				}
+				
+				if(!tema.getAsignatura().getVisible()){
+					tema.getAsignatura().setVisible(true);
+				}
+			}
+			if(!this.visible){
+
+				for (Alumno a : tema.getAsignatura().getAlumnos()){
+					sist.enviarNotificacion(a, "Nuevo ejercicio", "El tema " + tema.getNombre() + " contiene un nuevo ejercicio " + titulo);
+				}
+			
+			}
+			
+			this.visible=true;
 			return true;
 		}else
 			visible = false;

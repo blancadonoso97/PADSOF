@@ -25,7 +25,7 @@ public class Opcion implements Serializable{
 	 * @param correcta Si la opcion es correcta o no
 	 * @param preg Pregunta a la que pertenece la opcion
 	 */
-	public Opcion(String enunciado, boolean correcta,Pregunta preg,int ident) {
+	public Opcion(String enunciado, boolean correcta,Pregunta preg) {
 		this.enunciado = enunciado;
 		this.esCorrecta = correcta;
 		this.marcada = false;

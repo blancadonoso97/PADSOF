@@ -2,6 +2,7 @@ package Examen;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.junit.Before;
@@ -10,6 +11,8 @@ import org.junit.Test;
 import Asignatura.Asignatura;
 import Asignatura.Tema;
 import eCourses.Alumno;
+import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 /**
 * 
@@ -38,9 +41,9 @@ public class EjercicioTest {
 		tema1 = new Tema(asi,"tema1",true);
 		alumno = new Alumno("Blanca","Donoso","blanca.martinezdonoso@estudiante.uam.es","89549","lamaslista");
 		
-		ej1 = new Ejercicio(tema1,8,1,3,2016,5,4,2017,"Examen");
-		preg1 = new PreguntaTest("Mi coche es rojo",(1/3),ej1,opciones1);
-		preg2 = new PreguntaTest("La vaca da leche",(1/2),ej1,opciones2);
+		ej1 = new Ejercicio(tema1,false, 8,1,3,2016,5,4,2017,"Examen");
+		preg1 = new PreguntaTest("Mi coche es rojo",(1/3),2, ej1,opciones1);
+		preg2 = new PreguntaTest("La vaca da leche",(1/2),3, ej1,opciones2);
 		op1 = new Opcion("blanco",false,preg1);
 		op2 = new Opcion("gris",true,preg1); 
 		op3 = new Opcion("rojo",false,preg2);
@@ -56,7 +59,7 @@ public class EjercicioTest {
 		}
 	
 	@Test
-	public void testAgregarPregunta() {
+	public void testAgregarPregunta() throws ClassNotFoundException, InvalidEmailAddressException, FailedInternetConnectionException, IOException {
 		ej1.AgregarPregunta(preg1);
 		ej1.AgregarPregunta(preg2);
 		assertEquals(preg1,ej1.getPregunta("Mi coche es rojo"));

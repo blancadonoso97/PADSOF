@@ -40,7 +40,9 @@ public class PreguntaMultiple extends Pregunta implements Serializable{
 		
 		RespuestaMultiple respM;
 		
-		Collections.shuffle(opciones);
+		if(!ejercicio.getOrdenado()){
+			Collections.shuffle(opciones);
+		}
 		
 		for (Opcion op1 : opciones) {
 			for (Opcion o : op) {
@@ -54,7 +56,6 @@ public class PreguntaMultiple extends Pregunta implements Serializable{
 		respM.calcularNota();
 		this.anyadirRespuesta(respM);
 		return;
-		
 	}
 	
 	/**

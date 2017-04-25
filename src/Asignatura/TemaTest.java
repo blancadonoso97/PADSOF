@@ -25,7 +25,7 @@ public class TemaTest {
 		tema1 = new Tema(asi,"tema1",true);
 		tema2 = new Tema(asi,"tema2",true);
 		ap1 = new Apuntes(tema1,"Textaco del bueno",22,03,2017,true,"Yo soy tonto");
-		ej1 = new Ejercicio(tema2,8,22,01,2017,05,04,2017,"Examen");
+		ej1 = new Ejercicio(tema2,false, 8,22,01,2017,05,04,2017,"Examen");
 		
 	}
 	

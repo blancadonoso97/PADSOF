@@ -2,8 +2,13 @@ package Asignatura;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
+
 import org.junit.Before;
 import org.junit.Test;
+
+import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 
 /**
@@ -29,7 +34,7 @@ public class ApuntesTest {
 	
 	
 	@Test
-	public void testComprobarVisible() {
+	public void testComprobarVisible() throws InvalidEmailAddressException, FailedInternetConnectionException, ClassNotFoundException, IOException {
 		assertEquals(true, apuntes1.comprobarVisible());
 	}
 

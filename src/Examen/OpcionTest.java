@@ -30,8 +30,8 @@ public class OpcionTest {
 	public void inicializar() throws Exception{
 		asi = new Asignatura("cirel",true);
 		tema1 = new Tema(asi,"tema1",true);
-		ej1 = new Ejercicio(tema1,8,1,3,2016,5,4,2017,"Examen");
-		preg1 = new PreguntaTest("Mi coche es rojo",(1/3),ej1,opciones1);
+		ej1 = new Ejercicio(tema1,false, 8,1,3,2016,5,4,2017,"Examen");
+		preg1 = new PreguntaTest("Mi coche es rojo",(1/3),0, ej1,opciones1);
 		opciones1.add(op1);
 		opciones1.add(op2);
 		op1 = new Opcion("El cielo es azul",true,preg1);
