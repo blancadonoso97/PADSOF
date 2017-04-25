@@ -71,9 +71,6 @@ public class InicioSesion extends JFrame{
 		// Configurar el panel con el controlador
 		((PanelInicioSesion) panel).setControlador(controlador);
 		
-<<<<<<< HEAD
-	}	
-=======
 	}
 	
 	public void cambiarCarta(){
@@ -95,7 +92,6 @@ public class InicioSesion extends JFrame{
 	public JPanel getCartas(){
 		return cartas;
 	}
-	
->>>>>>> f00058da80fdf00493c5f4fb973a0b441d1659dc
+
 
 }
