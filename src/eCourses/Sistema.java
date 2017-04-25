@@ -35,12 +35,10 @@ public class Sistema implements Serializable{
 	/**
 	 * Construcutor de la clase Sistema
 	 * 
-	 * @param newId Id introducido por el usuario
-	 * @param newCont Contrasena introducida por el usuario
 	 * @param archivoProf Archivo con los datos del profesor
 	 * @param archivoAlum Archivo con los datos de los alumnos
 	 */
-	public Sistema(String newId, String newCont, String archivoProf, String archivoAlum) throws IOException, ClassNotFoundException{
+	public Sistema(String archivoProf, String archivoAlum) throws IOException, ClassNotFoundException{
 	
 		String Fichero = "sistema.txt";
 		File fichero = new File(Fichero);

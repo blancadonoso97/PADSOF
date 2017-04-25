@@ -26,7 +26,7 @@ public class Demostrador {
 		 * esProf = true
 		 * logIn = true
 		 */
-		Sistema sistema = new Sistema("0001", "passprof", "archivoProf.txt", "archivoAlum.txt");	
+		Sistema sistema = new Sistema("archivoProf.txt", "archivoAlum.txt");	
 		
 		System.out.println("EsProfesor = " + sistema.getEsProfesor());
 		System.out.println("Log In = " + sistema.getLogIn());
@@ -49,12 +49,12 @@ public class Demostrador {
 		ArrayList<Opcion> opciones1 = new ArrayList<Opcion>();
 
 		
-		PreguntaRedactar p1 = new PreguntaRedactar("¿Cuanto es 1 + 1?", 5, sistema.getAsignatura("Adsof").getTema("Tema 1").getEjercicio("Ejercicio 1"), opciones1);
+		//PreguntaRedactar p1 = new PreguntaRedactar("¿Cuanto es 1 + 1?", 5, sistema.getAsignatura("Adsof").getTema("Tema 1").getEjercicio("Ejercicio 1"), opciones1);
 		
 		
-		Opcion op1 = new Opcion("Dos", true,p1);
-		Opcion op2 = new Opcion("2", true,p1);
-		
+		//Opcion op1 = new Opcion("Dos", true,p1);
+		//Opcion op2 = new Opcion("2", true,p1);
+		/*
 		opciones1.add(op1);
 		opciones1.add(op2);
 		p1.setOpciones(opciones1);
@@ -62,7 +62,7 @@ public class Demostrador {
 		
 		/* Creamos 3 opciones para una pregunta de tipo test (respuesta unica)*/
 		ArrayList<Opcion> opciones2 = new ArrayList<Opcion>();
-		
+		/*
 		PreguntaTest p2 = new PreguntaTest("¿Cuanto es 2 + 1?", 3, sistema.getAsignatura("Adsof").getTema("Tema 1").getEjercicio("Ejercicio 1"), opciones2);
 		
 		
@@ -74,17 +74,17 @@ public class Demostrador {
 		opciones2.add(op12);
 		opciones2.add(op22);
 		opciones2.add(op32);
+		*/
+		//p2.setOpciones(opciones2);
 		
-		p2.setOpciones(opciones2);
-		
-		sistema.getAsignatura("Adsof").getTema("Tema 1").getEjercicio("Ejercicio 1").AgregarPregunta(p2);
+		//sistema.getAsignatura("Adsof").getTema("Tema 1").getEjercicio("Ejercicio 1").AgregarPregunta(p2);
 		
 		/* Creamos 3 opciones para una pregunta de tipo test multiple*/
 		ArrayList<Opcion> opciones3 = new ArrayList<Opcion>();
 
 		
-		PreguntaMultiple p3 = new PreguntaMultiple("¿Cuanto es 2 + 2?", 2, sistema.getAsignatura("Adsof").getTema("Tema 1").getEjercicio("Ejercicio 1"), opciones3);
-		
+		//PreguntaMultiple p3 = new PreguntaMultiple("¿Cuanto es 2 + 2?", 2, sistema.getAsignatura("Adsof").getTema("Tema 1").getEjercicio("Ejercicio 1"), opciones3);
+		/*
 		Opcion op13 = new Opcion("4", true,p3);
 		Opcion op23 = new Opcion("Cuatro", true,p3);
 		Opcion op33 = new Opcion("Ocho", false,p3);
@@ -92,7 +92,7 @@ public class Demostrador {
 		opciones3.add(op13);
 		opciones3.add(op23);
 		opciones3.add(op33);
-		p3.setOpciones(opciones3);
+		//p3.setOpciones(opciones3);
 		sistema.getAsignatura("Adsof").getTema("Tema 1").getEjercicio("Ejercicio 1").AgregarPregunta(p3);
 		
 		/* Agregar apuntes visibles*/
@@ -181,8 +181,8 @@ public class Demostrador {
 		
 		/* Acceder/realizar ejercicio visible*/
 		ArrayList <Opcion> opcionesAlum = new ArrayList<Opcion>();
-		opcionesAlum.add(op1);
-		opcionesAlum.add(op23);
+		//opcionesAlum.add(op1);
+		//opcionesAlum.add(op23);
 		
 		if(sistema.getAsignatura("Adsof").getTema("Tema 1").getEjercicio("Ejercicio 1").realizarEjercicio(sistema.getAlumnoLog(),opcionesAlum) == false){
 			System.out.println("El profesor no puede realizar un ejercicio");
@@ -214,9 +214,9 @@ public class Demostrador {
 		
 		/* Acceder/realizar ejercicio visible*/
 		ArrayList <Opcion> opcionesAlum1 = new ArrayList<Opcion>();
-		opcionesAlum1.add(op2);
-		opcionesAlum1.add(op33);
-		opcionesAlum1.add(op22);
+		//opcionesAlum1.add(op2);
+		//opcionesAlum1.add(op33);
+		//opcionesAlum1.add(op22);
 		
 		
 		sistema.getAlumnoLog().getAsignatura("Adsof").getTema("Tema 1").getEjercicio("Ejercicio 1").realizarEjercicio(sistema.getAlumnoLog(),opcionesAlum1);
@@ -245,7 +245,7 @@ public class Demostrador {
 		sistema.getAlumnoLog().getAsignatura("Adsof").getTema("Tema 1").getApunte("Apuntes 1").mostrarApuntes();
 		System.out.println();
 		
-		/* Acceder/realizar ejercicio visible*/
+		/* Acceder/realizar ejercicio visible
 		ArrayList <Opcion> opcionesAlum2 = new ArrayList<Opcion>();
 		opcionesAlum2.add(op2);
 		opcionesAlum2.add(op12);

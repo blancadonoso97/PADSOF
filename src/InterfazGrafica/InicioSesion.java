@@ -2,11 +2,16 @@ package InterfazGrafica;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.Toolkit;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import Controladores.ControladorInicioSesion;
+import eCourses.Sistema;
 
 /**
  * Clase para definir la ventana de inicio de sesion (log in)
@@ -17,11 +22,13 @@ public class InicioSesion extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 
-	public static void main (String args[]){
+	public static void main (String args[]) throws ClassNotFoundException, IOException{
 		
 		JFrame ventana = new JFrame("Bienvenido a eCourses");
 		
 		ventana.setLayout(new BorderLayout());
+		
+		Sistema sistema = new Sistema("archivoProf.txt", "archivoAlum.txt");
 
 		Container contenedor = ventana.getContentPane();
 		
@@ -39,8 +46,20 @@ public class InicioSesion extends JFrame{
 		contenedor.add(panelImage, BorderLayout.NORTH);
 		
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		ventana.setSize(500, 500);
+		
+		// Escala la ventana al tamaño maximo del monitor
+		Toolkit tk = Toolkit.getDefaultToolkit();  
+		int xSize = ((int) tk.getScreenSize().getWidth());  
+		int ySize = ((int) tk.getScreenSize().getHeight());  
+		ventana.setSize(xSize,ySize);
+	
 		ventana.setVisible(true);
+		
+		// Anade el controlador para el boton de inicio
+		ControladorInicioSesion controlador = new ControladorInicioSesion(sistema, (PanelInicioSesion) panel);
+		
+		// Configurar el panel con el controlador
+		((PanelInicioSesion) panel).setControlador(controlador);
 		
 	}
 	

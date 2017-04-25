@@ -27,7 +27,7 @@ public class SistemaTest {
 	@Before
 	public void inicializar() throws Exception{
 		
-		eCourses = new Sistema("0001", "passprof", "archivoProf.txt", "archivoAlum.txt");
+		eCourses = new Sistema("archivoProf.txt", "archivoAlum.txt");
 		eCourses.agregarAsignatura("Asignatura", true);
 		eCourses.agregarTema("Tema 2", eCourses.getAsignatura("Asignatura"), true);
 	}

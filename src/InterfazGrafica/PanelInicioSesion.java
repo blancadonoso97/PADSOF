@@ -1,12 +1,10 @@
 package InterfazGrafica;
 
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -21,27 +19,27 @@ import javax.swing.SpringLayout;
 public class PanelInicioSesion extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-
+	
+	private JButton boton;
+	private JLabel contrasena; 
+	private JLabel nombre; 
+	private JTextField id;
+	private JPasswordField password;
+	
+	
 	public PanelInicioSesion() {
 
 		SpringLayout layout = new SpringLayout();
 
 		this.setLayout(layout);
 
-		JLabel nombre = new JLabel("Nombre/Email:");
-		final JTextField id = new JTextField(20);
+		this.nombre = new JLabel("Nombre/Email:");
+		this.id = new JTextField(15);
 
-		JLabel contrasena = new JLabel("Contraseña:");
-		JPasswordField password = new JPasswordField(15);
+		this.contrasena = new JLabel("Contraseña:");
+		this.password = new JPasswordField(15);
 
-		JButton boton = new JButton("Iniciar sesion");
-
-		// Al pulsar el boton se produce el intento de log in
-		boton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, id.getText());
-			}
-		});
+		this.boton = new JButton("Iniciar sesion");
 		
 		// Label nombre
 		layout.putConstraint(SpringLayout.WEST, nombre, 10, SpringLayout.WEST, this);
@@ -82,5 +80,31 @@ public class PanelInicioSesion extends JPanel {
 		this.add(boton);
 
 	}
+	
+	
+	/**
+	 * Anade un controlador al boton
+	 * @param c Controlador a anadir
+	 */
+	 public void setControlador(ActionListener c) {
+		 boton.addActionListener(c);
+	 }
+	 
+	 /**
+	  * Obtiene el id introducido por el usuario
+	  * @return Nombre/email
+	  */
+	 public String getId() {
+		 return id.getText();
+	 }
+	 
+	 /**
+	  * Obtiene
+	  * @return password
+	  */
+	 public String getPass(){
+		 return String.valueOf(password.getPassword());
+	 }
+	 
 
 }
