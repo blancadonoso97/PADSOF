@@ -33,7 +33,7 @@ public class PanelInicioSesion extends JPanel {
 
 		this.setLayout(layout);
 
-		this.nombre = new JLabel("Nombre/Email:");
+		this.nombre = new JLabel("Id/Email:");
 		this.id = new JTextField(15);
 
 		this.contrasena = new JLabel("Contraseña:");
@@ -92,18 +92,21 @@ public class PanelInicioSesion extends JPanel {
 	 
 	 /**
 	  * Obtiene el id introducido por el usuario
-	  * @return Nombre/email
+	  * @return Id o email
 	  */
 	 public String getId() {
 		 return id.getText();
 	 }
 	 
 	 /**
-	  * Obtiene
-	  * @return password
+	  * Obtiene la contrasena introducida
+	  * @return passText
 	  */
 	 public String getPass(){
-		 return String.valueOf(password.getPassword());
+		 
+		 String passText = new String(password.getPassword());
+		 
+		 return passText;
 	 }
 	 
 
