@@ -14,30 +14,14 @@
 
         - La carga y guardado de datos no es transparente al usuario de la clase Sistema (la GUI).
 
-        - Se comprueba el login en el constructor. No es un buen diseño. IMPORTANTE REVISAR
 
 
 5 - Gestión Matrículas
 
 6 - Gestión Asignaturas
 
-        - Los apuntes no tienen fecha de visibilidad.
-
-        - La visibilidad jerárquica está solo parcialmente implementada. Al hacer visible unos apuntes, se debería hacer visible el contenedor
-        de los mismos.
-
         - Al cambiar la visibilidad hay que notificar (si se hacen visible apuntes, por ejemplo), lo mismo con ejercicio.
-
-        - No comprobáis si el ejercicio es modificable o no (solo se puede modificar si no ha sido contestado).
-       
+      
 7 - Resolución Ejercicios
 
-        - No comprobáis fechas a la hora de registrar respuestas.
-
-        - No habéis implementado ordenación aleatoria de pregutnas y opciones.
-
-        - El cálculo de la nota de un ejercicio es incorrecto. En respuesta múltiple solo se considera que se ha contestado bien si se han
-        marcado todas las opciones correctas. En ese caso se suma la puntucación de la pregunta. En caso contrario se suma 0.
-
-        - Las preguntas pueden restar puntos si se contestan de forma incorrecta.
 
