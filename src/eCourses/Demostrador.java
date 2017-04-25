@@ -300,7 +300,7 @@ public class Demostrador {
 		}
 		System.out.println();
 				
-		System.out.println("Final del demostrador\n");
+		System.out.println("Final del demostrador.\n");
 				
 		return;
 		
