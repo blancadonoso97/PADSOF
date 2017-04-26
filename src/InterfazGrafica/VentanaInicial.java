@@ -3,6 +3,8 @@ package InterfazGrafica;
 import java.awt.CardLayout;
 import java.awt.Container;
 import java.awt.Toolkit;
+import java.io.IOException;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -24,7 +26,7 @@ public class VentanaInicial extends JFrame{
 	
 	private static Container contenedor;
 
-	public VentanaInicial(Sistema sist){
+	public VentanaInicial(Sistema sist) throws IOException{
 		
 		this.sistema = sist;
 		

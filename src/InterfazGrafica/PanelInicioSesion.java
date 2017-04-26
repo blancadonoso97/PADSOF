@@ -1,7 +1,7 @@
 package InterfazGrafica;
 
-import java.awt.Dimension;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -28,8 +28,9 @@ public class PanelInicioSesion extends JPanel {
 	
 	/**
 	 * Constructor de la clase PanelInicioSesion
+	 * @throws IOException 
 	 */
-	public PanelInicioSesion() {
+	public PanelInicioSesion() throws IOException {
 
 		SpringLayout layout = new SpringLayout();
 
@@ -42,7 +43,7 @@ public class PanelInicioSesion extends JPanel {
 		this.password = new JPasswordField(15);
 
 		this.boton = new JButton("Iniciar sesion");
-		
+				
 		// Label nombre
 		layout.putConstraint(SpringLayout.WEST, nombre, 10, SpringLayout.WEST, this);
 
@@ -71,8 +72,9 @@ public class PanelInicioSesion extends JPanel {
 		layout.putConstraint(SpringLayout.NORTH, boton, 10, SpringLayout.SOUTH, password);
 		
 		layout.putConstraint(SpringLayout.WEST, boton, 0, SpringLayout.WEST, id);
-
-		this.setPreferredSize(new Dimension(250, 50));
+	
+		
+		
 		this.setVisible(true);
 
 		this.add(nombre);
@@ -109,7 +111,6 @@ public class PanelInicioSesion extends JPanel {
 		 String passText = new String(password.getPassword());
 		 
 		 return passText;
-	 }
-	 
+	 }	 
 
 }
