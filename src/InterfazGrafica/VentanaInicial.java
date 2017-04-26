@@ -1,12 +1,9 @@
 package InterfazGrafica;
 
-import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Container;
 import java.awt.Toolkit;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Controladores.ControladorInicioSesion;
@@ -31,7 +28,7 @@ public class VentanaInicial extends JFrame{
 		
 		this.sistema = sist;
 		
-		this.setLayout(new CardLayout());
+		this.setLayout(cartas);
 
 		VentanaInicial.contenedor = this.getContentPane();
 		
@@ -51,15 +48,13 @@ public class VentanaInicial extends JFrame{
 		cartas.addLayoutComponent(panelalumno, "Alumno");
 		cartas.addLayoutComponent(panelprofesor, "Profesor");
 		
+		contenedor.add(panelinicio);
+		contenedor.add(panelalumno);
+		contenedor.add(panelprofesor);
+		
+		
 		// Muestra inicialmente el primer panel
 		cartas.show(contenedor, "Inicio");
-
-		ImageIcon image = new ImageIcon("eCourses.png");
-		JLabel label = new JLabel("", image, JLabel.CENTER);
-		JPanel panelImage = new JPanel(new BorderLayout());
-		panelImage.add(label, BorderLayout.CENTER );
-		
-		contenedor.add(panelImage, BorderLayout.NORTH);
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -71,7 +66,6 @@ public class VentanaInicial extends JFrame{
 	
 		this.setVisible(true);
 	
-		
 		// Anade el controlador para el boton de inicio
 		ControladorInicioSesion controlador = new ControladorInicioSesion(this,(PanelInicioSesion) panelinicio);
 		
@@ -93,8 +87,6 @@ public class VentanaInicial extends JFrame{
 		}else if(nombre.equals("Profesor")){
 			cartas.show(contenedor, "Profesor");
 		}
-		
-		
 		
 	}
 	

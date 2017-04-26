@@ -26,7 +26,9 @@ public class PanelInicioSesion extends JPanel {
 	private JTextField id;
 	private JPasswordField password;
 	
-	
+	/**
+	 * Constructor de la clase PanelInicioSesion
+	 */
 	public PanelInicioSesion() {
 
 		SpringLayout layout = new SpringLayout();
