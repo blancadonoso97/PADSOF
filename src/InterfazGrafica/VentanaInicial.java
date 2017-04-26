@@ -17,37 +17,43 @@ import eCourses.Sistema;
  * @author Miguel Angel Bouzada, Blanca Martinez Donoso
  *
  */
-public class InicioSesion extends JFrame{
+public class VentanaInicial extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	
 	private Sistema sistema;
 	
-	private static JPanel cartas;
+	private static CardLayout cartas = new CardLayout();
+	
+	private static Container contenedor;
 
-	public InicioSesion(Sistema sist){
+	public VentanaInicial(Sistema sist){
 		
 		this.sistema = sist;
 		
-		cartas = new JPanel(new CardLayout());
-		
 		this.setLayout(new CardLayout());
 
-		Container contenedor = this.getContentPane();
+		VentanaInicial.contenedor = this.getContentPane();
 		
-		contenedor.setLayout(new BorderLayout());
+		contenedor.setLayout(cartas);
 		
 		// Panel de inicio de sesion
-		JPanel panel = new PanelInicioSesion();
+		JPanel panelinicio = new PanelInicioSesion();
 		
-		contenedor.add(panel, BorderLayout.CENTER);
+		// Panel alumno
+		JPanel panelalumno = new PanelAlumno();
 		
-		cartas.add(panel);
+		// Panel profesor
+		JPanel panelprofesor = new PanelProfesor();
 		
-		// Panel del profesor
+		// Anadir paneles
+		cartas.addLayoutComponent(panelinicio, "Inicio");
+		cartas.addLayoutComponent(panelalumno, "Alumno");
+		cartas.addLayoutComponent(panelprofesor, "Profesor");
 		
-		// Panel del alumno
-		
+		// Muestra inicialmente el primer panel
+		cartas.show(contenedor, "Inicio");
+
 		ImageIcon image = new ImageIcon("eCourses.png");
 		JLabel label = new JLabel("", image, JLabel.CENTER);
 		JPanel panelImage = new JPanel(new BorderLayout());
@@ -64,16 +70,31 @@ public class InicioSesion extends JFrame{
 		this.setSize(xSize,ySize);
 	
 		this.setVisible(true);
+	
 		
 		// Anade el controlador para el boton de inicio
-		ControladorInicioSesion controlador = new ControladorInicioSesion(this,(PanelInicioSesion) panel);
+		ControladorInicioSesion controlador = new ControladorInicioSesion(this,(PanelInicioSesion) panelinicio);
 		
 		// Configurar el panel con el controlador
-		((PanelInicioSesion) panel).setControlador(controlador);
+		((PanelInicioSesion) panelinicio).setControlador(controlador);
 		
 	}
 	
-	public void cambiarCarta(){
+	/**
+	 * Permite cambiar entre paneles
+	 * @param nombre Nombre del panel al que se quiere cambiar
+	 */
+	public void cambiarCarta(String nombre){
+		
+		if(nombre.equals("Inicio")){
+			cartas.show(contenedor, "Inicio");
+		}else if(nombre.equals("Alumno")){
+			cartas.show(contenedor, "Alumno");
+		}else if(nombre.equals("Profesor")){
+			cartas.show(contenedor, "Profesor");
+		}
+		
+		
 		
 	}
 	
@@ -85,13 +106,5 @@ public class InicioSesion extends JFrame{
 		return sistema;
 	}
 	
-	/**
-	 * Obtiene el conjunto de cartas (paneles) de la ventana
-	 * @return cartas
-	 */
-	public JPanel getCartas(){
-		return cartas;
-	}
-
 
 }

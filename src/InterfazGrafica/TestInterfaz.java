@@ -10,7 +10,7 @@ public class TestInterfaz {
 		
 		Sistema sistema = new Sistema("archivoProf.txt", "archivoAlum.txt");
 		
-		InicioSesion eCourses = new InicioSesion(sistema);
+		VentanaInicial eCourses = new VentanaInicial(sistema);
 		
 	}
 	

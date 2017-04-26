@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import InterfazGrafica.InicioSesion;
+import InterfazGrafica.VentanaInicial;
 import InterfazGrafica.PanelInicioSesion;
 
 /**
@@ -16,7 +16,7 @@ import InterfazGrafica.PanelInicioSesion;
  */
 public class ControladorInicioSesion implements ActionListener{
 
-	private InicioSesion ventana;
+	private VentanaInicial ventana;
 	private PanelInicioSesion panel;
 	
 	/**
@@ -24,7 +24,7 @@ public class ControladorInicioSesion implements ActionListener{
 	 * @param sist Sistema (eCourses)
 	 * @param pan Panel asociado al controlador
 	 */
-	public ControladorInicioSesion(InicioSesion vent, PanelInicioSesion pan){
+	public ControladorInicioSesion(VentanaInicial vent, PanelInicioSesion pan){
 	
 		this.ventana = vent;
 		this.panel = pan;
@@ -45,7 +45,9 @@ public class ControladorInicioSesion implements ActionListener{
 		 }
 		 
 		if(ventana.getSistema().getEsProfesor()){
-			
+			ventana.cambiarCarta("Profesor");
+		}else if(ventana.getSistema().getEsProfesor() == false && ventana.getSistema().getLogIn()){
+			ventana.cambiarCarta("Alumno");
 		}
 		
 		
