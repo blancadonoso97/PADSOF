@@ -1,8 +1,7 @@
 package InterfazGrafica;
 
-import javax.swing.JButton;
+import java.awt.BorderLayout;
 import javax.swing.JPanel;
-import javax.swing.SpringLayout;
 
 /**
  * Clase para definir el panel cuando se inicia sesion como Profesor
@@ -13,24 +12,26 @@ import javax.swing.SpringLayout;
 public class PanelProfesor extends JPanel{
 
 	private static final long serialVersionUID = 1L;
-	
-	private JButton boton;
+		
+	private JPanel barraHerramientas;
+	private JPanel contenido;
 	
 	/**
 	 * Constructor de la clase PanelProfesor
 	 */
 	public PanelProfesor(){
 		
-		SpringLayout layout = new SpringLayout();
+		BorderLayout layout = new BorderLayout();
 
 		this.setLayout(layout);
 		
-		this.boton = new JButton("Cerrar Sesión");
+		this.barraHerramientas = new PanelBarraHerramientas();
 		
-		this.add(boton);
+		this.contenido = new PanelContenido();
 		
 		
 		
-	}
+	}	
+	
 
 }
