@@ -1,5 +1,6 @@
 package InterfazGrafica;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -11,11 +12,16 @@ public class PanelContenido extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 	
+	private JLabel hola;
 	
+	/**
+	 * Constructor de la clase PanelContenido
+	 */
 	public PanelContenido(){
 		
 		
-		
+		this.hola = new JLabel("Hola");
+		this.add(hola);
 		
 		
 	}

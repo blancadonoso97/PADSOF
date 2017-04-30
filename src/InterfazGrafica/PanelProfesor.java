@@ -29,6 +29,8 @@ public class PanelProfesor extends JPanel{
 		
 		this.contenido = new PanelContenido();
 		
+		this.add(barraHerramientas, BorderLayout.WEST);
+		this.add(contenido);
 		
 		
 	}	
