@@ -25,7 +25,9 @@ public class PanelProfesor extends JPanel{
 
 		this.setLayout(layout);
 		
-		this.boton = new JButton("Salir");
+		this.boton = new JButton("Cerrar Sesión");
+		
+		this.add(boton);
 		
 		
 		

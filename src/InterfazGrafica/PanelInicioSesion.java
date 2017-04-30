@@ -43,45 +43,42 @@ public class PanelInicioSesion extends JPanel {
 		this.password = new JPasswordField(15);
 
 		this.boton = new JButton("Iniciar sesion");
-				
-		// Label nombre
-		layout.putConstraint(SpringLayout.WEST, nombre, 10, SpringLayout.WEST, this);
-
-		layout.putConstraint(SpringLayout.NORTH, nombre, 10, SpringLayout.NORTH, this);
 		
-		// Label contrasena
-		layout.putConstraint(SpringLayout.WEST, contrasena, 10, SpringLayout.WEST, this);
-		
-		layout.putConstraint(SpringLayout.NORTH, contrasena, 20, SpringLayout.SOUTH, nombre);
-		
-		layout.putConstraint(SpringLayout.EAST, contrasena, 10, SpringLayout.WEST, password);
-		
-		// Campo id
-		layout.putConstraint(SpringLayout.WEST, id, 10, SpringLayout.EAST, nombre);
-
-		layout.putConstraint(SpringLayout.NORTH, id, 10, SpringLayout.NORTH, this);
-
-		// Campo password
-		layout.putConstraint(SpringLayout.WEST, password, 0, SpringLayout.WEST, nombre);
-
-		layout.putConstraint(SpringLayout.WEST, password, 0, SpringLayout.WEST, id);
-
-		layout.putConstraint(SpringLayout.NORTH, password, 10, SpringLayout.SOUTH, id);
-		
-		// Boton Inicar Sesion
-		layout.putConstraint(SpringLayout.NORTH, boton, 10, SpringLayout.SOUTH, password);
-		
-		layout.putConstraint(SpringLayout.WEST, boton, 0, SpringLayout.WEST, id);
-	
-		
-		
-		this.setVisible(true);
-
+		// Anadir los componentes al panel
 		this.add(nombre);
 		this.add(id);
 		this.add(contrasena);
 		this.add(password);
 		this.add(boton);
+				
+		// Reorganizar la posicion de los componentes
+		
+		// Campo id
+		layout.putConstraint(SpringLayout.VERTICAL_CENTER, id, 0, SpringLayout.VERTICAL_CENTER, this);
+		layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, id, 0, SpringLayout.HORIZONTAL_CENTER, this);
+		
+		// Campo password
+		
+		layout.putConstraint(SpringLayout.NORTH, password, 10, SpringLayout.SOUTH, id);
+		layout.putConstraint(SpringLayout.WEST, password, 20, SpringLayout.EAST, nombre);
+
+		
+		// Label nombre
+		layout.putConstraint(SpringLayout.EAST, nombre, -20, SpringLayout.WEST, id);
+		layout.putConstraint(SpringLayout.VERTICAL_CENTER, nombre, 0, SpringLayout.VERTICAL_CENTER, id);
+		
+		// Label contrasena
+		layout.putConstraint(SpringLayout.NORTH, contrasena, 10, SpringLayout.SOUTH, nombre);
+		layout.putConstraint(SpringLayout.EAST, contrasena, -20, SpringLayout.WEST, password);
+		layout.putConstraint(SpringLayout.VERTICAL_CENTER, contrasena, 0, SpringLayout.VERTICAL_CENTER, password);
+
+		// Boton Iniciar Sesion
+		layout.putConstraint(SpringLayout.NORTH, boton, 10, SpringLayout.SOUTH, password);
+		layout.putConstraint(SpringLayout.WEST, boton, 50, SpringLayout.EAST, nombre);
+				
+		this.setVisible(true);
+
+		
 
 	}
 	
