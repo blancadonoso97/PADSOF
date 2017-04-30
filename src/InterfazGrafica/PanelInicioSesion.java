@@ -3,6 +3,7 @@ package InterfazGrafica;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -25,6 +26,7 @@ public class PanelInicioSesion extends JPanel {
 	private JLabel nombre; 
 	private JTextField id;
 	private JPasswordField password;
+	private JLabel imagen;
 	
 	/**
 	 * Constructor de la clase PanelInicioSesion
@@ -35,7 +37,11 @@ public class PanelInicioSesion extends JPanel {
 		SpringLayout layout = new SpringLayout();
 
 		this.setLayout(layout);
-
+		
+		ImageIcon icono = new ImageIcon("eCourses.png", "Logo");
+		this.imagen = new JLabel(icono);
+		
+		
 		this.nombre = new JLabel("Id/Email:");
 		this.id = new JTextField(15);
 
@@ -50,6 +56,7 @@ public class PanelInicioSesion extends JPanel {
 		this.add(contrasena);
 		this.add(password);
 		this.add(boton);
+		this.add(imagen);
 				
 		// Reorganizar la posicion de los componentes
 		
@@ -58,11 +65,9 @@ public class PanelInicioSesion extends JPanel {
 		layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, id, 0, SpringLayout.HORIZONTAL_CENTER, this);
 		
 		// Campo password
-		
 		layout.putConstraint(SpringLayout.NORTH, password, 10, SpringLayout.SOUTH, id);
 		layout.putConstraint(SpringLayout.WEST, password, 20, SpringLayout.EAST, nombre);
 
-		
 		// Label nombre
 		layout.putConstraint(SpringLayout.EAST, nombre, -20, SpringLayout.WEST, id);
 		layout.putConstraint(SpringLayout.VERTICAL_CENTER, nombre, 0, SpringLayout.VERTICAL_CENTER, id);
@@ -75,6 +80,10 @@ public class PanelInicioSesion extends JPanel {
 		// Boton Iniciar Sesion
 		layout.putConstraint(SpringLayout.NORTH, boton, 10, SpringLayout.SOUTH, password);
 		layout.putConstraint(SpringLayout.WEST, boton, 50, SpringLayout.EAST, nombre);
+		
+		// Imagen
+		layout.putConstraint(SpringLayout.SOUTH, imagen, -30, SpringLayout.NORTH, id);
+		layout.putConstraint(SpringLayout.WEST, imagen, 10, SpringLayout.EAST, nombre);
 				
 		this.setVisible(true);
 
