@@ -1,6 +1,7 @@
 package InterfazGrafica;
 
-import javax.swing.JLabel;
+import java.awt.CardLayout;
+
 import javax.swing.JPanel;
 
 /**
@@ -12,18 +13,76 @@ public class PanelContenido extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private JLabel hola;
+	private static CardLayout cartas = new CardLayout();
 	
 	/**
 	 * Constructor de la clase PanelContenido
 	 */
 	public PanelContenido(){
 		
+		this.setLayout(cartas);
 		
-		this.hola = new JLabel("Hola");
-		this.add(hola);
+		// Panel crear asignatura
+		JPanel crearasignatura = new PanelCrearAsignatura();
+				
+		// Panel crear tema
+		JPanel creartema = new PanelCrearTema();
+		
+		// Panel crear subtema
+		JPanel crearsubtema = new PanelCrearSubtema();
+				
+		// Panel crear apuntes
+		JPanel crearapuntes = new PanelCrearApuntes();
+		
+		// Panel crear ejercicio
+		JPanel crearejercicio = new PanelCrearEjercicio();
+				
+		// Anadir paneles
+		cartas.addLayoutComponent(crearasignatura, "Asignatura");
+		cartas.addLayoutComponent(creartema, "Tema");
+		cartas.addLayoutComponent(crearsubtema, "Subtema");
+		cartas.addLayoutComponent(crearapuntes, "Apuntes");
+		cartas.addLayoutComponent(crearejercicio, "Ejercicio");
+		
+		
+		this.add(crearasignatura);
+		this.add(creartema);
+		this.add(crearsubtema);
+		this.add(crearapuntes);
+		this.add(crearejercicio);
 		
 		
 	}
+	
+	
+	/**
+	 * Permite cambiar entre paneles
+	 * @param nombre Nombre del panel al que se quiere cambiar
+	 */
+	public void cambiarCarta(String nombre){
+		
+		if(nombre.equals("Asignatura")){
+			cartas.show(this, "Asignatura");
+			
+		}else if(nombre.equals("Tema")){
+			cartas.show(this, "Tema");
+			
+		}else if(nombre.equals("Subtema")){
+			cartas.show(this, "Subtema");
+			
+		}else if(nombre.equals("Apuntes")){
+			cartas.show(this, "Apuntes");
+			
+		}else if(nombre.equals("Ejercicio")){
+			cartas.show(this, "Ejercicio");
+			
+		}
+		
+	}
+	
+	
+	
+	
+	
 
 }

@@ -53,8 +53,7 @@ public class VentanaInicial extends JFrame{
 		contenedor.add(panelinicio);
 		contenedor.add(panelalumno);
 		contenedor.add(panelprofesor);
-		
-		
+
 		// Muestra inicialmente el primer panel
 		cartas.show(contenedor, "Inicio");
 		
