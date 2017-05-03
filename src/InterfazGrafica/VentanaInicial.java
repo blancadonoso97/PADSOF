@@ -37,13 +37,13 @@ public class VentanaInicial extends JFrame{
 		contenedor.setLayout(cartas);
 		
 		// Panel de inicio de sesion
-		JPanel panelinicio = new PanelInicioSesion();
+		JPanel panelinicio = new PanelInicioSesion(this);
 		
 		// Panel alumno
-		JPanel panelalumno = new PanelAlumno();
+		JPanel panelalumno = new PanelAlumno(this);
 		
 		// Panel profesor
-		JPanel panelprofesor = new PanelProfesor();
+		JPanel panelprofesor = new PanelProfesor(this);
 		
 		// Anadir paneles
 		cartas.addLayoutComponent(panelinicio, "Inicio");

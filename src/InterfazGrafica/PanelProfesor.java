@@ -12,14 +12,19 @@ import javax.swing.JPanel;
 public class PanelProfesor extends JPanel{
 
 	private static final long serialVersionUID = 1L;
+	
+	private VentanaInicial ventana;
 		
 	private JPanel barraHerramientas;
 	private JPanel contenido;
 	
 	/**
-	 * Constructor de la clase PanelProfesor
+	 * Constructor de la clase PanelAlumno
+	 * @param vent Ventana que contiene el panel
 	 */
-	public PanelProfesor(){
+	public PanelProfesor(VentanaInicial vent){
+		
+		this.ventana = vent;
 		
 		BorderLayout layout = new BorderLayout();
 
@@ -34,6 +39,17 @@ public class PanelProfesor extends JPanel{
 		
 		
 	}	
+	
+	
+	/**
+	  * Devuelve la ventana que contiene el panel
+	  * @return ventana
+	  */
+	 public VentanaInicial getVentana(){
+		 
+		 return ventana;
+		 
+	 }
 	
 
 }

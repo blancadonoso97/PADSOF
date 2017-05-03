@@ -21,6 +21,8 @@ public class PanelInicioSesion extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
+	private VentanaInicial ventana;
+	
 	private JButton boton;
 	private JLabel contrasena; 
 	private JLabel nombre; 
@@ -30,10 +32,13 @@ public class PanelInicioSesion extends JPanel {
 	
 	/**
 	 * Constructor de la clase PanelInicioSesion
-	 * @throws IOException 
+	 * @param vent Ventana que contiene el panel
+	 * @throws IOException
 	 */
-	public PanelInicioSesion() throws IOException {
+	public PanelInicioSesion(VentanaInicial vent) throws IOException {
 
+		this.ventana = vent;
+		
 		SpringLayout layout = new SpringLayout();
 
 		this.setLayout(layout);
@@ -118,5 +123,15 @@ public class PanelInicioSesion extends JPanel {
 		 
 		 return passText;
 	 }	 
+	 
+	 /**
+	  * Devuelve la ventana que contiene el panel
+	  * @return ventana
+	  */
+	 public VentanaInicial getVentana(){
+		 
+		 return ventana;
+		 
+	 }
 
 }

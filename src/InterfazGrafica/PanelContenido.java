@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 
 /**
  * Clase para definir el panel de contenido dentro del panel de profesor o alumno
+ * 
  * @author Miguel Angel Bouzada, Blanca Martinez Donoso
  *
  */
