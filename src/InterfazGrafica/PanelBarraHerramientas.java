@@ -27,12 +27,16 @@ public class PanelBarraHerramientas extends JPanel {
 	private JButton subtema;
 	private JButton apuntes;
 	private JButton ejercicio;
+	private JButton matricula;
 	private JButton desconectar;
 	private JTree contenido;
 	private DefaultMutableTreeNode asignaturas = new DefaultMutableTreeNode("Asignaturas"); // Raiz del arbol contenido
+	private PanelProfesor contProfe;
+	private PanelAlumno contAlumno;
 	
-	
-	public PanelBarraHerramientas(){
+	public PanelBarraHerramientas(PanelProfesor profesor){
+		
+		this.contProfe = profesor;
 		
 		BoxLayout layout = new BoxLayout(this, 1);
 
@@ -88,4 +92,55 @@ public class PanelBarraHerramientas extends JPanel {
 		
 	}
 
+	public PanelBarraHerramientas(PanelAlumno alumno){
+		
+		this.contAlumno = alumno;
+		
+		BoxLayout layout = new BoxLayout(this, 1);
+
+		this.setLayout(layout);
+		
+		this.hola = new JLabel("Bienvenido a eCourses");
+		this.add(hola);
+		this.add(Box.createRigidArea(new Dimension(0,5)));
+		this.matricula = new JButton("Solicitar Matricula");
+		this.desconectar = new JButton("Cerrar Sesion");
+		this.add(matricula);
+		this.add(Box.createRigidArea(new Dimension(0,5)));
+		this.add(desconectar);
+		this.add(Box.createRigidArea(new Dimension(0,20)));
+		
+		this.contenido = new JTree(asignaturas);
+		contenido.setAlignmentX(Component.LEFT_ALIGNMENT);
+		
+		contenido.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+
+		// Pruebas
+		asignaturas.add(new DefaultMutableTreeNode("tema 1"));
+		asignaturas.add(new DefaultMutableTreeNode("tema 2"));
+		
+		DefaultMutableTreeNode repositorio = new DefaultMutableTreeNode("repositorio de ejemplos");
+		
+		repositorio.add(new DefaultMutableTreeNode("ejemplo 1"));
+		
+		asignaturas.add(repositorio);
+		
+		this.add(contenido);
+		
+		
+		// Modificar la posicion del contenido
+		
+		
+		
+		this.setVisible(true);
+		
+	}
+
+	public PanelAlumno getPanelAlumno(){
+			return this.contAlumno;
+	}
+		
+	public PanelProfesor getPanelProfe(){
+			return this.contProfe;
+	}
 }

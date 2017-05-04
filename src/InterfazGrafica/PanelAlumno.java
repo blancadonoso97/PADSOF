@@ -1,5 +1,7 @@
 package InterfazGrafica;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JPanel;
 
 /**
@@ -10,9 +12,13 @@ import javax.swing.JPanel;
  */
 public class PanelAlumno extends JPanel{
 
+
 	private static final long serialVersionUID = 1L;
 	
 	private VentanaInicial ventana;
+		
+	private JPanel barraHerramientas;
+	private JPanel contenido;
 	
 	/**
 	 * Constructor de la clase PanelAlumno
@@ -20,12 +26,22 @@ public class PanelAlumno extends JPanel{
 	 */
 	public PanelAlumno(VentanaInicial vent){
 		
-		
 		this.ventana = vent;
 		
+		BorderLayout layout = new BorderLayout();
+
+		this.setLayout(layout);
+		
+		this.barraHerramientas = new PanelBarraHerramientas(this);
+		
+		this.contenido = new PanelContenido();
+		
+		this.add(barraHerramientas, BorderLayout.WEST);
+		this.add(contenido);
 		
 		
-	}
+	}	
+	
 	
 	/**
 	  * Devuelve la ventana que contiene el panel
