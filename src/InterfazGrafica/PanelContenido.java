@@ -41,13 +41,13 @@ public class PanelContenido extends JPanel {
 		this.temas = new PanelCrearTema(this);
 		
 		// Panel crear subtema
-		this.subtemas = new PanelCrearSubtema();
+		this.subtemas = new PanelCrearSubtema(/*this*/);
 				
 		// Panel crear apuntes
-		this.apuntes = new PanelCrearApuntes();
+		this.apuntes = new PanelCrearApuntes(/*this*/);
 		
 		// Panel crear ejercicio
-		this.ejercicios = new PanelCrearEjercicio();
+		this.ejercicios = new PanelCrearEjercicio(/*this*/);
 		
 				
 		// Anadir paneles
@@ -74,7 +74,6 @@ public class PanelContenido extends JPanel {
 		// Anadir paneles
 		cartas.addLayoutComponent(this.solicitarmatricula, "Matricula");
 		
-		
 			
 	}
 	
@@ -92,6 +91,7 @@ public class PanelContenido extends JPanel {
 			
 		}else if(nombre.equals("Tema")){
 			this.removeAll();
+			this.temas.actualizarTabla();
 			this.add(this.temas);
 			cartas.show(this, "Tema");
 			
@@ -112,6 +112,7 @@ public class PanelContenido extends JPanel {
 			
 		}else if(nombre.equals("Matricula") || nombre.equals("Solicitud")){
 			this.removeAll();
+			this.solicitarmatricula.actualizartablas();
 			this.add(this.solicitarmatricula);
 			cartas.show(this, "Matricula");
 			

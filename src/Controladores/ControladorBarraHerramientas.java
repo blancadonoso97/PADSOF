@@ -49,7 +49,6 @@ public class ControladorBarraHerramientas implements ActionListener{
 		}else if(e.getActionCommand().equals("Solicitar Matricula")){
 			
 			if(!ventana.getSistema().getEsProfesor()){
-				panel.getPanelAlumno().getPanelContenido().getMatricula().actualizartablas();
 				panel.getPanelAlumno().getPanelContenido().cambiarCarta("Matricula");
 			}
 			
