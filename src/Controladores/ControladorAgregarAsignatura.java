@@ -58,13 +58,6 @@ public class ControladorAgregarAsignatura implements ActionListener{
 			e1.printStackTrace();
 		}
 			 
-			 
-		 
-		if(ventana.getSistema().getEsProfesor()){
-			ventana.cambiarCarta("Profesor");
-		}else if(ventana.getSistema().getEsProfesor() == false && ventana.getSistema().getLogIn()){
-			ventana.cambiarCarta("Alumno");
-		}
 		
 	}
 	

@@ -2,6 +2,7 @@ package Controladores;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import InterfazGrafica.PanelBarraHerramientas;
 import InterfazGrafica.VentanaInicial;
@@ -33,9 +34,31 @@ public class ControladorBarraHerramientas implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		if(ventana.getSistema().getEsProfesor()){
-			panel.getPanelProfe().getPanelContenido().cambiarCarta("Asignatura");
+		if(e.getActionCommand().equals("Crear Asignatura")){
+			
+			if(ventana.getSistema().getEsProfesor()){
+				panel.getPanelProfe().getPanelContenido().cambiarCarta("Asignatura");
+			}
+			
+		}else if(e.getActionCommand().equals("Crear Tema")){
+			
+			if(ventana.getSistema().getEsProfesor()){
+				panel.getPanelProfe().getPanelContenido().cambiarCarta("Tema");
+			}
+			
+		}else if(e.getActionCommand().equals("Cerrar Sesion")){
+			
+			try {
+				ventana.getSistema().logOut("sistema.txt");
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			
+			System.exit(0);
+			
 		}
+		
+		
 		
 		
 	}
