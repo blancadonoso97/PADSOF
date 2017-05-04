@@ -3,6 +3,7 @@ package InterfazGrafica;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
+
 /**
  * Clase para definir el panel cuando se inicia sesion como Profesor
  * 
@@ -36,7 +37,6 @@ public class PanelProfesor extends JPanel{
 		
 		this.add(barraHerramientas, BorderLayout.WEST);
 		this.add(contenido);
-		
 		
 	}	
 	

@@ -86,26 +86,32 @@ public class PanelContenido extends JPanel {
 	public void cambiarCarta(String nombre){
 		
 		if(nombre.equals("Asignatura")){
+			this.removeAll();
 			this.add(this.asig);
 			cartas.show(this, "Asignatura");
 			
 		}else if(nombre.equals("Tema")){
+			this.removeAll();
 			this.add(this.temas);
 			cartas.show(this, "Tema");
 			
 		}else if(nombre.equals("Subtema")){
+			this.removeAll();
 			this.add(this.subtemas);
 			cartas.show(this, "Subtema");
 			
 		}else if(nombre.equals("Apuntes")){
+			this.removeAll();
 			this.add(this.apuntes);
 			cartas.show(this, "Apuntes");
 			
 		}else if(nombre.equals("Ejercicio")){
+			this.removeAll();
 			this.add(this.ejercicios);
 			cartas.show(this, "Ejercicio");
 			
-		}else if(nombre.equals("Matricula")){
+		}else if(nombre.equals("Matricula") || nombre.equals("Solicitud")){
+			this.removeAll();
 			this.add(this.solicitarmatricula);
 			cartas.show(this, "Matricula");
 			
