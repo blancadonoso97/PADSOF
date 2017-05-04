@@ -26,6 +26,7 @@ public class ControladorCrearAsignatura implements ActionListener{
 	 * @param sist Sistema (eCourses)
 	 * @param pan Panel asociado al controlador
 	 */
+	
 	public ControladorCrearAsignatura(VentanaInicial vent, PanelCrearAsignatura pan){
 	
 		this.ventana = vent;
@@ -35,7 +36,7 @@ public class ControladorCrearAsignatura implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		/*
 		 if (panel.getNombreAsig().equals("")) {
 			 JOptionPane.showMessageDialog(panel, "Debe introducir un nombre para la asignatura", "Error", JOptionPane.ERROR_MESSAGE);
 			 return;
@@ -53,7 +54,7 @@ public class ControladorCrearAsignatura implements ActionListener{
 			ventana.cambiarCarta("Alumno");
 		}
 		
-		
+		*/
 		
 	}
 

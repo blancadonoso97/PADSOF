@@ -180,5 +180,16 @@ public class Alumno implements Serializable{
 		}
 		return null;
 	}
+	/**
+	 * Obtiene el array de las asignaturas en las que esta matriculado
+	 * @return ArrayList<Asignatura>
+	 */
+	public ArrayList<Asignatura> getAsignaturas(){
+		return this.asignaturas;
+	}
+	
+	public ArrayList<SolicitudMatricula> getSolicitudesMat(){
+		return this.matriculas;
+	}
 		
 }

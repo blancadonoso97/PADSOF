@@ -55,10 +55,10 @@ public class PanelCrearAsignatura extends JPanel{
 		this.add(camponombre);
 		this.add(visible);
 		this.add(novisible);
-		this.add(crearAsig);
+		this.add(crearAsig);*/
 		
 		// Anade el controlador para el boton de inicio
-		ControladorCrearAsignatura controlador = new ControladorCrearAsignatura(((VentanaInicial) contenedor.getContenedorProf()).getVentana(),this);
+		ControladorCrearAsignatura controlador = new ControladorCrearAsignatura(((VentanaInicial) contenedor.getContenedorProf()).getVentana(),this);*/
 				
 		// Configurar el panel con el controlador
 		this.setControlador(controlador);

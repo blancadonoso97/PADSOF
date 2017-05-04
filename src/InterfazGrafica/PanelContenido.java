@@ -61,6 +61,11 @@ public class PanelContenido extends JPanel {
 		
 	}
 	
+	public PanelContenido(PanelAlumno alumno){
+		this.contenedorAlum = alumno;
+		
+		
+	}
 	
 	/**
 	 * Permite cambiar entre paneles

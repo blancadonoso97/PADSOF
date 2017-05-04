@@ -1,23 +1,21 @@
 package Controladores;
 
-import java.awt.event.ActionEvent;
 
-import javax.swing.JOptionPane;
 
-import InterfazGrafica.PanelInicioSesion;
+import Examen.PanelMatricula;
 import InterfazGrafica.VentanaInicial;
 
 public class ControladorMatricula {
 
 	private VentanaInicial ventana;
-	private PanelInicioSesion panel;
+	private PanelMatricula panel;
 	
 	/**
 	 * Constructor de la clase ControladorInicioSesion
 	 * @param sist Sistema (eCourses)
 	 * @param pan Panel asociado al controlador
 	 */
-	public ControladorMatricula(VentanaInicial vent, PanelInicioSesion pan){
+	public ControladorMatricula(VentanaInicial vent, PanelMatricula pan){
 	
 		this.ventana = vent;
 		this.panel = pan;
