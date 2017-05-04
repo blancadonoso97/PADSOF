@@ -46,6 +46,13 @@ public class ControladorBarraHerramientas implements ActionListener{
 				panel.getPanelProfe().getPanelContenido().cambiarCarta("Tema");
 			}
 			
+		}else if(e.getActionCommand().equals("Solicitar Matricula")){
+			
+			if(!ventana.getSistema().getEsProfesor()){
+				panel.getPanelAlumno().getPanelContenido().getMatricula().actualizartablas();
+				panel.getPanelAlumno().getPanelContenido().cambiarCarta("Matricula");
+			}
+			
 		}else if(e.getActionCommand().equals("Cerrar Sesion")){
 			
 			try {

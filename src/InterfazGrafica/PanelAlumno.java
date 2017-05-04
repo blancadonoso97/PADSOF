@@ -17,15 +17,15 @@ public class PanelAlumno extends JPanel{
 	
 	private VentanaInicial ventana;
 		
-	private JPanel barraHerramientas;
-	private JPanel contenido;
+	private PanelBarraHerramientas barraHerramientas;
+	private PanelContenido contenido;
 	
 	/**
 	 * Constructor de la clase PanelAlumno
 	 * @param vent Ventana que contiene el panel
 	 */
 	public PanelAlumno(VentanaInicial vent){
-		
+	
 		this.ventana = vent;
 		
 		BorderLayout layout = new BorderLayout();
@@ -38,7 +38,7 @@ public class PanelAlumno extends JPanel{
 		
 		this.add(barraHerramientas, BorderLayout.WEST);
 		this.add(contenido);
-		
+	
 		
 	}	
 	
@@ -53,5 +53,8 @@ public class PanelAlumno extends JPanel{
 		 
 	 }
 	
+	 public PanelContenido getPanelContenido(){
+		 return this.contenido;
+	 }
 
 }
