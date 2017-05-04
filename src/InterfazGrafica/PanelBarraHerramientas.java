@@ -1,6 +1,7 @@
 package InterfazGrafica;
 
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -10,6 +11,9 @@ import javax.swing.JPanel;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
+
+import Controladores.ControladorCrearAsignatura;
+
 import java.awt.Component;
 
 /**
@@ -86,6 +90,11 @@ public class PanelBarraHerramientas extends JPanel {
 		
 		// Modificar la posicion del contenido
 		
+		// Anade el controlador para el boton de crear asignatura
+		ControladorCrearAsignatura controlador = new ControladorCrearAsignatura(contProfe.getVentana(),this);
+						
+		// Configurar el panel con el controlador
+		this.setControlador(controlador);
 		
 		
 		this.setVisible(true);
@@ -143,4 +152,12 @@ public class PanelBarraHerramientas extends JPanel {
 	public PanelProfesor getPanelProfe(){
 			return this.contProfe;
 	}
+	
+	/**
+	 * Anade un controlador al boton
+	 * @param c Controlador a anadir
+	 */
+	 public void setControlador(ActionListener c) {
+		 asignatura.addActionListener(c);
+	 }
 }

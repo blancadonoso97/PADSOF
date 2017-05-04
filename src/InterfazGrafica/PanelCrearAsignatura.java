@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import Controladores.ControladorCrearAsignatura;
+import Controladores.ControladorAgregarAsignatura;
 
 /**
  * Clase para definir el panel de crear asignatura
@@ -56,8 +56,8 @@ public class PanelCrearAsignatura extends JPanel{
 		this.add(novisible);
 		this.add(crearAsig);
 		
-		// Anade el controlador para el boton de inicio
-		ControladorCrearAsignatura controlador = new ControladorCrearAsignatura(contenedor.getContenedorProf().getVentana(),this);
+		// Anade el controlador para el boton de crear asignatura
+		ControladorAgregarAsignatura controlador = new ControladorAgregarAsignatura(contenedor.getContenedorProf().getVentana(),this);
 				
 		// Configurar el panel con el controlador
 		this.setControlador(controlador);

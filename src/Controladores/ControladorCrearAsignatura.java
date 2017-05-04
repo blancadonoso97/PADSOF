@@ -3,7 +3,7 @@ package Controladores;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import InterfazGrafica.PanelCrearAsignatura;
+import InterfazGrafica.PanelBarraHerramientas;
 import InterfazGrafica.VentanaInicial;
 
 
@@ -16,14 +16,14 @@ import InterfazGrafica.VentanaInicial;
 public class ControladorCrearAsignatura implements ActionListener{
 
 	private VentanaInicial ventana;
-	private PanelCrearAsignatura panel;
+	private PanelBarraHerramientas panel;
 	
 	/**
 	 * Constructor de la clase ControladorCrearAsignatura
 	 * @param vent Ventana asociada al panel
 	 * @param pan Panel asociado al controlador
 	 */
-	public ControladorCrearAsignatura(VentanaInicial vent, PanelCrearAsignatura pan){
+	public ControladorCrearAsignatura(VentanaInicial vent, PanelBarraHerramientas pan){
 	
 		this.ventana = vent;
 		this.panel = pan;
@@ -34,7 +34,7 @@ public class ControladorCrearAsignatura implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		if(ventana.getSistema().getEsProfesor()){
-			panel.getContenedor().cambiarCarta("Asignatura");
+			panel.getPanelProfe().getPanelContenido().cambiarCarta("Asignatura");
 		}
 		
 		
