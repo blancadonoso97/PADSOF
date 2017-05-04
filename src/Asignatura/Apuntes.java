@@ -74,7 +74,7 @@ public class Apuntes implements Serializable{
 	public boolean comprobarVisible() throws InvalidEmailAddressException, FailedInternetConnectionException, ClassNotFoundException, IOException{
 		
 		Calendar calendar = Calendar.getInstance(); /* Obtiene la fecha actual*/
-		Sistema sist = new Sistema("archivoProf.txt", "archivoAlum.txt");
+		Sistema sist = Sistema.getInstance();
 		
 		if (calendar.compareTo(fechaVisible) > 0){
 			
