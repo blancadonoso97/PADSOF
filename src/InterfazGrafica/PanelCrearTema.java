@@ -32,34 +32,20 @@ public class PanelCrearTema extends JPanel{
 	private JRadioButton visible;
 	private JRadioButton novisible;
 	private ButtonGroup visibilidad;
-	
 	private JButton crearTema;
-	
+	private DefaultListModel<String> asignaturas = new DefaultListModel<String>();
 	private JList<String> lista;
 	
 	public PanelCrearTema(PanelContenido cont){
 		
 		this.contenedor = cont;
-		
-		DefaultListModel<String> asignaturas = new DefaultListModel<String>();
-		
-		ArrayList<Asignatura> asigexistentes = new ArrayList<Asignatura>();
-		
-		asigexistentes = cont.getContenedorProf().getVentana().getSistema().getAsignaturas();
-		
-		// Anadimos las asignaturas existentes a la lista de asignaturas donde se puede crear un tema
-		for (Asignatura a : asigexistentes){
-			
-			asignaturas.addElement(a.getNombre());
-			
-		}
-		
+
 		this.lista = new JList<String>(asignaturas); 
 		
 		this.nombretema = new JLabel("Nombre del tema:");
 		this.camponombre = new JTextField(20);
-		this.visible = new JRadioButton("Asignatura visible");
-		this.novisible = new JRadioButton("Asignatura no visible");
+		this.visible = new JRadioButton("Tema visible");
+		this.novisible = new JRadioButton("T no visible");
 		
 		this.visibilidad = new ButtonGroup();
 		
@@ -129,6 +115,23 @@ public class PanelCrearTema extends JPanel{
 			 return true;
 		 }else
 			 return false;
+		 
+	 }
+	 
+	 /**
+	  * Actualiza la lista con las asignaturas existentes
+	  */
+	 public void actualizarTabla(){
+		 
+		 ArrayList<Asignatura> asigexistentes = new ArrayList<Asignatura>();
+			
+		asigexistentes = contenedor.getContenedorProf().getVentana().getSistema().getAsignaturas();
+		 
+		 for (Asignatura a : asigexistentes){
+				
+				asignaturas.addElement(a.getNombre());
+				
+			}
 		 
 	 }
 	

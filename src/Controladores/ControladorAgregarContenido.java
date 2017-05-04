@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
+
+import InterfazGrafica.PanelCrearApuntes;
 import InterfazGrafica.PanelCrearAsignatura;
 import InterfazGrafica.PanelCrearTema;
 import InterfazGrafica.VentanaInicial;
@@ -22,11 +24,12 @@ public class ControladorAgregarContenido implements ActionListener{
 	private VentanaInicial ventana;
 	private PanelCrearAsignatura panelasig;
 	private PanelCrearTema paneltema;
+	private PanelCrearApuntes panelapuntes;
 	
 	/**
 	 * Constructor de la clase ControladorAgregarAsignatura
 	 * @param vent Ventana asociada al panel
-	 * @param pan Panel asociado al controlador
+	 * @param pan Panel crear asignatura
 	 */
 	public ControladorAgregarContenido(VentanaInicial vent, PanelCrearAsignatura pan){
 	
@@ -35,6 +38,11 @@ public class ControladorAgregarContenido implements ActionListener{
 		
 	}
 	
+	/**
+	 * Constructor de la clase ControladorAgregarAsignatura
+	 * @param vent Ventana asociada al panel
+	 * @param pan Panel crear tema
+	 */
 	public ControladorAgregarContenido(VentanaInicial vent, PanelCrearTema pan){
 		
 		this.ventana = vent;
@@ -42,6 +50,17 @@ public class ControladorAgregarContenido implements ActionListener{
 		
 	}
 	
+	/**
+	 * Constructor de la clase ControladorAgregarAsignatura
+	 * @param vent Ventana asociada al panel
+	 * @param pan Panel crear apuntes
+	 */
+	public ControladorAgregarContenido(VentanaInicial vent, PanelCrearApuntes pan){
+		
+		this.ventana = vent;
+		this.panelapuntes = pan;
+		
+	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -92,6 +111,31 @@ public class ControladorAgregarContenido implements ActionListener{
 			} catch (FailedInternetConnectionException e1) {
 				e1.printStackTrace();
 			}
+			 
+			 
+		 }else if(e.getActionCommand().equals("Crear apuntes")){
+			 
+			 f (panelapuntes.getNombreApuntes().equals("")) {
+				 JOptionPane.showMessageDialog(panelapuntes, "Debe introducir un nombre para los apuntes", "Error", JOptionPane.ERROR_MESSAGE);
+				 return;
+			 }
+			
+			 try {
+				if(ventana.getSistema().agregarApuntes(panelapuntes.getNombreApuntes(), panelapuntes.getNombreAsignatura(), panelapuntes.comprobarSeleccion()) == false){
+					 JOptionPane.showMessageDialog(panelapuntes, "Error al crear los apuntes", "Error", JOptionPane.ERROR_MESSAGE);
+					 return;
+				 }else{
+					 JOptionPane.showMessageDialog(panelapuntes, "Los apuntes " + panelapuntes.getNombreApuntes() + " ha sido creado", "Crear apuntes", JOptionPane.INFORMATION_MESSAGE);
+					 return;
+				 }
+			} catch (HeadlessException e1) {
+				e1.printStackTrace();
+			} catch (InvalidEmailAddressException e1) {
+				e1.printStackTrace();
+			} catch (FailedInternetConnectionException e1) {
+				e1.printStackTrace();
+			}
+			 
 			 
 			 
 		 }
