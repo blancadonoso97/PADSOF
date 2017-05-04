@@ -113,31 +113,6 @@ public class ControladorAgregarContenido implements ActionListener{
 			}
 			 
 			 
-		 }else if(e.getActionCommand().equals("Crear apuntes")){
-			 
-			 if (panelapuntes.getNombreApuntes().equals("")) {
-				 JOptionPane.showMessageDialog(panelapuntes, "Debe introducir un nombre para los apuntes", "Error", JOptionPane.ERROR_MESSAGE);
-				 return;
-			 }
-			
-			 try {
-				if(ventana.getSistema().agregarApuntes(panelapuntes.getNombreApuntes(), panelapuntes.getNombreAsignatura(), panelapuntes.comprobarSeleccion()) == false){
-					 JOptionPane.showMessageDialog(panelapuntes, "Error al crear los apuntes", "Error", JOptionPane.ERROR_MESSAGE);
-					 return;
-				 }else{
-					 JOptionPane.showMessageDialog(panelapuntes, "Los apuntes " + panelapuntes.getNombreApuntes() + " ha sido creado", "Crear apuntes", JOptionPane.INFORMATION_MESSAGE);
-					 return;
-				 }
-			} catch (HeadlessException e1) {
-				e1.printStackTrace();
-			} catch (InvalidEmailAddressException e1) {
-				e1.printStackTrace();
-			} catch (FailedInternetConnectionException e1) {
-				e1.printStackTrace();
-			}
-			 
-			 
-			 
 		 }
 		
 		

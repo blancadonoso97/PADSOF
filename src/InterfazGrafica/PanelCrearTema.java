@@ -126,9 +126,10 @@ public class PanelCrearTema extends JPanel{
 		 ArrayList<Asignatura> asigexistentes = new ArrayList<Asignatura>();
 			
 		asigexistentes = contenedor.getContenedorProf().getVentana().getSistema().getAsignaturas();
-		 
+		
+		asignaturas.removeAllElements();
+		
 		 for (Asignatura a : asigexistentes){
-				
 				asignaturas.addElement(a.getNombre());
 				
 			}

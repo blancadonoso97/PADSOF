@@ -96,6 +96,7 @@ public class PanelBarraHerramientas extends JPanel {
 		this.setControlador("Asignatura", controlador);
 		this.setControlador("Logout", controlador);
 		this.setControlador("Tema", controlador);
+		this.setControlador("Apuntes", controlador);
 		
 		
 		this.setVisible(true);
@@ -173,6 +174,8 @@ public class PanelBarraHerramientas extends JPanel {
 			 matricula.addActionListener(c);
 		 }else if(nombreBoton.equals("Tema")){
 			 tema.addActionListener(c);
+		 }else if(nombreBoton.equals("Apuntes")){
+			 apuntes.addActionListener(c);
 		 }
 		 
 		 
