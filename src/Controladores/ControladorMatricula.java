@@ -1,12 +1,6 @@
 package Controladores;
 
-<<<<<<< HEAD
-
-
-
 import InterfazGrafica.PanelMatricula;
-=======
->>>>>>> 9f948aa3bd14104fe743ac2d42eb03ace6a132fb
 import InterfazGrafica.VentanaInicial;
 
 public class ControladorMatricula {

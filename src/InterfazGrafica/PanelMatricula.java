@@ -3,9 +3,11 @@ package InterfazGrafica;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import Asignatura.Asignatura;
 import eCourses.SolicitudMatricula;
@@ -14,9 +16,11 @@ public class PanelMatricula extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 	private PanelAlumno contAl;
+	private JButton boton;
 	private JList<String> asignAsignaturas;
 	private JList<String> asignMatriculas;
 	private JList<String> asignPendientes;
+	private JTextField nombreAsig;
 		
 	PanelMatricula(PanelAlumno cont){
 	
@@ -35,8 +39,15 @@ public class PanelMatricula extends JPanel {
 		asignPendientes = new JList<String>(modelopen);
 		
 		JLabel nombre = new JLabel("Introduzca el nombre de la asignatura que desea matricularse: ");
-		this.add(nombre);
+		this.nombreAsig = new JTextField(30);
 		
+		this.boton = new JButton("Solicitar");
+		this.add(boton);
+		
+		
+		
+		this.add(nombre);
+		this.add(nombreAsig);
 		this.add(asignAsignaturas);
 		this.add(asignMatriculas);
 		this.add(asignPendientes);
@@ -53,6 +64,10 @@ public class PanelMatricula extends JPanel {
 		
 	public JList<String> getListaPendientes(){
 		return this.asignPendientes;
+	}
+	
+	public PanelAlumno getPanelAlumno(){
+		return this.contAl;
 	}
 		
 	public void actualizartablas(){
@@ -109,5 +124,5 @@ public class PanelMatricula extends JPanel {
 		return;
 	}
 		
-		
+	
 }
