@@ -1,6 +1,7 @@
 package InterfazGrafica;
 
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -10,6 +11,10 @@ import javax.swing.JPanel;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
+
+import Controladores.ControladorCrearAsignatura;
+import Controladores.ControladorLogOut;
+
 import java.awt.Component;
 
 /**
@@ -86,6 +91,16 @@ public class PanelBarraHerramientas extends JPanel {
 		
 		// Modificar la posicion del contenido
 		
+		// Anade el controlador para el boton de crear asignatura
+		ControladorCrearAsignatura controlador = new ControladorCrearAsignatura(contProfe.getVentana(),this);
+						
+		// Anade el controlador para el boton de log out
+		ControladorLogOut logout = new ControladorLogOut(contProfe.getVentana());
+		
+		
+		// Configurar el panel con el controlador
+		this.setControlador("Asignatura", controlador);
+		this.setControlador("Logout", logout);
 		
 		
 		this.setVisible(true);
@@ -143,4 +158,19 @@ public class PanelBarraHerramientas extends JPanel {
 	public PanelProfesor getPanelProfe(){
 			return this.contProfe;
 	}
+	
+	/**
+	 * Anade un controlador al boton
+	 * @param c Controlador a anadir
+	 */
+	 public void setControlador(String nombreBoton, ActionListener c) {
+		 
+		 if(nombreBoton.equals("Asignatura")){
+			 asignatura.addActionListener(c);
+		 }else if (nombreBoton.equals("Logout")){
+			 desconectar.addActionListener(c);
+		 }
+		 
+		 
+	 }
 }

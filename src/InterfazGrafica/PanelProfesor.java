@@ -15,8 +15,8 @@ public class PanelProfesor extends JPanel{
 	
 	private VentanaInicial ventana;
 		
-	private JPanel barraHerramientas;
-	private JPanel contenido;
+	private PanelBarraHerramientas barraHerramientas;
+	private PanelContenido contenido;
 	
 	/**
 	 * Constructor de la clase PanelAlumno
@@ -49,6 +49,22 @@ public class PanelProfesor extends JPanel{
 		 
 		 return ventana;
 		 
+	 }
+	 
+	 /**
+	  * Devuelve el panel de barra de herramientas
+	  * @return barraHerramientas
+	  */
+	 public PanelBarraHerramientas getPanelHerramientas(){
+		 return barraHerramientas;
+	 }
+	 
+	 /**
+	  * Devuelve el panel de contenido
+	  * @return contenido
+	  */
+	 public PanelContenido getPanelContenido(){
+		 return contenido;
 	 }
 	
 
