@@ -15,6 +15,10 @@ import javax.swing.JTextField;
 import Asignatura.Asignatura;
 import Asignatura.Tema;
 import Controladores.ControladorAgregarContenido;
+import javax.swing.UIManager;
+import java.awt.Component;
+import javax.swing.Box;
+import java.awt.Dimension;
 
 /**
  * Clase para definir el panel de crear Apuntes
@@ -30,7 +34,6 @@ private PanelContenido contenedor;
 	
 	private JLabel nombreapuntes;
 	private JTextField camponombre;
-	private JTextField campotexto;
 	private JRadioButton visible;
 	private JRadioButton novisible;
 	private ButtonGroup visibilidad;
@@ -38,8 +41,15 @@ private PanelContenido contenedor;
 	private JButton crearApuntes;
 	
 	private JList<String> lista;
+	private Component rigidArea;
+	private Component rigidArea_1;
+	private Component rigidArea_2;
+	private Component rigidArea_3;
+	private Component rigidArea_4;
+	private Component rigidArea_5;
 	
 	public PanelCrearApuntes(PanelContenido cont){
+		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		
 		this.contenedor = cont;
 		
@@ -58,29 +68,49 @@ private PanelContenido contenedor;
 			
 		}
 		
-		this.lista = new JList<String>(temas); 
+		this.lista = new JList<String>(temas);
+		lista.setValueIsAdjusting(true);
 		
-		this.nombreapuntes = new JLabel("Nombre del tema:");
-		this.camponombre = new JTextField(20);
-		this.campotexto = new JTextField(250);
+		this.nombreapuntes = new JLabel("Nombre de los apuntes:");
+		this.camponombre = new JTextField(30);
 		this.visible = new JRadioButton("Apuntes visibles");
+		visible.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		this.novisible = new JRadioButton("Apuntes no visibles");
+		novisible.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		
 		this.visibilidad = new ButtonGroup();
 		
 		this.crearApuntes = new JButton("Crear Apuntes");
+		crearApuntes.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		
 		// Anadimos las opciones a visibilidad
 		visibilidad.add(visible);
 		visibilidad.add(novisible);
 		
+		rigidArea_3 = Box.createRigidArea(new Dimension(120, 200));
+		add(rigidArea_3);
+		
 		// Anadimos los componentes al panel
 		this.add(nombreapuntes);
+		
+		rigidArea = Box.createRigidArea(new Dimension(0, 20));
+		add(rigidArea);
 		this.add(camponombre);
-		this.add(campotexto);
+		
+		rigidArea_2 = Box.createRigidArea(new Dimension(300, 40));
+		add(rigidArea_2);
 		this.add(visible);
+		
+		rigidArea_1 = Box.createRigidArea(new Dimension(20, 0));
+		add(rigidArea_1);
 		this.add(novisible);
+		
+		rigidArea_4 = Box.createRigidArea(new Dimension(1000, 30));
+		add(rigidArea_4);
 		this.add(crearApuntes);
+		
+		rigidArea_5 = Box.createRigidArea(new Dimension(0, 50));
+		add(rigidArea_5);
 		this.add(lista);
 		
 		// Anade el controlador para el boton de crear asignatura
@@ -107,13 +137,7 @@ private PanelContenido contenedor;
 		return camponombre.getText();
 	}
 	
-	/**
-	 * Devuelve el texto de los apuntes
-	 * @return Texto apuntes
-	 */
-	public String getTexto(){
-		return campotexto.getText();
-	}
+	
 	
 	/**
 	 * Devuelve la asignatura

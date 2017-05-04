@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,6 +15,13 @@ import javax.swing.tree.TreeSelectionModel;
 
 import Controladores.ControladorBarraHerramientas;
 import java.awt.Component;
+import java.awt.SystemColor;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.MatteBorder;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 /**
  * Clase para definir el panel de herramientas dentro del panel de profesor o alumno
@@ -36,8 +44,17 @@ public class PanelBarraHerramientas extends JPanel {
 	private DefaultMutableTreeNode asignaturas = new DefaultMutableTreeNode("Asignaturas"); // Raiz del arbol contenido
 	private PanelProfesor contProfe;
 	private PanelAlumno contAlumno;
+	private Component rigidArea_4;
+	private Component rigidArea_2;
+	private Component rigidArea_3;
+	private JLabel imagen;
+	private Component rigidArea_1;
 	
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public PanelBarraHerramientas(PanelProfesor profesor){
+		setBackground(SystemColor.menu);
 		
 		this.contProfe = profesor;
 		
@@ -45,34 +62,30 @@ public class PanelBarraHerramientas extends JPanel {
 
 		this.setLayout(layout);
 		
-		this.hola = new JLabel("Bienvenido a eCourses");
+		rigidArea_1 = Box.createRigidArea(new Dimension(0, 20));
+		add(rigidArea_1);
+		
+		this.hola = new JLabel("Bienvenido a");
+		hola.setHorizontalAlignment(SwingConstants.CENTER);
+		hola.setFont(new Font("WenQuanYi Micro Hei Mono", Font.BOLD | Font.ITALIC, 30));
 		this.add(hola);
-		this.add(Box.createRigidArea(new Dimension(0,5)));
 		this.tema = new JButton("Crear Tema");
-		this.subtema = new JButton("Crear Subtema");
-		this.apuntes = new JButton("Crear Apuntes");
 		this.ejercicio = new JButton("Crear Ejercicio");
-		this.desconectar = new JButton("Cerrar Sesion");
-		this.add(Box.createRigidArea(new Dimension(0,5)));
+		ImageIcon icono = new ImageIcon("eCourses.png", "Logo");
+		this.imagen = new JLabel(icono);
+		this.add(imagen);
+		
+		rigidArea_4 = Box.createRigidArea(new Dimension(0, 70));
+		add(rigidArea_4);
 		this.add(tema);
-		this.add(Box.createRigidArea(new Dimension(0,5)));
-		this.add(subtema);
+		this.add(Box.createRigidArea(new Dimension(0, 20)));
 		
 		this.asignatura = new JButton("Crear Asignatura");
 		
 		this.add(asignatura);
-		this.add(Box.createRigidArea(new Dimension(0,5)));
-		this.add(apuntes);
-		this.add(Box.createRigidArea(new Dimension(0,5)));
+		this.add(Box.createRigidArea(new Dimension(0, 20)));
 		this.add(ejercicio);
-		this.add(Box.createRigidArea(new Dimension(0,5)));
-		this.add(desconectar);
-		this.add(Box.createRigidArea(new Dimension(0,20)));
-		
-		this.contenido = new JTree(asignaturas);
-		contenido.setAlignmentX(Component.LEFT_ALIGNMENT);
-		
-		contenido.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+		this.add(Box.createRigidArea(new Dimension(0, 20)));
 
 		// Pruebas
 		asignaturas.add(new DefaultMutableTreeNode("tema 1"));
@@ -84,13 +97,38 @@ public class PanelBarraHerramientas extends JPanel {
 		
 		asignaturas.add(repositorio);
 		
-		this.add(contenido);
 		
 		
 		// Modificar la posicion del contenido
 		
 		// Creacion del controlador
 		ControladorBarraHerramientas controlador = new ControladorBarraHerramientas(contProfe.getVentana(),this);
+		this.subtema = new JButton("Crear Subtema");
+		this.add(subtema);
+		
+		rigidArea_2 = Box.createRigidArea(new Dimension(0, 20));
+		add(rigidArea_2);
+		this.apuntes = new JButton("Crear Apuntes");
+		this.add(apuntes);
+		Component rigidArea = Box.createRigidArea(new Dimension(0,20));
+		this.add(rigidArea);
+		
+		this.contenido = new JTree(asignaturas);
+		contenido.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 12));
+		contenido.setVisibleRowCount(10);
+		contenido.setForeground(SystemColor.menu);
+		contenido.setBorder(new CompoundBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(102, 153, 102)), new LineBorder(new Color(102, 153, 102), 1, true)));
+		contenido.setBackground(SystemColor.menu);
+		contenido.setAlignmentX(Component.LEFT_ALIGNMENT);
+		
+		contenido.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+		
+		this.add(contenido);
+		
+		rigidArea_3 = Box.createRigidArea(new Dimension(0, 70));
+		add(rigidArea_3);
+		this.desconectar = new JButton("Cerrar Sesion");
+		this.add(desconectar);
 		
 		// Configurar los botones con el controlador
 		this.setControlador("Asignatura", controlador);
@@ -111,14 +149,22 @@ public class PanelBarraHerramientas extends JPanel {
 
 		this.setLayout(layout);
 		
-		this.hola = new JLabel("Bienvenido a eCourses");
+		this.hola = new JLabel("Bienvenido a");
+		hola.setHorizontalAlignment(SwingConstants.CENTER);
+		hola.setFont(new Font("WenQuanYi Micro Hei Mono", Font.BOLD | Font.ITALIC, 30));
 		this.add(hola);
 		this.add(Box.createRigidArea(new Dimension(0,5)));
 		this.matricula = new JButton("Solicitar Matricula");
 		this.desconectar = new JButton("Cerrar Sesion");
+		
+		ImageIcon icono = new ImageIcon("eCourses.png", "Logo");
+		this.imagen = new JLabel(icono);
+		this.add(imagen);
+		
+		rigidArea_4 = Box.createRigidArea(new Dimension(0, 70));
+		add(rigidArea_4);
+		
 		this.add(matricula);
-		this.add(Box.createRigidArea(new Dimension(0,5)));
-		this.add(desconectar);
 		this.add(Box.createRigidArea(new Dimension(0,20)));
 		
 		this.contenido = new JTree(asignaturas);
@@ -137,6 +183,11 @@ public class PanelBarraHerramientas extends JPanel {
 		asignaturas.add(repositorio);
 		
 		this.add(contenido);
+		
+		rigidArea_3 = Box.createRigidArea(new Dimension(0, 70));
+		add(rigidArea_3);
+		
+		this.add(desconectar);
 		
 		
 		// Modificar la posicion del contenido

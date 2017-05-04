@@ -10,6 +10,10 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import Controladores.ControladorAgregarContenido;
+import javax.swing.UIManager;
+import java.awt.Component;
+import javax.swing.Box;
+import java.awt.Dimension;
 
 /**
  * Clase para definir el panel de crear asignatura
@@ -30,18 +34,26 @@ public class PanelCrearAsignatura extends JPanel{
 	private ButtonGroup visibilidad;
 	
 	private JButton crearAsig;
+	private Component rigidArea;
+	private Component rigidArea_1;
+	private Component rigidArea_2;
+	private Component rigidArea_3;
+	private Component rigidArea_4;
 	
 	/**
 	 * Constructor de la clase PanelCrerAsignatura
 	 */
 	public PanelCrearAsignatura(PanelContenido cont){
+		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		
 		this.contenedor = cont;
 		
 		this.nombreasig = new JLabel("Nombre de la asignatura:");
 		this.camponombre = new JTextField(20);
 		this.visible = new JRadioButton("Asignatura visible");
+		visible.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		this.novisible = new JRadioButton("Asignatura no visible");
+		novisible.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		
 		this.visibilidad = new ButtonGroup();
 		
@@ -51,11 +63,26 @@ public class PanelCrearAsignatura extends JPanel{
 		visibilidad.add(visible);
 		visibilidad.add(novisible);
 		
+		rigidArea = Box.createRigidArea(new Dimension(0, 50));
+		add(rigidArea);
+		
 		// Anadimos los componentes al panel
 		this.add(nombreasig);
+		
+		rigidArea_1 = Box.createRigidArea(new Dimension(0, 20));
+		add(rigidArea_1);
 		this.add(camponombre);
+		
+		rigidArea_3 = Box.createRigidArea(new Dimension(0, 70));
+		add(rigidArea_3);
 		this.add(visible);
+		
+		rigidArea_2 = Box.createRigidArea(new Dimension(20, 0));
+		add(rigidArea_2);
 		this.add(novisible);
+		
+		rigidArea_4 = Box.createRigidArea(new Dimension(0, 30));
+		add(rigidArea_4);
 		this.add(crearAsig);
 		
 		// Anade el controlador para el boton de crear asignatura

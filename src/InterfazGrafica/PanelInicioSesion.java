@@ -1,7 +1,9 @@
 package InterfazGrafica;
 
+
 import java.awt.event.ActionListener;
 import java.io.IOException;
+
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -10,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
+import javax.swing.UIManager;
 
 /**
  * Clase para definir el panel de inicio de sesion
@@ -36,6 +39,8 @@ public class PanelInicioSesion extends JPanel {
 	 * @throws IOException
 	 */
 	public PanelInicioSesion(VentanaInicial vent) throws IOException {
+		setForeground(UIManager.getColor("PasswordField.background"));
+		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 
 		this.ventana = vent;
 		
@@ -45,15 +50,29 @@ public class PanelInicioSesion extends JPanel {
 		
 		ImageIcon icono = new ImageIcon("eCourses.png", "Logo");
 		this.imagen = new JLabel(icono);
+		layout.putConstraint(SpringLayout.WEST, imagen, 174, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.EAST, imagen, -169, SpringLayout.EAST, this);
+		imagen.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		
 		
 		this.nombre = new JLabel("Id/Email:");
-		this.id = new JTextField(15);
-
+		this.id = new JTextField(30);
+		layout.putConstraint(SpringLayout.NORTH, nombre, 1, SpringLayout.NORTH, id);
+		layout.putConstraint(SpringLayout.EAST, nombre, -40, SpringLayout.WEST, id);
+		layout.putConstraint(SpringLayout.NORTH, imagen, -232, SpringLayout.NORTH, id);
+		layout.putConstraint(SpringLayout.SOUTH, imagen, -85, SpringLayout.NORTH, id);
+		
 		this.contrasena = new JLabel("Contraseña:");
-		this.password = new JPasswordField(15);
+		this.password = new JPasswordField(30);
+		layout.putConstraint(SpringLayout.NORTH, contrasena, -35, SpringLayout.NORTH, password);
+		layout.putConstraint(SpringLayout.SOUTH, contrasena, 33, SpringLayout.NORTH, password);
+		layout.putConstraint(SpringLayout.EAST, contrasena, -26, SpringLayout.WEST, password);
+		layout.putConstraint(SpringLayout.NORTH, password, 43, SpringLayout.SOUTH, id);
+		layout.putConstraint(SpringLayout.WEST, password, 0, SpringLayout.WEST, id);
 
 		this.boton = new JButton("Iniciar sesion");
+		layout.putConstraint(SpringLayout.NORTH, boton, 90, SpringLayout.SOUTH, password);
+		layout.putConstraint(SpringLayout.WEST, boton, 452, SpringLayout.WEST, this);
 		
 		// Anadir los componentes al panel
 		this.add(nombre);
@@ -68,27 +87,8 @@ public class PanelInicioSesion extends JPanel {
 		// Campo id
 		layout.putConstraint(SpringLayout.VERTICAL_CENTER, id, 0, SpringLayout.VERTICAL_CENTER, this);
 		layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, id, 0, SpringLayout.HORIZONTAL_CENTER, this);
-		
-		// Campo password
-		layout.putConstraint(SpringLayout.NORTH, password, 10, SpringLayout.SOUTH, id);
-		layout.putConstraint(SpringLayout.WEST, password, 20, SpringLayout.EAST, nombre);
-
-		// Label nombre
-		layout.putConstraint(SpringLayout.EAST, nombre, -20, SpringLayout.WEST, id);
 		layout.putConstraint(SpringLayout.VERTICAL_CENTER, nombre, 0, SpringLayout.VERTICAL_CENTER, id);
-		
-		// Label contrasena
-		layout.putConstraint(SpringLayout.NORTH, contrasena, 10, SpringLayout.SOUTH, nombre);
-		layout.putConstraint(SpringLayout.EAST, contrasena, -20, SpringLayout.WEST, password);
 		layout.putConstraint(SpringLayout.VERTICAL_CENTER, contrasena, 0, SpringLayout.VERTICAL_CENTER, password);
-
-		// Boton Iniciar Sesion
-		layout.putConstraint(SpringLayout.NORTH, boton, 10, SpringLayout.SOUTH, password);
-		layout.putConstraint(SpringLayout.WEST, boton, 50, SpringLayout.EAST, nombre);
-		
-		// Imagen
-		layout.putConstraint(SpringLayout.SOUTH, imagen, -30, SpringLayout.NORTH, id);
-		layout.putConstraint(SpringLayout.WEST, imagen, 10, SpringLayout.EAST, nombre);
 				
 		this.setVisible(true);
 

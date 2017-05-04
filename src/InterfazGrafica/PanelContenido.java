@@ -3,6 +3,7 @@ package InterfazGrafica;
 import java.awt.CardLayout;
 
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 
 /**
  * Clase para definir el panel de contenido dentro del panel de profesor o alumno
@@ -27,8 +28,10 @@ public class PanelContenido extends JPanel {
 	
 	/**
 	 * Constructor de la clase PanelContenido
+	 * @wbp.parser.constructor
 	 */
 	public PanelContenido(PanelProfesor cont){
+		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		
 		this.contenedorProf = cont;
 		
@@ -64,6 +67,7 @@ public class PanelContenido extends JPanel {
 	 * @param alumno Panel del alumno
 	 */
 	public PanelContenido(PanelAlumno alumno){
+		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		
 		this.contenedorAlum = alumno;
 		

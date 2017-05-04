@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 
 import Controladores.ControladorInicioSesion;
 import eCourses.Sistema;
+import javax.swing.UIManager;
+import java.awt.Color;
 
 /**
  * Clase para definir la ventana principal del programa
@@ -27,10 +29,12 @@ public class VentanaInicial extends JFrame{
 	private static Container contenedor;
 
 	public VentanaInicial(Sistema sist) throws IOException{
+		getContentPane().setForeground(Color.WHITE);
+		getContentPane().setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.background"));
 		
 		this.sistema = sist;
 		
-		this.setLayout(cartas);
+		getContentPane().setLayout(cartas);
 
 		VentanaInicial.contenedor = this.getContentPane();
 		
@@ -59,11 +63,14 @@ public class VentanaInicial extends JFrame{
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		// Escala la ventana al tamaño maximo del monitor
+		/*// Escala la ventana al tamaño maximo del monitor
 		Toolkit tk = Toolkit.getDefaultToolkit();  
 		int xSize = ((int) tk.getScreenSize().getWidth());  
 		int ySize = ((int) tk.getScreenSize().getHeight());  
-		this.setSize(xSize,ySize);
+		this.setSize(xSize,ySize);*/
+		
+		this.setSize(1039,707);
+		this.setResizable(false);
 	
 		this.setVisible(true);
 	
