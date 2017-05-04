@@ -32,7 +32,7 @@ public class PanelProfesor extends JPanel{
 		
 		this.barraHerramientas = new PanelBarraHerramientas();
 		
-		this.contenido = new PanelContenido();
+		this.contenido = new PanelContenido(this);
 		
 		this.add(barraHerramientas, BorderLayout.WEST);
 		this.add(contenido);

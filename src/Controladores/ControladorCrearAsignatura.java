@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import InterfazGrafica.PanelCrearAsignatura;
 import InterfazGrafica.PanelInicioSesion;
 import InterfazGrafica.VentanaInicial;
 
@@ -18,14 +19,14 @@ import InterfazGrafica.VentanaInicial;
 public class ControladorCrearAsignatura implements ActionListener{
 
 	private VentanaInicial ventana;
-	private PanelInicioSesion panel;
+	private PanelCrearAsignatura panel;
 	
 	/**
 	 * Constructor de la clase ControladorInicioSesion
 	 * @param sist Sistema (eCourses)
 	 * @param pan Panel asociado al controlador
 	 */
-	public ControladorCrearAsignatura(VentanaInicial vent, PanelInicioSesion pan){
+	public ControladorCrearAsignatura(VentanaInicial vent, PanelCrearAsignatura pan){
 	
 		this.ventana = vent;
 		this.panel = pan;
@@ -35,15 +36,16 @@ public class ControladorCrearAsignatura implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		 if (panel.getId().equals("")) {
+		 if (panel.getNombreAsig().equals("")) {
 			 JOptionPane.showMessageDialog(panel, "Debe introducir un nombre para la asignatura", "Error", JOptionPane.ERROR_MESSAGE);
 			 return;
 		 }
 		
-		 if(ventana.getSistema().comprobarLogIn(panel.getId(), panel.getPass()) == false){
-			 JOptionPane.showMessageDialog(panel, "Error al iniciar sesion", "Error", JOptionPane.ERROR_MESSAGE);
+		 if(ventana.getSistema().crearAsignatura(panel.getNombreAsig(), panel.getPass()) == false){
+			 JOptionPane.showMessageDialog(panel, "Error al crear asignatura", "Error", JOptionPane.ERROR_MESSAGE);
 			 return;
-		 }
+		 }else
+			 JOptionPane.showMessageDialog(panel, "Asignatura creada correctamente", "Crear Asignatura", JOptionPane.OK_OPTION);
 		 
 		if(ventana.getSistema().getEsProfesor()){
 			ventana.cambiarCarta("Profesor");

@@ -16,15 +16,20 @@ public class PanelContenido extends JPanel {
 	
 	private static CardLayout cartas = new CardLayout();
 	
+	private PanelProfesor contenedorProf;
+	private PanelAlumno contenedorAlum;
+	
 	/**
 	 * Constructor de la clase PanelContenido
 	 */
-	public PanelContenido(){
+	public PanelContenido(PanelProfesor cont){
+		
+		this.contenedorProf = cont;
 		
 		this.setLayout(cartas);
 		
 		// Panel crear asignatura
-		JPanel crearasignatura = new PanelCrearAsignatura();
+		JPanel crearasignatura = new PanelCrearAsignatura(this);
 				
 		// Panel crear tema
 		JPanel creartema = new PanelCrearTema();
@@ -51,6 +56,7 @@ public class PanelContenido extends JPanel {
 		this.add(crearsubtema);
 		this.add(crearapuntes);
 		this.add(crearejercicio);
+		
 		
 		
 	}
@@ -81,6 +87,21 @@ public class PanelContenido extends JPanel {
 		
 	}
 	
+	/**
+	 * Devuelve el panel contenedor Profesor
+	 * @return contenedorProf
+	 */
+	public JPanel getContenedorProf(){
+		return contenedorProf;
+	}
+	
+	/**
+	 * Devuelve el panel contenedor Alumno
+	 * @return contenedorAlum
+	 */
+	public JPanel getContenedorAlum(){
+		return contenedorAlum;
+	}
 	
 	
 	
