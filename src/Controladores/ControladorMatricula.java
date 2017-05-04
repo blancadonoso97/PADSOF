@@ -3,7 +3,7 @@ package Controladores;
 
 
 
-import Examen.PanelMatricula;
+import InterfazGrafica.PanelMatricula;
 import InterfazGrafica.VentanaInicial;
 
 public class ControladorMatricula {

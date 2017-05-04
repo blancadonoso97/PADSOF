@@ -3,6 +3,7 @@ package InterfazGrafica;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
@@ -19,7 +20,6 @@ public class PanelMatricula extends JPanel {
 		
 	PanelMatricula(PanelAlumno cont){
 	
-		
 		DefaultListModel<String> modeloasign = new DefaultListModel<String>(); 
 		DefaultListModel<String> modelomat = new DefaultListModel<String>(); 
 		DefaultListModel<String> modelopen = new DefaultListModel<String>(); 
@@ -33,6 +33,9 @@ public class PanelMatricula extends JPanel {
 		asignAsignaturas = new JList<String>(modeloasign);
 		asignMatriculas = new JList<String>(modelomat);
 		asignPendientes = new JList<String>(modelopen);
+		
+		JLabel nombre = new JLabel("Introduzca el nombre de la asignatura que desea matricularse: ");
+		this.add(nombre);
 		
 		this.add(asignAsignaturas);
 		this.add(asignMatriculas);
