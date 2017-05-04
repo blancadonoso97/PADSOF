@@ -61,10 +61,7 @@ public class PanelCrearAsignatura extends JPanel{
 				
 		// Configurar el panel con el controlador
 		this.setControlador(controlador);
-		
-		
-		
-		
+
 	}
 	
 	
@@ -72,7 +69,7 @@ public class PanelCrearAsignatura extends JPanel{
 	 * Devuelve el panel que contiene a crear asignatura
 	 * @return contenedor
 	 */
-	public JPanel getContenedor(){
+	public PanelContenido getContenedor(){
 		return contenedor;
 	}
 	
@@ -92,6 +89,18 @@ public class PanelCrearAsignatura extends JPanel{
 		 crearAsig.addActionListener(c);
 	 }
 	 
+	 /**
+	  * Comprueba la seleccion de opciones
+	  * @return true si se selecciona visible, false en caso contrario
+	  */
+	 public boolean comprobarSeleccion(){
+		 
+		 if(visible.isSelected()){
+			 return true;
+		 }else
+			 return false;
+		 
+	 }
 	
 
 }
