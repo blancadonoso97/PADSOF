@@ -1,5 +1,6 @@
 package InterfazGrafica;
 
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
@@ -10,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Asignatura.Asignatura;
+import Controladores.ControladorMatricula;
 import eCourses.SolicitudMatricula;
 
 public class PanelMatricula extends JPanel {
@@ -41,10 +43,11 @@ public class PanelMatricula extends JPanel {
 		JLabel nombre = new JLabel("Introduzca el nombre de la asignatura que desea matricularse: ");
 		this.nombreAsig = new JTextField(30);
 		
+		ControladorMatricula controlador = new ControladorMatricula(this.contAl.getVentana(),this);
+		
 		this.boton = new JButton("Solicitar");
+		this.setControlador(controlador);
 		this.add(boton);
-		
-		
 		
 		this.add(nombre);
 		this.add(nombreAsig);
@@ -52,7 +55,10 @@ public class PanelMatricula extends JPanel {
 		this.add(asignMatriculas);
 		this.add(asignPendientes);
 	}
-		
+	
+	 public void setControlador(ActionListener c) {
+		 boton.addActionListener(c);
+	 }
 		
 	public JList<String> getListaAsignaturas(){
 		return this.asignAsignaturas;
@@ -69,7 +75,16 @@ public class PanelMatricula extends JPanel {
 	public PanelAlumno getPanelAlumno(){
 		return this.contAl;
 	}
-		
+	
+	public String getNombre(){
+		return this.nombreAsig.getText();
+	}
+	
+	public void realizarSolicitud(){
+		this.contAl.getVentana().getSistema().getAlumnoLog().agregarSolicitud(new SolicitudMatricula(this.contAl.getVentana().getSistema().getAlumnoLog(),this.contAl.getVentana().getSistema().getAsignatura(this.nombreAsig.getText()),false));
+		return ;
+	}
+	
 	public void actualizartablas(){
 			
 		DefaultListModel<String> modeloasign = new DefaultListModel<String>(); 
