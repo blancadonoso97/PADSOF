@@ -12,9 +12,7 @@ import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
 
-import Controladores.ControladorCrearAsignatura;
-import Controladores.ControladorLogOut;
-
+import Controladores.ControladorBarraHerramientas;
 import java.awt.Component;
 
 /**
@@ -91,16 +89,12 @@ public class PanelBarraHerramientas extends JPanel {
 		
 		// Modificar la posicion del contenido
 		
-		// Anade el controlador para el boton de crear asignatura
-		ControladorCrearAsignatura controlador = new ControladorCrearAsignatura(contProfe.getVentana(),this);
-						
-		// Anade el controlador para el boton de log out
-		ControladorLogOut logout = new ControladorLogOut(contProfe.getVentana());
+		// Creacion del controlador
+		ControladorBarraHerramientas controlador = new ControladorBarraHerramientas(contProfe.getVentana(),this);
 		
-		
-		// Configurar el panel con el controlador
+		// Configurar los botones con el controlador
 		this.setControlador("Asignatura", controlador);
-		this.setControlador("Logout", logout);
+		this.setControlador("Logout", controlador);
 		
 		
 		this.setVisible(true);
