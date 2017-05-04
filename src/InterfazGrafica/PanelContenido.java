@@ -61,6 +61,15 @@ public class PanelContenido extends JPanel {
 		
 	}
 	
+	/**
+	 * Cosntructor de la clase PanelContenido
+	 * @param alumno Panel del alumno
+	 */
+	public PanelContenido(PanelAlumno alumno){
+		
+		this.contenedorAlum = alumno;
+	}
+	
 	
 	/**
 	 * Permite cambiar entre paneles
@@ -91,7 +100,7 @@ public class PanelContenido extends JPanel {
 	 * Devuelve el panel contenedor Profesor
 	 * @return contenedorProf
 	 */
-	public JPanel getContenedorProf(){
+	public PanelProfesor getContenedorProf(){
 		return contenedorProf;
 	}
 	
@@ -99,7 +108,7 @@ public class PanelContenido extends JPanel {
 	 * Devuelve el panel contenedor Alumno
 	 * @return contenedorAlum
 	 */
-	public JPanel getContenedorAlum(){
+	public PanelAlumno getContenedorAlum(){
 		return contenedorAlum;
 	}
 	
