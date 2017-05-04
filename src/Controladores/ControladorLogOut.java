@@ -36,6 +36,8 @@ public class ControladorLogOut implements ActionListener{
 			e1.printStackTrace();
 		}
 		
+		System.exit(0); // Sale de la aplicacion
+		
 	}
 
 }

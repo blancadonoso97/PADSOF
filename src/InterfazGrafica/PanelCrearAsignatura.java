@@ -45,6 +45,8 @@ public class PanelCrearAsignatura extends JPanel{
 		
 		this.visibilidad = new ButtonGroup();
 		
+		this.crearAsig = new JButton("Crear asignatura");
+		
 		// Anadimos las opciones a visibilidad
 		visibilidad.add(visible);
 		visibilidad.add(novisible);
