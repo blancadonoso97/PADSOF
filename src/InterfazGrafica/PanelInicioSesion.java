@@ -119,8 +119,7 @@ public class PanelInicioSesion extends JPanel {
 	  */
 	 public String getPass(){
 		 
-		 String passText = new String(password.getPassword());
-		 
+		 String passText = new String(password.getPassword()); 
 		 return passText;
 	 }	 
 	 
