@@ -139,7 +139,7 @@ public class Ejercicio implements Serializable{
 	public boolean getVisible() throws ClassNotFoundException, IOException, InvalidEmailAddressException, FailedInternetConnectionException {
 		
 		Calendar calendar = Calendar.getInstance(); /* Obtiene la fecha actual*/
-		Sistema sist = new Sistema("archivoProf.txt", "archivoAlum.txt");
+		Sistema sist = Sistema.getInstance();
 		
 		if (calendar.compareTo(fechaInicio)>0 && calendar.compareTo(fechaFin)<0){
 			

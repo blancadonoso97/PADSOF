@@ -21,6 +21,9 @@ public class Sistema implements Serializable{
 
 	
 	private static final long serialVersionUID = 1L;
+	
+	private static Sistema sistema = null;
+	
 	private String idProfesor;
 	private String contProfesor;
 	private boolean esProfesor;
@@ -38,20 +41,30 @@ public class Sistema implements Serializable{
 	 * @param archivoProf Archivo con los datos del profesor
 	 * @param archivoAlum Archivo con los datos de los alumnos
 	 */
-	public Sistema(String archivoProf, String archivoAlum) throws IOException, ClassNotFoundException{
+	private Sistema() throws IOException, ClassNotFoundException{
 	
 		String Fichero = "sistema.txt";
 		File fichero = new File(Fichero);
 		
 		if (fichero.exists()){
 			
-			Sistema.cargarSistema("sistema.txt");
+			Sistema.sistema = cargarSistema("sistema.txt");
 			
 		}else{
-			this.cargarDatosProfesor(archivoProf);
-			this.cargarAlumnos(archivoAlum);
+			this.cargarDatosProfesor("archivoProf.txt");
+			this.cargarAlumnos("archivoAlum.txt");
 		}
 
+	}
+	
+	public static Sistema getInstance() throws ClassNotFoundException, IOException{
+		
+		if (sistema == null){
+			sistema = new Sistema();
+			return sistema;
+		}else
+			return sistema;
+		
 	}
 
 	/**
@@ -75,12 +88,12 @@ public class Sistema implements Serializable{
 	 * Carga de un fichero el objeto sistema
 	 * @param archivo fichero de donde leer
 	 */
-	public static Sistema cargarSistema(String archivo) throws IOException, ClassNotFoundException {
+	public Sistema cargarSistema(String archivo) throws IOException, ClassNotFoundException {
 
 		File file = new File (archivo);
 		FileInputStream fis = new FileInputStream(file);
 		ObjectInputStream ois = new ObjectInputStream(fis);
-
+		
 		Sistema sist = (Sistema) ois.readObject();
 		
 		sist.setEsProfesor(false);

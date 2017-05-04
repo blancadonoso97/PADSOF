@@ -13,7 +13,7 @@ public class TestInterfaz {
 
 	public static void main(String[] args)  throws ClassNotFoundException, IOException{
 		
-		Sistema sistema = new Sistema("archivoProf.txt", "archivoAlum.txt");
+		Sistema sistema = Sistema.getInstance();
 		
 		new VentanaInicial(sistema);
 		

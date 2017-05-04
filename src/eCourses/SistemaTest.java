@@ -27,7 +27,7 @@ public class SistemaTest {
 	@Before
 	public void inicializar() throws Exception{
 		
-		eCourses = new Sistema("archivoProf.txt", "archivoAlum.txt");
+		eCourses = Sistema.getInstance();
 		eCourses.agregarAsignatura("Asignatura", true);
 		eCourses.agregarTema("Tema 2", eCourses.getAsignatura("Asignatura"), true);
 	}
@@ -42,7 +42,7 @@ public class SistemaTest {
 	@Test
 	public void testCargarSistema() throws ClassNotFoundException, IOException {
 		eCourses.guardarSistema("sistematest.txt");
-		eCourses = Sistema.cargarSistema("sistematest.txt");
+		eCourses.cargarSistema("sistematest.txt");
 		assertNotNull(eCourses);
 	}
 
@@ -66,7 +66,7 @@ public class SistemaTest {
 
 	@Test
 	public void testComprobarMatricula() throws InvalidEmailAddressException, FailedInternetConnectionException, ClassNotFoundException, IOException {
-		eCourses = Sistema.cargarSistema("sistematest.txt");
+		eCourses.cargarSistema("sistematest.txt");
 		eCourses.comprobarLogIn("1289", "JoA");
 		eCourses.agregarSolicitud(eCourses.getAsignatura("Asignatura"));
 		eCourses.comprobarLogIn("0001", "passprof");
@@ -76,11 +76,11 @@ public class SistemaTest {
 
 	@Test
 	public void testComprobarExpulsion() throws InvalidEmailAddressException, FailedInternetConnectionException, IOException, ClassNotFoundException {
-		eCourses = Sistema.cargarSistema("sistematest.txt");
+		eCourses.cargarSistema("sistematest.txt");
 		eCourses.comprobarLogIn("1297", "Coero");
 		eCourses.agregarSolicitud(eCourses.getAsignatura("Asignatura"));
 		eCourses.guardarSistema("sistematest.txt");
-		eCourses = Sistema.cargarSistema("sistematest.txt");
+		eCourses .cargarSistema("sistematest.txt");
 		eCourses.comprobarLogIn("0001", "passprof");
 		eCourses.aceptarMatricula(eCourses.getMatricula("1297", "Asignatura"));
 		Expulsion exp1 = new Expulsion(false, eCourses.getAlumno("1297"), eCourses.getAsignatura("Asignatura"));
@@ -90,11 +90,11 @@ public class SistemaTest {
 
 	@Test
 	public void testAceptarMatricula() throws InvalidEmailAddressException, FailedInternetConnectionException, ClassNotFoundException, IOException {
-		eCourses = Sistema.cargarSistema("sistematest.txt");
+		eCourses.cargarSistema("sistematest.txt");
 		eCourses.comprobarLogIn("1289", "JoA");
 		eCourses.agregarSolicitud(eCourses.getAsignatura("Asignatura"));
 		eCourses.guardarSistema("sistematest.txt");
-		eCourses = Sistema.cargarSistema("sistematest.txt");
+		eCourses.cargarSistema("sistematest.txt");
 		eCourses.comprobarLogIn("0001", "passprof");
 		assertEquals(true, eCourses.aceptarMatricula(eCourses.getMatricula("1289", "Asignatura")));
 		
@@ -102,7 +102,7 @@ public class SistemaTest {
 
 	@Test
 	public void testExpulsarAlumno() throws InvalidEmailAddressException, FailedInternetConnectionException, ClassNotFoundException, IOException {
-		eCourses = Sistema.cargarSistema("sistematest.txt");
+		eCourses.cargarSistema("sistematest.txt");
 		eCourses.comprobarLogIn("1297", "Coero");
 		eCourses.agregarSolicitud(eCourses.getAsignatura("Asignatura"));
 		eCourses.comprobarLogIn("0001", "passprof");
@@ -138,14 +138,14 @@ public class SistemaTest {
 	
 	@Test
 	public void testAgregarSolicitud() throws ClassNotFoundException, IOException {
-		eCourses = Sistema.cargarSistema("sistematest.txt");
+		eCourses.cargarSistema("sistematest.txt");
 		eCourses.comprobarLogIn("1289", "JoA");
 		assertEquals(true, eCourses.agregarSolicitud(eCourses.getAsignatura("Asignatura")));
 	}
 
 	@Test
 	public void testComprobarEsProfesor() throws ClassNotFoundException, IOException {
-		eCourses = Sistema.cargarSistema("sistematest.txt");
+		eCourses.cargarSistema("sistematest.txt");
 		eCourses.comprobarLogIn("0001", "passprof");
 		assertEquals(true, eCourses.getEsProfesor());
 	}
