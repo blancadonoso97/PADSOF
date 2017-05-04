@@ -103,7 +103,7 @@ public class PanelMatricula extends JPanel {
 			matriculadas = this.contAl.getVentana().getSistema().getAlumnoLog().getAsignaturas();
 			
 				
-			if(solicitudes.isEmpty() == false){
+			if(!solicitudes.isEmpty()){
 			
 				for(SolicitudMatricula s : solicitudes){
 					pendientes.add(s.getAsignatura());
@@ -116,7 +116,7 @@ public class PanelMatricula extends JPanel {
 			}
 		
 			
-			if(asignaturas.isEmpty() == false){
+			if(!asignaturas.isEmpty()){
 					
 				for(Asignatura a : asignaturas){
 					modeloasign.addElement(a.getNombre());
@@ -124,14 +124,13 @@ public class PanelMatricula extends JPanel {
 					
 			}
 				
-			if(matriculadas.isEmpty() == false){
+			if(!matriculadas.isEmpty()){
 					
 				for(Asignatura a : matriculadas){
 					modelomat.addElement(a.getNombre());
 				}
 				
 			}
-				 
 			this.asignAsignaturas = new JList<String>(modeloasign);
 			this.asignMatriculas = new JList<String>(modelomat);
 			this.asignPendientes = new JList<String>(modelopen);

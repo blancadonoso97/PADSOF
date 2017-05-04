@@ -75,6 +75,7 @@ public class PanelCrearTema extends JPanel{
 		this.add(visible);
 		this.add(novisible);
 		this.add(crearTema);
+		this.add(lista);
 		
 		// Anade el controlador para el boton de crear asignatura
 		ControladorAgregarContenido controlador = new ControladorAgregarContenido(contenedor.getContenedorProf().getVentana(),this);

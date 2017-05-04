@@ -95,6 +95,7 @@ public class PanelBarraHerramientas extends JPanel {
 		// Configurar los botones con el controlador
 		this.setControlador("Asignatura", controlador);
 		this.setControlador("Logout", controlador);
+		this.setControlador("Tema", controlador);
 		
 		
 		this.setVisible(true);
@@ -170,6 +171,8 @@ public class PanelBarraHerramientas extends JPanel {
 			 desconectar.addActionListener(c);
 		 }else if(nombreBoton.equals("Matricula")){
 			 matricula.addActionListener(c);
+		 }else if(nombreBoton.equals("Tema")){
+			 tema.addActionListener(c);
 		 }
 		 
 		 
