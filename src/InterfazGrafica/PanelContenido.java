@@ -44,7 +44,7 @@ public class PanelContenido extends JPanel {
 		this.subtemas = new PanelCrearSubtema(/*this*/);
 				
 		// Panel crear apuntes
-		this.apuntes = new PanelCrearApuntes(/*this*/);
+		this.apuntes = new PanelCrearApuntes(this);
 		
 		// Panel crear ejercicio
 		this.ejercicios = new PanelCrearEjercicio(/*this*/);

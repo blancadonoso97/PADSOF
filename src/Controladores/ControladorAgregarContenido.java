@@ -115,7 +115,7 @@ public class ControladorAgregarContenido implements ActionListener{
 			 
 		 }else if(e.getActionCommand().equals("Crear apuntes")){
 			 
-			 f (panelapuntes.getNombreApuntes().equals("")) {
+			 if (panelapuntes.getNombreApuntes().equals("")) {
 				 JOptionPane.showMessageDialog(panelapuntes, "Debe introducir un nombre para los apuntes", "Error", JOptionPane.ERROR_MESSAGE);
 				 return;
 			 }
