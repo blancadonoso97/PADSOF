@@ -38,7 +38,7 @@ public class PanelContenido extends JPanel {
 		this.asig = new PanelCrearAsignatura(this);
 				
 		// Panel crear tema
-		this.temas = new PanelCrearTema();
+		this.temas = new PanelCrearTema(this);
 		
 		// Panel crear subtema
 		this.subtemas = new PanelCrearSubtema();
