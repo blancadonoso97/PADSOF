@@ -2,6 +2,7 @@ package Controladores;
 
 
 
+
 import Examen.PanelMatricula;
 import InterfazGrafica.VentanaInicial;
 
@@ -22,10 +23,9 @@ public class ControladorMatricula {
 		
 	}
 	
-	/*@Override
+	/*
 	public void actionPerformed(ActionEvent e) {
-		
-		ventana.getSistema().
+	
 	}*/
 
 	
