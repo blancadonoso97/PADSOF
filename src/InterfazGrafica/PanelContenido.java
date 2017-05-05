@@ -2,6 +2,8 @@ package InterfazGrafica;
 
 import java.awt.CardLayout;
 
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
@@ -25,6 +27,8 @@ public class PanelContenido extends JPanel {
 	private PanelCrearSubtema subtemas;
 	private PanelCrearApuntes apuntes;
 	private PanelCrearEjercicio ejercicios;
+	private JList<String> asignaturas;
+	private DefaultListModel<String> modeloasig; 
 	
 	/**
 	 * Constructor de la clase PanelContenido
@@ -34,6 +38,12 @@ public class PanelContenido extends JPanel {
 		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		
 		this.contenedorProf = cont;
+		
+
+		modeloasig = new DefaultListModel<String>();
+		this.modeloasig.addElement("No existe ninguna asignatura");
+		this.asignaturas = new JList<String>(modeloasig);
+		this.add(asignaturas);
 		
 		this.setLayout(cartas);
 		
@@ -71,6 +81,12 @@ public class PanelContenido extends JPanel {
 		
 		this.contenedorAlum = alumno;
 		
+		modeloasig = new DefaultListModel<String>();
+		this.modeloasig.addElement("No existe ninguna asignatura matriculada");
+		this.asignaturas = new JList<String>(modeloasig);
+		
+		this.add(asignaturas);
+		
 		this.setLayout(cartas);
 		
 		// Panel crear solicitud matricula
@@ -106,6 +122,7 @@ public class PanelContenido extends JPanel {
 			
 		}else if(nombre.equals("Apuntes")){
 			this.removeAll();
+			/*this.apuntes.actualizarTabla();*/
 			this.add(this.apuntes);
 			cartas.show(this, "Apuntes");
 			
@@ -143,8 +160,4 @@ public class PanelContenido extends JPanel {
 	public PanelMatricula getMatricula(){
 		return this.solicitarmatricula;
 	}
-	
-	
-	
-
 }

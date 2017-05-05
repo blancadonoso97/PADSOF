@@ -39,7 +39,9 @@ public class PanelMatricula extends JPanel {
 	private Component rigidArea_5;
 		
 	PanelMatricula(PanelAlumno cont){
+		
 		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		
 		this.contAl = cont;
 		
 		this.modelopen.addElement("No existe una asignatura pendiente de matricular");
