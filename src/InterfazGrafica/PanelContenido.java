@@ -122,7 +122,7 @@ public class PanelContenido extends JPanel {
 			
 		}else if(nombre.equals("Apuntes")){
 			this.removeAll();
-			/*this.apuntes.actualizarTabla();*/
+			this.apuntes.actualizarTabla();
 			this.add(this.apuntes);
 			cartas.show(this, "Apuntes");
 			
