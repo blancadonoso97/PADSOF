@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
-import javax.swing.DefaultButtonModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,7 +23,6 @@ public class PanelAsignaturas extends JPanel{
 	private PanelProfesor contenedorProf;
 	private PanelAlumno contenedorAlum;
 	private ArrayList<Asignatura> asig;
-	private DefaultButtonModel modeloasign = new DefaultButtonModel();
 	private ButtonGroup asignaturas;
 	private JButton acceder;
 	
@@ -56,7 +54,7 @@ public class PanelAsignaturas extends JPanel{
 		if(this.asignaturas.getSelection() == null){
 			return "";
 		}else{
-		
+		return this.asignaturas.getSelection().getActionCommand();
 		}
 	}
 	
@@ -75,12 +73,13 @@ public class PanelAsignaturas extends JPanel{
 			ControladorAccederAsignatura cont = new ControladorAccederAsignatura(this.contenedorProf.getVentana(),this);
 			this.setControlador(cont);
 			this.add(acceder);
+			
 			this.asig = this.contenedorProf.getVentana().getSistema().getAsignaturas();
 			
 				if(!this.asig.isEmpty()){
 					int i;
 					JRadioButton[] botones = new JRadioButton[this.asig.size()];
-					
+					asignaturas = new ButtonGroup();
 					
 					for(i=0; i<this.asig.size();i++){
 						botones[i] = new JRadioButton("b");
@@ -89,6 +88,7 @@ public class PanelAsignaturas extends JPanel{
 					i = 0;
 					for(Asignatura a : this.asig){
 						botones[i].setText(a.getNombre());
+						botones[i].setActionCommand(a.getNombre());
 						asignaturas.add(botones[i]);
 						this.add(botones[i]);
 						i++;
