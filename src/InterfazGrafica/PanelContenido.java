@@ -25,9 +25,9 @@ public class PanelContenido extends JPanel {
 	private PanelCrearTema temas;
 	private PanelCrearSubtema subtemas;
 	private PanelCrearApuntes apuntes;
-	private PanelAsignaturas paginaprinc;
+	private PanelPrincipal paginaprinc;
 	private PanelCrearEjercicio ejercicios;	
-	private PanelTema paneltema;
+	private PanelAsignatura panelasig;
 	
 	/**
 	 * Constructor de la clase PanelContenido
@@ -57,9 +57,11 @@ public class PanelContenido extends JPanel {
 		this.ejercicios = new PanelCrearEjercicio(/*this*/);
 		
 		
-		this.paginaprinc = new PanelAsignaturas(this);
+		this.paginaprinc = new PanelPrincipal(this);
 		
-		this.paneltema = new PanelTema();
+		
+		this.panelasig = new PanelAsignatura(this);
+		
 		
 		cartas.addLayoutComponent(this.asig, "Asignatura");
 		cartas.addLayoutComponent(this.temas, "Tema");
@@ -67,7 +69,8 @@ public class PanelContenido extends JPanel {
 		cartas.addLayoutComponent(this.subtemas, "Subtema");
 		cartas.addLayoutComponent(this.ejercicios, "Ejercicios");
 		cartas.addLayoutComponent(this.paginaprinc, "Principal");
-		cartas.addLayoutComponent(this.paneltema, "AccederAsig");
+		cartas.addLayoutComponent(this.panelasig, "AccederAsig");
+		
 		
 		this.paginaprinc.actualizarAsignaturas();
 		this.add(this.paginaprinc);
@@ -89,20 +92,20 @@ public class PanelContenido extends JPanel {
 		// Panel crear solicitud matricula
 		this.solicitarmatricula = new PanelMatricula(this.contenedorAlum);
 		
-		this.paginaprinc = new PanelAsignaturas(this);
+		this.paginaprinc = new PanelPrincipal(this);
 		
-		this.paneltema = new PanelTema();
+		this.panelasig = new PanelAsignatura(this);
 		
 		// Anadir paneles
 		cartas.addLayoutComponent(this.solicitarmatricula, "Matricula");
 		cartas.addLayoutComponent(this.paginaprinc, "Principal");
-		cartas.addLayoutComponent(this.paneltema, "AccederAsig");
+		cartas.addLayoutComponent(this.panelasig, "AccederAsig");
 		
 		this.paginaprinc.actualizarAsignaturas();
 		this.add(this.paginaprinc);
 	}
 	
-	public PanelAsignaturas getPanelPrincipal(){
+	public PanelPrincipal getPanelPrincipal(){
 		return this.paginaprinc;
 	}
 	
@@ -152,10 +155,12 @@ public class PanelContenido extends JPanel {
 			this.add(this.paginaprinc);
 			cartas.show(this, "Principal");
 			
-		}else if(nombre.equals("AccederAsig"))
+		}else if(nombre.equals("AccederAsig")){
 			this.removeAll();
-			this.add(this.paneltema);
+			this.panelasig.actualizarTemas();
+			this.add(this.panelasig);
 			cartas.show(this, "AccederAsig");
+		}
 		
 	}
 	
