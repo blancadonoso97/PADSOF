@@ -46,6 +46,12 @@ public class ControladorBarraHerramientas implements ActionListener{
 				panel.getPanelProfe().getPanelContenido().cambiarCarta("Tema");
 			}
 			
+		}else if(e.getActionCommand().equals("Crear Subtema")){
+			
+			if(ventana.getSistema().getEsProfesor()){
+				panel.getPanelProfe().getPanelContenido().cambiarCarta("Subtema");
+			}
+			
 		}else if(e.getActionCommand().equals("Crear Apuntes")){
 			
 			if(ventana.getSistema().getEsProfesor()){
