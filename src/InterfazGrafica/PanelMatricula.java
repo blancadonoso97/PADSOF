@@ -46,28 +46,27 @@ public class PanelMatricula extends JPanel {
 		setLayout(springLayout);
 		
 		this.boton = new JButton("Solicitar");
-		springLayout.putConstraint(SpringLayout.WEST, boton, 122, SpringLayout.WEST, this);
-		springLayout.putConstraint(SpringLayout.EAST, boton, -577, SpringLayout.EAST, this);
+		springLayout.putConstraint(SpringLayout.WEST, boton, 110, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, boton, -496, SpringLayout.EAST, this);
 		boton.setFont(new Font("WenQuanYi Micro Hei Mono", Font.BOLD, 12));
 		this.setControlador(controlador);
-		this.add(boton);
+		
 		
 		scrollPane = new JScrollPane();
-		springLayout.putConstraint(SpringLayout.NORTH, boton, 42, SpringLayout.SOUTH, scrollPane);
+		springLayout.putConstraint(SpringLayout.NORTH, boton, 6, SpringLayout.SOUTH, scrollPane);
 		springLayout.putConstraint(SpringLayout.NORTH, scrollPane, 137, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, scrollPane, -167, SpringLayout.SOUTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, scrollPane, 49, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.EAST, scrollPane, 318, SpringLayout.WEST, this);
-		add(scrollPane);
 		
 		scrollPane_1 = new JScrollPane();
-		springLayout.putConstraint(SpringLayout.SOUTH, boton, 305, SpringLayout.NORTH, scrollPane_1);
+		springLayout.putConstraint(SpringLayout.SOUTH, boton, 217, SpringLayout.NORTH, scrollPane_1);
 		springLayout.putConstraint(SpringLayout.WEST, scrollPane_1, 56, SpringLayout.EAST, scrollPane);
 		springLayout.putConstraint(SpringLayout.SOUTH, scrollPane_1, -180, SpringLayout.SOUTH, this);
 		
 		listasignaturas = new JList<String>(modeloasign);
 		scrollPane.setViewportView(listasignaturas);
-		add(scrollPane_1);
+		
 		
 		scrollPane_2 = new JScrollPane();
 		springLayout.putConstraint(SpringLayout.NORTH, scrollPane_1, 0, SpringLayout.NORTH, scrollPane_2);
@@ -79,10 +78,16 @@ public class PanelMatricula extends JPanel {
 		
 		listmatriculadas = new JList<String>(modelomat);
 		scrollPane_1.setViewportView(listmatriculadas);
-		add(scrollPane_2);
+		
 		
 		listpendientes = new JList<String>(modelopen);
 		scrollPane_2.setViewportView(listpendientes);
+		
+		this.add(boton);
+		this.add(scrollPane_2);
+		this.add(scrollPane_1);
+		this.add(scrollPane);
+		
 	}
 	
 	 public void setControlador(ActionListener c) {
@@ -123,12 +128,12 @@ public class PanelMatricula extends JPanel {
 		ArrayList<Asignatura> matriculadas;
 		ArrayList<Asignatura> pendientes = new ArrayList<Asignatura>();
 			
-			
-			
+		
 		solicitudes = this.contAl.getVentana().getSistema().getAlumnoLog().getSolicitudesMat();
 		asignaturas = this.contAl.getVentana().getSistema().getAsignaturas();
 		matriculadas = this.contAl.getVentana().getSistema().getAlumnoLog().getAsignaturas();
-			
+		
+		this.add(boton);
 				
 		if(!solicitudes.isEmpty()){
 			modelopen.removeAllElements();

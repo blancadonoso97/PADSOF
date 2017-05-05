@@ -13,16 +13,16 @@ import javax.swing.UIManager;
 import Asignatura.Tema;
 import Controladores.ControladorAccederContenido;
 
-public class PanelAsignatura extends JPanel {
+public class PanelTema extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private PanelAlumno panelAlum;
 	private PanelProfesor panelProf;
 	private ArrayList<Tema> temas;
-	private ButtonGroup tem;
+	private ButtonGroup asignaturas;
 	private JButton acceder;
 	
-	PanelAsignatura(PanelContenido cont){
+	PanelTema(PanelContenido cont){
 		
 		if(cont.getContenedorProf()!=null){
 			setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
@@ -43,11 +43,11 @@ public class PanelAsignatura extends JPanel {
 	}
 			
 	public String getNombre(){
-		if(this.tem.getSelection() == null){
+		if(this.asignaturas.getSelection() == null){
 			return "";
 		}else{
 			
-			return this.tem.getSelection().getActionCommand();
+			return this.asignaturas.getSelection().getActionCommand();
 			
 		}
 	}
@@ -77,7 +77,7 @@ public class PanelAsignatura extends JPanel {
 				if(!this.temas.isEmpty()){
 					int i;
 					JRadioButton[] botones = new JRadioButton[this.temas.size()];
-					tem = new ButtonGroup();
+					asignaturas = new ButtonGroup();
 					
 					for(i=0; i<this.temas.size();i++){
 						botones[i] = new JRadioButton("b");
@@ -87,7 +87,7 @@ public class PanelAsignatura extends JPanel {
 					for(Tema a : this.temas){
 						botones[i].setText(a.getNombre());
 						botones[i].setActionCommand(a.getNombre());
-						tem.add(botones[i]);
+						asignaturas.add(botones[i]);
 						this.add(botones[i]);
 						i++;
 					}
@@ -114,7 +114,7 @@ public class PanelAsignatura extends JPanel {
 			if(!this.temas.isEmpty()){
 				int i;
 				JRadioButton[] botones = new JRadioButton[this.temas.size()];
-				tem = new ButtonGroup();
+				asignaturas = new ButtonGroup();
 				
 				for(i=0; i<this.temas.size();i++){
 					botones[i] = new JRadioButton("b");
@@ -123,12 +123,12 @@ public class PanelAsignatura extends JPanel {
 				i = 0;
 				for(Tema a : this.temas){
 					botones[i].setText(a.getNombre());
-					tem.add(botones[i]);
+					asignaturas.add(botones[i]);
 					this.add(botones[i]);
 					i++;
 				}
 			}else{
-				JLabel texto = new JLabel("No hay temas");
+				JLabel texto = new JLabel("No hay asignatura");
 				this.removeAll();
 				this.add(texto);
 				

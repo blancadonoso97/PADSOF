@@ -58,13 +58,13 @@ public class PanelAdministrar extends JPanel{
 	 * Obtiene la solicitud de matricula de la tabla
 	 * @return Solicitud de matricula
 	 */
-	public SolicitudMatricula getMatricula(){
+	/*public SolicitudMatricula getMatricula(){
 		
 		
-		modelomat.getDataVector().elementAt(tablaMatricula.getSelectedRow());
+		return modelomat.getDataVector().elementAt(tablaMatricula.getSelectedRow());
 		
 		
-	}
+	}*/
 	
 	/**
 	 * Actualiza la tabla de peticiones de matricula

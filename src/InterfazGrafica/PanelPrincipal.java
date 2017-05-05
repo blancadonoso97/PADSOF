@@ -29,7 +29,7 @@ public class PanelPrincipal extends JPanel{
 	PanelPrincipal(PanelContenido cont){
 		
 		
-		
+
 		if(cont.getContenedorProf()!=null){
 		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		this.contenedorProf = cont.getContenedorProf();
@@ -41,7 +41,7 @@ public class PanelPrincipal extends JPanel{
 		
 	}
 	
-	
+
 	public PanelAlumno getPanelAlumno(){
 		return this.contenedorAlum;
 	}
@@ -76,7 +76,7 @@ public class PanelPrincipal extends JPanel{
 		
 		if(this.contenedorProf != null){
 			
-			ControladorAccederContenido cont = new ControladorAccederContenido(this.contenedorProf.getVentana(),this);
+			ControladorAccederContenido cont = new ControladorAccederContenido(this);
 			this.setControlador(cont);
 			this.add(acceder);
 			
@@ -113,7 +113,7 @@ public class PanelPrincipal extends JPanel{
 		
 		else if(this.contenedorAlum != null && this.contenedorAlum.getVentana().getSistema().getAlumnoLog()!=null){
 			
-			ControladorAccederContenido cont = new ControladorAccederContenido(this.contenedorAlum.getVentana(),this);
+			ControladorAccederContenido cont = new ControladorAccederContenido(this);
 			this.setControlador(cont);
 			this.add(acceder);
 			
