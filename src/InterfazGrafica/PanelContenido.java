@@ -27,6 +27,7 @@ public class PanelContenido extends JPanel {
 	private PanelCrearApuntes apuntes;
 	private PanelAsignaturas paginaprinc;
 	private PanelCrearEjercicio ejercicios;	
+	private PanelTema paneltema;
 	
 	/**
 	 * Constructor de la clase PanelContenido
@@ -58,14 +59,15 @@ public class PanelContenido extends JPanel {
 		
 		this.paginaprinc = new PanelAsignaturas(this);
 		
+		this.paneltema = new PanelTema();
 		
 		cartas.addLayoutComponent(this.asig, "Asignatura");
 		cartas.addLayoutComponent(this.temas, "Tema");
 		cartas.addLayoutComponent(this.apuntes, "Apuntes");
-		cartas.addLayoutComponent(this.subtemas, "Subtemas");
+		cartas.addLayoutComponent(this.subtemas, "Subtema");
 		cartas.addLayoutComponent(this.ejercicios, "Ejercicios");
 		cartas.addLayoutComponent(this.paginaprinc, "Principal");
-		
+		cartas.addLayoutComponent(this.paneltema, "AccederAsig");
 		
 		this.paginaprinc.actualizarAsignaturas();
 		this.add(this.paginaprinc);
@@ -89,10 +91,12 @@ public class PanelContenido extends JPanel {
 		
 		this.paginaprinc = new PanelAsignaturas(this);
 		
+		this.paneltema = new PanelTema();
 		
 		// Anadir paneles
 		cartas.addLayoutComponent(this.solicitarmatricula, "Matricula");
 		cartas.addLayoutComponent(this.paginaprinc, "Principal");
+		cartas.addLayoutComponent(this.paneltema, "AccederAsig");
 		
 		this.paginaprinc.actualizarAsignaturas();
 		this.add(this.paginaprinc);
@@ -148,7 +152,10 @@ public class PanelContenido extends JPanel {
 			this.add(this.paginaprinc);
 			cartas.show(this, "Principal");
 			
-		}
+		}else if(nombre.equals("AccederAsig"))
+			this.removeAll();
+			this.add(this.paneltema);
+			cartas.show(this, "AccederAsig");
 		
 	}
 	

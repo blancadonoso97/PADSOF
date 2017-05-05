@@ -156,7 +156,7 @@ public class ControladorAgregarContenido implements ActionListener{
 			 
 		 }else if(e.getActionCommand().equals("Crear subtema")){
 			 
-			 if (panelsubtema.getNombreTema().equals("")) {
+			 if (panelsubtema.getNombreSubtema().equals("")) {
 				 JOptionPane.showMessageDialog(panelsubtema, "Debe introducir un nombre para el subtema", "Error", JOptionPane.ERROR_MESSAGE);
 				 return;
 			 }
@@ -166,7 +166,7 @@ public class ControladorAgregarContenido implements ActionListener{
 					 JOptionPane.showMessageDialog(panelsubtema, "Error al crear el subtema", "Error", JOptionPane.ERROR_MESSAGE);
 					 return;
 				 }else{
-					 JOptionPane.showMessageDialog(panelsubtema, "El subtema " + panelsubtema.getNombreTema() + " ha sido creado", "Crear subtema", JOptionPane.INFORMATION_MESSAGE);
+					 JOptionPane.showMessageDialog(panelsubtema, "El subtema " + panelsubtema.getNombreSubtema() + " ha sido creado", "Crear subtema", JOptionPane.INFORMATION_MESSAGE);
 					 return;
 				 }
 			} catch (HeadlessException e1) {
