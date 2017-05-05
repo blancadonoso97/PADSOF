@@ -30,7 +30,7 @@ public class PanelCrearSubtema extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 
-private PanelContenido contenedor;
+	private PanelContenido contenedor;
 	
 	private JLabel nombretema;
 	private JTextField camponombre;
@@ -48,7 +48,12 @@ private PanelContenido contenedor;
 	private Component rigidArea_5;
 	private Component rigidArea_6;
 	
+	/**
+	 * Constructor de la clase PanelCrearSubtema
+	 * @param cont Panel contenido
+	 */
 	public PanelCrearSubtema(PanelContenido cont){
+		
 		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		
 		this.contenedor = cont;

@@ -628,6 +628,26 @@ public class Sistema implements Serializable{
 		
 		
 	}	
+	
+	/**
+	 * Crea y agrega una expulsion
+	 * @param alum Alumno a expulsar
+	 * @param asig Asignatura de la que expulsar al alumno
+	 * @return true si se agrega correctamente, false en caso contrario
+	 */
+	public boolean agregarExpulsion(Alumno alum, Asignatura asig){
+		
+		if(esProfesor){
+			
+			Expulsion expulsion = new Expulsion(true, alum, asig);
+			
+			expulsiones.add(expulsion);
+			
+			return true;
+			
+		}else
+			return false;
+	}
 
 	
 	/**
