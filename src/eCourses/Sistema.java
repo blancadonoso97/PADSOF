@@ -43,17 +43,10 @@ public class Sistema implements Serializable{
 	 */
 	private Sistema() throws IOException, ClassNotFoundException{
 	
-		String Fichero = "sistema.txt";
-		File fichero = new File(Fichero);
 		
-		if (fichero.exists()){
-			
-			Sistema.sistema = cargarSistema("sistema.txt");
-			
-		}else{
-			this.cargarDatosProfesor("archivoProf.txt");
-			this.cargarAlumnos("archivoAlum.txt");
-		}
+		this.cargarDatosProfesor("archivoProf.txt");
+		this.cargarAlumnos("archivoAlum.txt");
+		
 
 	}
 	
