@@ -39,8 +39,9 @@ private PanelContenido contenedor;
 	private ButtonGroup visibilidad;
 	
 	private JButton crearApuntes;
-	
 	private JList<String> lista;
+	private DefaultListModel<String> temas = new DefaultListModel<String>();
+	
 	private Component rigidArea;
 	private Component rigidArea_1;
 	private Component rigidArea_2;
@@ -52,29 +53,16 @@ private PanelContenido contenedor;
 		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		
 		this.contenedor = cont;
-		
-		DefaultListModel<String> temas = new DefaultListModel<String>();
-		
-		ArrayList<Asignatura> asigexistentes = new ArrayList<Asignatura>();
-		
-		asigexistentes = cont.getContenedorProf().getVentana().getSistema().getAsignaturas();
-		
-		// Anadimos las asignaturas existentes a la lista de asignaturas donde se puede crear un tema
-		for (Asignatura a : asigexistentes){
-			
-			for (Tema b : a.getTemas()){
-				temas.addElement(b.getNombre());
-			}
-			
-		}
-		
+				
 		this.lista = new JList<String>(temas);
 		lista.setValueIsAdjusting(true);
 		
 		this.nombreapuntes = new JLabel("Nombre de los apuntes:");
 		this.camponombre = new JTextField(30);
+		
 		this.visible = new JRadioButton("Apuntes visibles");
 		visible.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		
 		this.novisible = new JRadioButton("Apuntes no visibles");
 		novisible.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		
@@ -86,10 +74,7 @@ private PanelContenido contenedor;
 		// Anadimos las opciones a visibilidad
 		visibilidad.add(visible);
 		visibilidad.add(novisible);
-		
-		rigidArea_3 = Box.createRigidArea(new Dimension(120, 200));
-		add(rigidArea_3);
-		
+				
 		// Anadimos los componentes al panel
 		this.add(nombreapuntes);
 		
@@ -97,14 +82,17 @@ private PanelContenido contenedor;
 		add(rigidArea);
 		this.add(camponombre);
 		
-		rigidArea_2 = Box.createRigidArea(new Dimension(300, 40));
-		add(rigidArea_2);
-		this.add(visible);
-		
 		rigidArea_1 = Box.createRigidArea(new Dimension(20, 0));
 		add(rigidArea_1);
 		this.add(novisible);
 		
+		rigidArea_2 = Box.createRigidArea(new Dimension(300, 40));
+		add(rigidArea_2);
+		this.add(visible);
+		
+		rigidArea_3 = Box.createRigidArea(new Dimension(120, 200));
+		add(rigidArea_3);
+				
 		rigidArea_4 = Box.createRigidArea(new Dimension(1000, 30));
 		add(rigidArea_4);
 		this.add(crearApuntes);
@@ -168,6 +156,27 @@ private PanelContenido contenedor;
 		 }else
 			 return false;
 		 
+	 }
+	 
+	 /**
+	  * Actualiza la lista con los temas existentes
+	  */
+	 public void actualizarTabla(){
+		 
+		ArrayList<Asignatura> asigexistentes = new ArrayList<Asignatura>();
+			
+		asigexistentes = contenedor.getContenedorProf().getVentana().getSistema().getAsignaturas();
+		
+		temas.removeAllElements();
+		
+		for (Asignatura a : asigexistentes){
+			
+			for (Tema b : a.getTemas()){
+				temas.addElement(b.getNombre());
+			}
+			
+		}
+ 
 	 }
 	
 

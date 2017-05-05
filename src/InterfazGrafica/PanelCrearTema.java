@@ -39,6 +39,7 @@ public class PanelCrearTema extends JPanel{
 	private JButton crearTema;
 	private DefaultListModel<String> asignaturas = new DefaultListModel<String>();
 	private JList<String> lista;
+	
 	private Component rigidArea;
 	private Component rigidArea_1;
 	private Component rigidArea_2;
@@ -58,6 +59,7 @@ public class PanelCrearTema extends JPanel{
 		this.camponombre = new JTextField(20);
 		this.visible = new JRadioButton("Tema visible");
 		visible.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		
 		this.novisible = new JRadioButton("Tema no visible");
 		novisible.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		
@@ -79,14 +81,14 @@ public class PanelCrearTema extends JPanel{
 		add(rigidArea_1);
 		this.add(camponombre);
 		
-		rigidArea_3 = Box.createRigidArea(new Dimension(0, 30));
-		add(rigidArea_3);
-		this.add(visible);
-		
 		rigidArea_2 = Box.createRigidArea(new Dimension(20, 0));
 		add(rigidArea_2);
 		this.add(novisible);
 		
+		rigidArea_3 = Box.createRigidArea(new Dimension(0, 30));
+		add(rigidArea_3);
+		this.add(visible);
+
 		rigidArea_4 = Box.createRigidArea(new Dimension(100, 30));
 		add(rigidArea_4);
 		this.add(crearTema);
@@ -95,12 +97,12 @@ public class PanelCrearTema extends JPanel{
 		add(rigidArea_5);
 		this.add(lista);
 		
-		// Anade el controlador para el boton de crear asignatura
-		ControladorAgregarContenido controlador = new ControladorAgregarContenido(contenedor.getContenedorProf().getVentana(),this);
-		
 		rigidArea_6 = Box.createRigidArea(new Dimension(0, 50));
 		add(rigidArea_6);
-						
+		
+		// Anade el controlador para el boton de crear asignatura
+		ControladorAgregarContenido controlador = new ControladorAgregarContenido(contenedor.getContenedorProf().getVentana(),this);
+	
 		// Configurar el panel con el controlador
 		this.setControlador(controlador);
 		
