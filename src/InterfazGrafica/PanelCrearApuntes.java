@@ -69,7 +69,7 @@ private PanelContenido contenedor;
 		this.camponombre = new JTextField(30);
 		
 		this.contenidoapuntes = new JLabel("Contenido de los apuntes:");
-		this.campotexto = new JTextField(300);
+		this.campotexto = new JTextField(20);
 		
 		this.dia = new JTextField(2);
 		this.mes = new JTextField(2);
@@ -185,11 +185,11 @@ private PanelContenido contenedor;
 	 * Devuelve la asignatura
 	 * @return Asignatura deseada
 	 */
-	public Asignatura getNombreAsignatura(){
+	public String getNombreAsignatura(){
 		
 		String valorSeleccionado = (String)listaasig.getSelectedItem();
 		
-		return contenedor.getContenedorProf().getVentana().getSistema().getAsignatura(valorSeleccionado);
+		return valorSeleccionado;
 		
 	}
 	

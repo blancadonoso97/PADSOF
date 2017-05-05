@@ -118,14 +118,17 @@ public class ControladorAgregarContenido implements ActionListener{
 			 if (panelapuntes.getNombreApuntes().equals("")) {
 				 JOptionPane.showMessageDialog(panelapuntes, "Debe introducir un nombre para los apuntes", "Error", JOptionPane.ERROR_MESSAGE);
 				 return;
+			 }else if (panelapuntes.getContenidoApuntes().equals("")) {
+				 JOptionPane.showMessageDialog(panelapuntes, "Debe introducir contenido para los apuntes", "Error", JOptionPane.ERROR_MESSAGE);
+				 return;
 			 }
 			
 			 try {
-				if(ventana.getSistema().agregarTema(paneltema.getNombreTema(), paneltema.getNombreAsignatura(), paneltema.comprobarSeleccion()) == false){
-					 JOptionPane.showMessageDialog(paneltema, "Error al crear el tema", "Error", JOptionPane.ERROR_MESSAGE);
+				if(ventana.getSistema().agregarApuntes(panelapuntes.getContenedor().getContenedorProf().getVentana().getSistema().getTema(panelapuntes.getNombreApuntes()), panelapuntes.getContenidoApuntes(), panelapuntes.getDia(), panelapuntes.getMes(), panelapuntes.getAnyo(), paneltema.comprobarSeleccion(), panelapuntes.getNombreAsignatura()) == false){
+					 JOptionPane.showMessageDialog(panelapuntes, "Error al crear los apuntes", "Error", JOptionPane.ERROR_MESSAGE);
 					 return;
 				 }else{
-					 JOptionPane.showMessageDialog(paneltema, "El tema " + paneltema.getNombreTema() + " ha sido creado", "Crear tema", JOptionPane.INFORMATION_MESSAGE);
+					 JOptionPane.showMessageDialog(panelapuntes, "Los apuntes " + panelapuntes.getNombreApuntes() + " han sido creados", "Crear apuntes", JOptionPane.INFORMATION_MESSAGE);
 					 return;
 				 }
 			} catch (HeadlessException e1) {
