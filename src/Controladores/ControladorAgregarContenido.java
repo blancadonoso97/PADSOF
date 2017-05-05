@@ -113,7 +113,7 @@ public class ControladorAgregarContenido implements ActionListener{
 			}
 			 
 			 
-		 }else if(e.getActionCommand().equals("Crear apuntes")){
+		 }else if(e.getActionCommand().equals("Crear Apuntes")){
 			 
 			 if (panelapuntes.getNombreApuntes().equals("")) {
 				 JOptionPane.showMessageDialog(panelapuntes, "Debe introducir un nombre para los apuntes", "Error", JOptionPane.ERROR_MESSAGE);
@@ -124,7 +124,7 @@ public class ControladorAgregarContenido implements ActionListener{
 			 }
 			
 			 try {
-				if(ventana.getSistema().agregarApuntes(panelapuntes.getContenedor().getContenedorProf().getVentana().getSistema().getTema(panelapuntes.getNombreApuntes()), panelapuntes.getContenidoApuntes(), panelapuntes.getDia(), panelapuntes.getMes(), panelapuntes.getAnyo(), paneltema.comprobarSeleccion(), panelapuntes.getNombreAsignatura()) == false){
+				if(ventana.getSistema().agregarApuntes(panelapuntes.getContenedor().getContenedorProf().getVentana().getSistema().getTema(panelapuntes.getNombreTema()), panelapuntes.getContenidoApuntes(), panelapuntes.getDia(), panelapuntes.getMes(), panelapuntes.getAnyo(), panelapuntes.comprobarSeleccion(), panelapuntes.getNombreApuntes()) == false){
 					 JOptionPane.showMessageDialog(panelapuntes, "Error al crear los apuntes", "Error", JOptionPane.ERROR_MESSAGE);
 					 return;
 				 }else{

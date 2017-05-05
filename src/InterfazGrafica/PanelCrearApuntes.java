@@ -182,10 +182,10 @@ private PanelContenido contenedor;
 	}
 	
 	/**
-	 * Devuelve la asignatura
-	 * @return Asignatura deseada
+	 * Devuelve el tema
+	 * @return tema deseado
 	 */
-	public String getNombreAsignatura(){
+	public String getNombreTema(){
 		
 		String valorSeleccionado = (String)listaasig.getSelectedItem();
 		
