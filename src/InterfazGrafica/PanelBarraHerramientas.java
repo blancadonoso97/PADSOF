@@ -39,6 +39,7 @@ public class PanelBarraHerramientas extends JPanel {
 	private JButton apuntes;
 	private JButton ejercicio;
 	private JButton matricula;
+	private JButton principal;
 	private JButton desconectar;
 	private JTree contenido;
 	private DefaultMutableTreeNode asignaturas = new DefaultMutableTreeNode("Asignaturas"); // Raiz del arbol contenido
@@ -86,7 +87,12 @@ public class PanelBarraHerramientas extends JPanel {
 		this.add(Box.createRigidArea(new Dimension(0, 20)));
 		this.add(ejercicio);
 		this.add(Box.createRigidArea(new Dimension(0, 20)));
+		
+		this.principal = new JButton("Pagina Principal");
 
+		this.add(principal);
+		this.add(Box.createRigidArea(new Dimension(0, 20)));
+		
 		// Pruebas
 		asignaturas.add(new DefaultMutableTreeNode("tema 1"));
 		asignaturas.add(new DefaultMutableTreeNode("tema 2"));
@@ -96,13 +102,11 @@ public class PanelBarraHerramientas extends JPanel {
 		repositorio.add(new DefaultMutableTreeNode("ejemplo 1"));
 		
 		asignaturas.add(repositorio);
-		
-		
+
 		
 		// Modificar la posicion del contenido
 		
-		// Creacion del controlador
-		ControladorBarraHerramientas controlador = new ControladorBarraHerramientas(contProfe.getVentana(),this);
+		
 		this.subtema = new JButton("Crear Subtema");
 		this.add(subtema);
 		
@@ -112,6 +116,7 @@ public class PanelBarraHerramientas extends JPanel {
 		this.add(apuntes);
 		Component rigidArea = Box.createRigidArea(new Dimension(0,20));
 		this.add(rigidArea);
+		
 		
 		this.contenido = new JTree(asignaturas);
 		contenido.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 12));
@@ -130,12 +135,15 @@ public class PanelBarraHerramientas extends JPanel {
 		this.desconectar = new JButton("Cerrar Sesion");
 		this.add(desconectar);
 		
+		// Creacion del controlador
+		ControladorBarraHerramientas controlador = new ControladorBarraHerramientas(contProfe.getVentana(),this);
+		
 		// Configurar los botones con el controlador
 		this.setControlador("Asignatura", controlador);
 		this.setControlador("Logout", controlador);
 		this.setControlador("Tema", controlador);
 		this.setControlador("Apuntes", controlador);
-		
+		this.setControlador("Principal", controlador);
 		
 		this.setVisible(true);
 		
@@ -166,6 +174,10 @@ public class PanelBarraHerramientas extends JPanel {
 		
 		this.add(matricula);
 		this.add(Box.createRigidArea(new Dimension(0,20)));
+		this.principal = new JButton("Pagina Principal");
+
+		this.add(principal);
+		this.add(Box.createRigidArea(new Dimension(0, 20)));
 		
 		this.contenido = new JTree(asignaturas);
 		contenido.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -198,7 +210,7 @@ public class PanelBarraHerramientas extends JPanel {
 		// Configurar los botones con el controlador
 		this.setControlador("Matricula", controlador);
 		this.setControlador("Logout", controlador);
-		
+		this.setControlador("Principal", controlador);
 		this.setVisible(true);
 		
 	}
@@ -227,6 +239,8 @@ public class PanelBarraHerramientas extends JPanel {
 			 tema.addActionListener(c);
 		 }else if(nombreBoton.equals("Apuntes")){
 			 apuntes.addActionListener(c);
+		 }else if(nombreBoton.equals("Principal")){
+			 principal.addActionListener(c);
 		 }
 		 
 		 

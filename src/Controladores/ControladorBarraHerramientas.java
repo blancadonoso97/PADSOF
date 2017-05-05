@@ -58,6 +58,14 @@ public class ControladorBarraHerramientas implements ActionListener{
 				panel.getPanelAlumno().getPanelContenido().cambiarCarta("Matricula");
 			}
 			
+		}else if(e.getActionCommand().equals("Pagina Principal")){
+			
+			if(!ventana.getSistema().getEsProfesor()){
+				panel.getPanelAlumno().getPanelContenido().cambiarCarta("Principal");
+			}else{
+				panel.getPanelProfe().getPanelContenido().cambiarCarta("Principal");
+			}
+			
 		}else if(e.getActionCommand().equals("Cerrar Sesion")){
 			
 			try {

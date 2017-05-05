@@ -2,8 +2,6 @@ package InterfazGrafica;
 
 import java.awt.CardLayout;
 
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
@@ -14,6 +12,7 @@ import javax.swing.UIManager;
  *
  */
 public class PanelContenido extends JPanel {
+	
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -26,24 +25,18 @@ public class PanelContenido extends JPanel {
 	private PanelCrearTema temas;
 	private PanelCrearSubtema subtemas;
 	private PanelCrearApuntes apuntes;
-	private PanelCrearEjercicio ejercicios;
-	private JList<String> asignaturas;
-	private DefaultListModel<String> modeloasig; 
+	private PanelAsignaturas paginaprinc;
+	private PanelCrearEjercicio ejercicios;	
 	
 	/**
 	 * Constructor de la clase PanelContenido
 	 * @wbp.parser.constructor
 	 */
 	public PanelContenido(PanelProfesor cont){
+	
 		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		
 		this.contenedorProf = cont;
-		
-
-		modeloasig = new DefaultListModel<String>();
-		this.modeloasig.addElement("No existe ninguna asignatura");
-		this.asignaturas = new JList<String>(modeloasig);
-		this.add(asignaturas);
 		
 		this.setLayout(cartas);
 		
@@ -62,13 +55,21 @@ public class PanelContenido extends JPanel {
 		// Panel crear ejercicio
 		this.ejercicios = new PanelCrearEjercicio(/*this*/);
 		
-				
-		// Anadir paneles
+		
+		this.paginaprinc = new PanelAsignaturas(this);
+		
+		
 		cartas.addLayoutComponent(this.asig, "Asignatura");
 		cartas.addLayoutComponent(this.temas, "Tema");
-		cartas.addLayoutComponent(this.subtemas, "Subtema");
 		cartas.addLayoutComponent(this.apuntes, "Apuntes");
-		cartas.addLayoutComponent(this.ejercicios, "Ejercicio");
+		cartas.addLayoutComponent(this.subtemas, "Subtemas");
+		cartas.addLayoutComponent(this.ejercicios, "Ejercicios");
+		cartas.addLayoutComponent(this.paginaprinc, "Principal");
+		
+		
+		this.paginaprinc.actualizarAsignaturas();
+		this.add(this.paginaprinc);
+		
 		
 	}
 	
@@ -81,22 +82,25 @@ public class PanelContenido extends JPanel {
 		
 		this.contenedorAlum = alumno;
 		
-		modeloasig = new DefaultListModel<String>();
-		this.modeloasig.addElement("No existe ninguna asignatura matriculada");
-		this.asignaturas = new JList<String>(modeloasig);
-		
-		this.add(asignaturas);
-		
 		this.setLayout(cartas);
 		
 		// Panel crear solicitud matricula
 		this.solicitarmatricula = new PanelMatricula(this.contenedorAlum);
+		
+		this.paginaprinc = new PanelAsignaturas(this);
+		
+		
 		// Anadir paneles
 		cartas.addLayoutComponent(this.solicitarmatricula, "Matricula");
+		cartas.addLayoutComponent(this.paginaprinc, "Principal");
 		
-			
+		this.paginaprinc.actualizarAsignaturas();
+		this.add(this.paginaprinc);
 	}
 	
+	public PanelAsignaturas getPanelPrincipal(){
+		return this.paginaprinc;
+	}
 	
 	/**
 	 * Permite cambiar entre paneles
@@ -136,6 +140,12 @@ public class PanelContenido extends JPanel {
 			this.solicitarmatricula.actualizartablas();
 			this.add(this.solicitarmatricula);
 			cartas.show(this, "Matricula");
+			
+		}else if(nombre.equals("Principal")){
+			this.removeAll();
+			this.paginaprinc.actualizarAsignaturas();
+			this.add(this.paginaprinc);
+			cartas.show(this, "Principal");
 			
 		}
 		

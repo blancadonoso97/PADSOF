@@ -2,7 +2,6 @@ package InterfazGrafica;
 
 import java.awt.CardLayout;
 import java.awt.Container;
-import java.awt.Toolkit;
 import java.io.IOException;
 
 import javax.swing.JFrame;
@@ -27,7 +26,9 @@ public class VentanaInicial extends JFrame{
 	private static CardLayout cartas = new CardLayout();
 	
 	private static Container contenedor;
-
+	private JPanel panelinicio;
+	private PanelAlumno panelalumno;
+	private PanelProfesor panelprofesor;
 	public VentanaInicial(Sistema sist) throws IOException{
 		getContentPane().setForeground(Color.WHITE);
 		getContentPane().setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.background"));
@@ -41,13 +42,13 @@ public class VentanaInicial extends JFrame{
 		contenedor.setLayout(cartas);
 		
 		// Panel de inicio de sesion
-		JPanel panelinicio = new PanelInicioSesion(this);
+		this.panelinicio = new PanelInicioSesion(this);
 		
 		// Panel alumno
-		JPanel panelalumno = new PanelAlumno(this);
+		this.panelalumno = new PanelAlumno(this);
 		
 		// Panel profesor
-		JPanel panelprofesor = new PanelProfesor(this);
+		this.panelprofesor = new PanelProfesor(this);
 		
 		// Anadir paneles
 		cartas.addLayoutComponent(panelinicio, "Inicio");
@@ -62,12 +63,7 @@ public class VentanaInicial extends JFrame{
 		cartas.show(contenedor, "Inicio");
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		/*// Escala la ventana al tamaño maximo del monitor
-		Toolkit tk = Toolkit.getDefaultToolkit();  
-		int xSize = ((int) tk.getScreenSize().getWidth());  
-		int ySize = ((int) tk.getScreenSize().getHeight());  
-		this.setSize(xSize,ySize);*/
+
 		
 		this.setSize(1039,707);
 		this.setResizable(false);
@@ -91,6 +87,7 @@ public class VentanaInicial extends JFrame{
 		if(nombre.equals("Inicio")){
 			cartas.show(contenedor, "Inicio");
 		}else if(nombre.equals("Alumno")){
+			this.panelalumno.getPanelContenido().getPanelPrincipal().actualizarAsignaturas();
 			cartas.show(contenedor, "Alumno");
 		}else if(nombre.equals("Profesor")){
 			cartas.show(contenedor, "Profesor");
