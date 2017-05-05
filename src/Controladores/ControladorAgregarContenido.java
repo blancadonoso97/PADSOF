@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import InterfazGrafica.PanelCrearApuntes;
 import InterfazGrafica.PanelCrearAsignatura;
+import InterfazGrafica.PanelCrearSubtema;
 import InterfazGrafica.PanelCrearTema;
 import InterfazGrafica.VentanaInicial;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
@@ -25,6 +26,7 @@ public class ControladorAgregarContenido implements ActionListener{
 	private PanelCrearAsignatura panelasig;
 	private PanelCrearTema paneltema;
 	private PanelCrearApuntes panelapuntes;
+	private PanelCrearSubtema panelsubtema;
 	
 	/**
 	 * Constructor de la clase ControladorAgregarAsignatura
@@ -59,6 +61,18 @@ public class ControladorAgregarContenido implements ActionListener{
 		
 		this.ventana = vent;
 		this.panelapuntes = pan;
+		
+	}
+	
+	/**
+	 * Constructor de la clase ControladorAgregarSubtema
+	 * @param vent Ventana asociada al panel
+	 * @param pan Panel crear subtema
+	 */
+	public ControladorAgregarContenido(VentanaInicial vent, PanelCrearSubtema pan){
+		
+		this.ventana = vent;
+		this.panelsubtema = pan;
 		
 	}
 	
@@ -113,19 +127,46 @@ public class ControladorAgregarContenido implements ActionListener{
 			}
 			 
 			 
-		 }else if(e.getActionCommand().equals("Crear apuntes")){
+		 }else if(e.getActionCommand().equals("Crear Apuntes")){
 			 
-			 if (paneltema.getNombreTema().equals("")) {
-				 JOptionPane.showMessageDialog(paneltema, "Debe introducir un nombre para el tema", "Error", JOptionPane.ERROR_MESSAGE);
+			 if (panelapuntes.getNombreApuntes().equals("")) {
+				 JOptionPane.showMessageDialog(panelapuntes, "Debe introducir un nombre para los apuntes", "Error", JOptionPane.ERROR_MESSAGE);
+				 return;
+			 }else if (panelapuntes.getContenidoApuntes().equals("")) {
+				 JOptionPane.showMessageDialog(panelapuntes, "Debe introducir contenido para los apuntes", "Error", JOptionPane.ERROR_MESSAGE);
 				 return;
 			 }
 			
 			 try {
-				if(ventana.getSistema().agregarTema(paneltema.getNombreTema(), paneltema.getNombreAsignatura(), paneltema.comprobarSeleccion()) == false){
-					 JOptionPane.showMessageDialog(paneltema, "Error al crear el tema", "Error", JOptionPane.ERROR_MESSAGE);
+				if(ventana.getSistema().agregarApuntes(panelapuntes.getContenedor().getContenedorProf().getVentana().getSistema().getTema(panelapuntes.getNombreTema()), panelapuntes.getContenidoApuntes(), panelapuntes.getDia(), panelapuntes.getMes(), panelapuntes.getAnyo(), panelapuntes.comprobarSeleccion(), panelapuntes.getNombreApuntes()) == false){
+					 JOptionPane.showMessageDialog(panelapuntes, "Error al crear los apuntes", "Error", JOptionPane.ERROR_MESSAGE);
 					 return;
 				 }else{
-					 JOptionPane.showMessageDialog(paneltema, "El tema " + paneltema.getNombreTema() + " ha sido creado", "Crear tema", JOptionPane.INFORMATION_MESSAGE);
+					 JOptionPane.showMessageDialog(panelapuntes, "Los apuntes " + panelapuntes.getNombreApuntes() + " han sido creados", "Crear apuntes", JOptionPane.INFORMATION_MESSAGE);
+					 return;
+				 }
+			} catch (HeadlessException e1) {
+				e1.printStackTrace();
+			} catch (InvalidEmailAddressException e1) {
+				e1.printStackTrace();
+			} catch (FailedInternetConnectionException e1) {
+				e1.printStackTrace();
+			}
+			 
+			 
+		 }else if(e.getActionCommand().equals("Crear subtema")){
+			 
+			 if (panelsubtema.getNombreTema().equals("")) {
+				 JOptionPane.showMessageDialog(panelsubtema, "Debe introducir un nombre para el subtema", "Error", JOptionPane.ERROR_MESSAGE);
+				 return;
+			 }
+			
+			 try {
+				if(ventana.getSistema().agregarSubtema(panelsubtema.getNombreSubtema(), panelsubtema.getContenedor().getContenedorProf().getVentana().getSistema().getTema(panelsubtema.getNombreTema()), panelsubtema.comprobarSeleccion()) == false){
+					 JOptionPane.showMessageDialog(panelsubtema, "Error al crear el subtema", "Error", JOptionPane.ERROR_MESSAGE);
+					 return;
+				 }else{
+					 JOptionPane.showMessageDialog(panelsubtema, "El subtema " + panelsubtema.getNombreTema() + " ha sido creado", "Crear subtema", JOptionPane.INFORMATION_MESSAGE);
 					 return;
 				 }
 			} catch (HeadlessException e1) {

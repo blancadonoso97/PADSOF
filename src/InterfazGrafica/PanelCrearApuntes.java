@@ -4,10 +4,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -34,13 +33,17 @@ private PanelContenido contenedor;
 	
 	private JLabel nombreapuntes;
 	private JTextField camponombre;
+	private JLabel contenidoapuntes;
+	private JTextField campotexto;
+	private JTextField dia;
+	private JTextField mes;
+	private JTextField anyo;
 	private JRadioButton visible;
 	private JRadioButton novisible;
 	private ButtonGroup visibilidad;
 	
 	private JButton crearApuntes;
-	private JList<String> lista;
-	private DefaultListModel<String> temas = new DefaultListModel<String>();
+	private JComboBox<String> listaasig;
 	
 	private Component rigidArea;
 	private Component rigidArea_1;
@@ -49,16 +52,28 @@ private PanelContenido contenedor;
 	private Component rigidArea_4;
 	private Component rigidArea_5;
 	
+	/**
+	 * Constructor de la clase PanelCrearApuntes
+	 * @param cont Panel que contiene a PanelCrearApuntes
+	 */
 	public PanelCrearApuntes(PanelContenido cont){
+		
 		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		
 		this.contenedor = cont;
-				
-		this.lista = new JList<String>(temas);
-		lista.setValueIsAdjusting(true);
+
+		this.listaasig = new JComboBox<String>();
+		listaasig.add(new JLabel("Seleccione una asignatura"));
 		
 		this.nombreapuntes = new JLabel("Nombre de los apuntes:");
 		this.camponombre = new JTextField(30);
+		
+		this.contenidoapuntes = new JLabel("Contenido de los apuntes:");
+		this.campotexto = new JTextField(20);
+		
+		this.dia = new JTextField(2);
+		this.mes = new JTextField(2);
+		this.anyo = new JTextField(4);
 		
 		this.visible = new JRadioButton("Apuntes visibles");
 		visible.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
@@ -92,14 +107,20 @@ private PanelContenido contenedor;
 		
 		rigidArea_3 = Box.createRigidArea(new Dimension(120, 200));
 		add(rigidArea_3);
-				
+		
+		this.add(contenidoapuntes);
+		this.add(campotexto);
+		this.add(dia);
+		this.add(mes);
+		this.add(anyo);
+
 		rigidArea_4 = Box.createRigidArea(new Dimension(1000, 30));
 		add(rigidArea_4);
 		this.add(crearApuntes);
 		
 		rigidArea_5 = Box.createRigidArea(new Dimension(0, 50));
 		add(rigidArea_5);
-		this.add(lista);
+		this.add(listaasig);
 		
 		// Anade el controlador para el boton de crear asignatura
 		ControladorAgregarContenido controlador = new ControladorAgregarContenido(contenedor.getContenedorProf().getVentana(),this);
@@ -118,22 +139,57 @@ private PanelContenido contenedor;
 	}
 	
 	/**
-	 * Devuelve el nombre del tema creado
+	 * Devuelve el nombre de los apuntes creados
 	 * @return Nombre tema
 	 */
 	public String getNombreApuntes(){
 		return camponombre.getText();
 	}
 	
-	
+	/**
+	 * Devuelve el contenido de los apuntes creados
+	 * @return Texto
+	 */
+	public String getContenidoApuntes(){
+		return campotexto.getText();
+	}
 	
 	/**
-	 * Devuelve la asignatura
-	 * @return Asignatura deseada
+	 * Obtiene el dia introducido
+	 * @return Dia
 	 */
-	public Asignatura getNombreAsignatura(){
+	public int getDia(){
 		
-		return contenedor.getContenedorProf().getVentana().getSistema().getAsignatura((lista.getSelectedValue()));
+		return Integer.parseInt(dia.getText());
+	}
+	
+	/**
+	 * Obtiene el mes introducido
+	 * @return Mes
+	 */
+	public int getMes(){
+		
+		return Integer.parseInt(mes.getText());
+	}
+	
+	/**
+	 * Obtiene el anyo introducido
+	 * @return Anyo
+	 */
+	public int getAnyo(){
+		
+		return Integer.parseInt(anyo.getText());
+	}
+	
+	/**
+	 * Devuelve el tema
+	 * @return tema deseado
+	 */
+	public String getNombreTema(){
+		
+		String valorSeleccionado = (String)listaasig.getSelectedItem();
+		
+		return valorSeleccionado;
 		
 	}
 	
@@ -167,15 +223,16 @@ private PanelContenido contenedor;
 			
 		asigexistentes = contenedor.getContenedorProf().getVentana().getSistema().getAsignaturas();
 		
-		temas.removeAllElements();
+		listaasig.removeAllItems();
 		
 		for (Asignatura a : asigexistentes){
 			
 			for (Tema b : a.getTemas()){
-				temas.addElement(b.getNombre());
+				listaasig.addItem(b.getNombre());
 			}
 			
 		}
+		
  
 	 }
 	

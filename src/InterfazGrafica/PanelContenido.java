@@ -47,7 +47,7 @@ public class PanelContenido extends JPanel {
 		this.temas = new PanelCrearTema(this);
 		
 		// Panel crear subtema
-		this.subtemas = new PanelCrearSubtema(/*this*/);
+		this.subtemas = new PanelCrearSubtema(this);
 				
 		// Panel crear apuntes
 		this.apuntes = new PanelCrearApuntes(this);
@@ -121,12 +121,13 @@ public class PanelContenido extends JPanel {
 			
 		}else if(nombre.equals("Subtema")){
 			this.removeAll();
+			this.subtemas.actualizarTabla();
 			this.add(this.subtemas);
 			cartas.show(this, "Subtema");
 			
 		}else if(nombre.equals("Apuntes")){
 			this.removeAll();
-			/*this.apuntes.actualizarTabla();*/
+			this.apuntes.actualizarTabla();
 			this.add(this.apuntes);
 			cartas.show(this, "Apuntes");
 			

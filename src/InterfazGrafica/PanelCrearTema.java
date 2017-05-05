@@ -4,10 +4,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -37,8 +36,7 @@ public class PanelCrearTema extends JPanel{
 	private JRadioButton novisible;
 	private ButtonGroup visibilidad;
 	private JButton crearTema;
-	private DefaultListModel<String> asignaturas = new DefaultListModel<String>();
-	private JList<String> lista;
+	private JComboBox<String>lista;
 	
 	private Component rigidArea;
 	private Component rigidArea_1;
@@ -53,7 +51,7 @@ public class PanelCrearTema extends JPanel{
 		
 		this.contenedor = cont;
 
-		this.lista = new JList<String>(asignaturas); 
+		this.lista = new JComboBox<String>(); 
 		
 		this.nombretema = new JLabel("Nombre del tema:");
 		this.camponombre = new JTextField(20);
@@ -130,7 +128,9 @@ public class PanelCrearTema extends JPanel{
 	 */
 	public Asignatura getNombreAsignatura(){
 		
-		return contenedor.getContenedorProf().getVentana().getSistema().getAsignatura((lista.getSelectedValue()));
+		String valorSeleccionado = (String)lista.getSelectedItem();
+		
+		return contenedor.getContenedorProf().getVentana().getSistema().getAsignatura((valorSeleccionado));
 		
 	}
 	
@@ -164,10 +164,10 @@ public class PanelCrearTema extends JPanel{
 			
 		asigexistentes = contenedor.getContenedorProf().getVentana().getSistema().getAsignaturas();
 		
-		asignaturas.removeAllElements();
+		lista.removeAllItems();
 		
 		 for (Asignatura a : asigexistentes){
-				asignaturas.addElement(a.getNombre());
+				lista.addItem(a.getNombre());
 				
 			}
 		 
