@@ -1,6 +1,7 @@
 package InterfazGrafica;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -155,7 +156,19 @@ public class PanelAdministrar extends JPanel{
 	 */
 	public void actualizarTablaMatriculas(){
 		
+		ArrayList<SolicitudMatricula> matexistentes = new ArrayList<SolicitudMatricula>();
 		
+		matexistentes = contenedor.getContenedorProf().getVentana().getSistema().getSolicitudes();
+		
+		tablaMatricula.removeAll();
+		
+		for (SolicitudMatricula a : matexistentes){
+			
+			modelomat.addRow(new Object[]{a.getAlumno().getId(), a.getAsignatura().getNombre()});
+			
+		}
+		
+		tablaMatricula.setModel(modelomat);
 		
 	}
 	
@@ -165,7 +178,19 @@ public class PanelAdministrar extends JPanel{
 	 */
 	public void actualizarTablaExpulsiones(){
 		
+		ArrayList<Expulsion> expexistentes = new ArrayList<Expulsion>();
 		
+		expexistentes = contenedor.getContenedorProf().getVentana().getSistema().getExpulsiones();
+		
+		tablaMatricula.removeAll();
+		
+		for (Expulsion a : expexistentes){
+			
+			modeloexp.addRow(new Object[]{a.getAlumno().getId(), a.getAsignatura().getNombre()});
+			
+		}
+		
+		tablaMatricula.setModel(modeloexp);
 		
 	}
 	
@@ -175,6 +200,31 @@ public class PanelAdministrar extends JPanel{
 	 */
 	public void actualizarTablaAsignaturas(){
 		
+		tablaAsignaturas = new JTable();
+		
+		modeloasig = new DefaultTableModel();
+		
+		ArrayList<Asignatura> asigexistentes = new ArrayList<Asignatura>();
+		
+		asigexistentes = contenedor.getContenedorProf().getVentana().getSistema().getAsignaturas();
+		
+		tablaAsignaturas.removeAll();
+		
+		 for (Asignatura a : asigexistentes){
+			 
+			 for (Alumno b: a.getAlumnos()){
+				 
+				 modeloasig.addRow(new Object[]{b.getId()});
+				 
+				 
+			 }
+			 
+			 modeloasig.addColumn(a.getNombre());
+			 
+		 }
+		
+		
+		 tablaAsignaturas.setModel(modeloasig);
 		
 		
 	}
