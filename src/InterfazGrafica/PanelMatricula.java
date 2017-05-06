@@ -115,15 +115,11 @@ public class PanelMatricula extends JPanel {
 		return this.contAl.getVentana().getSistema().getAsignatura(this.listasignaturas.getSelectedValue()).getNombre();
 	}
 	
-	public void realizarSolicitud(){
-		this.contAl.getVentana().getSistema().getAlumnoLog().agregarSolicitud(new SolicitudMatricula(this.contAl.getVentana().getSistema().getAlumnoLog(),this.contAl.getVentana().getSistema().getAsignatura(this.listasignaturas.getSelectedValue()),false));
-		return ;
-	}
 	
 	public void actualizartablas(){
 			 
 			
-		ArrayList<SolicitudMatricula> solicitudes ;
+		ArrayList<SolicitudMatricula> solicitudes;
 		ArrayList<Asignatura> asignaturas;
 		ArrayList<Asignatura> matriculadas;
 		ArrayList<Asignatura> pendientes = new ArrayList<Asignatura>();

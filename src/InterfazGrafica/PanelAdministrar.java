@@ -60,8 +60,8 @@ public class PanelAdministrar extends JPanel{
 		this.modeloexp = new DefaultTableModel(new String[] {"Alumno", "Expulsado de"}, 0);
 		this.tablaExpulsion.setModel(modeloexp);	
 		
-		this.aceptar = new JButton("Aceptar peticion");
-		this.denegar = new JButton("Denegar peticion");
+		this.aceptar = new JButton("Aceptar Matricula");
+		this.denegar = new JButton("Denegar Matricula");
 		this.expulsar = new JButton("Expulsar");
 
 		this.add(tablaMatricula);
@@ -107,7 +107,7 @@ public class PanelAdministrar extends JPanel{
 		int fila = tablaMatricula.getSelectedRow();
 		String idAlumno = tablaMatricula.getModel().getValueAt(fila, 0).toString(); // Id = columna 0
 		
-		String nombreAsig = tablaMatricula.getModel().getValueAt(fila, 0).toString(); // Nombre = columna 1
+		String nombreAsig = tablaMatricula.getModel().getValueAt(fila, 1).toString(); // Nombre = columna 1
 		
 		return contenedor.getContenedorProf().getVentana().getSistema().getMatricula(idAlumno, nombreAsig);
 		
