@@ -292,6 +292,7 @@ public class Sistema implements Serializable{
 						
 			if(exp.getExpulsado() == false){
 				alum.agregarAsignatura(exp.getAsignatura());
+				exp.getAsignatura().agregarAlumno(exp.getAlumno());
 				expulsiones.remove(this); //Si la expulsion ya no esta vigente, se elimina
 				return false;
 			}
@@ -370,6 +371,7 @@ public class Sistema implements Serializable{
 				
 				exp.setExpulsado(true);
 				exp.getAlumno().eliminarAsignatura(exp.getAsignatura());
+				exp.getAsignatura().eliminarAlumno(exp.getAlumno());
 				
 				enviarNotificacion(exp.getAlumno(), "Expulsion", "Ha sido expulsado de la asignatura: " + exp.getAsignatura().getNombre() + "\n");
 				

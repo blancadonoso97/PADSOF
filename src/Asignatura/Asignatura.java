@@ -113,6 +113,15 @@ public class Asignatura implements Serializable{
 	}
 	
 	/**
+	 * Elimina un alumno
+	 * @param alum Alumno a eliminar
+	 * @return true si se elimina correctamente, false en caso contrario
+	 */
+	public boolean eliminarAlumno(Alumno alum){
+		return alumnos.remove(alum);
+	}
+	
+	/**
 	 * Devuelve los alumnos matriculados en la asignatura
 	 * @return alumnos
 	 */
