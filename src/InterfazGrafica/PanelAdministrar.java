@@ -58,7 +58,7 @@ public class PanelAdministrar extends JPanel{
 		
 		// Creacion de la tabla de expulsiones
 		this.modeloexp = new DefaultTableModel(new String[] {"Alumno", "Expulsado de"}, 0);
-		this.tablaExpulsion.setModel(modeloexp);	
+		this.tablaExpulsion.setModel(modeloexp);
 		
 		this.aceptar = new JButton("Aceptar Matricula");
 		this.denegar = new JButton("Denegar Matricula");
@@ -102,7 +102,6 @@ public class PanelAdministrar extends JPanel{
 	 * @return Solicitud de matricula
 	 */
 	public SolicitudMatricula getMatricula(){
-		
 		
 		int fila = tablaMatricula.getSelectedRow();
 		String idAlumno = tablaMatricula.getModel().getValueAt(fila, 0).toString(); // Id = columna 0
@@ -162,12 +161,15 @@ public class PanelAdministrar extends JPanel{
 	 */
 	public void actualizarTablaMatriculas(){
 		
+		tablaMatricula.removeAll();
+		
+		modelomat = new DefaultTableModel(new String[] {"Alumno", "Asignatura a matricularse"}, 0);
+		modelomat.addRow(new String[]{"Alumno", "Asignatura a matricularse"});
+		
 		ArrayList<SolicitudMatricula> matexistentes = new ArrayList<SolicitudMatricula>();
 		
 		matexistentes = contenedor.getContenedorProf().getVentana().getSistema().getSolicitudes();
-		
-		tablaMatricula.removeAll();
-		
+
 		for (SolicitudMatricula a : matexistentes){
 			
 			modelomat.addRow(new Object[]{a.getAlumno().getId(), a.getAsignatura().getNombre()});
@@ -184,11 +186,14 @@ public class PanelAdministrar extends JPanel{
 	 */
 	public void actualizarTablaExpulsiones(){
 		
+		tablaMatricula.removeAll();
+
+		modeloexp = new DefaultTableModel(new String[] {"Alumno", "Expulsado de"}, 0);
+		modeloexp.addRow(new String[]{"Alumno", "Expulsado de"});
+		
 		ArrayList<Expulsion> expexistentes = new ArrayList<Expulsion>();
 		
 		expexistentes = contenedor.getContenedorProf().getVentana().getSistema().getExpulsiones();
-		
-		tablaMatricula.removeAll();
 		
 		for (Expulsion a : expexistentes){
 			
@@ -205,6 +210,7 @@ public class PanelAdministrar extends JPanel{
 	 * Actualiza la tabla de asignaturas
 	 */
 	public void actualizarTablaAsignaturas(){
+		
 		
 		modeloasig = new DefaultTableModel();
 		
