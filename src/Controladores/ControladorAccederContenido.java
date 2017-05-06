@@ -170,6 +170,81 @@ public class ControladorAccederContenido  implements ActionListener {
 				
 			}
 			
+			else if(!panelt.getNombreSubtemaSeleccionado().equals("") && !panelt.getNombreSubtemaSeleccionado().equals("varios")){
+				
+				
+				if(panelt.getPanelAlumno()!=null){
+					
+					for(i=0;i<panelt.getPanelAlumno().getVentana().getSistema().getAlumnoLog().getAsignatura(panelt.getPanelAlumno().getPanelContenido().getPanelAsignatura().getNombreAsignatura()).getTema(panelt.getNombreTema()).getTemas().size();i++){
+						
+						if(panelt.getPanelAlumno().getVentana().getSistema().getAlumnoLog().getAsignatura(panelt.getPanelAlumno().getPanelContenido().getPanelAsignatura().getNombreAsignatura()).getTema(panelt.getNombreTema()).getTemas().get(i).getNombre().equals(panelt.getNombreSubtemaSeleccionado())){
+							exist = true;
+						}
+					}
+					
+				}else{
+					for(i=0;i<panelt.getPanelProf().getVentana().getSistema().getAsignatura(panelt.getPanelProf().getPanelContenido().getPanelAsignatura().getNombreAsignatura()).getTema(panelt.getNombreTema()).getTemas().size();i++){
+						if(panelt.getPanelProf().getVentana().getSistema().getAsignatura(panelt.getPanelProf().getPanelContenido().getPanelAsignatura().getNombreAsignatura()).getTema(panelt.getNombreTema()).getTemas().get(i).getNombre().equals(panelt.getNombreSubtemaSeleccionado())){
+							exist = true;
+						}
+					}
+				}
+				
+				if(!exist){
+					 JOptionPane.showMessageDialog(panelt, "Lo que ha seleccionado no existe", "Error", JOptionPane.ERROR_MESSAGE);
+					 return;
+				}
+				
+				
+				if(panelt.getPanelProf()!=null){
+					panelt.getPanelProf().getPanelContenido().cambiarCarta("AccederTem");	
+				}else{
+					panelt.getPanelAlumno().getPanelContenido().cambiarCarta("AccederTem");	
+				}
+				
+				
+				
+				
+			}
+			
+			else if(!panelt.getNombreEjercicioSeleccionado().equals("") && !panelt.getNombreEjercicioSeleccionado().equals("varios")){
+				
+			
+				 
+				if(panelt.getPanelAlumno()!=null){
+					
+					for(i=0;i<panelt.getPanelAlumno().getVentana().getSistema().getAlumnoLog().getAsignatura(panelt.getPanelAlumno().getPanelContenido().getPanelAsignatura().getNombreAsignatura()).getTema(panelt.getNombreTema()).getNEjercicios();i++){
+						
+						if(panelt.getPanelAlumno().getVentana().getSistema().getAlumnoLog().getAsignatura(panelt.getPanelAlumno().getPanelContenido().getPanelAsignatura().getNombreAsignatura()).getTema(panelt.getNombreTema()).getEjercicios().get(i).getNombre().equals(panelt.getNombreEjercicioSeleccionado())){
+							exist = true;
+						}
+					}
+					
+				}else{
+					for(i=0;i<panelt.getPanelProf().getVentana().getSistema().getAsignatura(panelt.getPanelProf().getPanelContenido().getPanelAsignatura().getNombreAsignatura()).getTema(panelt.getNombreTema()).getNEjercicios();i++){
+						if(panelt.getPanelProf().getVentana().getSistema().getAsignatura(panelt.getPanelProf().getPanelContenido().getPanelAsignatura().getNombreAsignatura()).getTema(panelt.getNombreTema()).getEjercicios().get(i).getNombre().equals(panelt.getNombreEjercicioSeleccionado())){
+							exist = true;
+						}
+					}
+				}
+				
+				if(!exist){
+					 JOptionPane.showMessageDialog(panelt, "Lo que ha seleccionado no existe", "Error", JOptionPane.ERROR_MESSAGE);
+					 return;
+				}
+				
+				
+				if(panelt.getPanelProf()!=null){
+					panelt.getPanelProf().getPanelContenido().cambiarCarta("AccederEj");	
+				}else{
+					panelt.getPanelAlumno().getPanelContenido().cambiarCarta("AccederEj");	
+				}
+				
+				
+				
+				
+			}
+			
 		}	
 		
 			

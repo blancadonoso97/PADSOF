@@ -32,7 +32,6 @@ public class PanelContenido extends JPanel {
 	private PanelApunte panelap;
 	private PanelEjercicio panelej;
 	private PanelAdministrar paneladmin;
-	
 	/**
 	 * Constructor de la clase PanelContenido
 	 * @wbp.parser.constructor
@@ -75,6 +74,7 @@ public class PanelContenido extends JPanel {
 		
 		this.panelej = new PanelEjercicio(this);
 		
+		
 		cartas.addLayoutComponent(this.asig, "Asignatura");
 		cartas.addLayoutComponent(this.temas, "Tema");
 		cartas.addLayoutComponent(this.apuntes, "Apuntes");
@@ -83,19 +83,11 @@ public class PanelContenido extends JPanel {
 		cartas.addLayoutComponent(this.paginaprinc, "Principal");
 		cartas.addLayoutComponent(this.panelasig, "AccederAsig");
 		cartas.addLayoutComponent(this.paneltem, "AccederTem");
-<<<<<<< HEAD
-
 		cartas.addLayoutComponent(this.paneltem, "AccederApunte");
 		cartas.addLayoutComponent(this.panelej, "AccederEj");
-
 		cartas.addLayoutComponent(this.paneladmin, "Administrar");
 
-		
-=======
-		cartas.addLayoutComponent(this.paneltem, "AccederApunte");
-		cartas.addLayoutComponent(this.panelej, "AccederEj");
-		cartas.addLayoutComponent(this.paneladmin, "Administrar");	
->>>>>>> c33cb13b8806cfea97ccee9ae0e18658a361c9d3
+	
 		this.paginaprinc.actualizarAsignaturas();
 		this.add(this.paginaprinc);
 		
@@ -125,6 +117,7 @@ public class PanelContenido extends JPanel {
 		this.panelap = new PanelApunte(this);
 		
 		this.panelej = new PanelEjercicio(this);
+		
 		
 		// Anadir panelpaneltemes
 		cartas.addLayoutComponent(this.solicitarmatricula, "Matricula");

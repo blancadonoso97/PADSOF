@@ -36,15 +36,18 @@ public class PanelTema extends JPanel {
 	PanelTema(PanelContenido cont){
 		
 		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
-		this.subtemas.addElement("No existe ningun subtema");
-		this.apuntes.addElement("No existe ningun apunte");
-		this.ejercicios.addElement("No existe ningun ejercicio");
+		
 		
 		ControladorAccederContenido controlador = new ControladorAccederContenido(this);
 		SpringLayout springLayout = new SpringLayout();
 		setLayout(springLayout);
+
+		this.apuntes.addElement("No existe ningun apunte");
+		this.ejercicios.addElement("No existe ningun ejercicio");
+		this.subtemas.addElement("No existe ningun subtema");
 		
 		this.acceder = new JButton("Acceder");
+		
 		springLayout.putConstraint(SpringLayout.WEST, acceder, 110, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.EAST, acceder, -496, SpringLayout.EAST, this);
 		acceder.setFont(new Font("WenQuanYi Micro Hei Mono", Font.BOLD, 12));
@@ -155,7 +158,66 @@ public class PanelTema extends JPanel {
 		
 		this.add(acceder);
 		
-		if(this.contenedorProf != null){
+		if(!this.getNombreSubtemaSeleccionado().equals("") && !this.getNombreSubtemaSeleccionado().equals("varios")  ){
+			
+			if(this.contenedorProf != null){
+				 
+				Tema TemaPadre =this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado());
+					 
+				for(Tema t : TemaPadre.getTemas()){
+					if(t.getNombre().equals(this.getNombreSubtemaSeleccionado())){
+						 
+						tem = t.getTemas();
+						apun =t.getApuntes();
+						ej = t.getEjercicios();
+						
+						subtemas.removeAllElements();
+						apuntes.removeAllElements();
+						ejercicios.removeAllElements();
+						
+						if(!tem.isEmpty()){	
+								
+							for(Tema a : tem){
+								subtemas.addElement(a.getNombre());
+							}
+									
+						}else{
+							this.subtemas.addElement("No existe ningun subtema");
+						}
+						
+						if(!apun.isEmpty()){
+							
+							for(Apuntes a : apun){
+								apuntes.addElement(a.getTitulo());
+							}
+									
+						}else{
+							this.apuntes.addElement("No existe ningun apunte");
+						}
+						
+						if(!ej.isEmpty()){
+								
+							for(Ejercicio a : ej){
+								ejercicios.addElement(a.getNombre());
+							}
+									
+						}else{
+							this.ejercicios.addElement("No existe ningun ejercicio"); 	
+						}
+						
+						
+						
+					}
+						
+				}
+					
+				
+			}
+			
+			
+		}
+		else if(this.contenedorProf != null){
+			
 			
 			tem = this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado()).getTemas();
 			apun = this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado()).getApuntes();

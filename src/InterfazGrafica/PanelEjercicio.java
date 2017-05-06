@@ -6,9 +6,7 @@ import javax.swing.JPanel;
 
 public class PanelEjercicio extends JPanel{
 		
-		/**
-		 * 
-		 */
+		
 		private static final long serialVersionUID = 1L;
 
 		PanelEjercicio(PanelContenido cont){

@@ -116,10 +116,6 @@ public class PanelMatricula extends JPanel {
 		return this.listasignaturas.getSelectedValue();
 	}
 	
-<<<<<<< HEAD
-
-=======
->>>>>>> c33cb13b8806cfea97ccee9ae0e18658a361c9d3
 	public void realizarSolicitud(){
 		ArrayList<SolicitudMatricula> matr = this.contAl.getVentana().getSistema().getAlumnoLog().getSolicitudesMat();
 		boolean exist = false;
@@ -140,10 +136,6 @@ public class PanelMatricula extends JPanel {
 		}
 	}
 
-<<<<<<< HEAD
-	
-=======
->>>>>>> c33cb13b8806cfea97ccee9ae0e18658a361c9d3
 	public void actualizartablas(){
 			 
 			
@@ -161,7 +153,9 @@ public class PanelMatricula extends JPanel {
 				
 		if(!solicitudes.isEmpty()){
 			modelopen.removeAllElements();
-				
+			/**
+			 * 
+			 */
 			for(SolicitudMatricula s : solicitudes){
 				pendientes.add(s.getAsignatura());
 			}
