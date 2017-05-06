@@ -301,11 +301,12 @@ public class PanelAdministrar extends JPanel{
 		
 		tablaAsignaturas.removeAll();
 		
-		 for (Asignatura a : asigexistentes){
+		modeloasig.addColumn("Alumnos por asignatura");
+		
+		for (Asignatura a : asigexistentes){
 			 
-			 modeloasig.addColumn(a.getNombre());
-			 modeloasig.addRow(new Object[]{a.getNombre()});
-			 
+			modeloasig.addRow(new Object[]{a.getNombre()});
+			
 			 for (Alumno b: a.getAlumnos()){
 				 
 				 modeloasig.addRow(new Object[]{b.getId()});
