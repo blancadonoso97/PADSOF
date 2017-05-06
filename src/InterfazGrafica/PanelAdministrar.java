@@ -50,6 +50,7 @@ public class PanelAdministrar extends JPanel{
 		
 		this.tablaMatricula = new JTable();
 		this.tablaExpulsion = new JTable();
+		this.tablaAsignaturas = new JTable();
 		
 		// Creacion de la tabla con las peticiones de matricula
 		this.modelomat = new DefaultTableModel(new String[] {"Alumno", "Asignatura a matricularse"}, 0);
@@ -65,7 +66,7 @@ public class PanelAdministrar extends JPanel{
 
 		this.add(tablaMatricula);
 		this.add(tablaExpulsion);
-		
+		this.add(tablaAsignaturas);
 		this.add(aceptar);
 		this.add(denegar);
 		this.add(expulsar);
@@ -205,8 +206,6 @@ public class PanelAdministrar extends JPanel{
 	 */
 	public void actualizarTablaAsignaturas(){
 		
-		tablaAsignaturas = new JTable();
-		
 		modeloasig = new DefaultTableModel();
 		
 		ArrayList<Asignatura> asigexistentes = new ArrayList<Asignatura>();
@@ -230,7 +229,7 @@ public class PanelAdministrar extends JPanel{
 		
 		
 		 tablaAsignaturas.setModel(modeloasig);
-		 this.add(tablaAsignaturas);
+		 
 		
 		
 	}
