@@ -323,6 +323,8 @@ public class Sistema implements Serializable{
 				
 			enviarNotificacion(mat.getAlumno(), "Matricula", "Su matricula en la asignatura " + mat.getAsignatura().getNombre() + " ha sido aceptada\n");
 
+			solicitudes.remove(mat);
+			
 			return true;	
 		}
 		
