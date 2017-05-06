@@ -40,6 +40,7 @@ public class PanelBarraHerramientas extends JPanel {
 	private JButton ejercicio;
 	private JButton matricula;
 	private JButton principal;
+	private JButton administrar;
 	private JButton desconectar;
 	private JTree contenido;
 	private DefaultMutableTreeNode asignaturas = new DefaultMutableTreeNode("Asignaturas"); // Raiz del arbol contenido
@@ -78,19 +79,20 @@ public class PanelBarraHerramientas extends JPanel {
 		
 		rigidArea_4 = Box.createRigidArea(new Dimension(0, 70));
 		add(rigidArea_4);
+		this.asignatura = new JButton("Crear Asignatura");
+		this.add(asignatura);
+		this.add(Box.createRigidArea(new Dimension(0, 20)));
+
 		this.add(tema);
 		this.add(Box.createRigidArea(new Dimension(0, 20)));
-		
-		this.asignatura = new JButton("Crear Asignatura");
-		
-		this.add(asignatura);
+		this.subtema = new JButton("Crear Subtema");
+		this.add(subtema);
 		this.add(Box.createRigidArea(new Dimension(0, 20)));
 		this.add(ejercicio);
 		this.add(Box.createRigidArea(new Dimension(0, 20)));
 		
-		this.principal = new JButton("Pagina Principal");
-
-		this.add(principal);
+		this.apuntes = new JButton("Crear Apuntes");
+		this.add(apuntes);
 		this.add(Box.createRigidArea(new Dimension(0, 20)));
 		
 		// Pruebas
@@ -103,17 +105,15 @@ public class PanelBarraHerramientas extends JPanel {
 		
 		asignaturas.add(repositorio);
 
-		
-		// Modificar la posicion del contenido
-		
-		
-		this.subtema = new JButton("Crear Subtema");
-		this.add(subtema);
-		
 		rigidArea_2 = Box.createRigidArea(new Dimension(0, 20));
 		add(rigidArea_2);
-		this.apuntes = new JButton("Crear Apuntes");
-		this.add(apuntes);
+		
+		this.administrar = new JButton("Administrar");
+		this.add(administrar);
+		
+		this.principal = new JButton("Pagina Principal");
+
+		this.add(principal);
 		Component rigidArea = Box.createRigidArea(new Dimension(0,20));
 		this.add(rigidArea);
 		
@@ -145,6 +145,7 @@ public class PanelBarraHerramientas extends JPanel {
 		this.setControlador("Apuntes", controlador);
 		this.setControlador("Principal", controlador);
 		this.setControlador("Subtema", controlador);
+		this.setControlador("Administrar", controlador);
 		
 		this.setVisible(true);
 		
@@ -244,6 +245,8 @@ public class PanelBarraHerramientas extends JPanel {
 			 apuntes.addActionListener(c);
 		 }else if(nombreBoton.equals("Principal")){
 			 principal.addActionListener(c);
+		 }else if(nombreBoton.equals("Administrar")){
+			 administrar.addActionListener(c);
 		 }
 		 
 		 

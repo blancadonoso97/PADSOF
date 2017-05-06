@@ -7,8 +7,8 @@ import eCourses.Sistema;
 
 /**
  * Clase para ejecutar la interfaz grafica
+ * 
  * @author Miguel Angel Bouzada, Blanca Martinez Donoso
- *
  */
 public class TestInterfaz {
 

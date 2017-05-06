@@ -49,7 +49,7 @@ public class ControladorMatricula  implements ActionListener{
 		if(e.getActionCommand().equals("Solicitar")){
 			
 			if(!ventana.getSistema().getEsProfesor()){
-				panel.realizarSolicitud();
+				ventana.getSistema().agregarSolicitud(ventana.getSistema().getAsignatura(panel.getNombre()));
 				panel.actualizartablas();
 				panel.getPanelAlumno().getPanelContenido().cambiarCarta("Solicitud");
 			}
