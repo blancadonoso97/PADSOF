@@ -162,8 +162,7 @@ public class PanelAdministrar extends JPanel{
 	public void actualizarTablaMatriculas(){
 		
 		tablaMatricula.removeAll();
-		
-		modelomat = new DefaultTableModel(new String[] {"Alumno", "Asignatura a matricularse"}, 0);
+
 		modelomat.addRow(new String[]{"Alumno", "Asignatura a matricularse"});
 		
 		ArrayList<SolicitudMatricula> matexistentes = new ArrayList<SolicitudMatricula>();
@@ -188,7 +187,6 @@ public class PanelAdministrar extends JPanel{
 		
 		tablaMatricula.removeAll();
 
-		modeloexp = new DefaultTableModel(new String[] {"Alumno", "Expulsado de"}, 0);
 		modeloexp.addRow(new String[]{"Alumno", "Expulsado de"});
 		
 		ArrayList<Expulsion> expexistentes = new ArrayList<Expulsion>();
@@ -211,7 +209,6 @@ public class PanelAdministrar extends JPanel{
 	 */
 	public void actualizarTablaAsignaturas(){
 		
-		
 		modeloasig = new DefaultTableModel();
 		
 		ArrayList<Asignatura> asigexistentes = new ArrayList<Asignatura>();
@@ -222,15 +219,15 @@ public class PanelAdministrar extends JPanel{
 		
 		 for (Asignatura a : asigexistentes){
 			 
+			 modeloasig.addColumn(a.getNombre());
+			 modeloasig.addRow(new Object[]{a.getNombre()});
+			 
 			 for (Alumno b: a.getAlumnos()){
 				 
 				 modeloasig.addRow(new Object[]{b.getId()});
-				 
-				 
+
 			 }
-			 
-			 modeloasig.addColumn(a.getNombre());
-			 
+
 		 }
 		
 		
