@@ -1,9 +1,7 @@
 package eCourses;
 
 import java.io.*;
-
 import java.util.ArrayList;
-
 import Asignatura.Apuntes;
 import Asignatura.Asignatura;
 import Asignatura.Tema;
@@ -618,13 +616,28 @@ public class Sistema implements Serializable{
 		/* Solo se puede crear una solicitud de matricula en una asignatura visible*/
 		if(!esProfesor && asig.esVisible()){
 			
-			SolicitudMatricula matricula = new SolicitudMatricula(alumnoLog, asig, false);
 			
-			alumnoLog.agregarSolicitud(matricula);
+			ArrayList<SolicitudMatricula> matr = this.getAlumnoLog().getSolicitudesMat();
+			boolean exist = false;
 			
-			solicitudes.add(matricula);
+			for(SolicitudMatricula m : matr){
+				if(m.getAsignatura().getNombre().equals(asig.getNombre())){
+					exist = true;
+				}
+
+			}
+			if(!exist){
+				SolicitudMatricula matricula = new SolicitudMatricula(alumnoLog, asig, false);
+				
+				alumnoLog.agregarSolicitud(matricula);
+				
+				solicitudes.add(matricula);
+				return true;
+				
+			}else{
+				 return false;
+			}
 			
-			return true;
 		}else 
 			return false;
 		

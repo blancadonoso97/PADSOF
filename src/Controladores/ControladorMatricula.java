@@ -34,6 +34,10 @@ public class ControladorMatricula  implements ActionListener{
 			 JOptionPane.showMessageDialog(panel, "Debe introducir una asignatura", "Error", JOptionPane.ERROR_MESSAGE);
 			 return;
 		}
+		if(panel.getNombre().equals("varios")){
+			JOptionPane.showMessageDialog(panel, "Solo puede elegir una asignatura", "Error", JOptionPane.ERROR_MESSAGE);
+			 return;
+		}
 		
 		for(i=0;i<panel.getListaAsignaturas().getModel().getSize();i++){
 			if(panel.getListaAsignaturas().getModel().getElementAt(i).equals(panel.getNombre())){
@@ -49,7 +53,13 @@ public class ControladorMatricula  implements ActionListener{
 		if(e.getActionCommand().equals("Solicitar")){
 			
 			if(!ventana.getSistema().getEsProfesor()){
-				ventana.getSistema().agregarSolicitud(ventana.getSistema().getAsignatura(panel.getNombre()));
+				if(!ventana.getSistema().agregarSolicitud(ventana.getSistema().getAsignatura(panel.getNombre()))){
+					
+					JOptionPane.showMessageDialog(panel, "Ya ha solicitado una matricula en esa asignatura", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+					
+				}
+				JOptionPane.showMessageDialog(panel, "Se ha realizado la solicitud de matricula en la asignatura "+ panel.getNombre(), "Solicitar Matricula", JOptionPane.INFORMATION_MESSAGE);
 				panel.actualizartablas();
 				panel.getPanelAlumno().getPanelContenido().cambiarCarta("Solicitud");
 			}

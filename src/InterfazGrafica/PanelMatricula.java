@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Asignatura.Asignatura;
@@ -112,29 +111,16 @@ public class PanelMatricula extends JPanel {
 	}
 	
 	public String getNombre(){
-		
-		return this.listasignaturas.getSelectedValue();
+		if(this.listasignaturas.getSelectedValue() == null){
+			return "";
+		}else if(this.listasignaturas.getSelectedValue() != null && (this.listmatriculadas.getSelectedValue()!=null || this.listpendientes.getSelectedValue() !=null)){
+			return "varios";
+		}else{
+			return this.listasignaturas.getSelectedValue();
+		}
 	}
 	
-	public void realizarSolicitud(){
-		ArrayList<SolicitudMatricula> matr = this.contAl.getVentana().getSistema().getAlumnoLog().getSolicitudesMat();
-		boolean exist = false;
-		
-		for(SolicitudMatricula m : matr){
-			if(m.getAsignatura().getNombre().equals(this.listasignaturas.getSelectedValue())){
-				exist = true;
-			}
 
-		}
-		if(!exist){
-			this.contAl.getVentana().getSistema().getAlumnoLog().agregarSolicitud(new SolicitudMatricula(this.contAl.getVentana().getSistema().getAlumnoLog(),this.contAl.getVentana().getSistema().getAsignatura(this.listasignaturas.getSelectedValue()),false));
-			return;
-		}else{
-			 
-			JOptionPane.showMessageDialog(this, "Ya ha solicitado una matricula en esa asignatura", "Error", JOptionPane.ERROR_MESSAGE);
-			 return;
-		}
-	}
 
 	public void actualizartablas(){
 			 

@@ -75,7 +75,8 @@ public class ControladorAccederContenido  implements ActionListener {
 			
 			
 			if(panelp.getPanelProfesor()!=null){
-				panelp.getPanelProfesor().getPanelContenido().cambiarCarta("AccederAsig");	
+				panelp.getPanelProfesor().getPanelContenido().cambiarCarta("AccederAsig");
+				
 			}else{
 				panelp.getPanelAlumno().getPanelContenido().cambiarCarta("AccederAsig");	
 			}
