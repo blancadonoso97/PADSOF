@@ -345,6 +345,8 @@ public class Sistema implements Serializable{
 			mat.getAlumno().eliminarSolicitud(mat);
 
 			enviarNotificacion(mat.getAlumno(), "Matricula", "Su matricula en la asignatura " + mat.getAsignatura().getNombre() + " ha sido denegada\n");
+			
+			solicitudes.remove(mat);
 
 			return true;
 		}

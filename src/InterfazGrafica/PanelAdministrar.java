@@ -119,10 +119,12 @@ public class PanelAdministrar extends JPanel{
 	 */
 	public Expulsion getExpulsion(){
 		
-		int fila = tablaMatricula.getSelectedRow();
-		String idAlumno = tablaMatricula.getModel().getValueAt(fila, 0).toString(); // Id = columna 0
+		int fila = tablaAsignaturas.getSelectedRow();
+		int columna = tablaAsignaturas.getSelectedColumn();
 		
-		String nombreAsig = tablaMatricula.getModel().getValueAt(fila, 1).toString(); // Nombre = columna 1
+		String idAlumno = tablaAsignaturas.getModel().getValueAt(fila, columna).toString(); // Id = columna 0
+		
+		String nombreAsig = tablaAsignaturas.getModel().getValueAt(0, columna).toString(); // Nombre = columna 1
 
 		return contenedor.getContenedorProf().getVentana().getSistema().getExpulsion(idAlumno, nombreAsig);
 		
