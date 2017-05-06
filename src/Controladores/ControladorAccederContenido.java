@@ -242,14 +242,9 @@ public class ControladorAccederContenido  implements ActionListener {
 				}
 				
 				
-				
-				
 			}
 			
 		}	
-		
-			
-			
 		
 	
 	}
