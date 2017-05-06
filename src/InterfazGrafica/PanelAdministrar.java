@@ -1,9 +1,16 @@
 package InterfazGrafica;
 
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import Asignatura.Asignatura;
+import Controladores.ControladorAdministrar;
+import eCourses.Alumno;
+import eCourses.Expulsion;
 import eCourses.SolicitudMatricula;
 
 /**
@@ -24,6 +31,13 @@ public class PanelAdministrar extends JPanel{
 	private JTable tablaExpulsion;
 	private DefaultTableModel modeloexp;
 	
+	private JTable tablaAsignaturas;
+	private DefaultTableModel modeloasig;
+	
+	private JButton aceptar;
+	private JButton denegar;
+	private JButton expulsar;
+	
 	
 	/**
 	 * Constructor de la clase PanelAdministrar
@@ -39,11 +53,33 @@ public class PanelAdministrar extends JPanel{
 		
 		// Creacion de la tabla de expulsiones
 		this.modeloexp = new DefaultTableModel(new String[] {"Alumno", "Expulsado de"}, 0);
-		this.tablaExpulsion.setModel(modeloexp);
+		this.tablaExpulsion.setModel(modeloexp);	
 		
-		// Creacion de la tabla de asignaturas
+		this.aceptar = new JButton("Aceptar peticion");
+		this.denegar = new JButton("Denegar peticion");
+		this.expulsar = new JButton("Expulsar");
+		
+		
+		this.add(aceptar);
+		this.add(denegar);
+		this.add(expulsar);
+		
+		ControladorAdministrar controlador = new ControladorAdministrar(contenedor.getContenedorProf().getVentana(),this);
+		
+		this.setControlador(controlador);
 		
 	}
+	
+	
+	/**
+	 * Anade un controlador a los botones
+	 * @param c Controlador a anadir
+	 */
+	 public void setControlador(ActionListener c) {
+		 aceptar.addActionListener(c);
+		 denegar.addActionListener(c);
+		 expulsar.addActionListener(c);
+	 }
 	
 	
 	/**
@@ -58,13 +94,61 @@ public class PanelAdministrar extends JPanel{
 	 * Obtiene la solicitud de matricula de la tabla
 	 * @return Solicitud de matricula
 	 */
-	/*public SolicitudMatricula getMatricula(){
+	public SolicitudMatricula getMatricula(){
 		
 		
-		return modelomat.getDataVector().elementAt(tablaMatricula.getSelectedRow());
+		int fila = tablaMatricula.getSelectedRow();
+		String idAlumno = tablaMatricula.getModel().getValueAt(fila, 0).toString(); // Id = columna 0
+		
+		String nombreAsig = tablaMatricula.getModel().getValueAt(fila, 0).toString(); // Nombre = columna 1
+		
+		return contenedor.getContenedorProf().getVentana().getSistema().getMatricula(idAlumno, nombreAsig);
 		
 		
-	}*/
+	}
+	
+	/**
+	 * Devuelve la expulsion asociada al alumno
+	 * @return
+	 */
+	public Expulsion getExpulsion(){
+		
+		int fila = tablaMatricula.getSelectedRow();
+		String idAlumno = tablaMatricula.getModel().getValueAt(fila, 0).toString(); // Id = columna 0
+		
+		String nombreAsig = tablaMatricula.getModel().getValueAt(fila, 0).toString(); // Nombre = columna 1
+
+		return contenedor.getContenedorProf().getVentana().getSistema().getExpulsion(idAlumno, nombreAsig);
+		
+		
+	}
+	
+	/**
+	 * Obtiene el id del alumno en la tabla de Asignaturas
+	 * @return Alumno seleccionado
+	 */
+	public Alumno getAlumno(){
+		
+		int fila = tablaExpulsion.getSelectedRow();
+		int columna = tablaExpulsion.getSelectedColumn();
+		
+		String idAlumno = tablaExpulsion.getModel().getValueAt(fila, columna).toString();
+		
+		return contenedor.getContenedorProf().getVentana().getSistema().getAlumno(idAlumno);
+		
+	}
+	
+	/**
+	 * Obtiene la asignatura en la tabla de asignaturas
+	 * @return Asignatura (columna) seleccionada
+	 */
+	public Asignatura getAsignatura(){
+		
+		int columna = tablaExpulsion.getSelectedColumn();
+		String nombreAsig = tablaExpulsion.getModel().getValueAt(0, columna).toString();
+		
+		return contenedor.getContenedorProf().getVentana().getSistema().getAsignatura(nombreAsig);
+	}
 	
 	/**
 	 * Actualiza la tabla de peticiones de matricula
@@ -85,5 +169,14 @@ public class PanelAdministrar extends JPanel{
 		
 	}
 	
+	
+	/**
+	 * Actualiza la tabla de asignaturas
+	 */
+	public void actualizarTablaAsignaturas(){
+		
+		
+		
+	}
 	
 }
