@@ -29,13 +29,10 @@ public class PanelContenido extends JPanel {
 	private PanelCrearEjercicio ejercicios;	
 	private PanelAsignatura panelasig;
 	private PanelTema paneltem;
-<<<<<<< HEAD
 	private PanelApunte panelap;
 	private PanelEjercicio panelej;
-=======
 	private PanelAdministrar paneladmin;
 	
->>>>>>> 48974715101cc68e0644eb2879667abaa6ec540c
 	/**
 	 * Constructor de la clase PanelContenido
 	 * @wbp.parser.constructor
@@ -86,12 +83,12 @@ public class PanelContenido extends JPanel {
 		cartas.addLayoutComponent(this.paginaprinc, "Principal");
 		cartas.addLayoutComponent(this.panelasig, "AccederAsig");
 		cartas.addLayoutComponent(this.paneltem, "AccederTem");
-<<<<<<< HEAD
+
 		cartas.addLayoutComponent(this.paneltem, "AccederApunte");
 		cartas.addLayoutComponent(this.panelej, "AccederEj");
-=======
+
 		cartas.addLayoutComponent(this.paneladmin, "Administrar");
->>>>>>> 48974715101cc68e0644eb2879667abaa6ec540c
+
 		
 		this.paginaprinc.actualizarAsignaturas();
 		this.add(this.paginaprinc);
@@ -144,6 +141,10 @@ public class PanelContenido extends JPanel {
 	
 	public PanelApunte getPanelApunte(){
 		return this.panelap;
+	}
+	
+	public PanelTema getPanelTema(){
+		return this.paneltem;
 	}
 	
 	/**
@@ -213,6 +214,7 @@ public class PanelContenido extends JPanel {
 		}
 		else if(nombre.equals("AccederApunte")){
 			this.removeAll();
+			this.panelap.actualizarApuntes();
 			this.add(this.panelap);
 			cartas.show(this, "AccederApunte");
 		}

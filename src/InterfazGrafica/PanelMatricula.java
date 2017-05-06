@@ -116,7 +116,7 @@ public class PanelMatricula extends JPanel {
 		return this.listasignaturas.getSelectedValue();
 	}
 	
-<<<<<<< HEAD
+
 	public void realizarSolicitud(){
 		ArrayList<SolicitudMatricula> matr = this.contAl.getVentana().getSistema().getAlumnoLog().getSolicitudesMat();
 		boolean exist = false;
@@ -136,8 +136,7 @@ public class PanelMatricula extends JPanel {
 			 return;
 		}
 	}
-=======
->>>>>>> 48974715101cc68e0644eb2879667abaa6ec540c
+
 	
 	public void actualizartablas(){
 			 
