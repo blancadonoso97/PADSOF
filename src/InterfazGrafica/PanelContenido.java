@@ -29,6 +29,8 @@ public class PanelContenido extends JPanel {
 	private PanelCrearEjercicio ejercicios;	
 	private PanelAsignatura panelasig;
 	private PanelTema paneltem;
+	private PanelAdministrar paneladmin;
+	
 	/**
 	 * Constructor de la clase PanelContenido
 	 * @wbp.parser.constructor
@@ -56,6 +58,9 @@ public class PanelContenido extends JPanel {
 		// Panel crear ejercicio
 		this.ejercicios = new PanelCrearEjercicio(/*this*/);
 		
+		// Panel administar
+		this.paneladmin = new PanelAdministrar(this);
+		
 		
 		this.paginaprinc = new PanelPrincipal(this);
 		
@@ -72,6 +77,7 @@ public class PanelContenido extends JPanel {
 		cartas.addLayoutComponent(this.paginaprinc, "Principal");
 		cartas.addLayoutComponent(this.panelasig, "AccederAsig");
 		cartas.addLayoutComponent(this.paneltem, "AccederTem");
+		cartas.addLayoutComponent(this.paneladmin, "Administrar");
 		
 		this.paginaprinc.actualizarAsignaturas();
 		this.add(this.paginaprinc);
@@ -168,6 +174,13 @@ public class PanelContenido extends JPanel {
 			/*this.paneltem.actualizarContenidoTem();*/
 			this.add(this.paneltem);
 			cartas.show(this, "AccederTem");
+		}else if(nombre.equals("Administrar")){
+			this.removeAll();
+			this.paneladmin.actualizarTablaAsignaturas();
+			this.paneladmin.actualizarTablaExpulsiones();
+			this.paneladmin.actualizarTablaMatriculas();
+			this.add(this.paneladmin);
+			cartas.show(this, "Administrar");
 		}
 		
 	}

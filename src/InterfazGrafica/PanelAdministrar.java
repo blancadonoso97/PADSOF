@@ -48,6 +48,9 @@ public class PanelAdministrar extends JPanel{
 		
 		this.contenedor = cont;
 		
+		this.tablaMatricula = new JTable();
+		this.tablaExpulsion = new JTable();
+		
 		// Creacion de la tabla con las peticiones de matricula
 		this.modelomat = new DefaultTableModel(new String[] {"Alumno", "Asignatura a matricularse"}, 0);
 		this.tablaMatricula.setModel(modelomat);
@@ -59,7 +62,9 @@ public class PanelAdministrar extends JPanel{
 		this.aceptar = new JButton("Aceptar peticion");
 		this.denegar = new JButton("Denegar peticion");
 		this.expulsar = new JButton("Expulsar");
-		
+
+		this.add(tablaMatricula);
+		this.add(tablaExpulsion);
 		
 		this.add(aceptar);
 		this.add(denegar);
@@ -225,6 +230,7 @@ public class PanelAdministrar extends JPanel{
 		
 		
 		 tablaAsignaturas.setModel(modeloasig);
+		 this.add(tablaAsignaturas);
 		
 		
 	}

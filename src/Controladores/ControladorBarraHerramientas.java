@@ -82,11 +82,15 @@ public class ControladorBarraHerramientas implements ActionListener{
 			
 			System.exit(0);
 			
+		}else if(e.getActionCommand().equals("Administrar")){
+
+			if(ventana.getSistema().getEsProfesor()){
+				panel.getPanelProfe().getPanelContenido().cambiarCarta("Administrar");
+			}
+			
+			
 		}
-		
-		
-		
-		
+
 	}
 
 	
