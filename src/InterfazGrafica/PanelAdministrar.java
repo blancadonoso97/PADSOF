@@ -133,12 +133,12 @@ public class PanelAdministrar extends JPanel{
 	 * Obtiene el id del alumno en la tabla de Asignaturas
 	 * @return Alumno seleccionado
 	 */
-	public Alumno getAlumno(){
+	public Alumno getAlumnoAsignaturas(){
 		
-		int fila = tablaExpulsion.getSelectedRow();
-		int columna = tablaExpulsion.getSelectedColumn();
+		int fila = tablaAsignaturas.getSelectedRow();
+		int columna = tablaAsignaturas.getSelectedColumn();
 		
-		String idAlumno = tablaExpulsion.getModel().getValueAt(fila, columna).toString();
+		String idAlumno = tablaAsignaturas.getModel().getValueAt(fila, columna).toString();
 		
 		return contenedor.getContenedorProf().getVentana().getSistema().getAlumno(idAlumno);
 		
@@ -148,10 +148,37 @@ public class PanelAdministrar extends JPanel{
 	 * Obtiene la asignatura en la tabla de asignaturas
 	 * @return Asignatura (columna) seleccionada
 	 */
-	public Asignatura getAsignatura(){
+	public Asignatura getAsignaturaAsig(){
 		
-		int columna = tablaExpulsion.getSelectedColumn();
-		String nombreAsig = tablaExpulsion.getModel().getValueAt(0, columna).toString();
+		int columna = tablaAsignaturas.getSelectedColumn();
+		String nombreAsig = tablaAsignaturas.getModel().getValueAt(0, columna).toString();
+		
+		return contenedor.getContenedorProf().getVentana().getSistema().getAsignatura(nombreAsig);
+	}
+	
+	/**
+	 * Obtiene el id del alumno en la tabla de matriculas
+	 * @return Alumno seleccionado
+	 */
+	public Alumno getAlumnoMatriculas(){
+		
+		int fila = tablaMatricula.getSelectedRow();
+		int columna = tablaMatricula.getSelectedColumn();
+		
+		String idAlumno = tablaMatricula.getModel().getValueAt(fila, columna).toString();
+		
+		return contenedor.getContenedorProf().getVentana().getSistema().getAlumno(idAlumno);
+		
+	}
+	
+	/**
+	 * Obtiene la asignatura en la tabla de matriculas
+	 * @return Asignatura (columna) seleccionada
+	 */
+	public Asignatura getAsignaturaMat(){
+		
+		int columna = tablaMatricula.getSelectedColumn();
+		String nombreAsig = tablaMatricula.getModel().getValueAt(0, columna).toString();
 		
 		return contenedor.getContenedorProf().getVentana().getSistema().getAsignatura(nombreAsig);
 	}
