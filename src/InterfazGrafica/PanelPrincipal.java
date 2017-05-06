@@ -1,19 +1,20 @@
 package InterfazGrafica;
 
 
+import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.ButtonGroup;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.SpringLayout;
 import javax.swing.UIManager;
 
 import Asignatura.Asignatura;
 import Controladores.ControladorAccederContenido;
-
 
 public class PanelPrincipal extends JPanel{
 
@@ -22,20 +23,50 @@ public class PanelPrincipal extends JPanel{
 	
 	private PanelProfesor contenedorProf;
 	private PanelAlumno contenedorAlum;
-	private ArrayList<Asignatura> asig;
-	private ButtonGroup asignaturas;
 	private JButton acceder;
+	private DefaultListModel<String> asignaturas = new DefaultListModel<String>(); 
+	private JScrollPane scrollPane;
+	private JList<String> listasignaturas;
 	
 	PanelPrincipal(PanelContenido cont){
 		
 		
-
+		this.asignaturas.addElement("No existe ninguna asignatura");
+		
+		ControladorAccederContenido controlador = new ControladorAccederContenido(this);
+		SpringLayout springLayout = new SpringLayout();
+		setLayout(springLayout);
+		
+		this.acceder = new JButton("Acceder");
+		springLayout.putConstraint(SpringLayout.WEST, acceder, 110, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, acceder, -496, SpringLayout.EAST, this);
+		acceder.setFont(new Font("WenQuanYi Micro Hei Mono", Font.BOLD, 12));
+		
+		
+		
+		scrollPane = new JScrollPane();
+		springLayout.putConstraint(SpringLayout.NORTH, acceder, 6, SpringLayout.SOUTH, scrollPane);
+		springLayout.putConstraint(SpringLayout.NORTH, scrollPane, 137, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, scrollPane, -167, SpringLayout.SOUTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, scrollPane, 49, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, scrollPane, 318, SpringLayout.WEST, this);
+		
+		
+		listasignaturas = new JList<String>(asignaturas);
+		scrollPane.setViewportView(listasignaturas);
+		
+		this.setControlador(controlador);
+		this.add(acceder);
+		this.add(scrollPane);
+		
 		if(cont.getContenedorProf()!=null){
 		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		this.contenedorProf = cont.getContenedorProf();
+		
 		}else{
 			setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 			this.contenedorAlum = cont.getContenedorAlum();
+			
 		}
 		
 		
@@ -50,97 +81,58 @@ public class PanelPrincipal extends JPanel{
 		return this.contenedorProf;
 	}
 			
-	public String getNombre(){
-		if(this.asignaturas.getSelection() == null){
+	public String getNombreAsignaturaSeleccionada(){
+		
+		if(this.listasignaturas.getSelectedValue() == null){
 			return "";
 		}else{
 			if(this.contenedorProf != null){
-				return this.contenedorProf.getVentana().getSistema().getAsignatura(this.asignaturas.getSelection().getActionCommand()).getNombre();
+				return this.contenedorProf.getVentana().getSistema().getAsignatura(this.listasignaturas.getSelectedValue()).getNombre();
 			}else{
-				return this.contenedorAlum.getVentana().getSistema().getAlumnoLog().getAsignatura(this.asignaturas.getSelection().getActionCommand()).getNombre();
+				return this.contenedorAlum.getVentana().getSistema().getAlumnoLog().getAsignatura(this.listasignaturas.getSelectedValue()).getNombre();
 			}
 			
 		}
 	}
 	
-	public ArrayList<Asignatura> getAsignaturas(){
-		return this.asig;
-	}
 	
 	
 	public void actualizarAsignaturas(){
 		
-		this.removeAll();
-		acceder= new JButton("Acceder");
-		
+		ArrayList<Asignatura> asig;
 		
 		if(this.contenedorProf != null){
 			
-			ControladorAccederContenido cont = new ControladorAccederContenido(this);
-			this.setControlador(cont);
-			this.add(acceder);
+			asig = this.contenedorProf.getVentana().getSistema().getAsignaturas();
 			
-			this.asig = this.contenedorProf.getVentana().getSistema().getAsignaturas();
 			
-				if(!this.asig.isEmpty()){
-					int i;
-					JRadioButton[] botones = new JRadioButton[this.asig.size()];
-					asignaturas = new ButtonGroup();
+			if(!asig.isEmpty()){
+				asignaturas.removeAllElements();
 					
-					for(i=0; i<this.asig.size();i++){
-						botones[i] = new JRadioButton("b");
-					}
-						
-					i = 0;
-					for(Asignatura a : this.asig){
-						botones[i].setText(a.getNombre());
-						botones[i].setActionCommand(a.getNombre());
-						asignaturas.add(botones[i]);
-						this.add(botones[i]);
-						i++;
-					}
-					
-					
-					
-				}else{
-					JLabel texto = new JLabel("No hay asignatura");
-					this.removeAll();
-					this.add(texto);
-					
+				for(Asignatura a : asig){
+					asignaturas.addElement(a.getNombre());
 				}
+						
+			}
+			
 			
 		}
 		
 		else if(this.contenedorAlum != null && this.contenedorAlum.getVentana().getSistema().getAlumnoLog()!=null){
 			
-			ControladorAccederContenido cont = new ControladorAccederContenido(this);
-			this.setControlador(cont);
-			this.add(acceder);
 			
-			this.asig = this.contenedorAlum.getVentana().getSistema().getAlumnoLog().getAsignaturas();
-			
-			if(!this.asig.isEmpty()){
-				int i;
-				JRadioButton[] botones = new JRadioButton[this.asig.size()];
-				asignaturas = new ButtonGroup();
-				
-				for(i=0; i<this.asig.size();i++){
-					botones[i] = new JRadioButton("b");
-				}
+			asig = this.contenedorAlum.getVentana().getSistema().getAlumnoLog().getAsignaturas();
+
+			if(!asig.isEmpty()){
+				asignaturas.removeAllElements();
 					
-				i = 0;
-				for(Asignatura a : this.asig){
-					botones[i].setText(a.getNombre());
-					asignaturas.add(botones[i]);
-					this.add(botones[i]);
-					i++;
+				for(Asignatura a : asig){
+					asignaturas.addElement(a.getNombre());
 				}
-			}else{
-				JLabel texto = new JLabel("No hay asignatura");
-				this.removeAll();
-				this.add(texto);
-				
+						
 			}
+					
+			
 		}
 			
 	}

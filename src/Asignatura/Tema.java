@@ -209,6 +209,11 @@ public class Tema implements Serializable{
 		return ejercicios;
 	}
 	
+	public ArrayList<Apuntes> getApuntes(){
+		return apuntes;
+	}
+	
+	
 	/**
 	 * Comprueba la visibilidad del tema. Si el tema no es visible, su contenido tampoco
 	 * @return true si es visible, false en caso contrario

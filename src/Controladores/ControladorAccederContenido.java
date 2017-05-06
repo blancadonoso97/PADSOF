@@ -46,7 +46,7 @@ public class ControladorAccederContenido  implements ActionListener {
 		
 		if(panelp != null){	
 			
-			if (panelp.getNombre().equals("")) {
+			if (panelp.getNombreAsignaturaSeleccionada().equals("")) {
 				 JOptionPane.showMessageDialog(panelp, "Debe seleccionar una asignatura", "Error", JOptionPane.ERROR_MESSAGE);
 				 return;
 			}
@@ -54,14 +54,14 @@ public class ControladorAccederContenido  implements ActionListener {
 			if(panelp.getPanelAlumno()!=null){
 				
 				for(i=0;i<panelp.getPanelAlumno().getVentana().getSistema().getAlumnoLog().getAsignaturas().size();i++){
-					if(panelp.getPanelAlumno().getVentana().getSistema().getAlumnoLog().getAsignaturas().get(i).getNombre().equals(panelp.getNombre())){
+					if(panelp.getPanelAlumno().getVentana().getSistema().getAlumnoLog().getAsignaturas().get(i).getNombre().equals(panelp.getNombreAsignaturaSeleccionada())){
 						exist = true;
 					}
 				}
 				
 			}else{
 				for(i=0;i<panelp.getPanelProfesor().getVentana().getSistema().getAsignaturas().size();i++){
-					if(panelp.getPanelProfesor().getVentana().getSistema().getAsignaturas().get(i).getNombre().equals(panelp.getNombre())){
+					if(panelp.getPanelProfesor().getVentana().getSistema().getAsignaturas().get(i).getNombre().equals(panelp.getNombreAsignaturaSeleccionada())){
 						exist = true;
 					}
 				}
@@ -83,7 +83,7 @@ public class ControladorAccederContenido  implements ActionListener {
 		
 		else if(panela != null){
 			
-			if (panela.getNombre().equals("")) {
+			if (panela.getNombreTemaSeleccionado().equals("")) {
 				 JOptionPane.showMessageDialog(panela, "Debe seleccionar una asignatura", "Error", JOptionPane.ERROR_MESSAGE);
 				 return;
 			}
@@ -91,15 +91,15 @@ public class ControladorAccederContenido  implements ActionListener {
 			
 			if(panela.getPanelAlumno()!=null){
 				
-				for(i=0;i<panela.getPanelAlumno().getVentana().getSistema().getAlumnoLog().getAsignatura(panela.getNombreAsig()).accederTema().size();i++){
-					if(panela.getPanelAlumno().getVentana().getSistema().getAlumnoLog().getAsignatura(panela.getNombreAsig()).accederTema().get(i).getNombre().equals(panela.getNombre())){
+				for(i=0;i<panela.getPanelAlumno().getVentana().getSistema().getAlumnoLog().getAsignatura(panela.getNombreAsignatura()).getTemas().size();i++){
+					if(panela.getPanelAlumno().getVentana().getSistema().getAlumnoLog().getAsignatura(panela.getNombreAsignatura()).getTemas().get(i).getNombre().equals(panela.getNombreTemaSeleccionado())){
 						exist = true;
 					}
 				}
 				
 			}else{
-				for(i=0;i<panela.getPanelProf().getVentana().getSistema().getAsignatura(panela.getNombreAsig()).accederTema().size();i++){
-					if(panela.getPanelProf().getVentana().getSistema().getAsignatura(panela.getNombreAsig()).accederTema().get(i).getNombre().equals(panela.getNombre())){
+				for(i=0;i<panela.getPanelProf().getVentana().getSistema().getAsignatura(panela.getNombreAsignatura()).getTemas().size();i++){
+					if(panela.getPanelProf().getVentana().getSistema().getAsignatura(panela.getNombreAsignatura()).getTemas().get(i).getNombre().equals(panela.getNombreTemaSeleccionado())){
 						exist = true;
 					}
 				}
@@ -117,7 +117,60 @@ public class ControladorAccederContenido  implements ActionListener {
 				panela.getPanelAlumno().getPanelContenido().cambiarCarta("AccederTem");	
 			}
 		}
+		
+		else if(panelt != null){
 			
+			if (panelt.getNombreApunteSeleccionado().equals("") && panelt.getNombreEjercicioSeleccionado().equals("") && panelt.getNombreSubtemaSeleccionado().equals("")) {
+				 JOptionPane.showMessageDialog(panelt, "Debe seleccionar a que quiere acceder del tema", "Error", JOptionPane.ERROR_MESSAGE);
+				 return;
+			}
+			
+			if (panelt.getNombreApunteSeleccionado().equals("varios") || panelt.getNombreEjercicioSeleccionado().equals("varios") || panelt.getNombreSubtemaSeleccionado().equals("varios")){
+				 JOptionPane.showMessageDialog(panelt, "Debe seleccionar solo un contenido al que quiera acceder", "Error", JOptionPane.ERROR_MESSAGE);
+				 return;
+			}
+			
+			
+			
+			if(!panelt.getNombreApunteSeleccionado().equals("") && !panelt.getNombreApunteSeleccionado().equals("varios")){
+				
+			
+				 
+				if(panelt.getPanelAlumno()!=null){
+					
+					for(i=0;i<panelt.getPanelAlumno().getVentana().getSistema().getAlumnoLog().getAsignatura(panelt.getPanelAlumno().getPanelContenido().getPanelAsignatura().getNombreAsignatura()).getTema(panelt.getNombreTema()).getNApuntes();i++){
+						
+						if(panelt.getPanelAlumno().getVentana().getSistema().getAlumnoLog().getAsignatura(panelt.getPanelAlumno().getPanelContenido().getPanelAsignatura().getNombreAsignatura()).getTema(panelt.getNombreTema()).getApuntes().get(i).getTitulo().equals(panelt.getNombreApunteSeleccionado())){
+							exist = true;
+						}
+					}
+					
+				}else{
+					for(i=0;i<panelt.getPanelProf().getVentana().getSistema().getAsignatura(panelt.getPanelProf().getPanelContenido().getPanelAsignatura().getNombreAsignatura()).getTema(panelt.getNombreTema()).getNApuntes();i++){
+						if(panelt.getPanelProf().getVentana().getSistema().getAsignatura(panelt.getPanelProf().getPanelContenido().getPanelAsignatura().getNombreAsignatura()).getTema(panelt.getNombreTema()).getApuntes().get(i).getTitulo().equals(panelt.getNombreApunteSeleccionado())){
+							exist = true;
+						}
+					}
+				}
+				
+				if(!exist){
+					 JOptionPane.showMessageDialog(panelt, "Lo que ha seleccionado no existe", "Error", JOptionPane.ERROR_MESSAGE);
+					 return;
+				}
+				
+				
+				if(panelt.getPanelProf()!=null){
+					panelt.getPanelProf().getPanelContenido().cambiarCarta("AccederApunte");	
+				}else{
+					panelt.getPanelAlumno().getPanelContenido().cambiarCarta("AccederApunte");	
+				}
+				
+				
+				
+				
+			}
+			
+		}	
 		
 			
 			

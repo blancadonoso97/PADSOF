@@ -29,6 +29,8 @@ public class PanelContenido extends JPanel {
 	private PanelCrearEjercicio ejercicios;	
 	private PanelAsignatura panelasig;
 	private PanelTema paneltem;
+	private PanelApunte panelap;
+	private PanelEjercicio panelej;
 	/**
 	 * Constructor de la clase PanelContenido
 	 * @wbp.parser.constructor
@@ -64,6 +66,10 @@ public class PanelContenido extends JPanel {
 		
 		this.paneltem = new PanelTema(this);
 		
+		this.panelap = new PanelApunte(this);
+		
+		this.panelej = new PanelEjercicio(this);
+		
 		cartas.addLayoutComponent(this.asig, "Asignatura");
 		cartas.addLayoutComponent(this.temas, "Tema");
 		cartas.addLayoutComponent(this.apuntes, "Apuntes");
@@ -72,6 +78,8 @@ public class PanelContenido extends JPanel {
 		cartas.addLayoutComponent(this.paginaprinc, "Principal");
 		cartas.addLayoutComponent(this.panelasig, "AccederAsig");
 		cartas.addLayoutComponent(this.paneltem, "AccederTem");
+		cartas.addLayoutComponent(this.paneltem, "AccederApunte");
+		cartas.addLayoutComponent(this.panelej, "AccederEj");
 		
 		this.paginaprinc.actualizarAsignaturas();
 		this.add(this.paginaprinc);
@@ -96,12 +104,19 @@ public class PanelContenido extends JPanel {
 		this.paginaprinc = new PanelPrincipal(this);
 		
 		this.panelasig = new PanelAsignatura(this);
+		
 		this.paneltem = new PanelTema(this);
-		// Anadir paneles
+		
+		this.panelap = new PanelApunte(this);
+		
+		this.panelej = new PanelEjercicio(this);
+		
+		// Anadir panelpaneltemes
 		cartas.addLayoutComponent(this.solicitarmatricula, "Matricula");
 		cartas.addLayoutComponent(this.paginaprinc, "Principal");
 		cartas.addLayoutComponent(this.panelasig, "AccederAsig");
 		cartas.addLayoutComponent(this.paneltem, "AccederTem");
+		cartas.addLayoutComponent(this.panelej, "AccederEj");
 		
 		this.paginaprinc.actualizarAsignaturas();
 		this.add(this.paginaprinc);
@@ -109,6 +124,14 @@ public class PanelContenido extends JPanel {
 	
 	public PanelPrincipal getPanelPrincipal(){
 		return this.paginaprinc;
+	}
+	
+	public PanelAsignatura getPanelAsignatura(){
+		return this.panelasig;
+	}
+	
+	public PanelApunte getPanelApunte(){
+		return this.panelap;
 	}
 	
 	/**
@@ -165,9 +188,19 @@ public class PanelContenido extends JPanel {
 			
 		}else if(nombre.equals("AccederTem")){
 			this.removeAll();
-			/*this.paneltem.actualizarContenidoTem();*/
+			this.paneltem.actualizarContenido();
 			this.add(this.paneltem);
 			cartas.show(this, "AccederTem");
+		}
+		else if(nombre.equals("AccederApunte")){
+			this.removeAll();
+			this.add(this.panelap);
+			cartas.show(this, "AccederApunte");
+		}
+		else if(nombre.equals("AccederEj")){
+			this.removeAll();
+			this.add(this.panelej);
+			cartas.show(this, "AccederEj");
 		}
 		
 	}
