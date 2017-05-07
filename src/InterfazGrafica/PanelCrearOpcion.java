@@ -31,12 +31,70 @@ public class PanelCrearOpcion extends JPanel{
 	/**
 	 * Constructor de la clase PanelCrearOpcion
 	 * @param cont Panel contenido
-	 * @param preg Pregunta a la que corresponde la opcion
+	 * @param pan Panel pregunta redactar
 	 */
-	public PanelCrearOpcion(PanelContenido cont, Pregunta preg){
+	public PanelCrearOpcion(PanelContenido cont, PanelCrearPreguntaRedactar pan){
 		
 		this.contenedor = cont;
-		this.pregunta = preg;
+		this.pregunta = pan.getPregunta();
+		
+		this.enunciado = new JTextField(40);
+		this.escorrecta = new JRadioButton("Opcion correcta");
+		this.crearopcion = new JButton("Crear opcion");
+		this.volver = new JButton("Volver");
+		
+		this.add(enunciado);
+		this.add(escorrecta);
+		this.add(crearopcion);
+		this.add(volver);
+		
+		// Anade el controlador para el boton de crear opcion
+		ControladorCrearPregunta controlador = new ControladorCrearPregunta(contenedor.getContenedorProf().getVentana(), this);
+
+		// Configurar el panel con el controlador
+		this.setControlador(controlador);
+		
+		
+	}
+	
+	/**
+	 * Constructor de la clase PanelCrearOpcion
+	 * @param cont Panel contenido
+	 * @param pan Panel pregunta multiple
+	 */
+	public PanelCrearOpcion(PanelContenido cont, PanelCrearPreguntaMultiple pan){
+		
+		this.contenedor = cont;
+		this.pregunta = pan.getPregunta();
+		
+		this.enunciado = new JTextField(40);
+		this.escorrecta = new JRadioButton("Opcion correcta");
+		this.crearopcion = new JButton("Crear opcion");
+		this.volver = new JButton("Volver");
+		
+		this.add(enunciado);
+		this.add(escorrecta);
+		this.add(crearopcion);
+		this.add(volver);
+		
+		// Anade el controlador para el boton de crear opcion
+		ControladorCrearPregunta controlador = new ControladorCrearPregunta(contenedor.getContenedorProf().getVentana(), this);
+
+		// Configurar el panel con el controlador
+		this.setControlador(controlador);
+		
+		
+	}
+	
+	/**
+	 * Constructor de la clase PanelCrearOpcion
+	 * @param cont Panel contenido
+	 * @param pan Panel pregunta test
+	 */
+	public PanelCrearOpcion(PanelContenido cont, PanelCrearPreguntaTest pan){
+		
+		this.contenedor = cont;
+		this.pregunta = pan.getPregunta();
 		
 		this.enunciado = new JTextField(40);
 		this.escorrecta = new JRadioButton("Opcion correcta");

@@ -36,7 +36,9 @@ public class PanelContenido extends JPanel {
 	private PanelCrearPreguntaMultiple preguntamultiple;
 	private PanelCrearPreguntaTest preguntatest;
 	private PanelCrearPreguntaRedactar preguntaredactar;
-	private PanelCrearOpcion opcion;
+	private PanelCrearOpcion opcion1;
+	private PanelCrearOpcion opcion2;
+	private PanelCrearOpcion opcion3;
 	
 	private PanelPrincipal paginaprinc;
 	private PanelAdministrar paneladmin;
@@ -81,7 +83,8 @@ public class PanelContenido extends JPanel {
 		this.preguntamultiple = new PanelCrearPreguntaMultiple(ejercicios);
 		this.preguntaredactar = new PanelCrearPreguntaRedactar(ejercicios);
 		this.preguntatest = new PanelCrearPreguntaTest(ejercicios);
-		this.opcion = new PanelCrearOpcion(this, null);
+		
+		
 		
 		// Panel administar
 		this.paneladmin = new PanelAdministrar(this);
@@ -124,7 +127,7 @@ public class PanelContenido extends JPanel {
 		cartas.addLayoutComponent(this.preguntamultiple, "Multiple");
 		cartas.addLayoutComponent(this.preguntatest, "Test");
 		cartas.addLayoutComponent(this.preguntaredactar, "Redactar");
-		cartas.addLayoutComponent(this.opcion, "Opcion");
+		
 		
 		ControladorCrearEjercicio controlador = new ControladorCrearEjercicio(this.getContenedorProf().getVentana(), preguntamultiple);
 		
@@ -174,8 +177,6 @@ public class PanelContenido extends JPanel {
 		this.panelap = new PanelApunte(this);
 		
 		this.panelej = new PanelEjercicio(this);
-		
-		
 		
 		// Anadir panelpaneltemes
 		cartas.addLayoutComponent(this.solicitarmatricula, "Matricula");
@@ -376,21 +377,21 @@ public class PanelContenido extends JPanel {
 		}else if(nombre.equals("Opcion")){
 			
 			if(preguntaredactar.getPregunta() != null){
-				
-				opcion = new PanelCrearOpcion(this, preguntaredactar.getPregunta());
-				
+				this.opcion1 = new PanelCrearOpcion(this, preguntaredactar);
+				cartas.addLayoutComponent(this.opcion1, "Opcion1");
+				this.add(this.opcion1);
+				cartas.show(this, "Opcion1");
 			}else if(preguntatest.getPregunta() != null){
-				
-				opcion = new PanelCrearOpcion(this, preguntatest.getPregunta());
-				
-			}else if(preguntamultiple.getPregunta() != null){
-				
-				opcion = new PanelCrearOpcion(this, preguntamultiple.getPregunta());
-				
+				this.opcion2 = new PanelCrearOpcion(this, preguntatest);
+				cartas.addLayoutComponent(this.opcion2, "Opcion2");
+				this.add(this.opcion2);
+				cartas.show(this, "Opcion2");
+			}else if (preguntamultiple.getPregunta() != null){
+				this.opcion3 = new PanelCrearOpcion(this, preguntamultiple);
+				cartas.addLayoutComponent(this.opcion3, "Opcion3");
+				this.add(this.opcion3);
+				cartas.show(this, "Opcion3");
 			}
-			
-			this.add(this.opcion);
-			cartas.show(this, "Opcion");
 			
 		}
 		

@@ -81,11 +81,11 @@ public class PanelCrearTema extends JPanel{
 		
 		rigidArea_2 = Box.createRigidArea(new Dimension(20, 0));
 		add(rigidArea_2);
-		this.add(novisible);
+		this.add(visible);
 		
 		rigidArea_3 = Box.createRigidArea(new Dimension(0, 30));
 		add(rigidArea_3);
-		this.add(visible);
+		this.add(novisible);
 
 		rigidArea_4 = Box.createRigidArea(new Dimension(100, 30));
 		add(rigidArea_4);
