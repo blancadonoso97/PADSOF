@@ -3,12 +3,12 @@ package Controladores;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ControladorCrearOpcion implements ActionListener{
+public class ControladorCrearPregunta implements ActionListener{
 
 	
 	
 	
-	public ControladorCrearOpcion(){
+	public ControladorCrearPregunta(){
 		
 		
 		

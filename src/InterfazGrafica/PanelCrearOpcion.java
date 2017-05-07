@@ -40,6 +40,7 @@ public class PanelCrearOpcion extends JPanel{
 		this.escorrecta = new JRadioButton("Opcion correcta");
 		this.crearopcion = new JButton("Crear opcion");
 		
+		
 		this.add(enunciado);
 		this.add(escorrecta);
 		this.add(crearopcion);

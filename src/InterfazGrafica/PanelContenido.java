@@ -36,6 +36,7 @@ public class PanelContenido extends JPanel {
 	private PanelCrearPreguntaMultiple preguntamultiple;
 	private PanelCrearPreguntaTest preguntatest;
 	private PanelCrearPreguntaRedactar preguntaredactar;
+	private PanelCrearOpcion opcion;
 	
 	private PanelPrincipal paginaprinc;
 	private PanelAdministrar paneladmin;
@@ -80,6 +81,7 @@ public class PanelContenido extends JPanel {
 		this.preguntamultiple = new PanelCrearPreguntaMultiple(ejercicios);
 		this.preguntaredactar = new PanelCrearPreguntaRedactar(ejercicios);
 		this.preguntatest = new PanelCrearPreguntaTest(ejercicios);
+		this.opcion = new PanelCrearOpcion(this, null);
 		
 		// Panel administar
 		this.paneladmin = new PanelAdministrar(this);

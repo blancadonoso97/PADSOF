@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Examen.Ejercicio;
+import Examen.Pregunta;
 
 /**
  * Clase para definir el panel de crear pregunta de tipo opcion multiple
@@ -23,6 +24,9 @@ public class PanelCrearPreguntaMultiple extends JPanel{
 	private JLabel nombre;
 	private JTextField enunciado;
 	private JButton opcion;
+	private JButton crear;
+	
+	private Pregunta preguntacreada;
 	
 	public PanelCrearPreguntaMultiple(PanelCrearEjercicio cont){
 		
@@ -32,10 +36,12 @@ public class PanelCrearPreguntaMultiple extends JPanel{
 		this.enunciado = new JTextField(40);
 		this.opcion = new JButton("Crear opcion");
 		this.nombre = new JLabel("Enunciado de la pregunta");
+		this.crear = new JButton("Crear pregunta");
 		
 		this.add(nombre);
 		this.add(enunciado);
 		this.add(opcion);
+		this.add(crear);
 	}
 	
 	/**
@@ -73,6 +79,23 @@ public class PanelCrearPreguntaMultiple extends JPanel{
 		
 		ejercicio = ej;
 		
+	}
+	
+	/**
+	 * Obtiene la pregunta creada
+	 * @return preguntacreada
+	 */
+	public Pregunta getPregunta(){
+		
+		return preguntacreada;
+	}
+	
+	/**
+	 * Set de la pregunta creada
+	 * @param preg Pregunta creada
+	 */
+	public void setPregunta(Pregunta preg){
+		preguntacreada = preg;
 	}
 	
 }
