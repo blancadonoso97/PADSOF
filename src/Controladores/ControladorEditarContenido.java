@@ -262,7 +262,17 @@ public class ControladorEditarContenido   implements ActionListener{
 				
 			}
 			
-			
+			else if(e.getActionCommand().equals("Guardar")){
+				try {
+					 JOptionPane.showMessageDialog(panelt, "Se ha editado correctamente el tema", "Guardar", JOptionPane.INFORMATION_MESSAGE);
+					 
+					 panelt.getPanelProf().getPanelContenido().cambiarCarta("GuardarTem");
+				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+						| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
 			
 			else if (panelt.getNombreApunteSeleccionado().equals("") && panelt.getNombreEjercicioSeleccionado().equals("") && panelt.getNombreSubtemaSeleccionado().equals("")) {
 				 JOptionPane.showMessageDialog(panelt, "Debe seleccionar a que quiere acceder del tema", "Error", JOptionPane.ERROR_MESSAGE);
@@ -349,7 +359,7 @@ public class ControladorEditarContenido   implements ActionListener{
 					}
 					
 				}
-				
+			
 				
 			}
 			else if(!panelt.getNombreEjercicioSeleccionado().equals("") && !panelt.getNombreEjercicioSeleccionado().equals("varios")){

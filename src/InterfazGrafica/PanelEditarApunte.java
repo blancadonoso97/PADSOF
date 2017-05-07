@@ -92,9 +92,10 @@ public class PanelEditarApunte extends JPanel{
 		 
 		 if(visible.isSelected()){
 			 return true;
-		 }else
+		 }else {
 			 return false;
-		 
+		 }
+			
 	 }
 	
 	public PanelProfesor getPanelProf(){
@@ -109,12 +110,12 @@ public class PanelEditarApunte extends JPanel{
 		 
 		if(!this.contenedorProf.getPanelContenido().getPanelEdTem().getNombreApunteSeleccionado().equals("")){
 			this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelEdTem().getNombreTema()).getApunte(this.contenedorProf.getPanelContenido().getPanelEdTem().getNombreApunteSeleccionado()).setTexto(this.texto.getText());
-			this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelEdTem().getNombreTema()).getApunte(this.contenedorProf.getPanelContenido().getPanelEdTem().getNombreApunteSeleccionado()).setVisible(this.comprobarSeleccion());;
+			this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelEdTem().getNombreTema()).getApunte(this.contenedorProf.getPanelContenido().getPanelEdTem().getNombreApunteSeleccionado()).setVisible(this.comprobarSeleccion());
 			this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelEdTem().getNombreTema()).getApunte(this.contenedorProf.getPanelContenido().getPanelEdTem().getNombreApunteSeleccionado()).setTitulo(this.titulonew.getText());
 			
 		}else{
 			this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelTema().getNombreTema()).getApunte(this.contenedorProf.getPanelContenido().getPanelTema().getNombreApunteSeleccionado()).setTexto(this.texto.getText());
-			this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelTema().getNombreTema()).getApunte(this.contenedorProf.getPanelContenido().getPanelTema().getNombreApunteSeleccionado()).setVisible(this.comprobarSeleccion());;
+			this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelTema().getNombreTema()).getApunte(this.contenedorProf.getPanelContenido().getPanelTema().getNombreApunteSeleccionado()).setVisible(this.comprobarSeleccion());
 			this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelTema().getNombreTema()).getApunte(this.contenedorProf.getPanelContenido().getPanelTema().getNombreApunteSeleccionado()).setTitulo(this.titulonew.getText());
 			
 		}
