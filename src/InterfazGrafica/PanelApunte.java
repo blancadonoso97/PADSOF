@@ -11,11 +11,13 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 
+/**
+ * Clase que implementa el panel que mostrara el apunte 
+ * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ *
+ */
 public class PanelApunte extends JPanel{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private PanelProfesor contenedorProf;
 	private PanelAlumno contenedorAlum;
@@ -24,7 +26,11 @@ public class PanelApunte extends JPanel{
 	private SpringLayout springLayout;
 	private JTextPane contenido;
 	
-	PanelApunte(PanelContenido cont){
+	/**
+	 * Constructor que implementa la interfaz grafica del panel de un apunte
+	 * @param cont PanelContenido panel del contenido 
+	 */
+	public PanelApunte(PanelContenido cont){
 		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		springLayout = new SpringLayout();
 		setLayout(springLayout);
@@ -50,7 +56,9 @@ public class PanelApunte extends JPanel{
 		
 	}
 
-
+	/**
+	 * Funcion que se encarga de actualizar el estado de los apuntes 
+	 */
 	public void actualizarApuntes(){
 	
 		if(this.contenedorProf!=null){

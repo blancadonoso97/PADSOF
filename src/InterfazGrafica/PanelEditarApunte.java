@@ -16,7 +16,11 @@ import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JEditorPane;
 import javax.swing.JButton;
-
+/**
+ * Clase que implementa el panel para editar un apunte
+ * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ *
+ */
 public class PanelEditarApunte extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
@@ -31,7 +35,11 @@ public class PanelEditarApunte extends JPanel{
 	private ButtonGroup visibilidad;
 	private JButton guardar;
 	
-	PanelEditarApunte(PanelContenido cont){
+	/**
+	 * Constructor que implementa la interfaz grafica del panel de editar unos apuntes
+	 * @param cont panel del contenido
+	 */
+	public PanelEditarApunte(PanelContenido cont){
 		
 		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		
@@ -88,6 +96,10 @@ public class PanelEditarApunte extends JPanel{
 		
 	}
 
+	/**
+	 * Funcion que comprueba la seleccion de visibilidad de los apuntes 
+	 * @return boolean true si es visible, de lo contrario false
+	 */
 	public boolean comprobarSeleccion(){
 		 
 		 if(visible.isSelected()){
@@ -98,14 +110,25 @@ public class PanelEditarApunte extends JPanel{
 			
 	 }
 	
+	/**
+	 * Funcion que devuelve el panel del profesor
+	 * @return panel del profesor
+	 */
 	public PanelProfesor getPanelProf(){
 		return this.contenedorProf;
 	}
 	 
+	/**
+	 * Funcion que modifica el controlador del boton guardar
+	 * @param c controlador elegido
+	 */
 	 public void setControlador(ActionListener c) {
 		 this.guardar.addActionListener(c);
 	 }
 
+	 /**
+	  * Funcion que actualiza el estado de los apuntes despues de haberlos editado
+	  */
 	public void actualizarApunte(){
 		if(!this.titulonew.getText().isEmpty()){
 			if(!this.contenedorProf.getPanelContenido().getPanelEdTem().getNombreApunteSeleccionado().equals("")){

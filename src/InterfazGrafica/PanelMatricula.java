@@ -1,6 +1,7 @@
 package InterfazGrafica;
 
 import java.awt.event.ActionListener;
+
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
@@ -16,6 +17,11 @@ import javax.swing.SpringLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
+/**
+ * Clase que implementa el panel de la matricula
+ * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ *
+ */
 public class PanelMatricula extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
@@ -31,8 +37,12 @@ public class PanelMatricula extends JPanel {
 	private JList<String> listmatriculadas;
 	private JList<String> listpendientes;
 	private JButton boton;
-		
-	PanelMatricula(PanelAlumno cont){
+	
+	/**
+	 * Constructor que implementa la interfaz grafica del panel para solicitud matricula 
+	 * @param cont panel del contenido
+	 */
+	public PanelMatricula(PanelAlumno cont){
 		
 		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		
@@ -94,26 +104,50 @@ public class PanelMatricula extends JPanel {
 		
 	}
 	
+	/**
+	 * Funcion que modifica el controlador del boton
+	 * @param c controlador elegido
+	 */
 	 public void setControlador(ActionListener c) {
 		 boton.addActionListener(c);
 	 }
 		
+	 /**
+	  * Funcion que devuelve el JList de la lista de asignaturas
+	  * @return lista de asignaturas totales
+	  */
 	public JList<String> getListaAsignaturas(){
 		return this.listasignaturas;
 	}
 		
+	/**
+	 * Funcion que devuelve el JList de la lista de asignaturas matriculadas
+	 * @return lista de asignaturas matriculadas
+	 */
 	public JList<String> getListaMatriculadas(){
 		return this.listmatriculadas;
 	}
 		
+	/**
+	 * Funcion que devuelve el JList de la lista de asignaturas pendientes
+	 * @return lista de asignaturas pendientes
+	 */
 	public JList<String> getListaPendientes(){
 		return this.listpendientes;
 	}
 	
+	/**
+	 * Funcion que devuelve el panel del alumno
+	 * @return panel del alumno
+	 */
 	public PanelAlumno getPanelAlumno(){
 		return this.contenedorAlum;
 	}
 	
+	/**
+	 * Funcion que devuelve la asignatura elegida para soliticar una matricula
+	 * @return nombre de la asignatura solicitada
+	 */
 	public String getNombre(){
 		if(this.listasignaturas.getSelectedValue() == null){
 			return "";
@@ -125,7 +159,9 @@ public class PanelMatricula extends JPanel {
 	}
 	
 
-
+	/**
+	 * Funcion que actualiza las tablas de todas diferentes listas
+	 */
 	public void actualizartablas(){
 			 
 			

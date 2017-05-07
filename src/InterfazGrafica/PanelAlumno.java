@@ -53,6 +53,10 @@ public class PanelAlumno extends JPanel{
 		 
 	 }
 	
+	 /**
+	  * Devuelve el panel del contenido 
+	  * @return  panel del contenido
+	  */
 	 public PanelContenido getPanelContenido(){
 		 return this.contenido;
 	 }

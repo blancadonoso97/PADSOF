@@ -12,6 +12,11 @@ import InterfazGrafica.PanelTema;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
+/**
+ * Clase que implementa el controlador de los botones para acceder a un contenido de los distintos paneles
+ * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ *
+ */
 public class ControladorAccederContenido  implements ActionListener {
 
 	private PanelPrincipal panelp;
@@ -19,9 +24,8 @@ public class ControladorAccederContenido  implements ActionListener {
 	private PanelTema panelt;
 	
 	/**
-	 * Constructor de la clase ControladorInicioSesion
-	 * @param sist Sistema (eCourses)
-	 * @param pan Panel asociado al controlador
+	 * Constructor de la clase ControladorAccederContenido
+	 * @param pan panel principal
 	 */
 	public ControladorAccederContenido(PanelPrincipal pan){
 	
@@ -29,12 +33,20 @@ public class ControladorAccederContenido  implements ActionListener {
 		
 	}
 	
+	/**
+	 * Constructor de la clase ControladorAccederContenido
+	 * @param pan panel de una asignatura
+	 */
 	public ControladorAccederContenido(PanelAsignatura pan){
 		
 		this.panela = pan;
 		
 	}
 	
+	/**
+	 * Constructor de la clase ControladorAccederContenido
+	 * @param pan panel de un tema
+	 */
 	public ControladorAccederContenido(PanelTema pan){
 		
 		this.panelt = pan;

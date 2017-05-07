@@ -23,7 +23,11 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JRadioButton;
 import javax.swing.JEditorPane;
-
+/**
+ * Clase que define el panel que permitira editar un tema
+ * @author  Miguel Angel Bouzada, Blanca Martinez Donoso
+ *
+ */
 public class PanelEditarTema extends JPanel{
 
 	private PanelProfesor contenedorProf;
@@ -46,8 +50,11 @@ public class PanelEditarTema extends JPanel{
 	private JEditorPane titulonew;
 	private static final long serialVersionUID = 1L;
 	
-	
-	PanelEditarTema(PanelContenido cont){
+	/**
+	 * Constructor que implementa la interfaz grafica del panel que edita un tema
+	 * @param cont panel del contenido
+	 */
+	public PanelEditarTema(PanelContenido cont){
 		this.springLayout = new SpringLayout();
 		setLayout(springLayout);
 		
@@ -127,13 +134,20 @@ public class PanelEditarTema extends JPanel{
 		
 	}
 	
+	/**
+	 * Funcion que devuelve el nombre del tema
+	 * @return String nombre del tema
+	 */
 	public String getNombreTema(){
 		
 		return this.contenedorProf.getPanelContenido().getPanelEdAsig().getNombreTemaSeleccionado();
 		
 	}
 
-	
+	/**
+	 * Funcion que devuelve el nombre de los apuntes seleccionados
+	 * @return String nombre de los apuntes
+	 */
 	public String getNombreApunteSeleccionado(){
 		if(this.listaapuntes.getSelectedValue() == null){
 			return "";
@@ -144,6 +158,10 @@ public class PanelEditarTema extends JPanel{
 		}
 	}
 	
+	/**
+	 * Funcion que devuelve el nombre del ejercicio seleccionado
+	 * @return String nombre del ejercicio
+	 */
 	public String getNombreEjercicioSeleccionado(){
 		
 		if(this.listaejercicios.getSelectedValue() == null){
@@ -156,6 +174,10 @@ public class PanelEditarTema extends JPanel{
 		
 	}
 	
+	/**
+	 * Funcion que devuelve el nombre del subtema seleccionado
+	 * @return String nombre del subtema
+	 */
 	public String getNombreSubtemaSeleccionado(){
 
 		if(this.listasubtemas.getSelectedValue() == null){
@@ -168,10 +190,18 @@ public class PanelEditarTema extends JPanel{
 		
 	}
 	
+	/**
+	 * Funcion que devuelve el panel del profesor
+	 * @return PanelProfesor panel del profesor
+	 */
 	public PanelProfesor getPanelProf(){
 		return this.contenedorProf;
 	}
 	
+	/**
+	 * Funcion que devuelve la eleccion del profesor sobre la visibilidad del tema
+	 * @return boolean true si esta visible , false si no lo esta
+	 */
 	public boolean comprobarSeleccion(){
 		 
 		 if(visible.isSelected()){
@@ -181,7 +211,14 @@ public class PanelEditarTema extends JPanel{
 		 } 
 	 }
 	
-	
+	/**
+	 * Funcion que actualiza el tema despues de ser editado o cuando se accede a el
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws InvalidEmailAddressException
+	 * @throws FailedInternetConnectionException
+	 * @throws IOException
+	 */
 	public void actualizarTema() throws ClassNotFoundException, InvalidEmailAddressException, FailedInternetConnectionException, IOException{
 		
 		ArrayList<Tema> tem;
@@ -320,6 +357,11 @@ public class PanelEditarTema extends JPanel{
 		
 	}
 	
+	/**
+	 * Funcion que asigna los controladores a los distintos botones
+	 * @param c el controlador correspondiente
+	 * @param nombre nombre del boton
+	 */
 	public void setControlador(ActionListener c,String nombre){
 		if(nombre.equals("anyadir")){
 			this.anyadir.addActionListener(c);

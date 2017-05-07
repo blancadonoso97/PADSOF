@@ -16,7 +16,7 @@ import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 /**
- * Clase para definir el controlador del boton Crear Asignatura -> (PanelCrearAsignatura)
+ * Clase para definir el controlador de los botones de agregar contenido
  * 
  * @author Miguel Angel Bouzada, Blanca Martinez Donoso
  *
