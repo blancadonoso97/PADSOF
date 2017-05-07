@@ -287,13 +287,8 @@ public class ControladorAccederContenido  implements ActionListener {
 				
 				
 				if(panelt.getPanelProf()!=null){
-					try {
-						panelt.getPanelProf().getPanelContenido().cambiarCarta("AccederEj");
-					} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
-							| IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}	
+					JOptionPane.showMessageDialog(panelt, "El profesor no puede realizar el ejercicio", "Error", JOptionPane.ERROR_MESSAGE);
+					 return;
 				}else{
 					try {
 						panelt.getPanelAlumno().getPanelContenido().cambiarCarta("AccederEj");
