@@ -17,9 +17,12 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JRadioButton;
+import javax.swing.JEditorPane;
 
 public class PanelEditarTema extends JPanel{
 
@@ -36,7 +39,11 @@ public class PanelEditarTema extends JPanel{
 	private JButton eliminar;
 	private JScrollPane scrollPane;
 	private SpringLayout springLayout;
-	
+	private JRadioButton visible;
+	private JRadioButton novisible;
+	private ButtonGroup visibilidad;
+	private JButton guardar;
+	private JEditorPane titulonew;
 	private static final long serialVersionUID = 1L;
 	
 	
@@ -45,11 +52,10 @@ public class PanelEditarTema extends JPanel{
 		setLayout(springLayout);
 		
 		this.scrollPane = new JScrollPane();
+		springLayout.putConstraint(SpringLayout.NORTH, scrollPane, 101, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, scrollPane, 49, SpringLayout.WEST, this);
+		this.springLayout.putConstraint(SpringLayout.EAST, scrollPane, -49, SpringLayout.EAST, this);
 		this.contenedorProf = cont.getContenedorProf();
-		this.springLayout.putConstraint(SpringLayout.NORTH, this.scrollPane, 39, SpringLayout.NORTH, this);
-		this.springLayout.putConstraint(SpringLayout.WEST, this.scrollPane, 50, SpringLayout.WEST, this);
-		this.springLayout.putConstraint(SpringLayout.SOUTH,this.scrollPane, -116, SpringLayout.SOUTH, this);
-		this.springLayout.putConstraint(SpringLayout.EAST, this.scrollPane, -48, SpringLayout.EAST, this);
 		
 		this.apuntes.addElement("No existe ningun apunte");
 		this.ejercicios.addElement("No existe ningun ejercicio");
@@ -60,37 +66,64 @@ public class PanelEditarTema extends JPanel{
 		this.tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		this.scrollPane.setViewportView(tabbedPane);
 		
-		this.listaejercicios = new JList<String>(ejercicios);
-		this.tabbedPane.addTab("Ejercicios", null, listaejercicios, null);
-		
 		this.listaapuntes = new JList<String>(apuntes);
 		this.tabbedPane.addTab("Apuntes", null, listaapuntes, null);
 		
 		this.listasubtemas = new JList<String>(subtemas);
 		tabbedPane.addTab("Subtemas", null, listasubtemas, null);
 		
-		this.anyadir = new JButton("Añadir");
+		this.listaejercicios = new JList<String>(ejercicios);
+		this.tabbedPane.addTab("Ejercicios", null, listaejercicios, null);
 		
-		springLayout.putConstraint(SpringLayout.NORTH, anyadir, 34, SpringLayout.SOUTH, this.scrollPane);
-		springLayout.putConstraint(SpringLayout.WEST, anyadir, 108, SpringLayout.WEST, this);
+		this.anyadir = new JButton("Añadir");
+		springLayout.putConstraint(SpringLayout.NORTH, anyadir, 298, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, scrollPane, -17, SpringLayout.NORTH, anyadir);
 		ControladorEditarContenido c = new ControladorEditarContenido(this);
 		this.setControlador(c,"anyadir");
 		this.add(anyadir);
 		
 		this.editar = new JButton("Editar");
-		
-		this.springLayout.putConstraint(SpringLayout.NORTH, this.editar, 0, SpringLayout.NORTH, this.anyadir);
-		this.springLayout.putConstraint(SpringLayout.WEST, this.editar, 74, SpringLayout.EAST, this.anyadir);
+		springLayout.putConstraint(SpringLayout.WEST, editar, 251, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, anyadir, -56, SpringLayout.WEST, editar);
+		springLayout.putConstraint(SpringLayout.NORTH, editar, 0, SpringLayout.NORTH, anyadir);
 		this.setControlador(c,"editar");
 		this.add(editar);
 		
 		this.eliminar = new JButton("Eliminar");
-		
-		this.springLayout.putConstraint(SpringLayout.NORTH, this.eliminar, 0, SpringLayout.NORTH, this.anyadir);
-		this.springLayout.putConstraint(SpringLayout.WEST, this.eliminar, 86, SpringLayout.EAST, this.editar);
+		springLayout.putConstraint(SpringLayout.NORTH, eliminar, 0, SpringLayout.NORTH, anyadir);
+		springLayout.putConstraint(SpringLayout.WEST, eliminar, 69, SpringLayout.EAST, editar);
 		
 		this.setControlador(c,"eliminar");
 		this.add(eliminar);
+		
+		visible = new JRadioButton("Visible");
+		springLayout.putConstraint(SpringLayout.NORTH, visible, 19, SpringLayout.SOUTH, eliminar);
+		springLayout.putConstraint(SpringLayout.WEST, visible, 332, SpringLayout.WEST, this);
+		
+		novisible = new JRadioButton("No visible");
+		springLayout.putConstraint(SpringLayout.NORTH, novisible, 0, SpringLayout.NORTH, visible);
+		springLayout.putConstraint(SpringLayout.EAST, novisible, -30, SpringLayout.WEST, visible);
+		
+		this.visibilidad = new ButtonGroup();
+		
+		visibilidad.add(visible);
+		visibilidad.add(novisible);
+		this.add(novisible);
+		this.add(visible);
+		
+		guardar = new JButton("Guardar");
+		springLayout.putConstraint(SpringLayout.NORTH, guardar, 29, SpringLayout.SOUTH, novisible);
+		springLayout.putConstraint(SpringLayout.WEST, guardar, 262, SpringLayout.WEST, this);
+		
+		ControladorEditarContenido cont1 = new ControladorEditarContenido(this);
+		this.setControlador(cont1,"guardar");
+		add(guardar);
+		
+		titulonew = new JEditorPane();
+		springLayout.putConstraint(SpringLayout.WEST, titulonew, 135, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, titulonew, -21, SpringLayout.NORTH, scrollPane);
+		springLayout.putConstraint(SpringLayout.EAST, titulonew, 505, SpringLayout.WEST, this);
+		add(titulonew);
 		
 	}
 	
@@ -138,6 +171,16 @@ public class PanelEditarTema extends JPanel{
 	public PanelProfesor getPanelProf(){
 		return this.contenedorProf;
 	}
+	
+	public boolean comprobarSeleccion(){
+		 
+		 if(visible.isSelected()){
+			 return true;
+		 }else {
+			 return false;
+		 } 
+	 }
+	
 	
 	public void actualizarTema() throws ClassNotFoundException, InvalidEmailAddressException, FailedInternetConnectionException, IOException{
 		
@@ -214,17 +257,29 @@ public class PanelEditarTema extends JPanel{
 			tem = this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelEdAsig().getNombreTemaSeleccionado()).getTemas();
 			apun = this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelEdAsig().getNombreTemaSeleccionado()).getApuntes();
 			ej = this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelEdAsig().getNombreTemaSeleccionado()).getEjercicios();
+			
+			if(!this.titulonew.getText().isEmpty()){
+				this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelEdAsig().getNombreTemaSeleccionado()).setVisibilidad(this.comprobarSeleccion());
+				this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelEdAsig().getNombreTemaSeleccionado()).setNombre(this.titulonew.getText());
+			}
 		}
 		
 		else{
 			tem = this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado()).getTemas();
 			apun = this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado()).getApuntes();
 			ej = this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado()).getEjercicios();
+			
+			if(!this.titulonew.getText().isEmpty()){
+				this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado()).setVisibilidad(this.comprobarSeleccion());
+				this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado()).setNombre(this.titulonew.getText());
+				
+			}
 		}
 		
 		subtemas.removeAllElements();
 		apuntes.removeAllElements();
 		ejercicios.removeAllElements();
+		
 		
 		if(!tem.isEmpty()){	
 			
@@ -272,6 +327,8 @@ public class PanelEditarTema extends JPanel{
 			this.editar.addActionListener(c);
 		}else if(nombre.equals("eliminar")){
 			this.eliminar.addActionListener(c);
+		}else if(nombre.equals("guardar")){
+			this.guardar.addActionListener(c);
 		}
 	}
 }

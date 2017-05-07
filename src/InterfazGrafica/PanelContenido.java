@@ -120,7 +120,6 @@ public class PanelContenido extends JPanel {
 		cartas.addLayoutComponent(this.paneledtem, "EditarTem");
 		cartas.addLayoutComponent(this.paneledtem, "EditarAp");
 		cartas.addLayoutComponent(this.paneledtem, "EditarEj");
-		cartas.addLayoutComponent(this.paneledap, "GuardarAp");
 		
 		cartas.addLayoutComponent(this.preguntamultiple, "Multiple");
 		cartas.addLayoutComponent(this.preguntatest, "Test");
@@ -339,16 +338,17 @@ public class PanelContenido extends JPanel {
 			this.add(this.paneledasig);
 			cartas.show(this, "EditarAsig");
 			
-		}else if(nombre.equals("EditarTem")){
+		}else if(nombre.equals("EditarTem") || nombre.equals("GuardarTem")){
 			
 			this.removeAll();
 			this.paneledtem.actualizarTema();
 			this.add(this.paneledtem);
 			cartas.show(this, "EditarTem");
 			
-		}else if(nombre.equals("EditarAp")){
+		}else if(nombre.equals("EditarAp") || nombre.equals("GuardarAp")){
 			
 			this.removeAll();
+			this.paneledap.actualizarApunte();
 			this.add(this.paneledap);
 			cartas.show(this, "GuardarAp");
 			
@@ -357,13 +357,6 @@ public class PanelContenido extends JPanel {
 			this.removeAll();
 			this.add(this.paneledej);
 			cartas.show(this, "EditarEj");
-			
-		}else if(nombre.equals("GuardarAp")){
-			
-			this.removeAll();
-			this.paneledap.actualizarApunte();
-			this.add(this.paneledap);
-			cartas.show(this, "GuardarAp");
 			
 		}else if(nombre.equals("Multiple")){
 			
