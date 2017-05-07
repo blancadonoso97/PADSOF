@@ -38,6 +38,7 @@ public class PanelAdministrar extends JPanel{
 	private JButton aceptar;
 	private JButton denegar;
 	private JButton expulsar;
+	private JButton readmitir;
 	
 	
 	/**
@@ -63,6 +64,7 @@ public class PanelAdministrar extends JPanel{
 		this.aceptar = new JButton("Aceptar Matricula");
 		this.denegar = new JButton("Denegar Matricula");
 		this.expulsar = new JButton("Expulsar");
+		this.readmitir = new JButton("Readmitir");
 
 		this.add(tablaMatricula);
 		this.add(tablaExpulsion);
@@ -70,6 +72,7 @@ public class PanelAdministrar extends JPanel{
 		this.add(aceptar);
 		this.add(denegar);
 		this.add(expulsar);
+		this.add(readmitir);
 		
 		ControladorAdministrar controlador = new ControladorAdministrar(contenedor.getContenedorProf().getVentana(),this);
 		
@@ -86,6 +89,7 @@ public class PanelAdministrar extends JPanel{
 		 aceptar.addActionListener(c);
 		 denegar.addActionListener(c);
 		 expulsar.addActionListener(c);
+		 readmitir.addActionListener(c);
 	 }
 	
 	
@@ -115,7 +119,7 @@ public class PanelAdministrar extends JPanel{
 	
 	/**
 	 * Devuelve la expulsion asociada al alumno
-	 * @return
+	 * @return Expulsion del alumno
 	 */
 	public Expulsion getExpulsion(){
 		
@@ -127,6 +131,26 @@ public class PanelAdministrar extends JPanel{
 		String nombreAsig = tablaAsignaturas.getModel().getValueAt(0, columna).toString(); // Nombre = columna 1
 
 		return contenedor.getContenedorProf().getVentana().getSistema().getExpulsion(idAlumno, nombreAsig);
+		
+		
+	}
+	
+	/**
+	 * Devuelve la expulsion vigente
+	 * @return Expulsion vigente
+	 */
+	public Expulsion getExpulsionVigente(){
+		
+		
+		int fila = tablaExpulsion.getSelectedRow();
+		int columna = tablaExpulsion.getSelectedColumn();
+		
+		String idAlumno = tablaExpulsion.getModel().getValueAt(fila, columna).toString(); // Id = columna 0
+		
+		String nombreAsig = tablaExpulsion.getModel().getValueAt(fila, 1).toString(); // Nombre = columna 1
+
+		return contenedor.getContenedorProf().getVentana().getSistema().getExpulsion(idAlumno, nombreAsig);
+		
 		
 		
 	}
@@ -186,12 +210,41 @@ public class PanelAdministrar extends JPanel{
 	}
 	
 	/**
+	 * Obtiene el id del alumno en la tabla de expulsiones
+	 * @return Alumno seleccionado
+	 */
+	public Alumno getAlumnoExpulsion(){
+		
+		int fila = tablaExpulsion.getSelectedRow();
+		int columna = tablaExpulsion.getSelectedColumn();
+		
+		String idAlumno = tablaExpulsion.getModel().getValueAt(fila, columna).toString();
+		
+		return contenedor.getContenedorProf().getVentana().getSistema().getAlumno(idAlumno);
+		
+	}
+	
+	/**
+	 * Obtiene la asignatura en la tabla de expulsiones
+	 * @return Asignatura seleccionada
+	 */
+	public Asignatura getAsignaturaExp(){
+		
+		int fila = tablaExpulsion.getSelectedRow();
+		String nombreAsig = tablaExpulsion.getModel().getValueAt(fila, 1).toString();
+		
+		return contenedor.getContenedorProf().getVentana().getSistema().getAsignatura(nombreAsig);
+	}
+	
+	/**
 	 * Actualiza la tabla de peticiones de matricula
 	 */
 	public void actualizarTablaMatriculas(){
 		
 		tablaMatricula.removeAll();
 
+		modelomat = new DefaultTableModel(new String[] {"Alumno", "Asignatura a matricularse"}, 0);
+		
 		modelomat.addRow(new String[]{"Alumno", "Asignatura a matricularse"});
 		
 		ArrayList<SolicitudMatricula> matexistentes = new ArrayList<SolicitudMatricula>();
@@ -214,8 +267,10 @@ public class PanelAdministrar extends JPanel{
 	 */
 	public void actualizarTablaExpulsiones(){
 		
-		tablaMatricula.removeAll();
+		tablaExpulsion.removeAll();
 
+		modeloexp = new DefaultTableModel(new String[] {"Alumno", "Expulsado de"}, 0);
+		
 		modeloexp.addRow(new String[]{"Alumno", "Expulsado de"});
 		
 		ArrayList<Expulsion> expexistentes = new ArrayList<Expulsion>();
@@ -228,7 +283,7 @@ public class PanelAdministrar extends JPanel{
 			
 		}
 		
-		tablaMatricula.setModel(modeloexp);
+		tablaExpulsion.setModel(modeloexp);
 		
 	}
 	
@@ -246,11 +301,12 @@ public class PanelAdministrar extends JPanel{
 		
 		tablaAsignaturas.removeAll();
 		
-		 for (Asignatura a : asigexistentes){
+		modeloasig.addColumn("Alumnos por asignatura");
+		
+		for (Asignatura a : asigexistentes){
 			 
-			 modeloasig.addColumn(a.getNombre());
-			 modeloasig.addRow(new Object[]{a.getNombre()});
-			 
+			modeloasig.addRow(new Object[]{a.getNombre()});
+			
 			 for (Alumno b: a.getAlumnos()){
 				 
 				 modeloasig.addRow(new Object[]{b.getId()});
@@ -258,7 +314,6 @@ public class PanelAdministrar extends JPanel{
 			 }
 
 		 }
-		
 		
 		 tablaAsignaturas.setModel(modeloasig);
 		 

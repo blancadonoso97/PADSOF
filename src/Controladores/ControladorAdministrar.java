@@ -84,7 +84,7 @@ public class ControladorAdministrar implements ActionListener{
 						JOptionPane.showMessageDialog(panel, "Error al expulsar al alumno", "Error", JOptionPane.ERROR_MESSAGE);
 						return;
 					}else{
-						JOptionPane.showMessageDialog(panel, "El alumno "+ panel.getAlumnoAsignaturas().getNombre() + "ha sido expulsado de " + panel.getAsignaturaAsig().getNombre(), "Expulsar", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(panel, "El alumno "+ panel.getAlumnoAsignaturas().getNombre() + " ha sido expulsado de " + panel.getAsignaturaAsig().getNombre(), "Expulsar", JOptionPane.INFORMATION_MESSAGE);
 						return;
 					}
 				} catch (InvalidEmailAddressException | FailedInternetConnectionException e1) {
@@ -92,6 +92,26 @@ public class ControladorAdministrar implements ActionListener{
 				}
 				
 			}
+			
+			
+			
+		}else if(e.getActionCommand().equals("Readmitir")){
+			
+			
+			panel.getExpulsionVigente().setExpulsado(false);
+			
+			
+			if(ventana.getSistema().comprobarExpulsion(panel.getAlumnoExpulsion(), panel.getAsignaturaExp(), panel.getExpulsionVigente()) != false){
+				JOptionPane.showMessageDialog(panel, "Error al readmitir al alumno", "Error", JOptionPane.ERROR_MESSAGE);
+				return;
+			}else{
+				
+				JOptionPane.showMessageDialog(panel, "El alumno "+ panel.getAlumnoExpulsion().getNombre() + " ha sido readmitido en " + panel.getAsignaturaExp().getNombre(), "Readmitir", JOptionPane.INFORMATION_MESSAGE);
+				return;
+				
+			}
+			
+			
 			
 			
 			
