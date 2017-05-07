@@ -46,7 +46,7 @@ public class PanelCrearOpcion extends JPanel{
 		this.enunciado = new JTextField(40);
 		this.escorrecta = new JRadioButton("Opcion correcta");
 		this.crearopcion = new JButton("Crear opcion");
-		this.volver = new JButton("Volver a pregunta");
+		this.volver = new JButton("Volver");
 		
 		this.add(enunciado);
 		this.add(escorrecta);
@@ -76,7 +76,7 @@ public class PanelCrearOpcion extends JPanel{
 		this.enunciado = new JTextField(40);
 		this.escorrecta = new JRadioButton("Opcion correcta");
 		this.crearopcion = new JButton("Crear opcion");
-		this.volver = new JButton("Volver a pregunta");
+		this.volver = new JButton("Volver");
 		
 		this.add(enunciado);
 		this.add(escorrecta);
@@ -106,7 +106,7 @@ public class PanelCrearOpcion extends JPanel{
 		this.enunciado = new JTextField(40);
 		this.escorrecta = new JRadioButton("Opcion correcta");
 		this.crearopcion = new JButton("Crear opcion");
-		this.volver = new JButton("Volver a pregunta");
+		this.volver = new JButton("Volver");
 		
 		this.add(enunciado);
 		this.add(escorrecta);
