@@ -46,7 +46,7 @@ public class PanelCrearPreguntaMultiple extends JPanel{
 		this.enunciado = new JTextField(40);
 		this.suma = new JTextField(2);
 		this.resta = new JTextField(2);
-		this.opcion = new JButton("Crear opcion");
+		this.opcion = new JButton("Crear nueva opcion");
 		this.nombre = new JLabel("Enunciado de la pregunta");
 		this.crear = new JButton("Crear pregunta multiple");
 		this.volver = new JButton("Volver");

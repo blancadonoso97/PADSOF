@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import Controladores.ControladorCrearPregunta;
 import Examen.Pregunta;
 
 /**
@@ -42,27 +43,27 @@ public class PanelCrearOpcion extends JPanel{
 		this.crearopcion = new JButton("Crear opcion");
 		this.volver = new JButton("Volver");
 		
-		
 		this.add(enunciado);
 		this.add(escorrecta);
 		this.add(crearopcion);
 		this.add(volver);
 		
 		// Anade el controlador para el boton de crear opcion
-		//ControladorAgregarContenido controlador = new ControladorAgregarContenido(contenedor.getContenedorProf().getVentana(), this);
+		ControladorCrearPregunta controlador = new ControladorCrearPregunta(contenedor.getContenedorProf().getVentana(), this);
 
 		// Configurar el panel con el controlador
-		//this.setControlador(controlador);
+		this.setControlador(controlador);
 		
 		
 	}
 	
 	/**
-	 * Anade un controlador al boton
+	 * Anade un controlador al boton crear y volver
 	 * @param c Controlador a anadir
 	 */
 	public void setControlador(ActionListener c) {
 		crearopcion.addActionListener(c);
+		volver.addActionListener(c);
 	}
 	
 	/**
@@ -80,6 +81,16 @@ public class PanelCrearOpcion extends JPanel{
 	public Pregunta getPregunta(){
 		
 		return pregunta;
+	}
+	
+	/**
+	 * Set de la pregunta
+	 * @param preg Pregunta
+	 */
+	public void setPregunta(Pregunta preg){
+		
+		pregunta = preg;
+		
 	}
 	
 	/**

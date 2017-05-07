@@ -375,6 +375,20 @@ public class PanelContenido extends JPanel {
 			
 		}else if(nombre.equals("Opcion")){
 			
+			if(preguntaredactar.getPregunta() != null){
+				
+				opcion.setPregunta(preguntaredactar.getPregunta());
+				
+			}else if(preguntatest.getPregunta() != null){
+				
+				opcion.setPregunta(preguntatest.getPregunta());
+				
+			}else if(preguntamultiple.getPregunta() != null){
+				
+				opcion.setPregunta(preguntamultiple.getPregunta());
+				
+			}
+			
 			this.add(this.opcion);
 			cartas.show(this, "Opcion");
 			
