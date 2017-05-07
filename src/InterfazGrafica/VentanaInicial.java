@@ -29,7 +29,9 @@ public class VentanaInicial extends JFrame{
 	private JPanel panelinicio;
 	private PanelAlumno panelalumno;
 	private PanelProfesor panelprofesor;
+	
 	public VentanaInicial(Sistema sist) throws IOException{
+		
 		getContentPane().setForeground(Color.WHITE);
 		getContentPane().setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.background"));
 		

@@ -16,6 +16,7 @@ import Controladores.ControladorAccederContenido;
 import Examen.Ejercicio;
 import javax.swing.JScrollPane;
 import javax.swing.SpringLayout;
+import javax.swing.JTabbedPane;
 
 public class PanelTema extends JPanel {
 
@@ -32,6 +33,7 @@ public class PanelTema extends JPanel {
 	private JList<String> listasubtemas;
 	private JList<String> listaapuntes;
 	private JList<String> listaejercicios;
+	private JTabbedPane tabbedPane;
 	
 	PanelTema(PanelContenido cont){
 		
@@ -47,48 +49,54 @@ public class PanelTema extends JPanel {
 		this.subtemas.addElement("No existe ningun subtema");
 		
 		this.acceder = new JButton("Acceder");
-		
-		springLayout.putConstraint(SpringLayout.WEST, acceder, 110, SpringLayout.WEST, this);
-		springLayout.putConstraint(SpringLayout.EAST, acceder, -496, SpringLayout.EAST, this);
+		springLayout.putConstraint(SpringLayout.WEST, acceder, 309, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, acceder, -371, SpringLayout.EAST, this);
 		acceder.setFont(new Font("WenQuanYi Micro Hei Mono", Font.BOLD, 12));
 		this.setControlador(controlador);
 		
+		this.add(acceder);
+		
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		springLayout.putConstraint(SpringLayout.NORTH, acceder, 40, SpringLayout.SOUTH, tabbedPane);
+		springLayout.putConstraint(SpringLayout.NORTH, tabbedPane, 115, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, tabbedPane, 68, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, tabbedPane, -203, SpringLayout.SOUTH, this);
+		springLayout.putConstraint(SpringLayout.EAST, tabbedPane, 703, SpringLayout.WEST, this);
+		add(tabbedPane);
+		
 		
 		scrollPane = new JScrollPane();
-		springLayout.putConstraint(SpringLayout.NORTH, acceder, 6, SpringLayout.SOUTH, scrollPane);
+		springLayout.putConstraint(SpringLayout.SOUTH, acceder, 38, SpringLayout.SOUTH, scrollPane);
+		tabbedPane.addTab("Apuntes", null, scrollPane, null);
 		springLayout.putConstraint(SpringLayout.NORTH, scrollPane, 137, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, scrollPane, -167, SpringLayout.SOUTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, scrollPane, 49, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.EAST, scrollPane, 318, SpringLayout.WEST, this);
 		
-		scrollPane_1 = new JScrollPane();
-		springLayout.putConstraint(SpringLayout.SOUTH, acceder, 217, SpringLayout.NORTH, scrollPane_1);
-		springLayout.putConstraint(SpringLayout.WEST, scrollPane_1, 56, SpringLayout.EAST, scrollPane);
-		springLayout.putConstraint(SpringLayout.SOUTH, scrollPane_1, -180, SpringLayout.SOUTH, this);
-		
 		listaapuntes = new JList<String>(apuntes);
 		scrollPane.setViewportView(listaapuntes);
 		
+		scrollPane_1 = new JScrollPane();
+		tabbedPane.addTab("Ejercicios", null, scrollPane_1, null);
+		springLayout.putConstraint(SpringLayout.SOUTH, scrollPane_1, -180, SpringLayout.SOUTH, this);
+		
+		listaejercicios = new JList<String>(ejercicios);
+		scrollPane_1.setViewportView(listaejercicios);
+		springLayout.putConstraint(SpringLayout.WEST, scrollPane_1, 56, SpringLayout.EAST, scrollPane);
+		
 		
 		scrollPane_2 = new JScrollPane();
-		springLayout.putConstraint(SpringLayout.NORTH, scrollPane_1, 0, SpringLayout.NORTH, scrollPane_2);
-		springLayout.putConstraint(SpringLayout.EAST, scrollPane_1, -40, SpringLayout.WEST, scrollPane_2);
+		tabbedPane.addTab("Subtemas", null, scrollPane_2, null);
 		springLayout.putConstraint(SpringLayout.WEST, scrollPane_2, 578, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.EAST, scrollPane_2, -28, SpringLayout.EAST, this);
 		springLayout.putConstraint(SpringLayout.NORTH, scrollPane_2, 188, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, scrollPane_2, -180, SpringLayout.SOUTH, this);
 		
-		listaejercicios = new JList<String>(ejercicios);
-		scrollPane_1.setViewportView(listaejercicios);
-		
 		
 		listasubtemas = new JList<String>(subtemas);
 		scrollPane_2.setViewportView(listasubtemas);
-		
-		this.add(acceder);
-		this.add(scrollPane_2);
-		this.add(scrollPane_1);
-		this.add(scrollPane);
+		springLayout.putConstraint(SpringLayout.NORTH, scrollPane_1, 0, SpringLayout.NORTH, scrollPane_2);
+		springLayout.putConstraint(SpringLayout.EAST, scrollPane_1, -40, SpringLayout.WEST, scrollPane_2);
 		
 		if(cont.getContenedorProf()!=null){
 			setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
@@ -112,7 +120,11 @@ public class PanelTema extends JPanel {
 	}
 	
 	public String getNombreTema(){
-		return this.contenedorProf.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado();
+		if(this.contenedorProf != null){
+			return this.contenedorProf.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado();
+		}else{
+			return this.contenedorAlum.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado();
+		}
 	}
 
 	
@@ -211,6 +223,57 @@ public class PanelTema extends JPanel {
 						
 				}
 					
+				
+			}else{
+				
+				Tema TemaPadre =this.contenedorAlum.getVentana().getSistema().getTema(this.contenedorAlum.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado());
+				 
+				for(Tema t : TemaPadre.getTemas()){
+					if(t.getNombre().equals(this.getNombreSubtemaSeleccionado())){
+						 
+						tem = t.getTemas();
+						apun =t.getApuntes();
+						ej = t.getEjercicios();
+						
+						subtemas.removeAllElements();
+						apuntes.removeAllElements();
+						ejercicios.removeAllElements();
+						
+						if(!tem.isEmpty()){	
+								
+							for(Tema a : tem){
+								subtemas.addElement(a.getNombre());
+							}
+									
+						}else{
+							this.subtemas.addElement("No existe ningun subtema");
+						}
+						
+						if(!apun.isEmpty()){
+							
+							for(Apuntes a : apun){
+								apuntes.addElement(a.getTitulo());
+							}
+									
+						}else{
+							this.apuntes.addElement("No existe ningun apunte");
+						}
+						
+						if(!ej.isEmpty()){
+								
+							for(Ejercicio a : ej){
+								ejercicios.addElement(a.getNombre());
+							}
+									
+						}else{
+							this.ejercicios.addElement("No existe ningun ejercicio"); 	
+						}
+						
+						
+						
+					}
+						
+				}
 				
 			}
 			

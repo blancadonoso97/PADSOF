@@ -15,6 +15,7 @@ import javax.swing.UIManager;
 
 import Asignatura.Asignatura;
 import Controladores.ControladorAccederContenido;
+import Controladores.ControladorEditarContenido;
 
 public class PanelPrincipal extends JPanel{
 
@@ -35,6 +36,7 @@ public class PanelPrincipal extends JPanel{
 		this.asignaturas.addElement("No existe ninguna asignatura");
 		
 		ControladorAccederContenido controlador = new ControladorAccederContenido(this);
+		ControladorEditarContenido controla= new ControladorEditarContenido(this);
 		SpringLayout springLayout = new SpringLayout();
 		setLayout(springLayout);
 		
@@ -73,7 +75,7 @@ public class PanelPrincipal extends JPanel{
 		springLayout.putConstraint(SpringLayout.EAST, editar, 273, SpringLayout.EAST, acceder);
 		
 		this.setControlador(controlador,"acceder");
-		this.setControlador(controlador,"editar");
+		this.setControlador(controla,"editar");
 		
 		this.add(acceder);
 		this.add(editar);

@@ -6,6 +6,8 @@ import java.io.IOException;
 
 import InterfazGrafica.PanelBarraHerramientas;
 import InterfazGrafica.VentanaInicial;
+import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 
 /**
@@ -37,39 +39,81 @@ public class ControladorBarraHerramientas implements ActionListener{
 		if(e.getActionCommand().equals("Crear Asignatura")){
 			
 			if(ventana.getSistema().getEsProfesor()){
-				panel.getPanelProfe().getPanelContenido().cambiarCarta("Asignatura");
+				try {
+					panel.getPanelProfe().getPanelContenido().cambiarCarta("Asignatura");
+				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+						| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 			
 		}else if(e.getActionCommand().equals("Crear Tema")){
 			
 			if(ventana.getSistema().getEsProfesor()){
-				panel.getPanelProfe().getPanelContenido().cambiarCarta("Tema");
+				try {
+					panel.getPanelProfe().getPanelContenido().cambiarCarta("Tema");
+				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+						| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 			
 		}else if(e.getActionCommand().equals("Crear Subtema")){
 			
 			if(ventana.getSistema().getEsProfesor()){
-				panel.getPanelProfe().getPanelContenido().cambiarCarta("Subtema");
+				try {
+					panel.getPanelProfe().getPanelContenido().cambiarCarta("Subtema");
+				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+						| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 			
 		}else if(e.getActionCommand().equals("Crear Apuntes")){
 			
 			if(ventana.getSistema().getEsProfesor()){
-				panel.getPanelProfe().getPanelContenido().cambiarCarta("Apuntes");
+				try {
+					panel.getPanelProfe().getPanelContenido().cambiarCarta("Apuntes");
+				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+						| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 			
 		}else if(e.getActionCommand().equals("Solicitar Matricula")){
 			
 			if(!ventana.getSistema().getEsProfesor()){
-				panel.getPanelAlumno().getPanelContenido().cambiarCarta("Matricula");
+				try {
+					panel.getPanelAlumno().getPanelContenido().cambiarCarta("Matricula");
+				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+						| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 			
 		}else if(e.getActionCommand().equals("Pagina Principal")){
 			
 			if(!ventana.getSistema().getEsProfesor()){
-				panel.getPanelAlumno().getPanelContenido().cambiarCarta("Principal");
+				try {
+					panel.getPanelAlumno().getPanelContenido().cambiarCarta("Principal");
+				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+						| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}else{
-				panel.getPanelProfe().getPanelContenido().cambiarCarta("Principal");
+				try {
+					panel.getPanelProfe().getPanelContenido().cambiarCarta("Principal");
+				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+						| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 			
 		}else if(e.getActionCommand().equals("Cerrar Sesion")){
@@ -85,7 +129,13 @@ public class ControladorBarraHerramientas implements ActionListener{
 		}else if(e.getActionCommand().equals("Administrar")){
 
 			if(ventana.getSistema().getEsProfesor()){
-				panel.getPanelProfe().getPanelContenido().cambiarCarta("Administrar");
+				try {
+					panel.getPanelProfe().getPanelContenido().cambiarCarta("Administrar");
+				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+						| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 			
 			

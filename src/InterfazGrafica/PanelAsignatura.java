@@ -115,7 +115,7 @@ public class PanelAsignatura extends JPanel {
 			
 		}
 		
-		else if(this.contenedorAlum != null && this.contenedorAlum.getVentana().getSistema().getAlumnoLog()!=null){
+		else if(this.contenedorAlum != null){
 			
 			
 			tem = this.contenedorAlum.getVentana().getSistema().getAsignatura(this.contenedorAlum.getPanelContenido().getPanelPrincipal().getNombreAsignaturaSeleccionada()).getTemas();
@@ -139,9 +139,6 @@ public class PanelAsignatura extends JPanel {
 	public void setControlador(ActionListener c){
 		acceder.addActionListener(c);
 	}
-	
-	
-	
 	
 
 }
