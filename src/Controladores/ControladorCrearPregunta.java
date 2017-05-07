@@ -12,6 +12,7 @@ import Examen.Pregunta;
 import Examen.PreguntaMultiple;
 import Examen.PreguntaRedactar;
 import Examen.PreguntaTest;
+import InterfazGrafica.PanelCrearOpcion;
 import InterfazGrafica.PanelCrearPreguntaMultiple;
 import InterfazGrafica.PanelCrearPreguntaRedactar;
 import InterfazGrafica.PanelCrearPreguntaTest;
@@ -26,6 +27,7 @@ public class ControladorCrearPregunta implements ActionListener{
 	private PanelCrearPreguntaRedactar panelpreguntaredactar;
 	private PanelCrearPreguntaTest panelpreguntatest;
 	private PanelCrearPreguntaMultiple panelpreguntamultiple;
+	private PanelCrearOpcion opcion;
 	
 	/**
 	 * Constructor para la clase PanelCrearPreguntaRedactar
@@ -70,6 +72,18 @@ public class ControladorCrearPregunta implements ActionListener{
 		this.ventana = vent;
 		this.panelpreguntamultiple = pan;
 
+	}
+	
+	/**
+	 * Constructor para la clase PanelCrearOpcion
+	 * @param vent Ventana asociada al panel
+	 * @param pan Panel crear opcion
+	 */
+	public ControladorCrearPregunta(VentanaInicial vent, PanelCrearOpcion pan){
+		
+		this.ventana = vent;
+		this.opcion = pan;
+		
 	}
 	
 	@Override
@@ -140,8 +154,7 @@ public class ControladorCrearPregunta implements ActionListener{
 				e1.printStackTrace();
 			}
 
-		}else if (e.getActionCommand().equals("Crear opcion")){
-			
+		}else if (e.getActionCommand().equals("Crear nueva opcion")){
 			
 			try {
 				ventana.getPanelProfesor().getPanelContenido().cambiarCarta("Opcion");
@@ -150,6 +163,20 @@ public class ControladorCrearPregunta implements ActionListener{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			
+			
+		}else if (e.getActionCommand().equals("Crear opcion")){
+			
+			if(opcion.getPregunta().anyadirOpcion(new Opcion(opcion.getEnunciado(), opcion.comprobarSeleccion(), opcion.getPregunta())) == false){
+				
+				JOptionPane.showMessageDialog(opcion, "Error al crear la opcion", "Error", JOptionPane.ERROR_MESSAGE);
+				return;
+				
+			}else{
+				JOptionPane.showMessageDialog(panelpreguntamultiple, "La opcion ha sido creada", "Crear opcion", JOptionPane.INFORMATION_MESSAGE);
+				return;
+			}
+			
 			
 			
 		}
