@@ -99,7 +99,7 @@ public class PanelContenido extends JPanel {
 		cartas.addLayoutComponent(this.temas, "Tema");
 		cartas.addLayoutComponent(this.apuntes, "Apuntes");
 		cartas.addLayoutComponent(this.subtemas, "Subtema");
-		cartas.addLayoutComponent(this.ejercicios, "Ejercicios");
+		cartas.addLayoutComponent(this.ejercicios, "Ejercicio");
 		cartas.addLayoutComponent(this.paginaprinc, "Principal");
 		cartas.addLayoutComponent(this.panelasig, "AccederAsig");
 		cartas.addLayoutComponent(this.paneltem, "AccederTem");
@@ -243,6 +243,7 @@ public class PanelContenido extends JPanel {
 		}else if(nombre.equals("Ejercicio")){
 			
 			this.removeAll();
+			this.ejercicios.actualizarTabla();
 			this.add(this.ejercicios);
 			cartas.show(this, "Ejercicio");
 			

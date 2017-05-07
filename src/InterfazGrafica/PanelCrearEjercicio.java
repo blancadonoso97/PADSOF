@@ -133,7 +133,7 @@ public class PanelCrearEjercicio extends JPanel {
 		
 		ControladorCrearEjercicio controlador4 = new ControladorCrearEjercicio(contenedor.getContenedorProf().getVentana(), this);
 		
-		this.setControladorRed(controlador4);
+		this.setControlador(controlador4);
 		
 	}
 

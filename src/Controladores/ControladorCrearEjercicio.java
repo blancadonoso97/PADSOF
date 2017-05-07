@@ -107,7 +107,7 @@ public class ControladorCrearEjercicio implements ActionListener {
 
 			}
 
-		}else if (e.getActionCommand().equals("Crear ejercicio")){
+		}else if (e.getActionCommand().equals("Crear Ejercicio")){
 			
 			
 			try {
