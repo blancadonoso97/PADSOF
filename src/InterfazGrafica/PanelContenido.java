@@ -6,6 +6,7 @@ import java.io.IOException;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
+import Controladores.ControladorCrearEjercicio;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
@@ -32,6 +33,9 @@ public class PanelContenido extends JPanel {
 	private PanelCrearApuntes apuntes;
 	
 	private PanelCrearEjercicio ejercicios;	
+	private PanelCrearPreguntaMultiple preguntamultiple;
+	private PanelCrearPreguntaTest preguntatest;
+	private PanelCrearPreguntaRedactar preguntaredactar;
 	
 	private PanelPrincipal paginaprinc;
 	private PanelAdministrar paneladmin;
@@ -73,6 +77,10 @@ public class PanelContenido extends JPanel {
 		// Panel crear ejercicio
 		this.ejercicios = new PanelCrearEjercicio(this);
 		
+		this.preguntamultiple = new PanelCrearPreguntaMultiple(ejercicios);
+		this.preguntaredactar = new PanelCrearPreguntaRedactar(ejercicios);
+		this.preguntatest = new PanelCrearPreguntaTest(ejercicios);
+		
 		// Panel administar
 		this.paneladmin = new PanelAdministrar(this);
 		
@@ -111,6 +119,26 @@ public class PanelContenido extends JPanel {
 		cartas.addLayoutComponent(this.paneledtem, "EditarAp");
 		cartas.addLayoutComponent(this.paneledtem, "EditarEj");
 		cartas.addLayoutComponent(this.paneledap, "GuardarAp");
+		
+		cartas.addLayoutComponent(this.preguntamultiple, "Multiple");
+		cartas.addLayoutComponent(this.preguntatest, "Test");
+		cartas.addLayoutComponent(this.preguntaredactar, "Redactar");
+		
+		ControladorCrearEjercicio controlador = new ControladorCrearEjercicio(this.getContenedorProf().getVentana(), preguntamultiple);
+		
+		this.ejercicios.setControladorMult(controlador);
+
+		ControladorCrearEjercicio controlador2 = new ControladorCrearEjercicio(this.getContenedorProf().getVentana(), preguntaredactar);
+		
+		this.ejercicios.setControladorRed(controlador2);
+		
+		ControladorCrearEjercicio controlador3 = new ControladorCrearEjercicio(this.getContenedorProf().getVentana(), preguntatest);
+		
+		this.ejercicios.setControladorTest(controlador3);
+		
+		ControladorCrearEjercicio controlador4 = new ControladorCrearEjercicio(this.getContenedorProf().getVentana(), this.ejercicios);
+		
+		this.ejercicios.setControlador(controlador4);
 		
 		this.paginaprinc.actualizarAsignaturas();
 		this.add(this.paginaprinc);
@@ -330,8 +358,39 @@ public class PanelContenido extends JPanel {
 			this.paneledap.actualizarApunte();
 			this.add(this.paneledap);
 			cartas.show(this, "GuardarAp");
+			
+		}else if(nombre.equals("Multiple")){
+			cartas.show(this, "Multiple");
+		}else if(nombre.equals("Test")){
+			cartas.show(this, "Test");
+		}else if(nombre.equals("Redactar")){
+			cartas.show(this, "Redactar");
 		}
 		
+	}
+	
+	/**
+	 * Devuelve el panel de pregunta multiple
+	 * @return preguntamultiple
+	 */
+	public PanelCrearPreguntaMultiple getPreguntaMultiple(){
+		return preguntamultiple;
+	}
+	
+	/**
+	 * Devuelve el panel de pregunta test
+	 * @return preguntatest
+	 */
+	public PanelCrearPreguntaTest getPreguntaTest(){
+		return preguntatest;
+	}
+	
+	/**
+	 * Devuelve el panel de pregunta redactar
+	 * @return preguntamultiple
+	 */
+	public PanelCrearPreguntaRedactar getPreguntaRedactar(){
+		return preguntaredactar;
 	}
 	
 	/**

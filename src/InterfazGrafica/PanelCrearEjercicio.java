@@ -1,6 +1,5 @@
 package InterfazGrafica;
 
-import java.awt.CardLayout;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
@@ -13,7 +12,6 @@ import javax.swing.JTextField;
 
 import Asignatura.Asignatura;
 import Asignatura.Tema;
-import Controladores.ControladorCrearEjercicio;
 import Examen.Ejercicio;
 
 /**
@@ -27,12 +25,6 @@ public class PanelCrearEjercicio extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private PanelContenido contenedor;
-	
-	private static CardLayout cartas = new CardLayout();
-	
-	private PanelCrearPreguntaMultiple preguntamultiple;
-	private PanelCrearPreguntaTest preguntatest;
-	private PanelCrearPreguntaRedactar preguntaredactar;
 
 	private JLabel pregunta;
 	
@@ -70,15 +62,15 @@ public class PanelCrearEjercicio extends JPanel {
 
 		this.pregunta = new JLabel("Crear pregunta de tipo:");
 		
-		this.crearpreguntamultiple = new JButton("Respuesta multiple");
-		this.crearpreguntaredactar = new JButton("Redactar");
-		this.crearpreguntatest = new JButton("Respuesta unica");
+		this.crearpreguntamultiple = new JButton("Crear pregunta multiple");
+		this.crearpreguntaredactar = new JButton("Crear pregunta redactar");
+		this.crearpreguntatest = new JButton("Crear pregunta test");
 		
 		this.crearejercicio = new JButton("Crear Ejercicio");
 
 		this.ordenado = new JRadioButton("Preguntas ordenadas");
 
-		this.peso = new JTextField(2);
+		this.peso = new JTextField(3);
 
 		this.diaini = new JTextField(2);
 		this.mesini = new JTextField(2);
@@ -90,10 +82,6 @@ public class PanelCrearEjercicio extends JPanel {
 
 		this.nombre = new JTextField(20);
 		
-		this.preguntamultiple = new PanelCrearPreguntaMultiple(this);
-		this.preguntaredactar = new PanelCrearPreguntaRedactar(this);
-		this.preguntatest = new PanelCrearPreguntaTest(this);
-
 		// Anadir contenido
 		this.add(nombre);
 		this.add(peso);
@@ -115,25 +103,6 @@ public class PanelCrearEjercicio extends JPanel {
 		this.add(crearpreguntatest);
 		this.add(crearejercicio);
 
-		cartas.addLayoutComponent(this.preguntamultiple, "Multiple");
-		cartas.addLayoutComponent(this.preguntatest, "Test");
-		cartas.addLayoutComponent(this.preguntaredactar, "Redactar");
-		
-		ControladorCrearEjercicio controlador = new ControladorCrearEjercicio(contenedor.getContenedorProf().getVentana(), preguntamultiple);
-		
-		this.setControladorMult(controlador);
-
-		ControladorCrearEjercicio controlador2 = new ControladorCrearEjercicio(contenedor.getContenedorProf().getVentana(), preguntaredactar);
-		
-		this.setControladorRed(controlador2);
-		
-		ControladorCrearEjercicio controlador3 = new ControladorCrearEjercicio(contenedor.getContenedorProf().getVentana(), preguntatest);
-		
-		this.setControladorTest(controlador3);
-		
-		ControladorCrearEjercicio controlador4 = new ControladorCrearEjercicio(contenedor.getContenedorProf().getVentana(), this);
-		
-		this.setControlador(controlador4);
 		
 	}
 
@@ -169,23 +138,6 @@ public class PanelCrearEjercicio extends JPanel {
 		crearejercicio.addActionListener(c);
 	}
 	
-	/**
-	 * Permite cambiar de carta dentro de crear ejercicio
-	 * @param nombre Nombre de la carta a cambiar
-	 */
-	public void cambiarCarta(String nombre){
-		
-		if(nombre.equals("Multiple")){
-			
-		}else if(nombre.equals("Test")){
-			
-		}else if(nombre.equals("Redactar")){
-			
-		}
-		
-		
-	}
-
 	/**
 	 * Obtiene el nombre del ejercicio
 	 * @return Nombre del ejercicio

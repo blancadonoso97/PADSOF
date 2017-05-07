@@ -1,5 +1,7 @@
 package InterfazGrafica;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -18,13 +20,21 @@ public class PanelCrearPreguntaRedactar extends JPanel{
 	private PanelCrearEjercicio contenedor;
 	private Ejercicio ejercicio;
 	
+	private JLabel nombre;
 	private JTextField enunciado;
+	private JButton opcion;
 	
 	public PanelCrearPreguntaRedactar(PanelCrearEjercicio cont){
 		
 		this.contenedor = cont;
 		this.ejercicio = null;
 		this.enunciado = new JTextField(40);
+		this.opcion = new JButton("Crear opcion");
+		this.nombre = new JLabel("Enunciado de la pregunta");
+		
+		this.add(nombre);
+		this.add(enunciado);
+		this.add(opcion);
 		
 		
 	}

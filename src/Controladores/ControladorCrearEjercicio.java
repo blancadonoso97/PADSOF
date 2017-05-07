@@ -86,7 +86,13 @@ public class ControladorCrearEjercicio implements ActionListener {
 
 			if (ventana.getSistema().getEsProfesor()) {
 
-				panelpreguntaredactar.getPanelEjercicio().cambiarCarta("Redactar");
+				try {
+					panelpreguntaredactar.getPanelEjercicio().getContenido().cambiarCarta("Redactar");
+				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+						| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				panelpreguntaredactar.setEjercicio(panelpreguntaredactar.getPanelEjercicio().getEjercicio()); // Pasamos el ejercicio creado a la pregunta
 
 			}
@@ -95,7 +101,13 @@ public class ControladorCrearEjercicio implements ActionListener {
 
 			if (ventana.getSistema().getEsProfesor()) {
 
-				panelpreguntatest.getPanelEjercicio().cambiarCarta("Test");
+				try {
+					panelpreguntatest.getPanelEjercicio().getContenido().cambiarCarta("Test");
+				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+						| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				panelpreguntatest.setEjercicio(panelpreguntatest.getPanelEjercicio().getEjercicio()); // Pasamos el ejercicio creado a la pregunta
 
 			}
@@ -104,7 +116,13 @@ public class ControladorCrearEjercicio implements ActionListener {
 
 			if (ventana.getSistema().getEsProfesor()) {
 
-				panelpreguntamultiple.getPanelEjercicio().cambiarCarta("Multiple");
+				try {
+					panelpreguntamultiple.getPanelEjercicio().getContenido().cambiarCarta("Multiple");
+				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+						| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				panelpreguntamultiple.setEjercicio(panelpreguntamultiple.getPanelEjercicio().getEjercicio()); // Pasamos el ejercicio creado a la pregunta
 
 			}
