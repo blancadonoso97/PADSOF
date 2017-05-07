@@ -7,7 +7,6 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import Controladores.ControladorAgregarContenido;
 import Examen.Pregunta;
 
 /**
@@ -46,10 +45,10 @@ public class PanelCrearOpcion extends JPanel{
 		this.add(crearopcion);
 		
 		// Anade el controlador para el boton de crear opcion
-		ControladorAgregarContenido controlador = new ControladorAgregarContenido(contenedor.getContenedorProf().getVentana(), this);
+		//ControladorAgregarContenido controlador = new ControladorAgregarContenido(contenedor.getContenedorProf().getVentana(), this);
 
 		// Configurar el panel con el controlador
-		this.setControlador(controlador);
+		//this.setControlador(controlador);
 		
 		
 	}

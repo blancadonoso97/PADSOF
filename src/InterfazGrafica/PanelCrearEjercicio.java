@@ -114,19 +114,52 @@ public class PanelCrearEjercicio extends JPanel {
 		
 		ControladorCrearEjercicio controlador = new ControladorCrearEjercicio(contenedor.getContenedorProf().getVentana(), preguntamultiple);
 		
-		this.setControlador(controlador);
+		this.setControladorMult(controlador);
 
+		ControladorCrearEjercicio controlador2 = new ControladorCrearEjercicio(contenedor.getContenedorProf().getVentana(), preguntaredactar);
+		
+		this.setControladorRed(controlador2);
+		
+		ControladorCrearEjercicio controlador3 = new ControladorCrearEjercicio(contenedor.getContenedorProf().getVentana(), preguntatest);
+		
+		this.setControladorTest(controlador3);
+		
+		ControladorCrearEjercicio controlador4 = new ControladorCrearEjercicio(contenedor.getContenedorProf().getVentana(), this);
+		
+		this.setControladorRed(controlador4);
+		
 	}
 
 	/**
-	 * Anade un controlador al boton
+	 * Anade un controlador al boton multiple
+	 * @param c Controlador a anadir
+	 */
+	public void setControladorMult(ActionListener c) {
+		crearpreguntamultiple.addActionListener(c);
+	}
+	
+	/**
+	 * Anade un controlador al boton redactar
+	 * @param c Controlador a anadir
+	 */
+	public void setControladorRed(ActionListener c) {
+		crearpreguntaredactar.addActionListener(c);
+	}
+	
+	/**
+	 * Anade un controlador al boton test
+	 * @param c Controlador a anadir
+	 */
+	public void setControladorTest(ActionListener c) {
+		crearpreguntatest.addActionListener(c);
+	}
+	
+	/**
+	 * Anade un controlador al boton ejercicio
 	 * @param c Controlador a anadir
 	 */
 	public void setControlador(ActionListener c) {
 		crearejercicio.addActionListener(c);
-		crearpreguntamultiple.addActionListener(c);
-		crearpreguntaredactar.addActionListener(c);
-		crearpreguntatest.addActionListener(c);
 	}
 	
 	/**

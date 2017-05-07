@@ -3,6 +3,7 @@ package Controladores;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import InterfazGrafica.PanelCrearEjercicio;
 import InterfazGrafica.PanelCrearPreguntaMultiple;
 import InterfazGrafica.PanelCrearPreguntaRedactar;
 import InterfazGrafica.PanelCrearPreguntaTest;
@@ -12,10 +13,22 @@ public class ControladorCrearEjercicio implements ActionListener {
 
 	private VentanaInicial ventana;
 
+	private PanelCrearEjercicio panelejercicio;
 	private PanelCrearPreguntaRedactar panelpreguntaredactar;
 	private PanelCrearPreguntaTest panelpreguntatest;
 	private PanelCrearPreguntaMultiple panelpreguntamultiple;
 
+	/**
+	 * Constructor para la clase PanelCrearEjercicio
+	 * @param vent Ventana asociada al panel
+	 * @param pan Panel crear ejercicio
+	 */
+	public ControladorCrearEjercicio(VentanaInicial vent, PanelCrearEjercicio pan){
+		
+		this.ventana = vent;
+		this.panelejercicio = pan;
+	}
+	
 	/**
 	 * Constructor para la clase PanelCrearPreguntaRedactar
 	 * 
@@ -88,6 +101,9 @@ public class ControladorCrearEjercicio implements ActionListener {
 
 			}
 
+		}else if (e.getActionCommand().equals("Crear ejercicio")){
+			
+			// Crear ejercicio desde sistema
 		}
 
 	}
