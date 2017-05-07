@@ -27,6 +27,10 @@ public class PanelCrearEjercicio extends JPanel {
 	private PanelContenido contenedor;
 
 	private JLabel pregunta;
+	private JLabel nombreej;
+	private JLabel pesoej;
+	private JLabel fechaini;
+	private JLabel fechafin;
 	
 	private JButton crearpreguntamultiple;
 	private JButton crearpreguntaredactar;
@@ -61,6 +65,10 @@ public class PanelCrearEjercicio extends JPanel {
 		this.listatemas = new JComboBox<String>();
 
 		this.pregunta = new JLabel("Crear pregunta de tipo:");
+		this.nombreej = new JLabel("Nombre del ejercicio:");
+		this.pesoej = new JLabel("Peso del ejercicio:");
+		this.fechaini = new JLabel("Fecha de inicio: Dia/Mes/Año");
+		this.fechafin = new JLabel("Fecha de fin: Dia/Mes/Año");
 		
 		this.crearpreguntamultiple = new JButton("Crear pregunta multiple");
 		this.crearpreguntaredactar = new JButton("Crear pregunta redactar");
@@ -83,14 +91,18 @@ public class PanelCrearEjercicio extends JPanel {
 		this.nombre = new JTextField(20);
 		
 		// Anadir contenido
+		this.add(nombreej);
 		this.add(nombre);
+		this.add(pesoej);
 		this.add(peso);
 		this.add(ordenado);
 
+		this.add(fechaini);
 		this.add(diaini);
 		this.add(mesini);
 		this.add(anyoini);
 
+		this.add(fechafin);
 		this.add(diafin);
 		this.add(mesfin);
 		this.add(anyofin);

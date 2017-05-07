@@ -384,15 +384,15 @@ public class PanelContenido extends JPanel {
 			
 			if(preguntaredactar.getPregunta() != null){
 				
-				opcion.setPregunta(preguntaredactar.getPregunta());
+				opcion = new PanelCrearOpcion(this, preguntaredactar.getPregunta());
 				
 			}else if(preguntatest.getPregunta() != null){
 				
-				opcion.setPregunta(preguntatest.getPregunta());
+				opcion = new PanelCrearOpcion(this, preguntatest.getPregunta());
 				
 			}else if(preguntamultiple.getPregunta() != null){
 				
-				opcion.setPregunta(preguntamultiple.getPregunta());
+				opcion = new PanelCrearOpcion(this, preguntamultiple.getPregunta());
 				
 			}
 			

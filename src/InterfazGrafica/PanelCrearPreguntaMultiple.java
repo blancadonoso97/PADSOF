@@ -25,6 +25,8 @@ public class PanelCrearPreguntaMultiple extends JPanel{
 	private Ejercicio ejercicio;
 	
 	private JLabel nombre;
+	private JLabel sumalab;
+	private JLabel restalab;
 	private JTextField enunciado;
 	private JTextField suma;
 	private JTextField resta;
@@ -48,12 +50,16 @@ public class PanelCrearPreguntaMultiple extends JPanel{
 		this.resta = new JTextField(2);
 		this.opcion = new JButton("Crear nueva opcion");
 		this.nombre = new JLabel("Enunciado de la pregunta");
+		this.sumalab = new JLabel("La pregunta correcta suma x puntos:");
+		this.restalab = new JLabel("La pregunta incorrecta resta x puntos:");
 		this.crear = new JButton("Crear pregunta multiple");
 		this.volver = new JButton("Volver");
 		
 		this.add(nombre);
 		this.add(enunciado);
+		this.add(sumalab);
 		this.add(suma);
+		this.add(restalab);
 		this.add(resta);
 		this.add(opcion);
 		this.add(crear);
