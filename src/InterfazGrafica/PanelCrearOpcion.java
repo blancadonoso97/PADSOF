@@ -23,6 +23,10 @@ public class PanelCrearOpcion extends JPanel{
 	private PanelContenido contenedor;
 	private Pregunta pregunta;
 	
+	private PanelCrearPreguntaRedactar redactar;
+	private PanelCrearPreguntaTest test;
+	private PanelCrearPreguntaMultiple multiple;
+	
 	private JTextField enunciado;
 	private JRadioButton escorrecta;
 	private JButton crearopcion;
@@ -37,11 +41,12 @@ public class PanelCrearOpcion extends JPanel{
 		
 		this.contenedor = cont;
 		this.pregunta = pan.getPregunta();
+		this.redactar = pan;
 		
 		this.enunciado = new JTextField(40);
 		this.escorrecta = new JRadioButton("Opcion correcta");
 		this.crearopcion = new JButton("Crear opcion");
-		this.volver = new JButton("Volver");
+		this.volver = new JButton("Volver a pregunta");
 		
 		this.add(enunciado);
 		this.add(escorrecta);
@@ -66,11 +71,12 @@ public class PanelCrearOpcion extends JPanel{
 		
 		this.contenedor = cont;
 		this.pregunta = pan.getPregunta();
+		this.multiple = pan;
 		
 		this.enunciado = new JTextField(40);
 		this.escorrecta = new JRadioButton("Opcion correcta");
 		this.crearopcion = new JButton("Crear opcion");
-		this.volver = new JButton("Volver");
+		this.volver = new JButton("Volver a pregunta");
 		
 		this.add(enunciado);
 		this.add(escorrecta);
@@ -95,11 +101,12 @@ public class PanelCrearOpcion extends JPanel{
 		
 		this.contenedor = cont;
 		this.pregunta = pan.getPregunta();
+		this.test = pan;
 		
 		this.enunciado = new JTextField(40);
 		this.escorrecta = new JRadioButton("Opcion correcta");
 		this.crearopcion = new JButton("Crear opcion");
-		this.volver = new JButton("Volver");
+		this.volver = new JButton("Volver a pregunta");
 		
 		this.add(enunciado);
 		this.add(escorrecta);
@@ -171,5 +178,30 @@ public class PanelCrearOpcion extends JPanel{
 			 return false;
 		 
 	 }
+	 
+	 /**
+	  * Devuelve el panel de pregunta redactar
+	  * @return redactar
+	  */
+	 public PanelCrearPreguntaRedactar getRedactar(){
+		 return redactar;
+	 }
+	 
+	 /**
+	  * Devuelve el panel de pregunta multiple
+	  * @return multiple
+	  */
+	 public PanelCrearPreguntaMultiple getMultiple(){
+		 return multiple;
+	 }
+	 
+	 /**
+	  * Devuelve el panel de pregunta test
+	  * @return test
+	  */
+	 public PanelCrearPreguntaTest getTest(){
+		 return test;
+	 }
+	 
 
 }
