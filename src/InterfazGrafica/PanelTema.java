@@ -28,18 +28,19 @@ public class PanelTema extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private PanelProfesor contenedorProf;
 	private PanelAlumno contenedorAlum;
-	private JButton acceder;
+	
 	private DefaultListModel<String> subtemas = new DefaultListModel<String>(); 
 	private DefaultListModel<String> apuntes = new DefaultListModel<String>(); 
 	private DefaultListModel<String> ejercicios = new DefaultListModel<String>(); 
 	private JScrollPane scrollPane;
 	private JScrollPane scrollPane_1;
 	private JScrollPane scrollPane_2;
+	private JTabbedPane tabbedPane;
 	private JList<String> listasubtemas;
 	private JList<String> listaapuntes;
 	private JList<String> listaejercicios;
-	private JTabbedPane tabbedPane;
 	private JButton editar;
+	private JButton acceder;
 	
 	PanelTema(PanelContenido cont){
 		
@@ -131,10 +132,7 @@ public class PanelTema extends JPanel {
 			springLayout.putConstraint(SpringLayout.NORTH, acceder, 28, SpringLayout.SOUTH, scrollPane);
 			springLayout.putConstraint(SpringLayout.WEST, acceder, 284, SpringLayout.WEST, this);
 			springLayout.putConstraint(SpringLayout.EAST, acceder, -322, SpringLayout.EAST, this);
-			
-			
-
-			
+				
 		}
 		
 		
