@@ -519,7 +519,7 @@ public class Sistema implements Serializable{
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 */
-	public boolean agregarEjercicio(Tema tema,boolean ordenado,double peso, int diaI, int mesI, int anyoI, int diaF, int mesF, int anyoF, String nombre) throws InvalidEmailAddressException, FailedInternetConnectionException, ClassNotFoundException, IOException{
+	public boolean agregarEjercicio(Tema tema, boolean ordenado, double peso, int diaI, int mesI, int anyoI, int diaF, int mesF, int anyoF, String nombre) throws InvalidEmailAddressException, FailedInternetConnectionException, ClassNotFoundException, IOException{
 			
 		if(this.esProfesor){
 			

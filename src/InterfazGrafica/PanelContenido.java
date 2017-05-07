@@ -66,14 +66,13 @@ public class PanelContenido extends JPanel {
 		this.apuntes = new PanelCrearApuntes(this);
 		
 		// Panel crear ejercicio
-		this.ejercicios = new PanelCrearEjercicio(/*this*/);
+		this.ejercicios = new PanelCrearEjercicio(this);
 		
 		// Panel administar
 		this.paneladmin = new PanelAdministrar(this);
 		
-		
+		// Panel principal
 		this.paginaprinc = new PanelPrincipal(this);
-		
 		
 		this.panelasig = new PanelAsignatura(this);
 		

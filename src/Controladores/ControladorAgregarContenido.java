@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import InterfazGrafica.PanelCrearApuntes;
 import InterfazGrafica.PanelCrearAsignatura;
+import InterfazGrafica.PanelCrearEjercicio;
 import InterfazGrafica.PanelCrearSubtema;
 import InterfazGrafica.PanelCrearTema;
 import InterfazGrafica.VentanaInicial;
@@ -27,9 +28,10 @@ public class ControladorAgregarContenido implements ActionListener{
 	private PanelCrearTema paneltema;
 	private PanelCrearApuntes panelapuntes;
 	private PanelCrearSubtema panelsubtema;
+	private PanelCrearEjercicio panelejercicio;
 	
 	/**
-	 * Constructor de la clase ControladorAgregarAsignatura
+	 * Constructor para la clase PanelCrearAsignatura
 	 * @param vent Ventana asociada al panel
 	 * @param pan Panel crear asignatura
 	 */
@@ -41,7 +43,7 @@ public class ControladorAgregarContenido implements ActionListener{
 	}
 	
 	/**
-	 * Constructor de la clase ControladorAgregarAsignatura
+	 * Constructor para la clase PanelCrearTema
 	 * @param vent Ventana asociada al panel
 	 * @param pan Panel crear tema
 	 */
@@ -53,7 +55,7 @@ public class ControladorAgregarContenido implements ActionListener{
 	}
 	
 	/**
-	 * Constructor de la clase ControladorAgregarAsignatura
+	 * Constructor para la clase PanelCrearApuntes
 	 * @param vent Ventana asociada al panel
 	 * @param pan Panel crear apuntes
 	 */
@@ -65,7 +67,7 @@ public class ControladorAgregarContenido implements ActionListener{
 	}
 	
 	/**
-	 * Constructor de la clase ControladorAgregarSubtema
+	 * Constructor para la clase PanelCrearSubtema
 	 * @param vent Ventana asociada al panel
 	 * @param pan Panel crear subtema
 	 */
@@ -73,6 +75,18 @@ public class ControladorAgregarContenido implements ActionListener{
 		
 		this.ventana = vent;
 		this.panelsubtema = pan;
+		
+	}
+	
+	/**
+	 * Constructor para la clase PanelCrearEjercicio
+	 * @param vent Ventana asociada al panel
+	 * @param pan Panel crear subtema
+	 */
+	public ControladorAgregarContenido(VentanaInicial vent, PanelCrearEjercicio pan){
+		
+		this.ventana = vent;
+		this.panelejercicio = pan;
 		
 	}
 	
@@ -178,12 +192,14 @@ public class ControladorAgregarContenido implements ActionListener{
 			}
 			 
 			 
+		 }else if(e.getActionCommand().equals("Crear ejercicio")){
+			 
+			 
+			 
+			 
+			 
 		 }
 		
-		
-		 
-		 
-			 
 		
 	}
 	
