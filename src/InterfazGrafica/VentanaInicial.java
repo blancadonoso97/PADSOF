@@ -105,5 +105,21 @@ public class VentanaInicial extends JFrame{
 		return sistema;
 	}
 	
+	/**
+	 * Obtiene el panel del profesor
+	 * @return panelprofesor
+	 */
+	public PanelProfesor getPanelProfesor(){
+		return panelprofesor;
+	}
+	
+	/**
+	 * Obtiene el panel del alumno
+	 * @return panelalumno
+	 */
+	public PanelAlumno getPanelAlumno(){
+		return panelalumno;
+	}
+	
 
 }

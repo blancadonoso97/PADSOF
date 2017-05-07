@@ -2,6 +2,10 @@ package Controladores;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import Examen.Opcion;
 import Examen.Pregunta;
 import Examen.PreguntaMultiple;
 import Examen.PreguntaRedactar;
@@ -10,6 +14,8 @@ import InterfazGrafica.PanelCrearPreguntaMultiple;
 import InterfazGrafica.PanelCrearPreguntaRedactar;
 import InterfazGrafica.PanelCrearPreguntaTest;
 import InterfazGrafica.VentanaInicial;
+import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 public class ControladorCrearPregunta implements ActionListener{
 
@@ -71,7 +77,7 @@ public class ControladorCrearPregunta implements ActionListener{
 
 			if(ventana.getSistema().getEsProfesor()){
 				
-				Pregunta pregunta = new PreguntaRedactar(panelpreguntaredactar.getEnunciado(), 0 , 0, panelpreguntaredactar.getEjercicio(), null);
+				Pregunta pregunta = new PreguntaRedactar(panelpreguntaredactar.getEnunciado(), 0 , 0, panelpreguntaredactar.getEjercicio(), new ArrayList<Opcion>());
 				
 				panelpreguntaredactar.getEjercicio().AgregarPregunta(pregunta);
 				
@@ -86,7 +92,7 @@ public class ControladorCrearPregunta implements ActionListener{
 
 			if(ventana.getSistema().getEsProfesor()){
 				
-				Pregunta pregunta = new PreguntaTest(panelpreguntatest.getEnunciado(), 0 , 0, panelpreguntatest.getEjercicio(), null);
+				Pregunta pregunta = new PreguntaTest(panelpreguntatest.getEnunciado(), 0 , 0, panelpreguntatest.getEjercicio(), new ArrayList<Opcion>());
 				
 				panelpreguntatest.getEjercicio().AgregarPregunta(pregunta);
 				
@@ -101,7 +107,7 @@ public class ControladorCrearPregunta implements ActionListener{
 
 			if(ventana.getSistema().getEsProfesor()){
 				
-				Pregunta pregunta = new PreguntaMultiple(panelpreguntamultiple.getEnunciado(), 0 , 0, panelpreguntamultiple.getEjercicio(), null);
+				Pregunta pregunta = new PreguntaMultiple(panelpreguntamultiple.getEnunciado(), 0 , 0, panelpreguntamultiple.getEjercicio(), new ArrayList<Opcion>());
 				
 				panelpreguntamultiple.getEjercicio().AgregarPregunta(pregunta);
 				
@@ -111,6 +117,17 @@ public class ControladorCrearPregunta implements ActionListener{
 			}
 			
 			
+
+		}else if (e.getActionCommand().equals("Volver")){
+			
+			
+			try {
+				ventana.getPanelProfesor().getPanelContenido().cambiarCarta("Ejercicio");
+			} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+					| IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 
 		}
 		

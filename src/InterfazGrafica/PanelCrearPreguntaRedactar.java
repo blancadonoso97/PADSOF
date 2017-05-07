@@ -1,10 +1,13 @@
 package InterfazGrafica;
 
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Controladores.ControladorCrearPregunta;
 import Examen.Ejercicio;
 import Examen.Pregunta;
 
@@ -29,6 +32,10 @@ public class PanelCrearPreguntaRedactar extends JPanel{
 	
 	private Pregunta preguntacreada;
 	
+	/**
+	 * Constructor de la clase PanelCrearPreguntaRedactar
+	 * @param cont PanelCrearEjercicio
+	 */
 	public PanelCrearPreguntaRedactar(PanelCrearEjercicio cont){
 		
 		this.contenedor = cont;
@@ -36,7 +43,7 @@ public class PanelCrearPreguntaRedactar extends JPanel{
 		this.enunciado = new JTextField(40);
 		this.opcion = new JButton("Crear opcion");
 		this.nombre = new JLabel("Enunciado de la pregunta");
-		this.crear = new JButton("Crear pregunta");
+		this.crear = new JButton("Crear pregunta redactar");
 		this.volver = new JButton("Volver");
 		
 		this.add(nombre);
@@ -45,7 +52,19 @@ public class PanelCrearPreguntaRedactar extends JPanel{
 		this.add(crear);
 		this.add(volver);
 		
+		ControladorCrearPregunta controlador = new ControladorCrearPregunta(contenedor.getContenido().getContenedorProf().getVentana(), this);
 		
+		this.setControlador(controlador);
+		
+	}
+	
+	/**
+	 * Anade un controlador al boton crear/volver
+	 * @param c Controlador a anadir
+	 */
+	public void setControlador(ActionListener c) {
+		crear.addActionListener(c);
+		volver.addActionListener(c);
 	}
 	
 	/**
