@@ -360,10 +360,16 @@ public class PanelContenido extends JPanel {
 			cartas.show(this, "GuardarAp");
 			
 		}else if(nombre.equals("Multiple")){
+			
+			this.add(this.preguntamultiple);
 			cartas.show(this, "Multiple");
+			
 		}else if(nombre.equals("Test")){
+			this.add(this.preguntatest);
 			cartas.show(this, "Test");
+			
 		}else if(nombre.equals("Redactar")){
+			this.add(this.preguntaredactar);
 			cartas.show(this, "Redactar");
 		}
 		

@@ -79,6 +79,14 @@ public class PanelCrearOpcion extends JPanel{
 	}
 	
 	/**
+	 * Devuelve el panel de contenido
+	 * @return contenedor
+	 */
+	public PanelContenido getContenido(){
+		return contenedor;
+	}
+	
+	/**
 	  * Comprueba la seleccion de escorrecta
 	  * @return true si se selecciona escorrecta, false en caso contrario
 	  */
