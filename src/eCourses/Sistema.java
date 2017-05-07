@@ -319,7 +319,9 @@ public class Sistema implements Serializable{
 			
 			getAlumno(mat.getAlumno().getId()).agregarAsignatura(getAsignatura(mat.getAsignatura().getNombre()));
 			getAsignatura(mat.getAsignatura().getNombre()).agregarAlumno(getAlumno(mat.getAlumno().getId()));
-				
+			
+			getAlumno(mat.getAlumno().getId()).eliminarSolicitud(mat);
+			
 			enviarNotificacion(mat.getAlumno(), "Matricula", "Su matricula en la asignatura " + mat.getAsignatura().getNombre() + " ha sido aceptada\n");
 
 			solicitudes.remove(mat);

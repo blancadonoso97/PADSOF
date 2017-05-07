@@ -2,6 +2,7 @@ package InterfazGrafica;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
@@ -13,7 +14,11 @@ import javax.swing.UIManager;
 import Asignatura.Apuntes;
 import Asignatura.Tema;
 import Controladores.ControladorAccederContenido;
+import Controladores.ControladorEditarContenido;
 import Examen.Ejercicio;
+import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
+
 import javax.swing.JScrollPane;
 import javax.swing.SpringLayout;
 import javax.swing.JTabbedPane;
@@ -34,6 +39,7 @@ public class PanelTema extends JPanel {
 	private JList<String> listaapuntes;
 	private JList<String> listaejercicios;
 	private JTabbedPane tabbedPane;
+	private JButton editar;
 	
 	PanelTema(PanelContenido cont){
 		
@@ -41,18 +47,15 @@ public class PanelTema extends JPanel {
 		
 		
 		ControladorAccederContenido controlador = new ControladorAccederContenido(this);
+		ControladorEditarContenido controla= new ControladorEditarContenido(this);
 		SpringLayout springLayout = new SpringLayout();
 		setLayout(springLayout);
 
-		this.apuntes.addElement("No existe ningun apunte");
-		this.ejercicios.addElement("No existe ningun ejercicio");
-		this.subtemas.addElement("No existe ningun subtema");
-		
 		this.acceder = new JButton("Acceder");
 		springLayout.putConstraint(SpringLayout.WEST, acceder, 309, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.EAST, acceder, -371, SpringLayout.EAST, this);
 		acceder.setFont(new Font("WenQuanYi Micro Hei Mono", Font.BOLD, 12));
-		this.setControlador(controlador);
+		this.setControlador(controlador,"acceder");
 		
 		this.add(acceder);
 		
@@ -98,13 +101,41 @@ public class PanelTema extends JPanel {
 		springLayout.putConstraint(SpringLayout.NORTH, scrollPane_1, 0, SpringLayout.NORTH, scrollPane_2);
 		springLayout.putConstraint(SpringLayout.EAST, scrollPane_1, -40, SpringLayout.WEST, scrollPane_2);
 		
+
 		if(cont.getContenedorProf()!=null){
+			
+		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		this.contenedorProf = cont.getContenedorProf();
+
+		
+		springLayout.putConstraint(SpringLayout.WEST, acceder, 156, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, acceder, -450, SpringLayout.EAST, this);
+		
+		
+		this.editar = new JButton("Editar");
+		
+		springLayout.putConstraint(SpringLayout.NORTH, acceder, 28, SpringLayout.SOUTH, scrollPane);
+		springLayout.putConstraint(SpringLayout.NORTH, editar, 0, SpringLayout.NORTH, acceder);
+		springLayout.putConstraint(SpringLayout.WEST, editar, 110, SpringLayout.EAST, acceder);
+		springLayout.putConstraint(SpringLayout.EAST, editar, 273, SpringLayout.EAST, acceder);
+	
+		this.setControlador(controla,"editar");
+		
+
+		this.add(editar);
+		
+		}else{
 			setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
-			this.contenedorProf = cont.getContenedorProf();
-			}else{
-				setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
-				this.contenedorAlum = cont.getContenedorAlum();
-			}
+			this.contenedorAlum = cont.getContenedorAlum();
+		
+			springLayout.putConstraint(SpringLayout.NORTH, acceder, 28, SpringLayout.SOUTH, scrollPane);
+			springLayout.putConstraint(SpringLayout.WEST, acceder, 284, SpringLayout.WEST, this);
+			springLayout.putConstraint(SpringLayout.EAST, acceder, -322, SpringLayout.EAST, this);
+			
+			
+
+			
+		}
 		
 		
 		
@@ -162,7 +193,7 @@ public class PanelTema extends JPanel {
 		
 	}
 	
-	public void actualizarContenido(){
+	public void actualizarContenido() throws ClassNotFoundException, InvalidEmailAddressException, FailedInternetConnectionException, IOException{
 	
 		ArrayList<Tema> tem;
 		ArrayList<Apuntes> apun;
@@ -177,6 +208,7 @@ public class PanelTema extends JPanel {
 				Tema TemaPadre =this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado());
 					 
 				for(Tema t : TemaPadre.getTemas()){
+					
 					if(t.getNombre().equals(this.getNombreSubtemaSeleccionado())){
 						 
 						tem = t.getTemas();
@@ -242,7 +274,14 @@ public class PanelTema extends JPanel {
 						if(!tem.isEmpty()){	
 								
 							for(Tema a : tem){
-								subtemas.addElement(a.getNombre());
+								if(a.esVisible() == true){
+									subtemas.addElement(a.getNombre());
+								}
+								
+							}
+							
+							if(subtemas.isEmpty()){
+								this.subtemas.addElement("No existe ningun subtema");
 							}
 									
 						}else{
@@ -252,7 +291,14 @@ public class PanelTema extends JPanel {
 						if(!apun.isEmpty()){
 							
 							for(Apuntes a : apun){
-								apuntes.addElement(a.getTitulo());
+								if(a.getVisible()==true){
+									apuntes.addElement(a.getTitulo());
+								}
+								
+							}
+							
+							if(apuntes.isEmpty()){
+								this.apuntes.addElement("No existe ningun apunte");
 							}
 									
 						}else{
@@ -262,7 +308,18 @@ public class PanelTema extends JPanel {
 						if(!ej.isEmpty()){
 								
 							for(Ejercicio a : ej){
-								ejercicios.addElement(a.getNombre());
+								
+								if(a.getVisible() == true){
+									ejercicios.addElement(a.getNombre());
+								}
+								
+							}
+							
+							if(ejercicios.isEmpty()){
+							
+								this.ejercicios.addElement("No existe ningun ejercicio");
+								
+								
 							}
 									
 						}else{
@@ -322,31 +379,63 @@ public class PanelTema extends JPanel {
 			apun = this.contenedorAlum.getVentana().getSistema().getTema(this.contenedorAlum.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado()).getApuntes();
 			ej = this.contenedorAlum.getVentana().getSistema().getTema(this.contenedorAlum.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado()).getEjercicios();
 			
-			if(!tem.isEmpty()){
-				subtemas.removeAllElements();
+			subtemas.removeAllElements();
+			apuntes.removeAllElements();
+			ejercicios.removeAllElements();
+			
+			if(!tem.isEmpty()){	
 					
 				for(Tema a : tem){
-					subtemas.addElement(a.getNombre());
+					if(a.esVisible() == true){
+						subtemas.addElement(a.getNombre());
+					}
+					
+				}
+				
+				if(subtemas.isEmpty()){
+					this.subtemas.addElement("No existe ningun subtema");
 				}
 						
+			}else{
+				this.subtemas.addElement("No existe ningun subtema");
 			}
 			
 			if(!apun.isEmpty()){
-				apuntes.removeAllElements();
-					
+				
 				for(Apuntes a : apun){
-					apuntes.addElement(a.getTitulo());
+					if(a.getVisible()==true){
+						apuntes.addElement(a.getTitulo());
+					}
+					
+				}
+				
+				if(apuntes.isEmpty()){
+					this.apuntes.addElement("No existe ningun apunte");
 				}
 						
+			}else{
+				this.apuntes.addElement("No existe ningun apunte");
 			}
 			
 			if(!ej.isEmpty()){
-				ejercicios.removeAllElements();
 					
 				for(Ejercicio a : ej){
-					ejercicios.addElement(a.getNombre());
+					
+					if(a.getVisible() == true){
+						ejercicios.addElement(a.getNombre());
+					}
+					
+				}
+				
+				if(ejercicios.isEmpty()){
+				
+					this.ejercicios.addElement("No existe ningun ejercicio");
+					
+					
 				}
 						
+			}else{
+				this.ejercicios.addElement("No existe ningun ejercicio"); 	
 			}
 					
 			
@@ -355,7 +444,15 @@ public class PanelTema extends JPanel {
 	}
 	
 	
-	public void setControlador(ActionListener c){
-		acceder.addActionListener(c);
+	public void setControlador(ActionListener c,String nombre){
+		if(nombre.equals("acceder")){
+			acceder.addActionListener(c);
+		}if(nombre.equals("editar")){
+			editar.addActionListener(c);
+		}
 	}
 }
+
+
+
+

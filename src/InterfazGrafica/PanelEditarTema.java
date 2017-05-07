@@ -210,10 +210,17 @@ public class PanelEditarTema extends JPanel{
 			return;
 		}
 		
+		if(!this.contenedorProf.getPanelContenido().getPanelEdAsig().getNombreTemaSeleccionado().equals("") ){
+			tem = this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelEdAsig().getNombreTemaSeleccionado()).getTemas();
+			apun = this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelEdAsig().getNombreTemaSeleccionado()).getApuntes();
+			ej = this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelEdAsig().getNombreTemaSeleccionado()).getEjercicios();
+		}
 		
-		tem = this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelEdAsig().getNombreTemaSeleccionado()).getTemas();
-		apun = this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelEdAsig().getNombreTemaSeleccionado()).getApuntes();
-		ej = this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelEdAsig().getNombreTemaSeleccionado()).getEjercicios();
+		else{
+			tem = this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado()).getTemas();
+			apun = this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado()).getApuntes();
+			ej = this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado()).getEjercicios();
+		}
 		
 		subtemas.removeAllElements();
 		apuntes.removeAllElements();

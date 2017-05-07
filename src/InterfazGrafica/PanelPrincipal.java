@@ -1,7 +1,6 @@
 package InterfazGrafica;
 
 
-import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
@@ -10,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.SpringLayout;
 import javax.swing.UIManager;
 
@@ -24,48 +24,55 @@ public class PanelPrincipal extends JPanel{
 	
 	private PanelProfesor contenedorProf;
 	private PanelAlumno contenedorAlum;
-	private JButton acceder;
 	private JButton editar;
 	private DefaultListModel<String> asignaturas = new DefaultListModel<String>(); 
 	private JScrollPane scrollPane;
 	private JList<String> listasignaturas;
+	private JTabbedPane tabbedPane;
+	private JButton acceder;
 	
 	PanelPrincipal(PanelContenido cont){
-		
-		
-		this.asignaturas.addElement("No existe ninguna asignatura");
-		
 		ControladorAccederContenido controlador = new ControladorAccederContenido(this);
 		ControladorEditarContenido controla= new ControladorEditarContenido(this);
 		SpringLayout springLayout = new SpringLayout();
 		setLayout(springLayout);
+
+		
+		 acceder = new JButton("Acceder");
+		
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		springLayout.putConstraint(SpringLayout.WEST, tabbedPane, 155, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, tabbedPane, 614, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, tabbedPane, -184, SpringLayout.SOUTH, this);
+		springLayout.putConstraint(SpringLayout.NORTH, tabbedPane, 115, SpringLayout.NORTH, this);
 		
 		
 		scrollPane = new JScrollPane();
-		
-		springLayout.putConstraint(SpringLayout.SOUTH, scrollPane, -227, SpringLayout.SOUTH, this);
-		springLayout.putConstraint(SpringLayout.EAST, scrollPane, 694, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.NORTH, scrollPane, 137, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, scrollPane, -167, SpringLayout.SOUTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, scrollPane, 49, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, scrollPane, 318, SpringLayout.WEST, this);
 		
 		
 		listasignaturas = new JList<String>(asignaturas);
 		scrollPane.setViewportView(listasignaturas);
 		
+		tabbedPane.addTab("Asignaturas", null, scrollPane, null);
 		
-		this.add(scrollPane);
 		
+		this.add(tabbedPane);
+
+
 		
 		if(cont.getContenedorProf()!=null){
 			
 		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		this.contenedorProf = cont.getContenedorProf();
-		
-		this.acceder = new JButton("Acceder");
+
 		
 		springLayout.putConstraint(SpringLayout.WEST, acceder, 156, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.EAST, acceder, -450, SpringLayout.EAST, this);
-		acceder.setFont(new Font("WenQuanYi Micro Hei Mono", Font.BOLD, 12));
+		
 		
 		this.editar = new JButton("Editar");
 		
@@ -73,28 +80,30 @@ public class PanelPrincipal extends JPanel{
 		springLayout.putConstraint(SpringLayout.NORTH, editar, 0, SpringLayout.NORTH, acceder);
 		springLayout.putConstraint(SpringLayout.WEST, editar, 110, SpringLayout.EAST, acceder);
 		springLayout.putConstraint(SpringLayout.EAST, editar, 273, SpringLayout.EAST, acceder);
-		
-		this.setControlador(controlador,"acceder");
+	
 		this.setControlador(controla,"editar");
 		
-		this.add(acceder);
+
 		this.add(editar);
 		
 		}else{
 			setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 			this.contenedorAlum = cont.getContenedorAlum();
-			
-			this.acceder = new JButton("Acceder");
+		
 			springLayout.putConstraint(SpringLayout.NORTH, acceder, 28, SpringLayout.SOUTH, scrollPane);
 			springLayout.putConstraint(SpringLayout.WEST, acceder, 284, SpringLayout.WEST, this);
 			springLayout.putConstraint(SpringLayout.EAST, acceder, -322, SpringLayout.EAST, this);
-			acceder.setFont(new Font("WenQuanYi Micro Hei Mono", Font.BOLD, 12));
 			
-			this.setControlador(controlador,"acceder");
-			this.add(acceder);
+			
+
+			
 		}
 		
+		this.setControlador(controlador,"acceder");
 		
+		springLayout.putConstraint(SpringLayout.NORTH, acceder, 61, SpringLayout.SOUTH, tabbedPane);
+		springLayout.putConstraint(SpringLayout.WEST, acceder, 0, SpringLayout.WEST, tabbedPane);
+		add(acceder);
 	}
 	
 
@@ -152,9 +161,17 @@ public class PanelPrincipal extends JPanel{
 				asignaturas.removeAllElements();
 					
 				for(Asignatura a : asig){
-					asignaturas.addElement(a.getNombre());
+					if(a.getVisible() == true){
+						asignaturas.addElement(a.getNombre());
+					}
+					
+				}
+				if(asignaturas.isEmpty()){
+					this.asignaturas.addElement("No existe ninguna asignatura");
 				}
 						
+			}else{
+				this.asignaturas.addElement("No existe ninguna asignatura");
 			}
 					
 			
@@ -171,11 +188,6 @@ public class PanelPrincipal extends JPanel{
 		}
 		
 	}
-	
-	
-	
-	
-	
 }
 
 

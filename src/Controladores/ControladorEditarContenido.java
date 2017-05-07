@@ -12,10 +12,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import InterfazGrafica.PanelAsignatura;
 import InterfazGrafica.PanelEditarApunte;
 import InterfazGrafica.PanelEditarAsignatura;
 import InterfazGrafica.PanelEditarTema;
 import InterfazGrafica.PanelPrincipal;
+import InterfazGrafica.PanelTema;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
@@ -25,7 +27,8 @@ public class ControladorEditarContenido   implements ActionListener{
 	private PanelEditarAsignatura panela;
 	private PanelEditarTema panelt;
 	private PanelEditarApunte panelap;
-	
+	private PanelAsignatura panelas;
+	private PanelTema paneltem;
 	/**
 	 * Constructor de la clase ControladorInicioSesion
 	 * @param sist Sistema (eCourses)
@@ -42,10 +45,21 @@ public class ControladorEditarContenido   implements ActionListener{
 		this.panela = pan;
 		
 	}
-	
+
+	public ControladorEditarContenido(PanelAsignatura pan2){
+		
+		this.panelas = pan2;
+		
+	}
 	public ControladorEditarContenido(PanelEditarTema pan){
 		
 		this.panelt = pan;
+		
+	}
+	
+	public ControladorEditarContenido(PanelTema pan){
+		
+		this.paneltem = pan;
 		
 	}
 	
@@ -145,7 +159,38 @@ public class ControladorEditarContenido   implements ActionListener{
 			}
 			
 			
+		}else if(panelas !=null ){
+			if (panelas.getNombreTemaSeleccionado().equals("")) {
+				 JOptionPane.showMessageDialog(panelas, "Debe seleccionar un tema", "Error", JOptionPane.ERROR_MESSAGE);
+				 return;
+			}
+			
+			for(i=0;i<panelas.getPanelProf().getVentana().getSistema().getAsignatura(panelas.getNombreAsignatura()).getTemas().size();i++){
+				if(panelas.getPanelProf().getVentana().getSistema().getAsignatura(panelas.getNombreAsignatura()).getTemas().get(i).getNombre().equals(panelas.getNombreTemaSeleccionado())){
+					exist = true;
+				}
+			}
+			
+			
+			if(!exist){
+				 JOptionPane.showMessageDialog(panelas, "Ese tema no existe", "Error", JOptionPane.ERROR_MESSAGE);
+				 return;
+			}
+			if(e.getActionCommand().equals("Editar")){
+				try {
+					
+					panelas.getPanelProf().getPanelContenido().cambiarCarta("EditarTem");
+				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+						| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}	
+			}
+			
+			
+			
 		}else if(panelt != null){
+		
 			
 			if(panelt.getNombreApunteSeleccionado().equals("") && panelt.getNombreEjercicioSeleccionado().equals("") && panelt.getNombreSubtemaSeleccionado().equals("") && e.getActionCommand().equals("Añadir")){
 				
@@ -347,6 +392,106 @@ public class ControladorEditarContenido   implements ActionListener{
 						e1.printStackTrace();
 					}
 					
+				}
+				
+			}
+			
+			
+		}else if(paneltem != null){
+		
+			
+			 if (paneltem.getNombreApunteSeleccionado().equals("") && paneltem.getNombreEjercicioSeleccionado().equals("") && paneltem.getNombreSubtemaSeleccionado().equals("")) {
+				 JOptionPane.showMessageDialog(paneltem, "Debe seleccionar a que quiere acceder del tema", "Error", JOptionPane.ERROR_MESSAGE);
+				 return;
+			}
+			
+			else if (paneltem.getNombreApunteSeleccionado().equals("varios") || paneltem.getNombreEjercicioSeleccionado().equals("varios") || paneltem.getNombreSubtemaSeleccionado().equals("varios")){
+				 JOptionPane.showMessageDialog(paneltem, "Debe seleccionar solo un contenido al que quiera acceder", "Error", JOptionPane.ERROR_MESSAGE);
+				 return;
+			}
+			
+			
+			
+			else if(!paneltem.getNombreApunteSeleccionado().equals("") && !paneltem.getNombreApunteSeleccionado().equals("varios")){
+				 
+				 
+				for( i=0 ;i < paneltem.getPanelProf().getVentana().getSistema().getAsignatura(paneltem.getPanelProf().getPanelContenido().getPanelEdAsig().getNombreAsignatura()).getTema(paneltem.getNombreTema()).getNApuntes() ; i++){
+					if(paneltem.getPanelProf().getVentana().getSistema().getAsignatura(paneltem.getPanelProf().getPanelContenido().getPanelEdAsig().getNombreAsignatura()).getTema(paneltem.getNombreTema()).getApuntes().get(i).getTitulo().equals(paneltem.getNombreApunteSeleccionado())){
+						exist = true;
+					}
+				}
+				
+				if(!exist){
+					JOptionPane.showMessageDialog(paneltem, "Lo que ha seleccionado no existe", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				if(e.getActionCommand().equals("Editar")){
+					try {
+						paneltem.getPanelProf().getPanelContenido().cambiarCarta("EditarAp");
+					} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+							| IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}	
+				}
+				
+				
+			}
+			
+			else if(!paneltem.getNombreSubtemaSeleccionado().equals("") && !paneltem.getNombreSubtemaSeleccionado().equals("varios")){
+				
+				for( i=0 ;i < paneltem.getPanelProf().getVentana().getSistema().getAsignatura(paneltem.getPanelProf().getPanelContenido().getPanelEdAsig().getNombreAsignatura()).getTema(paneltem.getNombreTema()).getNTemas() ; i++){
+					
+					if(paneltem.getPanelProf().getVentana().getSistema().getAsignatura(paneltem.getPanelProf().getPanelContenido().getPanelEdAsig().getNombreAsignatura()).getTema(paneltem.getNombreTema()).getTemas().get(i).getNombre().equals(paneltem.getNombreSubtemaSeleccionado())){
+						exist = true;
+					}
+				}
+				
+				if(!exist){
+					JOptionPane.showMessageDialog(paneltem, "Lo que ha seleccionado no existe", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				if(e.getActionCommand().equals("Editar")){
+					try {
+						paneltem.getPanelProf().getPanelContenido().cambiarCarta("EditarTem");
+					} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+							| IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}	
+				}
+				
+				
+			}
+			else if(!paneltem.getNombreEjercicioSeleccionado().equals("") && !paneltem.getNombreEjercicioSeleccionado().equals("varios")){
+				 
+				 
+				for( i=0 ;i < paneltem.getPanelProf().getVentana().getSistema().getAsignatura(paneltem.getPanelProf().getPanelContenido().getPanelEdAsig().getNombreAsignatura()).getTema(paneltem.getNombreTema()).getNEjercicios() ; i++){
+					
+					if(paneltem.getPanelProf().getVentana().getSistema().getAsignatura(paneltem.getPanelProf().getPanelContenido().getPanelEdAsig().getNombreAsignatura()).getTema(paneltem.getNombreTema()).getEjercicios().get(i).getNombre().equals(paneltem.getNombreEjercicioSeleccionado())){
+						exist = true;
+					}
+				}
+				
+				if(!exist){
+					JOptionPane.showMessageDialog(paneltem, "Lo que ha seleccionado no existe", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				if(e.getActionCommand().equals("Editar")){
+					try {
+						
+						paneltem.getPanelProf().getPanelContenido().cambiarCarta("EditarEj");
+					
+					} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+							| IOException e1) {
+						
+						
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}	
 				}
 				
 			}
