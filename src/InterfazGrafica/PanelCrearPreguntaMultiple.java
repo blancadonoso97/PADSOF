@@ -26,6 +26,8 @@ public class PanelCrearPreguntaMultiple extends JPanel{
 	
 	private JLabel nombre;
 	private JTextField enunciado;
+	private JTextField suma;
+	private JTextField resta;
 	private JButton opcion;
 	private JButton crear;
 	private JButton volver;
@@ -42,6 +44,8 @@ public class PanelCrearPreguntaMultiple extends JPanel{
 		this.ejercicio = null;
 		
 		this.enunciado = new JTextField(40);
+		this.suma = new JTextField(2);
+		this.resta = new JTextField(2);
 		this.opcion = new JButton("Crear opcion");
 		this.nombre = new JLabel("Enunciado de la pregunta");
 		this.crear = new JButton("Crear pregunta multiple");
@@ -49,6 +53,8 @@ public class PanelCrearPreguntaMultiple extends JPanel{
 		
 		this.add(nombre);
 		this.add(enunciado);
+		this.add(suma);
+		this.add(resta);
 		this.add(opcion);
 		this.add(crear);
 		this.add(volver);
@@ -65,6 +71,7 @@ public class PanelCrearPreguntaMultiple extends JPanel{
 	public void setControlador(ActionListener c) {
 		crear.addActionListener(c);
 		volver.addActionListener(c);
+		opcion.addActionListener(c);
 	}
 	
 	/**
@@ -75,6 +82,24 @@ public class PanelCrearPreguntaMultiple extends JPanel{
 		
 		return enunciado.getText();
 		
+	}
+	
+	/**
+	 * Devuelve el valor que suma cada pregunta correcta al ejercicio
+	 * @return suma
+	 */
+	public int getSuma(){
+		
+		return Integer.parseInt(suma.getText());
+		
+	}
+	
+	/**
+	 * Devuelve el valor que resta cada pregunta incorrecta al ejercicio
+	 * @return resta
+	 */
+	public int getResta(){
+		return Integer.parseInt(resta.getText());
 	}
 	
 	/**

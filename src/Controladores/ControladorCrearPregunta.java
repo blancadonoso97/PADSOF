@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import Examen.Opcion;
 import Examen.Pregunta;
 import Examen.PreguntaMultiple;
@@ -77,11 +79,14 @@ public class ControladorCrearPregunta implements ActionListener{
 
 			if(ventana.getSistema().getEsProfesor()){
 				
-				Pregunta pregunta = new PreguntaRedactar(panelpreguntaredactar.getEnunciado(), 0 , 0, panelpreguntaredactar.getEjercicio(), new ArrayList<Opcion>());
+				Pregunta pregunta = new PreguntaRedactar(panelpreguntaredactar.getEnunciado(),  panelpreguntaredactar.getSuma() , panelpreguntaredactar.getResta(), panelpreguntaredactar.getEjercicio(), new ArrayList<Opcion>());
 				
 				panelpreguntaredactar.getEjercicio().AgregarPregunta(pregunta);
 				
 				panelpreguntaredactar.setPregunta(pregunta);
+				
+				JOptionPane.showMessageDialog(panelpreguntaredactar, "La pregunta ha sido creada", "Crear pregunta", JOptionPane.INFORMATION_MESSAGE);
+				return;
 				
 				
 			}
@@ -92,11 +97,14 @@ public class ControladorCrearPregunta implements ActionListener{
 
 			if(ventana.getSistema().getEsProfesor()){
 				
-				Pregunta pregunta = new PreguntaTest(panelpreguntatest.getEnunciado(), 0 , 0, panelpreguntatest.getEjercicio(), new ArrayList<Opcion>());
+				Pregunta pregunta = new PreguntaTest(panelpreguntatest.getEnunciado(), panelpreguntatest.getSuma() ,  panelpreguntatest.getResta(), panelpreguntatest.getEjercicio(), new ArrayList<Opcion>());
 				
 				panelpreguntatest.getEjercicio().AgregarPregunta(pregunta);
 				
 				panelpreguntatest.setPregunta(pregunta);
+				
+				JOptionPane.showMessageDialog(panelpreguntatest, "La pregunta ha sido creada", "Crear pregunta", JOptionPane.INFORMATION_MESSAGE);
+				return;
 				
 				
 			}
@@ -107,11 +115,14 @@ public class ControladorCrearPregunta implements ActionListener{
 
 			if(ventana.getSistema().getEsProfesor()){
 				
-				Pregunta pregunta = new PreguntaMultiple(panelpreguntamultiple.getEnunciado(), 0 , 0, panelpreguntamultiple.getEjercicio(), new ArrayList<Opcion>());
+				Pregunta pregunta = new PreguntaMultiple(panelpreguntamultiple.getEnunciado(), panelpreguntamultiple.getSuma() , panelpreguntamultiple.getResta(), panelpreguntamultiple.getEjercicio(), new ArrayList<Opcion>());
 				
 				panelpreguntamultiple.getEjercicio().AgregarPregunta(pregunta);
 				
 				panelpreguntamultiple.setPregunta(pregunta);
+				
+				JOptionPane.showMessageDialog(panelpreguntamultiple, "La pregunta ha sido creada", "Crear pregunta", JOptionPane.INFORMATION_MESSAGE);
+				return;
 				
 				
 			}
@@ -129,6 +140,18 @@ public class ControladorCrearPregunta implements ActionListener{
 				e1.printStackTrace();
 			}
 
+		}else if (e.getActionCommand().equals("Crear opcion")){
+			
+			
+			try {
+				ventana.getPanelProfesor().getPanelContenido().cambiarCarta("Opcion");
+			} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+					| IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			
 		}
 		
 	}
