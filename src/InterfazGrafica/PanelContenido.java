@@ -125,6 +125,7 @@ public class PanelContenido extends JPanel {
 		cartas.addLayoutComponent(this.preguntamultiple, "Multiple");
 		cartas.addLayoutComponent(this.preguntatest, "Test");
 		cartas.addLayoutComponent(this.preguntaredactar, "Redactar");
+		cartas.addLayoutComponent(this.opcion, "Opcion");
 		
 		ControladorCrearEjercicio controlador = new ControladorCrearEjercicio(this.getContenedorProf().getVentana(), preguntamultiple);
 		
@@ -141,6 +142,9 @@ public class PanelContenido extends JPanel {
 		ControladorCrearEjercicio controlador4 = new ControladorCrearEjercicio(this.getContenedorProf().getVentana(), this.ejercicios);
 		
 		this.ejercicios.setControlador(controlador4);
+		
+		// Controladores para cambiar al panel de opcion desde los paneles de crear pregunta
+		
 		
 		this.paginaprinc.actualizarAsignaturas();
 		this.add(this.paginaprinc);
@@ -367,12 +371,20 @@ public class PanelContenido extends JPanel {
 			cartas.show(this, "Multiple");
 			
 		}else if(nombre.equals("Test")){
+			
 			this.add(this.preguntatest);
 			cartas.show(this, "Test");
 			
 		}else if(nombre.equals("Redactar")){
+			
 			this.add(this.preguntaredactar);
 			cartas.show(this, "Redactar");
+			
+		}else if(nombre.equals("Opcion")){
+			
+			this.add(this.opcion);
+			cartas.show(this, "Opcion");
+			
 		}
 		
 	}

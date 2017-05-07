@@ -25,6 +25,7 @@ public class PanelCrearPreguntaRedactar extends JPanel{
 	private JTextField enunciado;
 	private JButton opcion;
 	private JButton crear;
+	private JButton volver;
 	
 	private Pregunta preguntacreada;
 	
@@ -36,11 +37,13 @@ public class PanelCrearPreguntaRedactar extends JPanel{
 		this.opcion = new JButton("Crear opcion");
 		this.nombre = new JLabel("Enunciado de la pregunta");
 		this.crear = new JButton("Crear pregunta");
+		this.volver = new JButton("Volver");
 		
 		this.add(nombre);
 		this.add(enunciado);
 		this.add(opcion);
 		this.add(crear);
+		this.add(volver);
 		
 		
 	}
