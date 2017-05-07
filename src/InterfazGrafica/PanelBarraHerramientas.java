@@ -53,7 +53,8 @@ public class PanelBarraHerramientas extends JPanel {
 	private Component rigidArea_1;
 	
 	/**
-	 * @wbp.parser.constructor
+	 * Contructor del panel de herramientas para el profesor
+	 * @param profesor Profesor
 	 */
 	public PanelBarraHerramientas(PanelProfesor profesor){
 		setBackground(SystemColor.menu);
@@ -146,11 +147,16 @@ public class PanelBarraHerramientas extends JPanel {
 		this.setControlador("Principal", controlador);
 		this.setControlador("Subtema", controlador);
 		this.setControlador("Administrar", controlador);
+		this.setControlador("Ejercicio", controlador);
 		
 		this.setVisible(true);
 		
 	}
 
+	/**
+	 * Constructor del panel de herramientas para el alumno
+	 * @param alumno Alumno logueado
+	 */
 	public PanelBarraHerramientas(PanelAlumno alumno){
 		
 		this.contAlumno = alumno;
@@ -247,6 +253,8 @@ public class PanelBarraHerramientas extends JPanel {
 			 principal.addActionListener(c);
 		 }else if(nombreBoton.equals("Administrar")){
 			 administrar.addActionListener(c);
+		 }else if(nombreBoton.equals("Ejercicio")){
+			 ejercicio.addActionListener(c);
 		 }
 		 
 		 

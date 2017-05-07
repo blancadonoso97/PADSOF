@@ -139,6 +139,21 @@ public class ControladorBarraHerramientas implements ActionListener{
 			}
 			
 			
+		}else if(e.getActionCommand().equals("Crear Ejercicio")){
+			
+			if(ventana.getSistema().getEsProfesor()){
+				
+				try {
+					panel.getPanelProfe().getPanelContenido().cambiarCarta("Ejercicio");
+				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+						| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+			
+			
 		}
 
 	}

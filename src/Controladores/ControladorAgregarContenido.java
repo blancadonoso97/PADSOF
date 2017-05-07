@@ -255,6 +255,10 @@ public class ControladorAgregarContenido implements ActionListener{
 			 
 		 }else if(e.getActionCommand().equals("Crear opcion")){
 			 
+			 if(panelopcion.getEnunciado().equals("")){
+				 JOptionPane.showMessageDialog(panelopcion, "Debe introducir un enunciado para la opcion", "Error", JOptionPane.ERROR_MESSAGE);
+				 return;
+			 }
 			 
 			 
 			 
