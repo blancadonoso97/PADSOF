@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 
 import Asignatura.Asignatura;
 import Asignatura.Tema;
+import Controladores.ControladorCrearEjercicio;
 
 /**
  * Clase para definir el panel de crear ejercicio
@@ -110,6 +111,10 @@ public class PanelCrearEjercicio extends JPanel {
 		cartas.addLayoutComponent(this.preguntamultiple, "Multiple");
 		cartas.addLayoutComponent(this.preguntatest, "Test");
 		cartas.addLayoutComponent(this.preguntaredactar, "Redactar");
+		
+		ControladorCrearEjercicio controlador = new ControladorCrearEjercicio(contenedor.getContenedorProf().getVentana(), preguntamultiple);
+		
+		this.setControlador(controlador);
 
 	}
 

@@ -41,7 +41,8 @@ public class PanelCrearAsignatura extends JPanel{
 	private Component rigidArea_4;
 	
 	/**
-	 * Constructor de la clase PanelCrerAsignatura
+	 * Constructor de la clase PanelCrearAsignatura
+	 * @param cont Panel de contenido
 	 */
 	public PanelCrearAsignatura(PanelContenido cont){
 		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
