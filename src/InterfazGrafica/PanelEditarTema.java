@@ -259,8 +259,8 @@ public class PanelEditarTema extends JPanel{
 			ej = this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelEdAsig().getNombreTemaSeleccionado()).getEjercicios();
 			
 			if(!this.titulonew.getText().isEmpty()){
-				this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelEdAsig().getNombreTemaSeleccionado()).setNombre(this.titulonew.getText());
 				this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelEdAsig().getNombreTemaSeleccionado()).setVisibilidad(this.comprobarSeleccion());
+				this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelEdAsig().getNombreTemaSeleccionado()).setNombre(this.titulonew.getText());
 			}
 		}
 		
@@ -270,9 +270,9 @@ public class PanelEditarTema extends JPanel{
 			ej = this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado()).getEjercicios();
 			
 			if(!this.titulonew.getText().isEmpty()){
-				this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado()).setNombre(this.titulonew.getText());
 				this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado()).setVisibilidad(this.comprobarSeleccion());
-			
+				this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado()).setNombre(this.titulonew.getText());
+				
 			}
 		}
 		
