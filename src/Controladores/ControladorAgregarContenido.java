@@ -253,6 +253,25 @@ public class ControladorAgregarContenido implements ActionListener{
 			 
 			 
 			 
+		 }else if(e.getActionCommand().equals("Crear opcion")){
+			 
+			 
+			 
+			 
+		 }else if(e.getActionCommand().equals("Crear pregunta redactar")){
+			 
+			 
+			 
+			 
+		 }else if(e.getActionCommand().equals("Crear pregunta test")){
+			 
+			 
+			 
+		 }else if(e.getActionCommand().equals("Crear pregunta multiple")){
+			 
+			 
+			 
+			 
 		 }
 		
 		

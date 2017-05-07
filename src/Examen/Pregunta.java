@@ -134,5 +134,14 @@ public abstract class Pregunta implements Serializable{
 		}
 		return false;
 	}
+	
+	/**
+	 * Agrega una opcion a la pregunta
+	 * @param op Opcion a anyadir
+	 * @return true si se agrega correctamente, false en caso contrario
+	 */
+	public boolean anyadirOpcion(Opcion op){
+		return opciones.add(op);
+	}
 
 }

@@ -1,6 +1,7 @@
 package InterfazGrafica;
 
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import Examen.Ejercicio;
 
@@ -17,10 +18,14 @@ public class PanelCrearPreguntaTest extends JPanel{
 	private PanelContenido contenedor;
 	private Ejercicio ejercicio;
 	
+	private JTextField enunciado;
+	
 	public PanelCrearPreguntaTest(PanelContenido cont, Ejercicio ej){
 		
 		this.contenedor = cont;
 		this.ejercicio = ej;
+		
+		this.enunciado = new JTextField(40);
 		
 	}
 	

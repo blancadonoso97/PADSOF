@@ -71,6 +71,15 @@ public class PanelCrearOpcion extends JPanel{
 	}
 	
 	/**
+	 * Devuelve la pregunta que contiene a la opcion
+	 * @return pregunta
+	 */
+	public Pregunta getPregunta(){
+		
+		return pregunta;
+	}
+	
+	/**
 	  * Comprueba la seleccion de escorrecta
 	  * @return true si se selecciona escorrecta, false en caso contrario
 	  */

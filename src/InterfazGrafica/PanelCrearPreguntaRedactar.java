@@ -25,6 +25,8 @@ public class PanelCrearPreguntaRedactar extends JPanel{
 		this.contenedor = cont;
 		this.ejercicio = ej;
 		
+		this.enunciado = new JTextField(40);
+		
 		
 	}
 	
