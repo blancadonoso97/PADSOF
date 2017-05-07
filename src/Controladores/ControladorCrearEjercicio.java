@@ -2,12 +2,15 @@ package Controladores;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import InterfazGrafica.PanelCrearEjercicio;
 import InterfazGrafica.PanelCrearPreguntaMultiple;
 import InterfazGrafica.PanelCrearPreguntaRedactar;
 import InterfazGrafica.PanelCrearPreguntaTest;
 import InterfazGrafica.VentanaInicial;
+import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 public class ControladorCrearEjercicio implements ActionListener {
 
@@ -82,6 +85,7 @@ public class ControladorCrearEjercicio implements ActionListener {
 			if (ventana.getSistema().getEsProfesor()) {
 
 				panelpreguntaredactar.getPanelEjercicio().cambiarCarta("Redactar");
+				panelpreguntaredactar.setEjercicio(panelpreguntaredactar.getPanelEjercicio().getEjercicio()); // Pasamos el ejercicio creado a la pregunta
 
 			}
 
@@ -90,6 +94,7 @@ public class ControladorCrearEjercicio implements ActionListener {
 			if (ventana.getSistema().getEsProfesor()) {
 
 				panelpreguntatest.getPanelEjercicio().cambiarCarta("Test");
+				panelpreguntatest.setEjercicio(panelpreguntatest.getPanelEjercicio().getEjercicio()); // Pasamos el ejercicio creado a la pregunta
 
 			}
 
@@ -98,12 +103,23 @@ public class ControladorCrearEjercicio implements ActionListener {
 			if (ventana.getSistema().getEsProfesor()) {
 
 				panelpreguntamultiple.getPanelEjercicio().cambiarCarta("Multiple");
+				panelpreguntamultiple.setEjercicio(panelpreguntamultiple.getPanelEjercicio().getEjercicio()); // Pasamos el ejercicio creado a la pregunta
 
 			}
 
 		}else if (e.getActionCommand().equals("Crear ejercicio")){
 			
-			// Crear ejercicio desde sistema
+			
+			try {
+				ventana.getSistema().agregarEjercicio(panelejercicio.getTema(), panelejercicio.comprobarSeleccion(), panelejercicio.getPeso(), panelejercicio.getDiaIni(), panelejercicio.getMesIni(), panelejercicio.getAnyoIni(), 
+						panelejercicio.getDiaFin(), panelejercicio.getMesFin(), panelejercicio.getAnyoFin(), panelejercicio.getNombreEjercicio());
+			} catch (InvalidEmailAddressException | FailedInternetConnectionException | ClassNotFoundException
+					| IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			
 		}
 
 	}

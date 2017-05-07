@@ -20,11 +20,10 @@ public class PanelCrearPreguntaRedactar extends JPanel{
 	
 	private JTextField enunciado;
 	
-	public PanelCrearPreguntaRedactar(PanelCrearEjercicio cont, Ejercicio ej){
+	public PanelCrearPreguntaRedactar(PanelCrearEjercicio cont){
 		
 		this.contenedor = cont;
-		this.ejercicio = ej;
-		
+		this.ejercicio = null;
 		this.enunciado = new JTextField(40);
 		
 		
@@ -55,6 +54,16 @@ public class PanelCrearPreguntaRedactar extends JPanel{
 	 */
 	public Ejercicio getEjercicio(){
 		return ejercicio;
+	}
+	
+	/**
+	 * Set del ejercicio asociado a la pregunta
+	 * @param ej Ejercicio asociado
+	 */
+	public void setEjercicio(Ejercicio ej){
+		
+		ejercicio = ej;
+		
 	}
 	
 }

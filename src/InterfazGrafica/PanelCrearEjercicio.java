@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import Asignatura.Asignatura;
 import Asignatura.Tema;
 import Controladores.ControladorCrearEjercicio;
+import Examen.Ejercicio;
 
 /**
  * Clase para definir el panel de crear ejercicio
@@ -53,6 +54,8 @@ public class PanelCrearEjercicio extends JPanel {
 	private JTextField anyofin;
 
 	private JTextField nombre;
+	
+	private Ejercicio ejerciciocreado;
 
 	/**
 	 * Constructor de la clase PanelCrearEjercicio
@@ -86,6 +89,10 @@ public class PanelCrearEjercicio extends JPanel {
 		this.anyofin = new JTextField(4);
 
 		this.nombre = new JTextField(20);
+		
+		this.preguntamultiple = new PanelCrearPreguntaMultiple(this);
+		this.preguntaredactar = new PanelCrearPreguntaRedactar(this);
+		this.preguntatest = new PanelCrearPreguntaTest(this);
 
 		// Anadir contenido
 		this.add(nombre);
@@ -262,6 +269,17 @@ public class PanelCrearEjercicio extends JPanel {
 		 
 	 }
 	 
+	/**
+	  * Devuelve el tema
+	  * @return tema deseado
+	  */
+	public Tema getTema(){
+			
+		String valorSeleccionado = (String)listatemas.getSelectedItem();	
+		
+		return contenedor.getContenedorProf().getVentana().getSistema().getTema(valorSeleccionado);		
+	}
+	 
 	 /**
 	  * Actualiza la lista con los temas existentes
 	  */
@@ -290,6 +308,14 @@ public class PanelCrearEjercicio extends JPanel {
 	  */
 	 public PanelContenido getContenido(){
 		 return contenedor;
+	 }
+	 
+	 /**
+	  * Obtiene el ejercicio creado
+	  * @return ejerciciocreado
+	  */
+	 public Ejercicio getEjercicio(){
+		 return ejerciciocreado;
 	 }
 
 }
