@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
 import InterfazGrafica.PanelCrearEjercicio;
 import InterfazGrafica.PanelCrearPreguntaMultiple;
 import InterfazGrafica.PanelCrearPreguntaRedactar;
@@ -111,8 +113,19 @@ public class ControladorCrearEjercicio implements ActionListener {
 			
 			
 			try {
-				ventana.getSistema().agregarEjercicio(panelejercicio.getTema(), panelejercicio.comprobarSeleccion(), panelejercicio.getPeso(), panelejercicio.getDiaIni(), panelejercicio.getMesIni(), panelejercicio.getAnyoIni(), 
-						panelejercicio.getDiaFin(), panelejercicio.getMesFin(), panelejercicio.getAnyoFin(), panelejercicio.getNombreEjercicio());
+				if(ventana.getSistema().agregarEjercicio(panelejercicio.getTema(), panelejercicio.comprobarSeleccion(), panelejercicio.getPeso(), panelejercicio.getDiaIni(), panelejercicio.getMesIni(), panelejercicio.getAnyoIni(), 
+						panelejercicio.getDiaFin(), panelejercicio.getMesFin(), panelejercicio.getAnyoFin(), panelejercicio.getNombreEjercicio()) == false){
+					
+					JOptionPane.showMessageDialog(panelejercicio, "Error al crear el ejercicio", "Error", JOptionPane.ERROR_MESSAGE);
+					 return;
+				}else{
+					
+					panelejercicio.setEjercicio(panelejercicio.getTema().getEjercicio(panelejercicio.getNombreEjercicio())); // Set del ejercicio al panel de crear ejercicio
+					
+					JOptionPane.showMessageDialog(panelejercicio, "El ejercicio " + panelejercicio.getNombreEjercicio() + " ha sido creado", "Crear ejercicio", JOptionPane.INFORMATION_MESSAGE);
+					 return;
+				}
+				
 			} catch (InvalidEmailAddressException | FailedInternetConnectionException | ClassNotFoundException
 					| IOException e1) {
 				// TODO Auto-generated catch block

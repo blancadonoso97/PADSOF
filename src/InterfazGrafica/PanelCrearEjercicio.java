@@ -317,5 +317,13 @@ public class PanelCrearEjercicio extends JPanel {
 	 public Ejercicio getEjercicio(){
 		 return ejerciciocreado;
 	 }
+	 
+	 /**
+	  * Set del ejercicio creado
+	  * @param ej Ejercicio creado
+	  */
+	 public void setEjercicio(Ejercicio ej){
+		 ejerciciocreado = ej;
+	 }
 
 }
