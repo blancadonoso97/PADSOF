@@ -52,10 +52,18 @@ public abstract class Pregunta implements Serializable{
 		return enunciado;
 	}
 	
+	/**
+	 * Devuelve la puntuacion correcta
+	 * @return puntuacionCorrectas
+	 */
 	public double getPuntuacionCorrecta(){
 		return puntuacionCorrectas;
 	}
 	
+	/**
+	 * Devuelve la puntuacion incorrectas
+	 * @return puntuacionIncorrectas
+	 */
 	public double getPuntuacionIncorrecta(){
 		return puntuacionIncorrectas;
 	}
