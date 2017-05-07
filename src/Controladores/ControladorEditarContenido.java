@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import InterfazGrafica.PanelEditarApunte;
 import InterfazGrafica.PanelEditarAsignatura;
 import InterfazGrafica.PanelEditarTema;
 import InterfazGrafica.PanelPrincipal;
@@ -23,6 +24,7 @@ public class ControladorEditarContenido   implements ActionListener{
 	private PanelPrincipal panelp;
 	private PanelEditarAsignatura panela;
 	private PanelEditarTema panelt;
+	private PanelEditarApunte panelap;
 	
 	/**
 	 * Constructor de la clase ControladorInicioSesion
@@ -44,6 +46,12 @@ public class ControladorEditarContenido   implements ActionListener{
 	public ControladorEditarContenido(PanelEditarTema pan){
 		
 		this.panelt = pan;
+		
+	}
+	
+	public ControladorEditarContenido(PanelEditarApunte pan){
+		
+		this.panelap = pan;
 		
 	}
 	
@@ -345,6 +353,18 @@ public class ControladorEditarContenido   implements ActionListener{
 			
 			
 		}
-		
+		else if(panelap != null){
+			if(e.getActionCommand().equals("Guardar")){
+				try {
+					 JOptionPane.showMessageDialog(panelap, "Se ha editado correctamente los apuntes", "Guardar", JOptionPane.INFORMATION_MESSAGE);
+					 
+					panelap.getPanelProf().getPanelContenido().cambiarCarta("GuardarAp");
+				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+						| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		}
 	}
 }

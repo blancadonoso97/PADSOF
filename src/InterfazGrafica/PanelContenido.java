@@ -89,6 +89,8 @@ public class PanelContenido extends JPanel {
 		
 		this.paneledap = new PanelEditarApunte(this);
 		
+		this.paneledej = new PanelEditarEjercicio(this);
+		
 		cartas.addLayoutComponent(this.asig, "Asignatura");
 		cartas.addLayoutComponent(this.temas, "Tema");
 		cartas.addLayoutComponent(this.apuntes, "Apuntes");
@@ -102,8 +104,9 @@ public class PanelContenido extends JPanel {
 		cartas.addLayoutComponent(this.paneladmin, "Administrar");
 		cartas.addLayoutComponent(this.paneledasig, "EditarAsig");
 		cartas.addLayoutComponent(this.paneledtem, "EditarTem");
-		cartas.addLayoutComponent(this.paneledap, "EditarAp");
-		cartas.addLayoutComponent(this.paneledej, "EditarEj");
+		cartas.addLayoutComponent(this.paneledtem, "EditarAp");
+		cartas.addLayoutComponent(this.paneledtem, "EditarEj");
+		cartas.addLayoutComponent(this.paneledap, "GuardarAp");
 		
 		this.paginaprinc.actualizarAsignaturas();
 		this.add(this.paginaprinc);
@@ -166,6 +169,10 @@ public class PanelContenido extends JPanel {
 	
 	 public PanelEditarAsignatura getPanelEdAsig(){
 		 return this.paneledasig;
+	 }
+	 
+	 public PanelEditarTema getPanelEdTem(){
+		 return this.paneledtem;
 	 }
 	
 	/**
@@ -279,17 +286,21 @@ public class PanelContenido extends JPanel {
 		}else if(nombre.equals("EditarAp")){
 			
 			this.removeAll();
-			this.paneledap.actualizarApunte();
 			this.add(this.paneledap);
-			cartas.show(this, "EditarAp");
+			cartas.show(this, "GuardarAp");
 			
 		}else if(nombre.equals("EditarEj")){
 			
 			this.removeAll();
-			this.paneledej.actualizaEj();
 			this.add(this.paneledej);
 			cartas.show(this, "EditarEj");
 			
+		}else if(nombre.equals("GuardarAp")){
+			
+			this.removeAll();
+			this.paneledap.actualizarApunte();
+			this.add(this.paneledap);
+			cartas.show(this, "GuardarAp");
 		}
 		
 	}

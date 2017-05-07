@@ -2,12 +2,15 @@ package Controladores;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
 import InterfazGrafica.PanelAsignatura;
 import InterfazGrafica.PanelPrincipal;
 import InterfazGrafica.PanelTema;
+import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 public class ControladorAccederContenido  implements ActionListener {
 
@@ -75,10 +78,22 @@ public class ControladorAccederContenido  implements ActionListener {
 			
 			
 			if(panelp.getPanelProfesor()!=null){
-				panelp.getPanelProfesor().getPanelContenido().cambiarCarta("AccederAsig");
+				try {
+					panelp.getPanelProfesor().getPanelContenido().cambiarCarta("AccederAsig");
+				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+						| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 			}else{
-				panelp.getPanelAlumno().getPanelContenido().cambiarCarta("AccederAsig");	
+				try {
+					panelp.getPanelAlumno().getPanelContenido().cambiarCarta("AccederAsig");
+				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+						| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}	
 			}
 		}
 		
@@ -113,9 +128,21 @@ public class ControladorAccederContenido  implements ActionListener {
 			
 			
 			if(panela.getPanelProf()!=null){
-				panela.getPanelProf().getPanelContenido().cambiarCarta("AccederTem");	
+				try {
+					panela.getPanelProf().getPanelContenido().cambiarCarta("AccederTem");
+				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+						| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}	
 			}else{
-				panela.getPanelAlumno().getPanelContenido().cambiarCarta("AccederTem");	
+				try {
+					panela.getPanelAlumno().getPanelContenido().cambiarCarta("AccederTem");
+				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+						| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}	
 			}
 		}
 		
@@ -161,9 +188,21 @@ public class ControladorAccederContenido  implements ActionListener {
 				
 				
 				if(panelt.getPanelProf()!=null){
-					panelt.getPanelProf().getPanelContenido().cambiarCarta("AccederApunte");	
+					try {
+						panelt.getPanelProf().getPanelContenido().cambiarCarta("AccederApunte");
+					} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+							| IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}	
 				}else{
-					panelt.getPanelAlumno().getPanelContenido().cambiarCarta("AccederApunte");	
+					try {
+						panelt.getPanelAlumno().getPanelContenido().cambiarCarta("AccederApunte");
+					} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+							| IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}	
 				}
 				
 				
@@ -198,9 +237,21 @@ public class ControladorAccederContenido  implements ActionListener {
 				
 				
 				if(panelt.getPanelProf()!=null){
-					panelt.getPanelProf().getPanelContenido().cambiarCarta("AccederTem");	
+					try {
+						panelt.getPanelProf().getPanelContenido().cambiarCarta("AccederTem");
+					} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+							| IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}	
 				}else{
-					panelt.getPanelAlumno().getPanelContenido().cambiarCarta("AccederTem");	
+					try {
+						panelt.getPanelAlumno().getPanelContenido().cambiarCarta("AccederTem");
+					} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+							| IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}	
 				}
 				
 				
@@ -236,9 +287,21 @@ public class ControladorAccederContenido  implements ActionListener {
 				
 				
 				if(panelt.getPanelProf()!=null){
-					panelt.getPanelProf().getPanelContenido().cambiarCarta("AccederEj");	
+					try {
+						panelt.getPanelProf().getPanelContenido().cambiarCarta("AccederEj");
+					} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+							| IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}	
 				}else{
-					panelt.getPanelAlumno().getPanelContenido().cambiarCarta("AccederEj");	
+					try {
+						panelt.getPanelAlumno().getPanelContenido().cambiarCarta("AccederEj");
+					} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+							| IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}	
 				}
 				
 				

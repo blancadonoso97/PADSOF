@@ -2,11 +2,14 @@ package Controladores;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
 import InterfazGrafica.PanelMatricula;
 import InterfazGrafica.VentanaInicial;
+import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 public class ControladorMatricula  implements ActionListener{
 
@@ -61,7 +64,13 @@ public class ControladorMatricula  implements ActionListener{
 				}
 				JOptionPane.showMessageDialog(panel, "Se ha realizado la solicitud de matricula en la asignatura "+ panel.getNombre(), "Solicitar Matricula", JOptionPane.INFORMATION_MESSAGE);
 				panel.actualizartablas();
-				panel.getPanelAlumno().getPanelContenido().cambiarCarta("Solicitud");
+				try {
+					panel.getPanelAlumno().getPanelContenido().cambiarCarta("Solicitud");
+				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+						| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 			
 		}
