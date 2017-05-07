@@ -45,7 +45,7 @@ public class PanelCrearOpcion extends JPanel{
 		this.add(escorrecta);
 		this.add(crearopcion);
 		
-		// Anade el controlador para el boton de crear asignatura
+		// Anade el controlador para el boton de crear opcion
 		ControladorAgregarContenido controlador = new ControladorAgregarContenido(contenedor.getContenedorProf().getVentana(), this);
 
 		// Configurar el panel con el controlador

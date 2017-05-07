@@ -1,5 +1,6 @@
 package InterfazGrafica;
 
+import java.awt.CardLayout;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
@@ -12,7 +13,6 @@ import javax.swing.JTextField;
 
 import Asignatura.Asignatura;
 import Asignatura.Tema;
-import Controladores.ControladorAgregarContenido;
 
 /**
  * Clase para definir el panel de crear ejercicio
@@ -25,6 +25,12 @@ public class PanelCrearEjercicio extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	private PanelContenido contenedor;
+	
+	private static CardLayout cartas = new CardLayout();
+	
+	private PanelCrearPreguntaMultiple preguntamultiple;
+	private PanelCrearPreguntaTest preguntatest;
+	private PanelCrearPreguntaRedactar preguntaredactar;
 
 	private JLabel pregunta;
 	
@@ -101,11 +107,9 @@ public class PanelCrearEjercicio extends JPanel {
 		this.add(crearpreguntatest);
 		this.add(crearejercicio);
 
-		// Anade el controlador para el boton de crear asignatura
-		ControladorAgregarContenido controlador = new ControladorAgregarContenido(contenedor.getContenedorProf().getVentana(), this);
-
-		// Configurar el panel con el controlador
-		this.setControlador(controlador);
+		cartas.addLayoutComponent(this.preguntamultiple, "Multiple");
+		cartas.addLayoutComponent(this.preguntatest, "Test");
+		cartas.addLayoutComponent(this.preguntaredactar, "Redactar");
 
 	}
 
@@ -118,6 +122,23 @@ public class PanelCrearEjercicio extends JPanel {
 		crearpreguntamultiple.addActionListener(c);
 		crearpreguntaredactar.addActionListener(c);
 		crearpreguntatest.addActionListener(c);
+	}
+	
+	/**
+	 * Permite cambiar de carta dentro de crear ejercicio
+	 * @param nombre Nombre de la carta a cambiar
+	 */
+	public void cambiarCarta(String nombre){
+		
+		if(nombre.equals("Multiple")){
+			
+		}else if(nombre.equals("Test")){
+			
+		}else if(nombre.equals("Redactar")){
+			
+		}
+		
+		
 	}
 
 	/**
@@ -223,6 +244,14 @@ public class PanelCrearEjercicio extends JPanel {
 		}
 		
  
+	 }
+	 
+	 /**
+	  * Obtiene el panel de contenido
+	  * @return contenedor
+	  */
+	 public PanelContenido getContenido(){
+		 return contenedor;
 	 }
 
 }

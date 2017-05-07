@@ -15,12 +15,12 @@ public class PanelCrearPreguntaMultiple extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 	
-	private PanelContenido contenedor;
+	private PanelCrearEjercicio contenedor;
 	private Ejercicio ejercicio;
 	
 	private JTextField enunciado;
 	
-	public PanelCrearPreguntaMultiple(PanelContenido cont, Ejercicio ej){
+	public PanelCrearPreguntaMultiple(PanelCrearEjercicio cont, Ejercicio ej){
 		
 		this.contenedor = cont;
 		this.ejercicio = ej;
@@ -28,6 +28,31 @@ public class PanelCrearPreguntaMultiple extends JPanel{
 		this.enunciado = new JTextField(40);
 	}
 	
+	/**
+	 * Obtiene el enunciado de la pregunta
+	 * @return enunciado de la pregunta
+	 */
+	public String getEnunciado(){
+		
+		return enunciado.getText();
+		
+	}
 	
+	/**
+	 * Obtiene el panel de crear ejercicio
+	 * @return contenedor
+	 */
+	public PanelCrearEjercicio getPanelEjercicio(){
+		
+		return contenedor;
+	}
+	
+	/**
+	 * Obtiene el ejercicio asociado al panel
+	 * @return ejercicio
+	 */
+	public Ejercicio getEjercicio(){
+		return ejercicio;
+	}
 	
 }

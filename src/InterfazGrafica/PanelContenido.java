@@ -25,17 +25,22 @@ public class PanelContenido extends JPanel {
 	private PanelProfesor contenedorProf;
 	private PanelAlumno contenedorAlum;
 	private PanelMatricula solicitarmatricula;
+	
 	private PanelCrearAsignatura asig;
 	private PanelCrearTema temas;
 	private PanelCrearSubtema subtemas;
 	private PanelCrearApuntes apuntes;
-	private PanelPrincipal paginaprinc;
+	
 	private PanelCrearEjercicio ejercicios;	
+	
+	private PanelPrincipal paginaprinc;
+	private PanelAdministrar paneladmin;
+	
 	private PanelAsignatura panelasig;
 	private PanelTema paneltem;
 	private PanelApunte panelap;
 	private PanelEjercicio panelej;
-	private PanelAdministrar paneladmin;
+	
 	private PanelEditarAsignatura paneledasig;
 	private PanelEditarTema paneledtem;
 	private PanelEditarApunte paneledap;
@@ -43,7 +48,7 @@ public class PanelContenido extends JPanel {
 	
 	/**
 	 * Constructor de la clase PanelContenido
-	 * @wbp.parser.constructor
+	 * @param cont Panel del profesor
 	 */
 	public PanelContenido(PanelProfesor cont){
 	
@@ -150,28 +155,52 @@ public class PanelContenido extends JPanel {
 		this.add(this.paginaprinc);
 	}
 	
+	/**
+	 * Obtiene el panel principal
+	 * @return paginaprinc
+	 */
 	public PanelPrincipal getPanelPrincipal(){
-		return this.paginaprinc;
+		return paginaprinc;
 	}
 	
+	/**
+	 * Obtiene el panel de la asignatura
+	 * @return panelasig
+	 */
 	public PanelAsignatura getPanelAsignatura(){
-		return this.panelasig;
+		return panelasig;
 	}
 	
+	/**
+	 * Obtiene el panel de los apuntes
+	 * @return panelap
+	 */
 	public PanelApunte getPanelApunte(){
-		return this.panelap;
+		return panelap;
 	}
 	
+	/**
+	 * Obtiene el panel de tema
+	 * @return paneltem
+	 */
 	public PanelTema getPanelTema(){
-		return this.paneltem;
+		return paneltem;
 	}
 	
+	/**
+	 * Obtiene el panel de editar asignatura
+	 * @return paneledasig
+	 */
 	 public PanelEditarAsignatura getPanelEdAsig(){
-		 return this.paneledasig;
+		 return paneledasig;
 	 }
 	 
+	 /**
+	  * Obtiene el panel de editar tema
+	  * @return
+	  */
 	 public PanelEditarTema getPanelEdTem(){
-		 return this.paneledtem;
+		 return paneledtem;
 	 }
 	
 	/**

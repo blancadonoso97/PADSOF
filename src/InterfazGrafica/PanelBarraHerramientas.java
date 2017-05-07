@@ -169,7 +169,9 @@ public class PanelBarraHerramientas extends JPanel {
 		hola.setHorizontalAlignment(SwingConstants.CENTER);
 		hola.setFont(new Font("WenQuanYi Micro Hei Mono", Font.BOLD | Font.ITALIC, 30));
 		this.add(hola);
+		
 		this.add(Box.createRigidArea(new Dimension(0,5)));
+		
 		this.matricula = new JButton("Solicitar Matricula");
 		this.desconectar = new JButton("Cerrar Sesion");
 		
@@ -181,10 +183,12 @@ public class PanelBarraHerramientas extends JPanel {
 		add(rigidArea_4);
 		
 		this.add(matricula);
+		
 		this.add(Box.createRigidArea(new Dimension(0,20)));
+		
 		this.principal = new JButton("Pagina Principal");
-
 		this.add(principal);
+		
 		this.add(Box.createRigidArea(new Dimension(0, 20)));
 		
 		this.contenido = new JTree(asignaturas);
@@ -192,25 +196,18 @@ public class PanelBarraHerramientas extends JPanel {
 		
 		contenido.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 
-		// Pruebas
+		// Pruebas del tree
 		asignaturas.add(new DefaultMutableTreeNode("tema 1"));
 		asignaturas.add(new DefaultMutableTreeNode("tema 2"));
-		
 		DefaultMutableTreeNode repositorio = new DefaultMutableTreeNode("repositorio de ejemplos");
-		
 		repositorio.add(new DefaultMutableTreeNode("ejemplo 1"));
-		
 		asignaturas.add(repositorio);
-		
 		this.add(contenido);
 		
 		rigidArea_3 = Box.createRigidArea(new Dimension(0, 70));
 		add(rigidArea_3);
 		
 		this.add(desconectar);
-		
-		
-		// Modificar la posicion del contenido
 		
 		// Creacion del controlador
 		ControladorBarraHerramientas controlador = new ControladorBarraHerramientas(contAlumno.getVentana(),this);
@@ -223,12 +220,20 @@ public class PanelBarraHerramientas extends JPanel {
 		
 	}
 
+	/**
+	 * Obtiene el panel del alumno
+	 * @return contAlumno
+	 */
 	public PanelAlumno getPanelAlumno(){
-			return this.contAlumno;
+			return contAlumno;
 	}
 		
+	/**
+	 * Obtiene el panel del profesor
+	 * @return contProfe
+	 */
 	public PanelProfesor getPanelProfe(){
-			return this.contProfe;
+			return contProfe;
 	}
 	
 	/**

@@ -9,10 +9,6 @@ import javax.swing.JOptionPane;
 import InterfazGrafica.PanelCrearApuntes;
 import InterfazGrafica.PanelCrearAsignatura;
 import InterfazGrafica.PanelCrearEjercicio;
-import InterfazGrafica.PanelCrearOpcion;
-import InterfazGrafica.PanelCrearPreguntaMultiple;
-import InterfazGrafica.PanelCrearPreguntaRedactar;
-import InterfazGrafica.PanelCrearPreguntaTest;
 import InterfazGrafica.PanelCrearSubtema;
 import InterfazGrafica.PanelCrearTema;
 import InterfazGrafica.VentanaInicial;
@@ -33,10 +29,7 @@ public class ControladorAgregarContenido implements ActionListener{
 	private PanelCrearApuntes panelapuntes;
 	private PanelCrearSubtema panelsubtema;
 	private PanelCrearEjercicio panelejercicio;
-	private PanelCrearPreguntaRedactar panelpreguntaredactar;
-	private PanelCrearPreguntaTest panelpreguntatest;
-	private PanelCrearPreguntaMultiple panelpreguntamultiple;
-	private PanelCrearOpcion panelopcion;
+	
 	/**
 	 * Constructor para la clase PanelCrearAsignatura
 	 * @param vent Ventana asociada al panel
@@ -94,54 +87,6 @@ public class ControladorAgregarContenido implements ActionListener{
 		
 		this.ventana = vent;
 		this.panelejercicio = pan;
-		
-	}
-	
-	/**
-	 * Constructor para la clase PanelCrearPreguntaRedactar
-	 * @param vent Ventana asociada al panel
-	 * @param pan Panel crear pregunta redactar
-	 */
-	public ControladorAgregarContenido(VentanaInicial vent, PanelCrearPreguntaRedactar pan){
-		
-		this.ventana = vent;
-		this.panelpreguntaredactar = pan;
-		
-	}
-	
-	/**
-	 * Constructor para la clase PanelCrearPreguntaTest
-	 * @param vent Ventana asociada al panel
-	 * @param pan Panel crear pregunta test
-	 */
-	public ControladorAgregarContenido(VentanaInicial vent, PanelCrearPreguntaTest pan){
-		
-		this.ventana = vent;
-		this.panelpreguntatest = pan;
-		
-	}
-	
-	/**
-	 * Constructor para la clase PanelCrearPreguntaMultiple
-	 * @param vent Ventana asociada al panel
-	 * @param pan Panel crear pregunta multiple
-	 */
-	public ControladorAgregarContenido(VentanaInicial vent, PanelCrearPreguntaMultiple pan){
-		
-		this.ventana = vent;
-		this.panelpreguntamultiple = pan;
-		
-	}
-	
-	/**
-	 * Constructor para la clase PanelCrearOpcion
-	 * @param vent Ventana asociada al panel
-	 * @param pan Panel crear opcion
-	 */
-	public ControladorAgregarContenido(VentanaInicial vent, PanelCrearOpcion pan){
-		
-		this.ventana = vent;
-		this.panelopcion = pan;
 		
 	}
 	
@@ -249,32 +194,12 @@ public class ControladorAgregarContenido implements ActionListener{
 			 
 		 }else if(e.getActionCommand().equals("Crear ejercicio")){
 			 
-			 
-			 
-			 
-			 
-		 }else if(e.getActionCommand().equals("Crear opcion")){
-			 
-			 if(panelopcion.getEnunciado().equals("")){
-				 JOptionPane.showMessageDialog(panelopcion, "Debe introducir un enunciado para la opcion", "Error", JOptionPane.ERROR_MESSAGE);
+			 if(panelejercicio.getNombreEjercicio().equals("")){
+				 JOptionPane.showMessageDialog(panelejercicio, "Debe introducir un enunciado para el ejercicio", "Error", JOptionPane.ERROR_MESSAGE);
 				 return;
 			 }
 			 
-			 
-			 
-		 }else if(e.getActionCommand().equals("Crear pregunta redactar")){
-			 
-			 
-			 
-			 
-		 }else if(e.getActionCommand().equals("Crear pregunta test")){
-			 
-			 
-			 
-		 }else if(e.getActionCommand().equals("Crear pregunta multiple")){
-			 
-			 
-			 
+			 // Crear el ejercicio (con todas sus preguntas ya añadidas)
 			 
 		 }
 		
