@@ -360,17 +360,23 @@ public class PanelContenido extends JPanel {
 			cartas.show(this, "EditarEj");
 			
 		}else if(nombre.equals("Multiple")){
-			
+			preguntamultiple = new PanelCrearPreguntaMultiple(ejercicios);
+			preguntamultiple.setEjercicio(ejercicios.getEjercicio());
+			cartas.addLayoutComponent(preguntamultiple, "Multiple");
 			this.add(this.preguntamultiple);
 			cartas.show(this, "Multiple");
 			
 		}else if(nombre.equals("Test")){
-			
+			preguntatest = new PanelCrearPreguntaTest(ejercicios);
+			preguntatest.setEjercicio(ejercicios.getEjercicio());
+			cartas.addLayoutComponent(preguntatest, "Test");
 			this.add(this.preguntatest);
 			cartas.show(this, "Test");
 			
 		}else if(nombre.equals("Redactar")){
-			
+			preguntaredactar = new PanelCrearPreguntaRedactar(ejercicios);
+			preguntaredactar.setEjercicio(ejercicios.getEjercicio());
+			cartas.addLayoutComponent(preguntaredactar, "Redactar");
 			this.add(this.preguntaredactar);
 			cartas.show(this, "Redactar");
 			
