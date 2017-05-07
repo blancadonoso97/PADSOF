@@ -1,0 +1,22 @@
+package InterfazGrafica;
+
+import javax.swing.JPanel;
+
+/**
+ * Clase para definir el panel de crear pregunta de tipo redactar
+ * 
+ * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ *
+ */
+public class PanelCrearPreguntaRedactar extends JPanel{
+
+	private static final long serialVersionUID = 1L;
+
+	public PanelCrearPreguntaRedactar(){
+		
+		
+		
+		
+	}
+	
+}

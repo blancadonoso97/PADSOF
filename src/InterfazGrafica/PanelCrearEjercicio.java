@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -25,7 +26,12 @@ public class PanelCrearEjercicio extends JPanel {
 
 	private PanelContenido contenedor;
 
-	private JButton crearpregunta;
+	private JLabel pregunta;
+	
+	private JButton crearpreguntamultiple;
+	private JButton crearpreguntaredactar;
+	private JButton crearpreguntatest;
+	
 	private JButton crearejercicio;
 	private JComboBox<String> listatemas;
 	private JRadioButton ordenado;
@@ -52,7 +58,12 @@ public class PanelCrearEjercicio extends JPanel {
 
 		this.listatemas = new JComboBox<String>();
 
-		this.crearpregunta = new JButton("Crear Pregunta");
+		this.pregunta = new JLabel("Crear pregunta de tipo:");
+		
+		this.crearpreguntamultiple = new JButton("Respuesta multiple");
+		this.crearpreguntaredactar = new JButton("Redactar");
+		this.crearpreguntatest = new JButton("Respuesta unica");
+		
 		this.crearejercicio = new JButton("Crear Ejercicio");
 
 		this.ordenado = new JRadioButton("Preguntas ordenadas");
@@ -84,12 +95,14 @@ public class PanelCrearEjercicio extends JPanel {
 
 		this.add(listatemas);
 
-		this.add(crearpregunta);
+		this.add(pregunta);
+		this.add(crearpreguntamultiple);
+		this.add(crearpreguntaredactar);
+		this.add(crearpreguntatest);
 		this.add(crearejercicio);
 
 		// Anade el controlador para el boton de crear asignatura
-		ControladorAgregarContenido controlador = new ControladorAgregarContenido(
-				contenedor.getContenedorProf().getVentana(), this);
+		ControladorAgregarContenido controlador = new ControladorAgregarContenido(contenedor.getContenedorProf().getVentana(), this);
 
 		// Configurar el panel con el controlador
 		this.setControlador(controlador);
@@ -102,7 +115,9 @@ public class PanelCrearEjercicio extends JPanel {
 	 */
 	public void setControlador(ActionListener c) {
 		crearejercicio.addActionListener(c);
-		crearpregunta.addActionListener(c);
+		crearpreguntamultiple.addActionListener(c);
+		crearpreguntaredactar.addActionListener(c);
+		crearpreguntatest.addActionListener(c);
 	}
 
 	/**
