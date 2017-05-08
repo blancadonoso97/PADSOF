@@ -27,7 +27,7 @@ import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
  * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
-public class ControladorEditarContenido   implements ActionListener{
+public class ControladorEditarContenido  implements ActionListener{
 	
 	private PanelPrincipal panelp;
 	private PanelEditarAsignatura panela;
@@ -557,6 +557,8 @@ public class ControladorEditarContenido   implements ActionListener{
 		}else if(paneledej != null){
 			if(e.getActionCommand().equals("Crear pregunta multiple")){
 				
+				paneledej.getPanelProfesor().getPanelContenido().getPanelCrearEjercicio().setEjercicio(paneledej.getEjercicio());
+				
 				try {
 					this.paneledej.getPanelProfesor().getPanelContenido().cambiarCarta("Multiple");
 				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
@@ -566,6 +568,8 @@ public class ControladorEditarContenido   implements ActionListener{
 				}
 				
 			}else if(e.getActionCommand().equals("Crear pregunta redactar")){
+				
+				paneledej.getPanelProfesor().getPanelContenido().getPanelCrearEjercicio().setEjercicio(paneledej.getEjercicio());
 				
 				try {
 					this.paneledej.getPanelProfesor().getPanelContenido().cambiarCarta("Redactar");
@@ -578,6 +582,8 @@ public class ControladorEditarContenido   implements ActionListener{
 				
 			}else if(e.getActionCommand().equals("Crear pregunta test")){
 
+				paneledej.getPanelProfesor().getPanelContenido().getPanelCrearEjercicio().setEjercicio(paneledej.getEjercicio());
+				
 				try {
 					this.paneledej.getPanelProfesor().getPanelContenido().cambiarCarta("Test");
 				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException

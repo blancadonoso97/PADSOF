@@ -1,7 +1,5 @@
 package InterfazGrafica;
 
-
-
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -19,7 +17,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JList;
 
 /**
- * Clase que implementa el panel del ejercicio
+ * Clase que implementa el panel de editar el ejercicio
+ * 
  * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
@@ -40,7 +39,7 @@ public class PanelEditarEjercicio extends JPanel{
 		private JScrollPane scrollPane;
 		
 		/**
-		 * Constructor que immplementa la interfaz grafica del panel de un ejercicio
+		 * Constructor de la clase PanelEditarEjercicio
 		 * @param cont Panel de contenido
 		 */
 		public PanelEditarEjercicio(PanelContenido cont){
@@ -50,7 +49,6 @@ public class PanelEditarEjercicio extends JPanel{
 			SpringLayout springLayout = new SpringLayout();
 			setLayout(springLayout);
 
-			
 			this.crearpreguntamultiple = new JButton("Crear pregunta multiple");
 			
 			this.crearpreguntaredactar = new JButton("Crear pregunta redactar");
@@ -114,7 +112,6 @@ public class PanelEditarEjercicio extends JPanel{
 			
 			ejercicio = this.getEjercicio();
 			
-			
 			if(!ejercicio.getPreguntas().isEmpty()){
 				preguntas.removeAllElements();
 					
@@ -131,8 +128,9 @@ public class PanelEditarEjercicio extends JPanel{
 		
 		
 		/**
-		 * Funcion que modifica el controlador del boton realizar
-		 * @param c controlador elegido
+		 * Set del controlador
+		 * @param c Controlador 
+		 * @param nombre Nombre del boton
 		 */
 		public void setcontrolador(ActionListener c,String nombre){
 			if(nombre.equals("multiple")){
@@ -145,13 +143,17 @@ public class PanelEditarEjercicio extends JPanel{
 			
 		}
 	
-	
+		/**
+		 * Devuelve el ejercicio seleccionado
+		 * @return Ejercicio seleccionado
+		 */
 		public Ejercicio getEjercicio(){
 			return this.contProf.getVentana().getSistema().getAsignatura
 					(this.contProf.getPanelContenido().getPanelAsignatura().getNombreAsignatura()).
 					getTema(this.contProf.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado()).
 					getEjercicio(this.contProf.getPanelContenido().getPanelTema().getNombreEjercicioSeleccionado());
 		}
+		
 		/**
 		 * Devuelve el panel del alumno
 		 * @return contenedorAlum

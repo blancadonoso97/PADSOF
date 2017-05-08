@@ -502,12 +502,28 @@ public class PanelContenido extends JPanel {
 		return contenedorAlum;
 	}
 	
+	/**
+	 * Devuelve el panel de matricula
+	 * @return solicitarmatricula
+	 */
 	public PanelMatricula getMatricula(){
-		return this.solicitarmatricula;
+		return solicitarmatricula;
 	}
 	
+	/**
+	 * Devuelve el panel de editar ejercicio
+	 * @return paneledej
+	 */
 	public PanelEditarEjercicio getPanelEditarEjercicio(){
-		return this.paneledej;
+		return paneledej;
+	}
+	
+	/**
+	 * Devuelve el panel de crear ejercicio
+	 * @return ejercicios
+	 */
+	public PanelCrearEjercicio getPanelCrearEjercicio(){
+		return ejercicios;
 	}
 	
 	
