@@ -348,8 +348,20 @@ public class ControladorAccederContenido implements ActionListener {
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				} else {
+					if(panelt.getPanelAlumno().getVentana().getSistema().getAlumnoLog()
+					.getAsignatura(panelt.getPanelAlumno().getPanelContenido().getPanelAsignatura()
+							.getNombreAsignatura())
+					.getTema(panelt.getNombreTema()).getEjercicio(panelt.getNombreEjercicioSeleccionado()).
+					getAlumno(panelt.getPanelAlumno().getVentana().getSistema().getAlumnoLog().getNombre()).
+					getId() == panelt.getPanelAlumno().getVentana().getSistema().getAlumnoLog().getId() ){
+						
+					JOptionPane.showMessageDialog(panelt, "Solo puede realizar una vez el ejercicio", "Error",
+								JOptionPane.ERROR_MESSAGE);
+					return;	
+						
+					}
 					try {
-						panelt.getPanelProf().getPanelContenido().cambiarCarta("AccederEj");
+						panelt.getPanelAlumno().getPanelContenido().cambiarCarta("AccederEj");
 					} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
 							| IOException e1) {
 						// TODO Auto-generated catch block
