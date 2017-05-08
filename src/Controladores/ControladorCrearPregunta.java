@@ -179,52 +179,10 @@ public class ControladorCrearPregunta implements ActionListener{
 			
 			
 			
-		}else if (e.getActionCommand().equals("Volver a pregunta")){
-			
-			
-			if(opcion.getMultiple() != null){
-				
-				try {
-					ventana.getPanelProfesor().getPanelContenido().cambiarCarta("Multiple");
-				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
-						| IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-			}else if(opcion.getRedactar() != null){
-				
-				try {
-					ventana.getPanelProfesor().getPanelContenido().cambiarCarta("Redactar");
-				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
-						| IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-			}else if(opcion.getTest() != null){
-				
-				try {
-					ventana.getPanelProfesor().getPanelContenido().cambiarCarta("Test");
-				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
-						| IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-			}
-			
-			
 		}
 		
 	}
 
-	
-	
-	
-	
-	
-	
 	
 	
 }
