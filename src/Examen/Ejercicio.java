@@ -279,7 +279,8 @@ public class Ejercicio implements Serializable{
 	 * @return nota Nota total calculada a partir de la suma de todas las preguntas
 	 */
 	public double calcularNota(Alumno al) {
-		double nota=0;
+		
+		double nota = 0;
 		
 		for(Pregunta preg: preguntas){
 			for(Respuesta resp : preg.getRespuestas()){

@@ -39,7 +39,7 @@ public class PanelVerNotas extends JPanel{
 		
 		this.modelo = new DefaultTableModel(new String[] {"Ejercicio", "Nota"}, 0);
 		this.tablaNotas.setModel(modelo);
-		
+
 		this.add(tablaNotas);
 		
 	}
@@ -58,9 +58,11 @@ public class PanelVerNotas extends JPanel{
 	 */
 	public void actualizarTabla(){
 		
-		modelo = new DefaultTableModel();
-		
 		tablaNotas.removeAll();
+		
+		modelo = new DefaultTableModel(new String[] {"Ejercicio", "Nota"}, 0);
+		
+		modelo.addRow(new String[]{"Ejercicio", "Nota"});
 		
 		ArrayList<Asignatura> asigexistentes = new ArrayList<Asignatura>();
 		
