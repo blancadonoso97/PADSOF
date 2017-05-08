@@ -34,6 +34,7 @@ private PanelContenido contenedor;
 	private JLabel nombreapuntes;
 	private JTextField camponombre;
 	private JLabel contenidoapuntes;
+	private JLabel fechavisual;
 	private JTextField campotexto;
 	private JTextField dia;
 	private JTextField mes;
@@ -71,6 +72,8 @@ private PanelContenido contenedor;
 		this.contenidoapuntes = new JLabel("Contenido de los apuntes:");
 		this.campotexto = new JTextField(20);
 		
+		this.fechavisual = new JLabel("Fecha de inicio: Dia/Mes/Año");
+		
 		this.dia = new JTextField(2);
 		this.mes = new JTextField(2);
 		this.anyo = new JTextField(4);
@@ -101,15 +104,16 @@ private PanelContenido contenedor;
 		add(rigidArea_1);
 		this.add(visible);
 		
-		rigidArea_2 = Box.createRigidArea(new Dimension(300, 40));
+		rigidArea_2 = Box.createRigidArea(new Dimension(20, 40));
 		add(rigidArea_2);
 		this.add(novisible);
 		
-		rigidArea_3 = Box.createRigidArea(new Dimension(120, 200));
+		rigidArea_3 = Box.createRigidArea(new Dimension(20, 20));
 		add(rigidArea_3);
 		
 		this.add(contenidoapuntes);
 		this.add(campotexto);
+		this.add(fechavisual);
 		this.add(dia);
 		this.add(mes);
 		this.add(anyo);

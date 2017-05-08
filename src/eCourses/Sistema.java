@@ -531,6 +531,7 @@ public class Sistema implements Serializable{
 			
 			/* Si el tema no esta visible, el ejercicio tampoco*/
 			if(!tema.esVisible()){
+				ejercicio.setVisible(false);
 				return true;
 			}
 			
