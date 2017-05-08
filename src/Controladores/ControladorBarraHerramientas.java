@@ -154,6 +154,16 @@ public class ControladorBarraHerramientas implements ActionListener{
 			}
 			
 			
+		}else if(e.getActionCommand().equals("Ver notas")){
+			
+			try {
+				panel.getPanelAlumno().getPanelContenido().cambiarCarta("Notas");
+			} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+					| IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 		}
 
 	}

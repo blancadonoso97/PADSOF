@@ -49,6 +49,8 @@ public class PanelContenido extends JPanel {
 	private PanelApunte panelap;
 	private PanelEjercicio panelej;
 	
+	private PanelVerNotas panelnotas;
+	
 	private PanelEditarAsignatura paneledasig;
 	private PanelEditarTema paneledtem;
 	private PanelEditarApunte paneledap;
@@ -92,6 +94,8 @@ public class PanelContenido extends JPanel {
 		// Panel principal
 		this.paginaprinc = new PanelPrincipal(this);
 		
+		this.panelnotas = new PanelVerNotas(this);
+		
 		this.panelasig = new PanelAsignatura(this);
 		
 		this.paneltem = new PanelTema(this);
@@ -125,10 +129,12 @@ public class PanelContenido extends JPanel {
 		cartas.addLayoutComponent(this.paneledtem, "EditarTem");
 		cartas.addLayoutComponent(this.paneledtem, "EditarAp");
 		cartas.addLayoutComponent(this.paneledtem, "EditarEj");
+		cartas.addLayoutComponent(this.panelnotas, "Notas");
 		
 		cartas.addLayoutComponent(this.preguntamultiple, "Multiple");
 		cartas.addLayoutComponent(this.preguntatest, "Test");
 		cartas.addLayoutComponent(this.preguntaredactar, "Redactar");
+		
 		
 		ControladorCrearEjercicio controlador = new ControladorCrearEjercicio(this.getContenedorProf().getVentana(), preguntamultiple);
 		
@@ -425,6 +431,13 @@ public class PanelContenido extends JPanel {
 				this.panelej.actualizarejercicio();
 				this.add(this.panelej);
 				cartas.show(this, "RealizarEj");
+				
+			}else if(nombre.equals("RealizarEj")){
+				
+				panelnotas.actualizarTabla();
+				this.add(this.panelnotas);
+				cartas.show(this, "Notas");
+				
 			}
 			
 		}

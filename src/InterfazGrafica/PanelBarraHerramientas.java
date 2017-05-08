@@ -54,6 +54,8 @@ public class PanelBarraHerramientas extends JPanel {
 	private JButton principal;
 	private JButton administrar;
 	private JButton desconectar;
+	private JButton vernotas;
+	
 	private JTree contenido;
 	private JScrollPane pane;
 	private ArrayList<Asignatura> asigna;
@@ -123,6 +125,7 @@ public class PanelBarraHerramientas extends JPanel {
 		this.modelo = new DefaultTreeModel(asignaturas);
 		
 		this.matricula = new JButton("Solicitar Matricula");
+		this.vernotas = new JButton("Ver notas");
 		this.desconectar = new JButton("Cerrar Sesion");
 		
 		ImageIcon icono = new ImageIcon("eCourses.png", "Logo");
@@ -303,6 +306,8 @@ public class PanelBarraHerramientas extends JPanel {
 			this.add(principal);
 
 			this.add(Box.createRigidArea(new Dimension(0, 20)));
+			
+			this.add(vernotas);
 
 			if (this.contAlumno.getVentana().getSistema().getAlumnoLog() != null) {
 
@@ -312,6 +317,7 @@ public class PanelBarraHerramientas extends JPanel {
 				this.setControlador("Matricula", controlador);
 				this.setControlador("Logout", controlador);
 				this.setControlador("Principal", controlador);
+				this.setControlador("Ver notas", controlador);
 
 				asigna = this.contAlumno.getVentana().getSistema().getAlumnoLog().getAsignaturas();
 				if (asignaturas.getChildCount() > 0) {
@@ -410,6 +416,8 @@ public class PanelBarraHerramientas extends JPanel {
 			administrar.addActionListener(c);
 		} else if (nombreBoton.equals("Ejercicio")) {
 			ejercicio.addActionListener(c);
+		} else if (nombreBoton.equals("Ver notas")){
+			vernotas.addActionListener(c);
 		}
 
 	}
