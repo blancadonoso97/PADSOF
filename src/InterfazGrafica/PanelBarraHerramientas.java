@@ -35,14 +35,16 @@ import java.awt.Color;
 import javax.swing.border.LineBorder;
 
 /**
- * Clase para definir el panel de herramientas dentro del panel de profesor o alumno
+ * Clase para definir el panel de herramientas dentro del panel de profesor o
+ * alumno
+ * 
  * @author Miguel Angel Bouzada, Blanca Martinez Donoso
  *
  */
 public class PanelBarraHerramientas extends JPanel {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	private JLabel hola;
 	private JButton asignatura;
 	private JButton tema;
@@ -58,7 +60,10 @@ public class PanelBarraHerramientas extends JPanel {
 	private ArrayList<Asignatura> asigna;
 	private DefaultMutableTreeNode nodohijo;
 	private DefaultMutableTreeNode nodonieto;
-	private DefaultMutableTreeNode asignaturas = new DefaultMutableTreeNode("Asignaturas"); // Raiz del arbol contenido
+	private DefaultMutableTreeNode asignaturas = new DefaultMutableTreeNode("Asignaturas"); // Raiz
+																							// del
+																							// arbol
+																							// contenido
 	private PanelProfesor contProfe;
 	private PanelAlumno contAlumno;
 	private Component rigidArea_4;
@@ -69,19 +74,20 @@ public class PanelBarraHerramientas extends JPanel {
 	private DefaultTreeModel modelo;
 	private BoxLayout layout;
 	private ControladorBarraHerramientas controlador;
-	
-	
+
 	/**
 	 * Contructor del panel de herramientas para el profesor
-	 * @param profesor Profesor
+	 * 
+	 * @param profesor
+	 *            Profesor
 	 * @wbp.parser.constructor
 	 */
-	
-	public PanelBarraHerramientas(PanelProfesor profesor){
+
+	public PanelBarraHerramientas(PanelProfesor profesor) {
 		setBackground(SystemColor.menu);
 		layout = new BoxLayout(this, 1);
 		this.contProfe = profesor;
-		controlador = new ControladorBarraHerramientas(contProfe.getVentana(),this);
+		controlador = new ControladorBarraHerramientas(contProfe.getVentana(), this);
 		this.hola = new JLabel("Bienvenido a");
 		this.tema = new JButton("Crear Tema");
 		this.ejercicio = new JButton("Crear Ejercicio");
@@ -96,18 +102,19 @@ public class PanelBarraHerramientas extends JPanel {
 		pane = new JScrollPane();
 		this.contenido = new JTree(modelo);
 		this.desconectar = new JButton("Cerrar Sesion");
-		
-	
+
 	}
 
 	/**
 	 * Constructor del panel de herramientas para el alumno
-	 * @param alumno Alumno logueado
+	 * 
+	 * @param alumno
+	 *            Alumno logueado
 	 */
-	public PanelBarraHerramientas(PanelAlumno alumno){
-		
+	public PanelBarraHerramientas(PanelAlumno alumno) {
+
 		this.contAlumno = alumno;
-		 layout = new BoxLayout(this, 1);
+		layout = new BoxLayout(this, 1);
 		this.hola = new JLabel("Bienvenido a");
 		this.modelo = new DefaultTreeModel(asignaturas);
 		this.matricula = new JButton("Solicitar Matricula");
@@ -116,290 +123,287 @@ public class PanelBarraHerramientas extends JPanel {
 		this.imagen = new JLabel(icono);
 		this.contenido = new JTree(modelo);
 		this.principal = new JButton("Pagina Principal");
-		 controlador = new ControladorBarraHerramientas(contAlumno.getVentana(),this);
-		 pane = new JScrollPane();
-		
-		
+		controlador = new ControladorBarraHerramientas(contAlumno.getVentana(), this);
+		pane = new JScrollPane();
+
 	}
 
 	/**
 	 * Obtiene el panel del alumno
+	 * 
 	 * @return contAlumno
 	 */
-	public PanelAlumno getPanelAlumno(){
-			return contAlumno;
+	public PanelAlumno getPanelAlumno() {
+		return contAlumno;
 	}
-		
+
 	/**
 	 * Obtiene el panel del profesor
+	 * 
 	 * @return contProfe
 	 */
-	public PanelProfesor getPanelProfe(){
-			return contProfe;
+	public PanelProfesor getPanelProfe() {
+		return contProfe;
 	}
-	
-	public void actualizarestado() throws ClassNotFoundException, InvalidEmailAddressException, FailedInternetConnectionException, IOException{
+
+	/**
+	 * Actualiza el estado de la barra de herramientas
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws InvalidEmailAddressException
+	 * @throws FailedInternetConnectionException
+	 * @throws IOException
+	 */
+	public void actualizarestado() throws ClassNotFoundException, InvalidEmailAddressException,
+			FailedInternetConnectionException, IOException {
 
 		this.removeAll();
-			
-			if(this.contProfe != null){
-			
 
-				this.setLayout(layout);
-				
-				rigidArea_1 = Box.createRigidArea(new Dimension(0, 20));
-				add(rigidArea_1);
-				
-				
-				hola.setHorizontalAlignment(SwingConstants.CENTER);
-				hola.setFont(new Font("WenQuanYi Micro Hei Mono", Font.BOLD | Font.ITALIC, 30));
-				this.add(hola);
-				
-				this.add(imagen);
-				
-				rigidArea_4 = Box.createRigidArea(new Dimension(0, 70));
-				add(rigidArea_4);
-				
-				
-				this.add(asignatura);
-				this.add(Box.createRigidArea(new Dimension(0, 20)));
+		if (this.contProfe != null) {
 
-				this.add(tema);
-				this.add(Box.createRigidArea(new Dimension(0, 20)));
-				
-				this.add(subtema);
-				this.add(Box.createRigidArea(new Dimension(0, 20)));
-				this.add(ejercicio);
-				this.add(Box.createRigidArea(new Dimension(0, 20)));
-				
-				
-				this.add(apuntes);
-				this.add(Box.createRigidArea(new Dimension(0, 20)));
-				
-				rigidArea_2 = Box.createRigidArea(new Dimension(0, 20));
-				add(rigidArea_2);
-				
-				
-				this.add(administrar);
-				
-				
+			this.setLayout(layout);
 
-				this.add(principal);
-				Component rigidArea = Box.createRigidArea(new Dimension(0,20));
-				this.add(rigidArea);
-			
-				
-				// Configurar los botones con el controlador
-				this.setControlador("Asignatura", controlador);
-				this.setControlador("Tema", controlador);
-				this.setControlador("Apuntes", controlador);
-				this.setControlador("Principal", controlador);
-				this.setControlador("Subtema", controlador);
-				this.setControlador("Administrar", controlador);
-				this.setControlador("Ejercicio", controlador);
-				
-				
-				asigna = this.contProfe.getVentana().getSistema().getAsignaturas();
-				if(asignaturas.getChildCount() > 0){
-					modelo.removeNodeFromParent((DefaultMutableTreeNode)asignaturas.getChildAt(0));
-				}
-				
-				
-				int i = 0;
-				int x;
-				for(Asignatura a : asigna){
-					modelo.insertNodeInto(new DefaultMutableTreeNode(a.getNombre()), asignaturas, i);
-					nodohijo = (DefaultMutableTreeNode) modelo.getChild(asignaturas,i);
-					int j=0;
-					for(Tema t : a.getTemas()){
-						modelo.insertNodeInto(new DefaultMutableTreeNode(t.getNombre()), nodohijo, j);
-						nodonieto = (DefaultMutableTreeNode) modelo.getChild(nodohijo,i);
-							
-							x=0;
-							for(Apuntes ap : t.getApuntes()){
-								modelo.insertNodeInto(new DefaultMutableTreeNode(ap.getTitulo()), nodonieto, x);
-								x++;
-							}
-							for(Tema sub : t.getTemas()){
-								modelo.insertNodeInto(new DefaultMutableTreeNode(sub.getNombre()), nodonieto, x);
-								x++;
-							}
-							for(Ejercicio ej : t.getEjercicios()){
-								modelo.insertNodeInto(new DefaultMutableTreeNode(ej.getNombre()), nodonieto, x);
-								x++;
-							}
-						j++;
-					}
-					i++;
-				}
-				
-				this.contenido.setModel(modelo);
-				this.add(pane);
-				
-				contenido.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 12));
-				contenido.setVisibleRowCount(10);
-				contenido.setForeground(SystemColor.menu);
-				contenido.setBorder(new CompoundBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(102, 153, 102)), new LineBorder(new Color(102, 153, 102), 1, true)));
-				contenido.setBackground(SystemColor.menu);
-				contenido.setAlignmentX(Component.LEFT_ALIGNMENT);
-				
-				contenido.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
-				pane.setColumnHeaderView(contenido);
-				rigidArea_3 = Box.createRigidArea(new Dimension(0, 70));
-				add(rigidArea_3);
-				
-				this.add(desconectar);
-				this.setControlador("Logout", controlador);
-				
-				this.setVisible(true);
-				
-				
+			rigidArea_1 = Box.createRigidArea(new Dimension(0, 20));
+			add(rigidArea_1);
+
+			hola.setHorizontalAlignment(SwingConstants.CENTER);
+			hola.setFont(new Font("WenQuanYi Micro Hei Mono", Font.BOLD | Font.ITALIC, 30));
+			this.add(hola);
+
+			this.add(imagen);
+
+			rigidArea_4 = Box.createRigidArea(new Dimension(0, 70));
+			add(rigidArea_4);
+
+			this.add(asignatura);
+			this.add(Box.createRigidArea(new Dimension(0, 20)));
+
+			this.add(tema);
+			this.add(Box.createRigidArea(new Dimension(0, 20)));
+
+			this.add(subtema);
+			this.add(Box.createRigidArea(new Dimension(0, 20)));
+			this.add(ejercicio);
+			this.add(Box.createRigidArea(new Dimension(0, 20)));
+
+			this.add(apuntes);
+			this.add(Box.createRigidArea(new Dimension(0, 20)));
+
+			rigidArea_2 = Box.createRigidArea(new Dimension(0, 20));
+			add(rigidArea_2);
+
+			this.add(administrar);
+
+			this.add(principal);
+			Component rigidArea = Box.createRigidArea(new Dimension(0, 20));
+			this.add(rigidArea);
+
+			// Configurar los botones con el controlador
+			this.setControlador("Asignatura", controlador);
+			this.setControlador("Tema", controlador);
+			this.setControlador("Apuntes", controlador);
+			this.setControlador("Principal", controlador);
+			this.setControlador("Subtema", controlador);
+			this.setControlador("Administrar", controlador);
+			this.setControlador("Ejercicio", controlador);
+
+			asigna = this.contProfe.getVentana().getSistema().getAsignaturas();
+			if (asignaturas.getChildCount() > 0) {
+				modelo.removeNodeFromParent((DefaultMutableTreeNode) asignaturas.getChildAt(0));
 			}
-			
-			else if(this.contAlumno != null && this.contAlumno.getVentana().getSistema().getAlumnoLog()!=null){
-				
-				
-				
-				this.setLayout(layout);
-				
-				
-				hola.setHorizontalAlignment(SwingConstants.CENTER);
-				hola.setFont(new Font("WenQuanYi Micro Hei Mono", Font.BOLD | Font.ITALIC, 30));
-				this.add(hola);
-				
-				this.add(Box.createRigidArea(new Dimension(0,5)));
-				
-				
-				this.add(imagen);
-				
-				rigidArea_4 = Box.createRigidArea(new Dimension(0, 70));
-				add(rigidArea_4);
-				
-				this.add(matricula);
-				
-				this.add(Box.createRigidArea(new Dimension(0,20)));
-				
-				
-				this.add(principal);
-				
-				this.add(Box.createRigidArea(new Dimension(0, 20)));
-				
-				
-				// Pruebas
-				
-				if(this.contAlumno.getVentana().getSistema().getAlumnoLog() != null){
-					
-				
+
+			int i = 0;
+			int x = 0;
+
+			for (Asignatura a : asigna) {
+
+				modelo.insertNodeInto(new DefaultMutableTreeNode(a.getNombre()), asignaturas, i);
+				nodohijo = (DefaultMutableTreeNode) modelo.getChild(asignaturas, i);
+
+				int j = 0;
+
+				for (Tema t : a.getTemas()) {
+					modelo.insertNodeInto(new DefaultMutableTreeNode(t.getNombre()), nodohijo, j);
+					nodonieto = (DefaultMutableTreeNode) modelo.getChild(nodohijo, i);
+
+					x = 0;
+					for (Apuntes ap : t.getApuntes()) {
+						modelo.insertNodeInto(new DefaultMutableTreeNode(ap.getTitulo()), nodonieto, x);
+						x++;
+					}
+					for (Tema sub : t.getTemas()) {
+						modelo.insertNodeInto(new DefaultMutableTreeNode(sub.getNombre()), nodonieto, x);
+						x++;
+					}
+					for (Ejercicio ej : t.getEjercicios()) {
+						modelo.insertNodeInto(new DefaultMutableTreeNode(ej.getNombre()), nodonieto, x);
+						x++;
+					}
+					j++;
+				}
+				i++;
+			}
+
+			this.contenido.setModel(modelo);
+			this.add(pane);
+
+			contenido.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 12));
+			contenido.setVisibleRowCount(10);
+			contenido.setForeground(SystemColor.menu);
+			contenido.setBorder(new CompoundBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(102, 153, 102)),
+					new LineBorder(new Color(102, 153, 102), 1, true)));
+			contenido.setBackground(SystemColor.menu);
+			contenido.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+			contenido.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+			pane.setColumnHeaderView(contenido);
+			rigidArea_3 = Box.createRigidArea(new Dimension(0, 70));
+			add(rigidArea_3);
+
+			this.add(desconectar);
+			this.setControlador("Logout", controlador);
+
+			this.setVisible(true);
+
+		}
+
+		else if (this.contAlumno != null && this.contAlumno.getVentana().getSistema().getAlumnoLog() != null) {
+
+			this.setLayout(layout);
+
+			hola.setHorizontalAlignment(SwingConstants.CENTER);
+			hola.setFont(new Font("WenQuanYi Micro Hei Mono", Font.BOLD | Font.ITALIC, 30));
+			this.add(hola);
+
+			this.add(Box.createRigidArea(new Dimension(0, 5)));
+
+			this.add(imagen);
+
+			rigidArea_4 = Box.createRigidArea(new Dimension(0, 70));
+			add(rigidArea_4);
+
+			this.add(matricula);
+
+			this.add(Box.createRigidArea(new Dimension(0, 20)));
+
+			this.add(principal);
+
+			this.add(Box.createRigidArea(new Dimension(0, 20)));
+
+			// Pruebas
+
+			if (this.contAlumno.getVentana().getSistema().getAlumnoLog() != null) {
 
 				rigidArea_2 = Box.createRigidArea(new Dimension(0, 20));
 				add(rigidArea_2);
-			
+
 				// Creacion del controlador
-				
-						
+
 				// Configurar los botones con el controlador
 				this.setControlador("Matricula", controlador);
 				this.setControlador("Logout", controlador);
 				this.setControlador("Principal", controlador);
 
 				asigna = this.contAlumno.getVentana().getSistema().getAlumnoLog().getAsignaturas();
-				if(asignaturas.getChildCount() > 0){
-					modelo.removeNodeFromParent((DefaultMutableTreeNode)asignaturas.getChildAt(0));
+				if (asignaturas.getChildCount() > 0) {
+					modelo.removeNodeFromParent((DefaultMutableTreeNode) asignaturas.getChildAt(0));
 				}
-				
-				
+
 				int i = 0;
 				int x;
-				for(Asignatura a : asigna){
+				for (Asignatura a : asigna) {
 					modelo.insertNodeInto(new DefaultMutableTreeNode(a.getNombre()), asignaturas, i);
-					nodohijo = (DefaultMutableTreeNode) modelo.getChild(asignaturas,i);
-					int j=0;
-					for(Tema t : a.getTemas()){
-						if(t.esVisible() == true){
+					nodohijo = (DefaultMutableTreeNode) modelo.getChild(asignaturas, i);
+					int j = 0;
+					for (Tema t : a.getTemas()) {
+						if (t.esVisible() == true) {
 							modelo.insertNodeInto(new DefaultMutableTreeNode(t.getNombre()), nodohijo, j);
-							nodonieto = (DefaultMutableTreeNode) modelo.getChild(nodohijo,i);
-								
-								x=0;
-								for(Apuntes ap : t.getApuntes()){
-									if(ap.getVisible() == true){
-										modelo.insertNodeInto(new DefaultMutableTreeNode(ap.getTitulo()), nodonieto, x);
-									}
-									
-									x++;
+							nodonieto = (DefaultMutableTreeNode) modelo.getChild(nodohijo, i);
+
+							x = 0;
+							for (Apuntes ap : t.getApuntes()) {
+								if (ap.getVisible() == true) {
+									modelo.insertNodeInto(new DefaultMutableTreeNode(ap.getTitulo()), nodonieto, x);
 								}
-								for(Tema sub : t.getTemas()){
-									if(sub.esVisible() == true){
-										modelo.insertNodeInto(new DefaultMutableTreeNode(sub.getNombre()), nodonieto, x);
-									}
-									
-									x++;
+
+								x++;
+							}
+							for (Tema sub : t.getTemas()) {
+								if (sub.esVisible() == true) {
+									modelo.insertNodeInto(new DefaultMutableTreeNode(sub.getNombre()), nodonieto, x);
 								}
-								for(Ejercicio ej : t.getEjercicios()){
-									if(ej.getVisible() == true){
-										modelo.insertNodeInto(new DefaultMutableTreeNode(ej.getNombre()), nodonieto, x);
-									}
-									
-									x++;
+
+								x++;
+							}
+							for (Ejercicio ej : t.getEjercicios()) {
+								if (ej.getVisible() == true) {
+									modelo.insertNodeInto(new DefaultMutableTreeNode(ej.getNombre()), nodonieto, x);
 								}
+
+								x++;
+							}
 						}
-						
+
 						j++;
 					}
-					
+
 					i++;
 				}
-				
+
 				this.contenido.setModel(modelo);
 				this.add(pane);
-				
+
 				contenido.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 12));
 				contenido.setVisibleRowCount(10);
 				contenido.setForeground(SystemColor.menu);
-				contenido.setBorder(new CompoundBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(102, 153, 102)), new LineBorder(new Color(102, 153, 102), 1, true)));
-				contenido.setBackground(SystemColor.menu);
-				contenido.setAlignmentX(Component.LEFT_ALIGNMENT);
 				
+				contenido.setBorder(new CompoundBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(102, 153, 102)),
+						new LineBorder(new Color(102, 153, 102), 1, true)));
+				
+				contenido.setBackground(SystemColor.menu);
+				
+				contenido.setAlignmentX(Component.LEFT_ALIGNMENT);
+
 				contenido.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 				pane.setColumnHeaderView(contenido);
 				rigidArea_3 = Box.createRigidArea(new Dimension(0, 70));
 				add(rigidArea_3);
 				this.add(pane);
-				
+
 				this.add(desconectar);
 				this.setVisible(true);
-				
-				
+
 			}
 		}
 	}
-	
-	
+
 	/**
 	 * Anade un controlador al boton
-	 * @param c Controlador a anadir
+	 * 
+	 * @param c
+	 *            Controlador a anadir
 	 */
-	 public void setControlador(String nombreBoton, ActionListener c) {
-		 
-		 if(nombreBoton.equals("Asignatura")){
-			 asignatura.addActionListener(c);
-		 }else if (nombreBoton.equals("Logout")){
-			 desconectar.addActionListener(c);
-		 }else if(nombreBoton.equals("Matricula")){
-			 matricula.addActionListener(c);
-		 }else if(nombreBoton.equals("Tema")){
-			 tema.addActionListener(c);
-		 }else if(nombreBoton.equals("Subtema")){
-			 subtema.addActionListener(c);
-		 }else if(nombreBoton.equals("Apuntes")){
-			 apuntes.addActionListener(c);
-		 }else if(nombreBoton.equals("Principal")){
-			 principal.addActionListener(c);
-		 }else if(nombreBoton.equals("Administrar")){
-			 administrar.addActionListener(c);
-		 }else if(nombreBoton.equals("Ejercicio")){
-			 ejercicio.addActionListener(c);
-		 }
-		 
-		 
-	 }
+	public void setControlador(String nombreBoton, ActionListener c) {
+
+		if (nombreBoton.equals("Asignatura")) {
+			asignatura.addActionListener(c);
+		} else if (nombreBoton.equals("Logout")) {
+			desconectar.addActionListener(c);
+		} else if (nombreBoton.equals("Matricula")) {
+			matricula.addActionListener(c);
+		} else if (nombreBoton.equals("Tema")) {
+			tema.addActionListener(c);
+		} else if (nombreBoton.equals("Subtema")) {
+			subtema.addActionListener(c);
+		} else if (nombreBoton.equals("Apuntes")) {
+			apuntes.addActionListener(c);
+		} else if (nombreBoton.equals("Principal")) {
+			principal.addActionListener(c);
+		} else if (nombreBoton.equals("Administrar")) {
+			administrar.addActionListener(c);
+		} else if (nombreBoton.equals("Ejercicio")) {
+			ejercicio.addActionListener(c);
+		}
+
+	}
 }
