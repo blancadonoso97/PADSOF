@@ -3,6 +3,7 @@ package InterfazGrafica;
 import java.awt.CardLayout;
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
@@ -118,6 +119,7 @@ public class PanelContenido extends JPanel {
 		cartas.addLayoutComponent(this.paneltem, "AccederTem");
 		cartas.addLayoutComponent(this.paneltem, "AccederApunte");
 		cartas.addLayoutComponent(this.panelej, "AccederEj");
+		cartas.addLayoutComponent(this.panelej, "RealizarEj");
 		cartas.addLayoutComponent(this.paneladmin, "Administrar");
 		cartas.addLayoutComponent(this.paneledasig, "EditarAsig");
 		cartas.addLayoutComponent(this.paneledtem, "EditarTem");
@@ -410,6 +412,19 @@ public class PanelContenido extends JPanel {
 				this.add(this.opcion3);
 				cartas.show(this, "Opcion3");
 				
+			}else if(nombre.equals("RealizarEj")){
+				
+				this.removeAll();
+				this.panelej.responderEjercicio();
+				this.panelej.getEjercicio().realizarEjercicio(this.panelej.getPanelAlumno().
+				getVentana().getSistema().getAlumnoLog(), this.panelej.getOpcionesMarcadas());
+				
+				JOptionPane.showMessageDialog(panelasig, this.panelej.getEjercicio().calcularNota(this.panelej.getPanelAlumno().
+				getVentana().getSistema().getAlumnoLog()), "Error", JOptionPane.ERROR_MESSAGE);
+				
+				this.panelej.actualizarejercicio();
+				this.add(this.panelej);
+				cartas.show(this, "RealizarEj");
 			}
 			
 		}

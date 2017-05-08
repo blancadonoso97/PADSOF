@@ -2,8 +2,11 @@ package Controladores;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import InterfazGrafica.PanelEjercicio;
+import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 /**
  * Clase que define el controlador de los botones del panel de realizar un ejercicio
@@ -26,7 +29,15 @@ public class ControladorRealizarEjercicio  implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		if(e.getActionCommand().equals("Realizar")){
+			try {
+				panelej.getPanelAlumno().getPanelContenido().cambiarCarta("Realizar");
+			} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+					| IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
 		
 	}
 	

@@ -138,8 +138,8 @@ public class Ejercicio implements Serializable{
 	 */
 	public boolean getVisible() throws ClassNotFoundException, IOException, InvalidEmailAddressException, FailedInternetConnectionException {
 		
-		Calendar calendar = Calendar.getInstance(); /* Obtiene la fecha actual*/
-		Sistema sist = Sistema.getInstance();
+		/*Calendar calendar = Calendar.getInstance(); /* Obtiene la fecha actual*/
+		/*Sistema sist = Sistema.getInstance();
 		
 		if (calendar.compareTo(fechaInicio)>0 && calendar.compareTo(fechaFin)<0){
 			
@@ -168,7 +168,8 @@ public class Ejercicio implements Serializable{
 		}else{
 			this.visible = false;
 			return visible;
-		}
+		}*/
+		return true;
 	}
 
 	/**

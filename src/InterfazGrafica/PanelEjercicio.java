@@ -8,7 +8,9 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.SpringLayout;
 
+import Controladores.ControladorRealizarEjercicio;
 import Examen.Ejercicio;
+import Examen.Opcion;
 import Examen.Pregunta;
 import Examen.PreguntaMultiple;
 import Examen.PreguntaRedactar;
@@ -18,7 +20,6 @@ import javax.swing.JEditorPane;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 /**
  * Clase que implementa el panel del ejercicio
@@ -30,12 +31,13 @@ public class PanelEjercicio extends JPanel{
 		private static final long serialVersionUID = 1L;
 		
 		private PanelAlumno contenedorAlum;
-		private PanelProfesor cont;
 		private JButton realizar;
 		private JTabbedPane tabbedPane;
 		private Ejercicio ejercicio;
 		private JEditorPane respuesta;
 		private ButtonGroup grupoBot;
+		private ArrayList<JPanel> panel;
+		private ArrayList<Opcion> opcionesmarcadas;
 		
 		/**
 		 * Constructor que immplementa la interfaz grafica del panel de un ejercicio
@@ -43,15 +45,16 @@ public class PanelEjercicio extends JPanel{
 		 */
 		public PanelEjercicio(PanelContenido cont){
 		
-			this.cont= cont.getContenedorProf();
+			this.contenedorAlum= cont.getContenedorAlum();
 			
 			SpringLayout springLayout = new SpringLayout();
 			setLayout(springLayout);
-
+			ControladorRealizarEjercicio cont1 = new ControladorRealizarEjercicio(this);
 			this.realizar = new JButton("Realizar");
 			springLayout.putConstraint(SpringLayout.WEST, realizar, 312, SpringLayout.WEST, this);
 			springLayout.putConstraint(SpringLayout.EAST, realizar, -368, SpringLayout.EAST, this);
-			
+			opcionesmarcadas = new ArrayList<Opcion> ();
+			this.setcontrolador(cont1);
 			this.add(realizar);
 			grupoBot = new ButtonGroup();
 			tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -70,12 +73,17 @@ public class PanelEjercicio extends JPanel{
 		public void actualizarejercicio(){
 			
 			int i,j;
-			ejercicio = this.cont.getVentana().getSistema().getAsignatura(this.cont.getPanelContenido().getPanelAsignatura().getNombreAsignatura()).getTema(this.cont.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado()).getEjercicio(this.cont.getPanelContenido().getPanelTema().getNombreEjercicioSeleccionado());
+			ejercicio = this.contenedorAlum.getVentana().getSistema().getAsignatura
+					(this.contenedorAlum.getPanelContenido().getPanelAsignatura().getNombreAsignatura())
+					.getTema(this.contenedorAlum.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado())
+					.getEjercicio(this.contenedorAlum.getPanelContenido().getPanelTema().getNombreEjercicioSeleccionado());
 			
 			
-			ArrayList<JPanel> panel = new ArrayList<JPanel>();
+			panel = new ArrayList<JPanel>();
+			
 			this.tabbedPane.removeAll();
 				
+			
 			i=0;
 			for(Pregunta p : ejercicio.getPreguntas()){
 		
@@ -92,17 +100,14 @@ public class PanelEjercicio extends JPanel{
 					JLabel lblEnunciadoDeLa = new JLabel(pregM.getEnunciado());
 					
 					panel.get(i).add(lblEnunciadoDeLa);
-					
-					JOptionPane.showMessageDialog(this,pregM.getOpciones().size(), "Error",
-							JOptionPane.ERROR_MESSAGE);
+				
 					
 					for(j=0;j<pregM.getOpciones().size();j++){
 						grupoBot.add(new JRadioButton(pregM.getOpciones().get(j).getEnunciado()));
 						panel.get(i).add(new JRadioButton(pregM.getOpciones().get(j).getEnunciado()));
 					}
 					
-					
-					
+					panel.get(i).setName("multiple");
 				}else if(p.getTipoPregunta() == 3){
 					//test
 			
@@ -114,13 +119,15 @@ public class PanelEjercicio extends JPanel{
 					
 					panel.get(i).add(lblEnunciadoDeLa);
 					
-					JOptionPane.showMessageDialog(this,pregT.getOpciones().size(), "Error",
-							JOptionPane.ERROR_MESSAGE);
-					
+					JRadioButton boton;
 					for(j=0;j<pregT.getOpciones().size();j++){
-						grupoBot.add(new JRadioButton(pregT.getOpciones().get(j).getEnunciado()));
-						panel.get(i).add(new JRadioButton(pregT.getOpciones().get(j).getEnunciado()));
+						boton = new JRadioButton(pregT.getOpciones().get(j).getEnunciado());
+						grupoBot.add(boton);
+						panel.get(i).add(boton);
 					}
+					
+					panel.get(i).setName("test");
+					
 					
 				}else{
 					//Redactar
@@ -135,7 +142,7 @@ public class PanelEjercicio extends JPanel{
 					panel.get(i).add(lblEnunciadoDeLa);
 					panel.get(i).add(respuesta);
 					
-					
+					panel.get(i).setName("redactar");
 					
 				}
 				
@@ -152,29 +159,86 @@ public class PanelEjercicio extends JPanel{
 		 */
 		public void responderEjercicio(){
 			
-			int i;
+			int i=0;
+			int j;
 			
-			for(i=0; i<this.ejercicio.getNPreguntas();i++){
-				
-				if(this.ejercicio.getPreguntas().get(i).getTipoPregunta() == 1){
-					//multiple
-					
-					
-					
-				}else if(this.ejercicio.getPreguntas().get(i).getTipoPregunta() == 2){
-					//test
-					
-					
-				}else{
-					//Redactar
-					
-					
-					
-					
-				}
-				
 			
+			for( i = 0 ; i < panel.size() ; i++){
+				
+				
+				JLabel l = (JLabel)panel.get(i).getComponent(0);
+					
+				for(Pregunta preg : ejercicio.getPreguntas()){
+						
+					if(preg.getEnunciado().equals(l.getText())){
+							
+						if(preg.getTipoPregunta() == 1){
+							//multiple
+							PreguntaMultiple pregM = (PreguntaMultiple)preg;
+								
+							
+								
+							for(j=0;j<pregM.getOpciones().size();j++){
+									
+								JRadioButton elegido = (JRadioButton)panel.get(i).getComponent(j+1);
+									
+								if(elegido.isSelected()){
+										
+									for(Opcion o: pregM.getOpciones()){
+										if(o.getEnunciado().equals(elegido.getText())){
+											opcionesmarcadas.add(o);
+										}
+									}
+								}
+									
+							}
+								
+								
+								
+						}else if(preg.getTipoPregunta() == 3){
+							//test
+						
+								
+
+						PreguntaTest pregT = (PreguntaTest) preg;
+								
+							for(j=0;j<pregT.getOpciones().size();j++){
+									
+								JRadioButton elegido = (JRadioButton)panel.get(i).getComponent(j+1);
+									
+								if(elegido.isSelected()){
+										
+									for(Opcion o: pregT.getOpciones()){
+										if(o.getEnunciado().equals(elegido.getText())){
+											opcionesmarcadas.add(o);
+										}
+									}
+								}
+									
+							}
+								
+								
+								
+						}else{
+							//Redactar
+								
+								
+							PreguntaRedactar pregR = (PreguntaRedactar)preg;
+							respuesta = (JEditorPane)panel.get(i).getComponent(1);
+							
+							for(Opcion o : pregR.getOpciones()){
+									if(o.getEnunciado().equals(respuesta.getText())){
+										opcionesmarcadas.add(o);
+									}
+							}
+						}	
+							
+					}
+				}			
+				
 			}
+		
+			
 		}
 		
 		/**
@@ -187,6 +251,17 @@ public class PanelEjercicio extends JPanel{
 			
 		}
 		
+		public ArrayList<Opcion> getOpcionesMarcadas(){
+			return this.opcionesmarcadas;
+		}
+		
+		
+		public Ejercicio getEjercicio(){
+			return this.contenedorAlum.getVentana().getSistema().getAsignatura
+					(this.contenedorAlum.getPanelContenido().getPanelAsignatura().getNombreAsignatura()).
+					getTema(this.contenedorAlum.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado()).
+					getEjercicio(this.contenedorAlum.getPanelContenido().getPanelTema().getNombreEjercicioSeleccionado());
+		}
 		/**
 		 * Devuelve el panel del alumno
 		 * @return contenedorAlum

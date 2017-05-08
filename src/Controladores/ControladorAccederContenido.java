@@ -343,11 +343,11 @@ public class ControladorAccederContenido implements ActionListener {
 					return;
 				}
 
-				/*if (panelt.getPanelProf() != null) {
+				if (panelt.getPanelProf() != null) {
 					JOptionPane.showMessageDialog(panelt, "El profesor no puede realizar el ejercicio", "Error",
 							JOptionPane.ERROR_MESSAGE);
 					return;
-				} else {*/
+				} else {
 					try {
 						panelt.getPanelProf().getPanelContenido().cambiarCarta("AccederEj");
 					} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
@@ -355,7 +355,7 @@ public class ControladorAccederContenido implements ActionListener {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-				/*}*/
+				}
 
 			}
 
