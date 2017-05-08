@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -68,7 +67,7 @@ public class PanelBarraHerramientas extends JPanel {
 	private Component rigidArea_4;
 	private Component rigidArea_2;
 	private Component rigidArea_3;
-	private JLabel imagen;
+	private JLabel individuo;
 	private Component rigidArea_1;
 	private DefaultTreeModel modelo;
 	private BoxLayout layout;
@@ -77,23 +76,19 @@ public class PanelBarraHerramientas extends JPanel {
 	/**
 	 * Contructor del panel de herramientas para el profesor
 	 * @param profesor Panel del profesor
+	 * @wbp.parser.constructor
 	 */
 	public PanelBarraHerramientas(PanelProfesor profesor) {
 		
-		setBackground(SystemColor.menu);
 		layout = new BoxLayout(this, 1);
 		
 		this.contProfe = profesor;
 		
 		controlador = new ControladorBarraHerramientas(contProfe.getVentana(), this);
 		
-		this.hola = new JLabel("Bienvenido a");
+		this.hola = new JLabel("Bienvenido");
 		this.tema = new JButton("Crear Tema");
 		this.ejercicio = new JButton("Crear Ejercicio");
-		
-		ImageIcon icono = new ImageIcon("eCourses.png", "Logo");
-		
-		this.imagen = new JLabel(icono);
 		
 		this.modelo = new DefaultTreeModel(asignaturas);
 		this.asignatura = new JButton("Crear Asignatura");
@@ -118,7 +113,7 @@ public class PanelBarraHerramientas extends JPanel {
 		this.contAlumno = alumno;
 		layout = new BoxLayout(this, 1);
 		
-		this.hola = new JLabel("Bienvenido a");
+		this.hola = new JLabel("Bienvenido");
 		
 		this.modelo = new DefaultTreeModel(asignaturas);
 		
@@ -126,8 +121,7 @@ public class PanelBarraHerramientas extends JPanel {
 		this.vernotas = new JButton("Ver notas");
 		this.desconectar = new JButton("Cerrar Sesion");
 		
-		ImageIcon icono = new ImageIcon("eCourses.png", "Logo");
-		this.imagen = new JLabel(icono);
+	
 		
 		this.contenido = new JTree(modelo);
 		this.principal = new JButton("Pagina Principal");
@@ -172,16 +166,25 @@ public class PanelBarraHerramientas extends JPanel {
 
 			rigidArea_1 = Box.createRigidArea(new Dimension(0, 20));
 			add(rigidArea_1);
-
-			hola.setHorizontalAlignment(SwingConstants.CENTER);
-			hola.setFont(new Font("WenQuanYi Micro Hei Mono", Font.BOLD | Font.ITALIC, 30));
+			
+			hola.setHorizontalAlignment(SwingConstants.LEADING);
+			hola.setForeground(SystemColor.activeCaption);
+			hola.setFont(new Font("Nimbus Sans L", Font.BOLD | Font.ITALIC, 24));
 			this.add(hola);
-
-			this.add(imagen);
-
+			
+			Component rigidArea_9 = Box.createRigidArea(new Dimension(0, 10));
+			add(rigidArea_9);
+			
+			individuo = new JLabel("Profesor");
+			
+			individuo.setHorizontalAlignment(SwingConstants.LEADING);
+			individuo.setForeground(SystemColor.activeCaption);
+			individuo.setFont(new Font("Nimbus Sans L", Font.BOLD, 30));
+			this.add(individuo);
+			
 			rigidArea_4 = Box.createRigidArea(new Dimension(0, 70));
 			add(rigidArea_4);
-
+			
 			this.add(asignatura);
 			this.add(Box.createRigidArea(new Dimension(0, 20)));
 
@@ -264,7 +267,7 @@ public class PanelBarraHerramientas extends JPanel {
 			this.contenido.setModel(modelo);
 			this.add(pane);
 
-			contenido.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 12));
+			contenido.setFont(new Font("Dialog", Font.BOLD , 12));
 			contenido.setVisibleRowCount(10);
 			contenido.setForeground(SystemColor.menu);
 			contenido.setBorder(new CompoundBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(102, 153, 102)),
@@ -288,14 +291,24 @@ public class PanelBarraHerramientas extends JPanel {
 
 			this.setLayout(layout);
 
-			hola.setHorizontalAlignment(SwingConstants.CENTER);
-			hola.setFont(new Font("WenQuanYi Micro Hei Mono", Font.BOLD | Font.ITALIC, 30));
+			rigidArea_1 = Box.createRigidArea(new Dimension(0, 20));
+			add(rigidArea_1);
+			
+			hola.setHorizontalAlignment(SwingConstants.LEADING);
+			hola.setForeground(SystemColor.activeCaption);
+			hola.setFont(new Font("Nimbus Sans L", Font.BOLD | Font.ITALIC, 24));
 			this.add(hola);
-
-			this.add(Box.createRigidArea(new Dimension(0, 5)));
-
-			this.add(imagen);
-
+			
+			Component rigidArea_9 = Box.createRigidArea(new Dimension(0, 10));
+			add(rigidArea_9);
+			
+			individuo = new JLabel(this.contAlumno.getVentana().getSistema().getAlumnoLog().getNombre());
+			
+			individuo.setHorizontalAlignment(SwingConstants.LEADING);
+			individuo.setForeground(SystemColor.activeCaption);
+			individuo.setFont(new Font("Nimbus Sans L", Font.BOLD, 30));
+			this.add(individuo);
+			
 			rigidArea_4 = Box.createRigidArea(new Dimension(0, 70));
 			add(rigidArea_4);
 

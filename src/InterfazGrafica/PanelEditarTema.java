@@ -2,6 +2,7 @@ package InterfazGrafica;
 
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
+import javax.swing.UIManager;
 
 import Asignatura.Apuntes;
 import Asignatura.Tema;
@@ -59,7 +60,7 @@ public class PanelEditarTema extends JPanel{
 	 * @param cont Panel del contenido
 	 */
 	public PanelEditarTema(PanelContenido cont){
-		
+		setBackground(UIManager.getColor("Checkbox.select"));
 		this.springLayout = new SpringLayout();
 		setLayout(springLayout);
 		

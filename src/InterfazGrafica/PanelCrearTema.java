@@ -14,9 +14,10 @@ import javax.swing.JTextField;
 import Asignatura.Asignatura;
 import Controladores.ControladorAgregarContenido;
 import javax.swing.UIManager;
-import java.awt.Component;
-import javax.swing.Box;
-import java.awt.Dimension;
+import javax.swing.SpringLayout;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
+import java.awt.Font;
+import java.awt.SystemColor;
 
 /**
  * Clase para definir el panel de crear tema
@@ -38,72 +39,79 @@ public class PanelCrearTema extends JPanel{
 	private JButton crearTema;
 	private JComboBox<String>lista;
 	
-	private Component rigidArea;
-	private Component rigidArea_1;
-	private Component rigidArea_2;
-	private Component rigidArea_3;
-	private Component rigidArea_4;
-	private Component rigidArea_5;
-	private Component rigidArea_6;
-	
 	/**
 	 * Constructor que implementa la intefaz grafica del panel crear un tema
 	 * @param cont panel del contenido
 	 */
 	public PanelCrearTema(PanelContenido cont){
-		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		setBackground(UIManager.getColor("Checkbox.select"));
 		
 		this.contenedor = cont;
 
 		this.lista = new JComboBox<String>(); 
 		
 		this.nombretema = new JLabel("Nombre del tema:");
+		nombretema.setForeground(SystemColor.activeCaption);
+		nombretema.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
 		this.camponombre = new JTextField(20);
 		this.visible = new JRadioButton("Tema visible");
-		visible.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		visible.setForeground(SystemColor.activeCaption);
+		visible.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
+		visible.setBackground(UIManager.getColor("Checkbox.select"));
 		
 		this.novisible = new JRadioButton("Tema no visible");
-		novisible.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		novisible.setForeground(SystemColor.activeCaption);
+		novisible.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
+		novisible.setBackground(UIManager.getColor("Checkbox.select"));
 		
 		this.visibilidad = new ButtonGroup();
-		
-		this.crearTema = new JButton("Crear tema");
 		
 		// Anadimos las opciones a visibilidad
 		visibilidad.add(visible);
 		visibilidad.add(novisible);
-		
-		rigidArea = Box.createRigidArea(new Dimension(0, 50));
-		add(rigidArea);
+		SpringLayout springLayout = new SpringLayout();
+		springLayout.putConstraint(SpringLayout.NORTH, camponombre, 439, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.NORTH, novisible, 223, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.NORTH, lista, 3, SpringLayout.NORTH, novisible);
+		springLayout.putConstraint(SpringLayout.WEST, lista, 132, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, lista, -681, SpringLayout.EAST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, visible, -6, SpringLayout.NORTH, novisible);
+		springLayout.putConstraint(SpringLayout.EAST, visible, -272, SpringLayout.EAST, this);
+		springLayout.putConstraint(SpringLayout.EAST, novisible, -257, SpringLayout.EAST, this);
+		springLayout.putConstraint(SpringLayout.WEST, nombretema, 390, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, nombretema, -6, SpringLayout.NORTH, camponombre);
+		springLayout.putConstraint(SpringLayout.WEST, camponombre, 169, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, camponombre, 745, SpringLayout.WEST, this);
+		setLayout(springLayout);
 		
 		// Anadimos los componentes al panel
 		this.add(nombretema);
-		
-		rigidArea_1 = Box.createRigidArea(new Dimension(0, 20));
-		add(rigidArea_1);
 		this.add(camponombre);
-		
-		rigidArea_2 = Box.createRigidArea(new Dimension(20, 0));
-		add(rigidArea_2);
 		this.add(visible);
-		
-		rigidArea_3 = Box.createRigidArea(new Dimension(0, 30));
-		add(rigidArea_3);
 		this.add(novisible);
-
-		rigidArea_4 = Box.createRigidArea(new Dimension(100, 30));
-		add(rigidArea_4);
-		this.add(crearTema);
-		
-		rigidArea_5 = Box.createRigidArea(new Dimension(0, 70));
-		add(rigidArea_5);
 		this.add(lista);
-		
-		rigidArea_6 = Box.createRigidArea(new Dimension(0, 50));
-		add(rigidArea_6);
 		
 		// Anade el controlador para el boton de crear asignatura
 		ControladorAgregarContenido controlador = new ControladorAgregarContenido(contenedor.getContenedorProf().getVentana(),this);
+		
+		this.crearTema = new JButton("Crear tema");
+		springLayout.putConstraint(SpringLayout.NORTH, crearTema, 73, SpringLayout.SOUTH, camponombre);
+		springLayout.putConstraint(SpringLayout.EAST, crearTema, -413, SpringLayout.EAST, this);
+		this.add(crearTema);
+		
+		JLabel lblNuevoTema = DefaultComponentFactory.getInstance().createTitle("Nuevo Tema");
+		springLayout.putConstraint(SpringLayout.NORTH, lblNuevoTema, 109, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, lblNuevoTema, 325, SpringLayout.WEST, this);
+		lblNuevoTema.setForeground(SystemColor.activeCaption);
+		lblNuevoTema.setFont(new Font("Nimbus Sans L", Font.BOLD, 31));
+		add(lblNuevoTema);
+		
+		JLabel lblAsignatura = DefaultComponentFactory.getInstance().createLabel("Asignatura:");
+		springLayout.putConstraint(SpringLayout.NORTH, lblAsignatura, 4, SpringLayout.NORTH, visible);
+		springLayout.putConstraint(SpringLayout.WEST, lblAsignatura, 151, SpringLayout.WEST, this);
+		lblAsignatura.setForeground(SystemColor.activeCaption);
+		lblAsignatura.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
+		add(lblAsignatura);
 	
 		// Configurar el panel con el controlador
 		this.setControlador(controlador);
@@ -176,6 +184,4 @@ public class PanelCrearTema extends JPanel{
 			}
 		 
 	 }
-	
-
 }

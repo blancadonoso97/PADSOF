@@ -58,7 +58,7 @@ public class PanelTema extends JPanel {
 	 */
 	public PanelTema(PanelContenido cont){
 		
-		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		setBackground(UIManager.getColor("Checkbox.select"));
 		
 		
 		ControladorAccederContenido controlador = new ControladorAccederContenido(this);
@@ -120,7 +120,6 @@ public class PanelTema extends JPanel {
 
 		if(cont.getContenedorProf()!=null){
 			
-		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		this.contenedorProf = cont.getContenedorProf();
 
 		
@@ -141,7 +140,6 @@ public class PanelTema extends JPanel {
 		this.add(editar);
 		
 		}else{
-			setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 			this.contenedorAlum = cont.getContenedorAlum();
 		
 			springLayout.putConstraint(SpringLayout.NORTH, acceder, 28, SpringLayout.SOUTH, scrollPane);

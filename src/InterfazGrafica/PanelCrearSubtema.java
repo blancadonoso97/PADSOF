@@ -1,11 +1,9 @@
 package InterfazGrafica;
 
-import java.awt.Component;
-import java.awt.Dimension;
+
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.Box;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -18,6 +16,10 @@ import javax.swing.UIManager;
 import Asignatura.Asignatura;
 import Asignatura.Tema;
 import Controladores.ControladorAgregarContenido;
+import javax.swing.SpringLayout;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
+import java.awt.Font;
+import java.awt.SystemColor;
 
 /**
  * Clase para definir el panel de crear subtema
@@ -39,33 +41,30 @@ public class PanelCrearSubtema extends JPanel{
 	private JButton crearSubtema;
 	private JComboBox<String>lista;
 	
-	private Component rigidArea;
-	private Component rigidArea_1;
-	private Component rigidArea_2;
-	private Component rigidArea_3;
-	private Component rigidArea_4;
-	private Component rigidArea_5;
-	private Component rigidArea_6;
-	
 	/**
 	 * Constructor de la clase PanelCrearSubtema
 	 * @param cont Panel contenido
 	 */
 	public PanelCrearSubtema(PanelContenido cont){
-		
-		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		setBackground(UIManager.getColor("Checkbox.select"));
 		
 		this.contenedor = cont;
 
 		this.lista = new JComboBox<String>(); 
 		
 		this.nombretema = new JLabel("Nombre del subtema:");
+		nombretema.setForeground(SystemColor.activeCaption);
+		nombretema.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
 		this.camponombre = new JTextField(20);
 		this.visible = new JRadioButton("Subtema visible");
-		visible.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		visible.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
+		visible.setForeground(SystemColor.activeCaption);
+		visible.setBackground(UIManager.getColor("Checkbox.select"));
 		
 		this.novisible = new JRadioButton("Subtema no visible");
-		novisible.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		novisible.setForeground(SystemColor.activeCaption);
+		novisible.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
+		novisible.setBackground(UIManager.getColor("Checkbox.select"));
 		
 		this.visibilidad = new ButtonGroup();
 		
@@ -74,38 +73,47 @@ public class PanelCrearSubtema extends JPanel{
 		// Anadimos las opciones a visibilidad
 		visibilidad.add(visible);
 		visibilidad.add(novisible);
-		
-		rigidArea = Box.createRigidArea(new Dimension(0, 50));
-		add(rigidArea);
+		SpringLayout springLayout = new SpringLayout();
+		springLayout.putConstraint(SpringLayout.NORTH, crearSubtema, 53, SpringLayout.SOUTH, camponombre);
+		springLayout.putConstraint(SpringLayout.EAST, crearSubtema, 0, SpringLayout.EAST, nombretema);
+		springLayout.putConstraint(SpringLayout.SOUTH, nombretema, -278, SpringLayout.SOUTH, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, lista, -100, SpringLayout.NORTH, camponombre);
+		springLayout.putConstraint(SpringLayout.NORTH, camponombre, 33, SpringLayout.SOUTH, nombretema);
+		springLayout.putConstraint(SpringLayout.WEST, camponombre, 105, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, camponombre, -128, SpringLayout.EAST, this);
+		springLayout.putConstraint(SpringLayout.WEST, nombretema, 367, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, novisible, -2, SpringLayout.NORTH, visible);
+		springLayout.putConstraint(SpringLayout.NORTH, visible, -3, SpringLayout.NORTH, lista);
+		springLayout.putConstraint(SpringLayout.EAST, visible, -10, SpringLayout.EAST, novisible);
+		springLayout.putConstraint(SpringLayout.EAST, novisible, -198, SpringLayout.EAST, this);
+		springLayout.putConstraint(SpringLayout.WEST, lista, 78, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, lista, 253, SpringLayout.WEST, this);
+		setLayout(springLayout);
 		
 		// Anadimos los componentes al panel
 		this.add(nombretema);
-		
-		rigidArea_1 = Box.createRigidArea(new Dimension(0, 20));
-		add(rigidArea_1);
 		this.add(camponombre);
-		
-		rigidArea_2 = Box.createRigidArea(new Dimension(20, 0));
-		add(rigidArea_2);
 		this.add(novisible);
-		
-		rigidArea_3 = Box.createRigidArea(new Dimension(0, 30));
-		add(rigidArea_3);
 		this.add(visible);
-
-		rigidArea_4 = Box.createRigidArea(new Dimension(100, 30));
-		add(rigidArea_4);
 		this.add(crearSubtema);
-		
-		rigidArea_5 = Box.createRigidArea(new Dimension(0, 70));
-		add(rigidArea_5);
 		this.add(lista);
-		
-		rigidArea_6 = Box.createRigidArea(new Dimension(0, 50));
-		add(rigidArea_6);
 		
 		// Anade el controlador para el boton de crear asignatura
 		ControladorAgregarContenido controlador = new ControladorAgregarContenido(contenedor.getContenedorProf().getVentana(),this);
+		
+		JLabel lblTema = DefaultComponentFactory.getInstance().createLabel("Tema :");
+		springLayout.putConstraint(SpringLayout.NORTH, lblTema, 4, SpringLayout.NORTH, novisible);
+		springLayout.putConstraint(SpringLayout.WEST, lblTema, 133, SpringLayout.WEST, this);
+		lblTema.setForeground(SystemColor.activeCaption);
+		lblTema.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
+		add(lblTema);
+		
+		JLabel lblNuevoSubtema = DefaultComponentFactory.getInstance().createTitle("Nuevo Subtema");
+		springLayout.putConstraint(SpringLayout.NORTH, lblNuevoSubtema, 122, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, lblNuevoSubtema, 318, SpringLayout.WEST, this);
+		lblNuevoSubtema.setForeground(SystemColor.activeCaption);
+		lblNuevoSubtema.setFont(new Font("Nimbus Sans L", Font.BOLD, 31));
+		add(lblNuevoSubtema);
 	
 		// Configurar el panel con el controlador
 		this.setControlador(controlador);
@@ -181,7 +189,4 @@ public class PanelCrearSubtema extends JPanel{
 			}
 		 
 	 }
-	
-	
-	
 }

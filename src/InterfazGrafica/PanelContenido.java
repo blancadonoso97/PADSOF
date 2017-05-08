@@ -10,6 +10,8 @@ import javax.swing.UIManager;
 import Controladores.ControladorCrearEjercicio;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
+import javax.swing.border.LineBorder;
+import java.awt.SystemColor;
 
 /**
  * Clase para definir el panel de contenido dentro del panel de profesor o alumno
@@ -59,10 +61,12 @@ public class PanelContenido extends JPanel {
 	/**
 	 * Constructor de la clase PanelContenido
 	 * @param cont Panel del profesor
+	 * @wbp.parser.constructor
 	 */
 	public PanelContenido(PanelProfesor cont){
+		setBorder(new LineBorder(SystemColor.activeCaption, 3));
 	
-		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		setBackground(UIManager.getColor("Checkbox.select"));
 		
 		this.contenedorProf = cont;
 		
@@ -160,8 +164,9 @@ public class PanelContenido extends JPanel {
 	 * @param alumno Panel del alumno
 	 */
 	public PanelContenido(PanelAlumno alumno){
-		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		setBorder(new LineBorder(SystemColor.activeCaption, 3));
 		
+		setBackground(UIManager.getColor("Checkbox.select"));
 		this.contenedorAlum = alumno;
 		
 		this.setLayout(cartas);

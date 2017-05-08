@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 
 import Controladores.ControladorCrearPregunta;
 import Examen.Ejercicio;
@@ -41,7 +42,7 @@ public class PanelCrearPreguntaTest extends JPanel{
 	 * @param cont Panel crear ejercicio
 	 */
 	public PanelCrearPreguntaTest(PanelCrearEjercicio cont){
-		
+		setBackground(UIManager.getColor("Checkbox.select"));
 		this.contenedor = cont;
 		this.ejercicio = null;
 		

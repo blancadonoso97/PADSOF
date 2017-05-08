@@ -48,7 +48,7 @@ public class PanelEditarAsignatura  extends JPanel{
 		
 		this.contenedorProf = cont.getContenedorProf();
 		
-		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		setBackground(UIManager.getColor("Checkbox.select"));
 		this.springLayout = new SpringLayout();
 		setLayout(springLayout);
 		

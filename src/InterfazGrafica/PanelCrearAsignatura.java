@@ -11,9 +11,11 @@ import javax.swing.JTextField;
 
 import Controladores.ControladorAgregarContenido;
 import javax.swing.UIManager;
-import java.awt.Component;
-import javax.swing.Box;
-import java.awt.Dimension;
+import javax.swing.SpringLayout;
+import java.awt.SystemColor;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 /**
  * Clase para definir el panel de crear asignatura
@@ -34,11 +36,6 @@ public class PanelCrearAsignatura extends JPanel{
 	private ButtonGroup visibilidad;
 	
 	private JButton crearAsig;
-	private Component rigidArea;
-	private Component rigidArea_1;
-	private Component rigidArea_2;
-	private Component rigidArea_3;
-	private Component rigidArea_4;
 	
 	/**
 	 * Constructor de la clase PanelCrearAsignatura
@@ -46,16 +43,23 @@ public class PanelCrearAsignatura extends JPanel{
 	 */
 	public PanelCrearAsignatura(PanelContenido cont){
 		
-		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		setBackground(UIManager.getColor("Checkbox.select"));
 		
 		this.contenedor = cont;
 		
 		this.nombreasig = new JLabel("Nombre de la asignatura:");
+		nombreasig.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
+		nombreasig.setForeground(SystemColor.activeCaption);
 		this.camponombre = new JTextField(20);
+		camponombre.setHorizontalAlignment(SwingConstants.CENTER);
 		this.visible = new JRadioButton("Asignatura visible");
-		visible.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		visible.setForeground(SystemColor.activeCaption);
+		visible.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
+		visible.setBackground(UIManager.getColor("Checkbox.select"));
 		this.novisible = new JRadioButton("Asignatura no visible");
-		novisible.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		novisible.setForeground(SystemColor.activeCaption);
+		novisible.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
+		novisible.setBackground(UIManager.getColor("Checkbox.select"));
 		
 		this.visibilidad = new ButtonGroup();
 		
@@ -64,31 +68,36 @@ public class PanelCrearAsignatura extends JPanel{
 		// Anadimos las opciones a visibilidad
 		visibilidad.add(visible);
 		visibilidad.add(novisible);
-		
-		rigidArea = Box.createRigidArea(new Dimension(0, 50));
-		add(rigidArea);
+		SpringLayout springLayout = new SpringLayout();
+		springLayout.putConstraint(SpringLayout.WEST, novisible, 424, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, novisible, -96, SpringLayout.NORTH, nombreasig);
+		springLayout.putConstraint(SpringLayout.NORTH, visible, 0, SpringLayout.NORTH, novisible);
+		springLayout.putConstraint(SpringLayout.EAST, visible, -78, SpringLayout.WEST, novisible);
+		springLayout.putConstraint(SpringLayout.WEST, nombreasig, 297, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, nombreasig, -6, SpringLayout.NORTH, camponombre);
+		springLayout.putConstraint(SpringLayout.SOUTH, camponombre, -303, SpringLayout.SOUTH, this);
+		springLayout.putConstraint(SpringLayout.NORTH, crearAsig, 60, SpringLayout.SOUTH, camponombre);
+		springLayout.putConstraint(SpringLayout.WEST, crearAsig, 315, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.WEST, camponombre, 138, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, camponombre, 656, SpringLayout.WEST, this);
+		setLayout(springLayout);
 		
 		// Anadimos los componentes al panel
 		this.add(nombreasig);
-		
-		rigidArea_1 = Box.createRigidArea(new Dimension(0, 20));
-		add(rigidArea_1);
 		this.add(camponombre);
-		
-		rigidArea_3 = Box.createRigidArea(new Dimension(0, 70));
-		add(rigidArea_3);
 		this.add(visible);
-		
-		rigidArea_2 = Box.createRigidArea(new Dimension(20, 0));
-		add(rigidArea_2);
 		this.add(novisible);
-		
-		rigidArea_4 = Box.createRigidArea(new Dimension(0, 30));
-		add(rigidArea_4);
 		this.add(crearAsig);
 		
 		// Anade el controlador para el boton de crear asignatura
 		ControladorAgregarContenido controlador = new ControladorAgregarContenido(contenedor.getContenedorProf().getVentana(),this);
+		
+		JLabel lblNuevaAsignatura = DefaultComponentFactory.getInstance().createTitle("Nueva Asignatura");
+		springLayout.putConstraint(SpringLayout.NORTH, lblNuevaAsignatura, 46, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, lblNuevaAsignatura, 258, SpringLayout.WEST, this);
+		lblNuevaAsignatura.setForeground(SystemColor.activeCaption);
+		lblNuevaAsignatura.setFont(new Font("Nimbus Sans L", Font.BOLD, 32));
+		add(lblNuevaAsignatura);
 				
 		// Configurar el panel con el controlador
 		this.setControlador(controlador);
@@ -132,6 +141,4 @@ public class PanelCrearAsignatura extends JPanel{
 			 return false;
 		 
 	 }
-	
-
 }

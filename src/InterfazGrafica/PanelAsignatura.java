@@ -39,7 +39,7 @@ public class PanelAsignatura extends JPanel {
 	 * @param cont Panel del contenido
 	 */
 	public PanelAsignatura(PanelContenido cont){
-		
+		setBackground(UIManager.getColor("Checkbox.select"));
 		ControladorAccederContenido controlador = new ControladorAccederContenido(this);
 		ControladorEditarContenido controla= new ControladorEditarContenido(this);
 		SpringLayout springLayout = new SpringLayout();
@@ -74,7 +74,6 @@ public class PanelAsignatura extends JPanel {
 		
 		if(cont.getContenedorProf()!=null){
 			
-		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		this.contenedorProf = cont.getContenedorProf();
 
 		
@@ -94,7 +93,6 @@ public class PanelAsignatura extends JPanel {
 		this.add(editar);
 		
 		}else{
-			setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 			this.contenedorAlum = cont.getContenedorAlum();
 		
 			springLayout.putConstraint(SpringLayout.NORTH, acceder, 28, SpringLayout.SOUTH, scrollPane);

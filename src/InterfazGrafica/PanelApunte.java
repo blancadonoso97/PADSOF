@@ -31,7 +31,7 @@ public class PanelApunte extends JPanel{
 	 */
 	public PanelApunte(PanelContenido cont){
 		
-		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		setBackground(UIManager.getColor("Checkbox.select"));
 		
 		springLayout = new SpringLayout();
 		

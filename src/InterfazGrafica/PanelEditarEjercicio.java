@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.SpringLayout;
+import javax.swing.UIManager;
 
 import Controladores.ControladorEditarContenido;
 import Examen.Ejercicio;
@@ -45,7 +46,7 @@ public class PanelEditarEjercicio extends JPanel{
 		public PanelEditarEjercicio(PanelContenido cont){
 		
 			this.contProf= cont.getContenedorProf();
-			
+			setBackground(UIManager.getColor("Checkbox.select"));
 			SpringLayout springLayout = new SpringLayout();
 			setLayout(springLayout);
 

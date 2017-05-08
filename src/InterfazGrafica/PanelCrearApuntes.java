@@ -10,16 +10,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import Asignatura.Asignatura;
 import Asignatura.Tema;
 import Controladores.ControladorAgregarContenido;
 import javax.swing.UIManager;
-import java.awt.Component;
-import javax.swing.Box;
-import java.awt.Dimension;
+
+import javax.swing.SpringLayout;
+import javax.swing.JEditorPane;
+import java.awt.SystemColor;
+import java.awt.Font;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 /**
  * Clase para definir el panel de crear Apuntes
@@ -37,9 +39,6 @@ private PanelContenido contenedor;
 	private JTextField camponombre;
 	private JLabel contenidoapuntes;
 	private JLabel fechavisual;
-	private JTextArea campotexto;
-	@SuppressWarnings("unused")
-	private JScrollPane scroll;
 	private JTextField dia;
 	private JTextField mes;
 	private JTextField anyo;
@@ -49,21 +48,14 @@ private PanelContenido contenedor;
 	
 	private JButton crearApuntes;
 	private JComboBox<String> listaasig;
-	
-	private Component rigidArea;
-	private Component rigidArea_1;
-	private Component rigidArea_2;
-	private Component rigidArea_3;
-	private Component rigidArea_4;
-	private Component rigidArea_5;
+	private JScrollPane scrollPane;
 	
 	/**
 	 * Constructor de la clase PanelCrearApuntes
 	 * @param cont Panel que contiene a PanelCrearApuntes
 	 */
 	public PanelCrearApuntes(PanelContenido cont){
-		
-		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		setBackground(UIManager.getColor("Checkbox.select"));
 		
 		this.contenedor = cont;
 
@@ -71,23 +63,32 @@ private PanelContenido contenedor;
 		listaasig.add(new JLabel("Seleccione una asignatura"));
 		
 		this.nombreapuntes = new JLabel("Nombre de los apuntes:");
+		nombreapuntes.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
+		nombreapuntes.setForeground(SystemColor.activeCaption);
 		this.camponombre = new JTextField(30);
 		
 		this.contenidoapuntes = new JLabel("Contenido de los apuntes:");
-		this.campotexto = new JTextArea(20, 40);
-		this.scroll = new JScrollPane(campotexto);
+		contenidoapuntes.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
+		contenidoapuntes.setForeground(SystemColor.activeCaption);
+	
 		
 		this.fechavisual = new JLabel("Fecha de inicio: Dia/Mes/Año");
+		fechavisual.setForeground(SystemColor.activeCaption);
+		fechavisual.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
 		
 		this.dia = new JTextField(2);
 		this.mes = new JTextField(2);
 		this.anyo = new JTextField(4);
 		
 		this.visible = new JRadioButton("Apuntes visibles");
-		visible.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		visible.setForeground(SystemColor.activeCaption);
+		visible.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
+		visible.setBackground(UIManager.getColor("Checkbox.select"));
 		
 		this.novisible = new JRadioButton("Apuntes no visibles");
-		novisible.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		novisible.setForeground(SystemColor.activeCaption);
+		novisible.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
+		novisible.setBackground(UIManager.getColor("Checkbox.select"));
 		
 		this.visibilidad = new ButtonGroup();
 		
@@ -97,42 +98,66 @@ private PanelContenido contenedor;
 		// Anadimos las opciones a visibilidad
 		visibilidad.add(visible);
 		visibilidad.add(novisible);
+		SpringLayout springLayout = new SpringLayout();
+		springLayout.putConstraint(SpringLayout.WEST, novisible, 0, SpringLayout.WEST, visible);
+		springLayout.putConstraint(SpringLayout.SOUTH, novisible, -6, SpringLayout.NORTH, visible);
+		springLayout.putConstraint(SpringLayout.NORTH, visible, -6, SpringLayout.NORTH, dia);
+		springLayout.putConstraint(SpringLayout.EAST, visible, -116, SpringLayout.EAST, this);
+		springLayout.putConstraint(SpringLayout.NORTH, anyo, 6, SpringLayout.SOUTH, fechavisual);
+		springLayout.putConstraint(SpringLayout.WEST, anyo, 36, SpringLayout.EAST, mes);
+		springLayout.putConstraint(SpringLayout.WEST, listaasig, 38, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, listaasig, -701, SpringLayout.EAST, this);
+		springLayout.putConstraint(SpringLayout.NORTH, mes, 0, SpringLayout.NORTH, dia);
+		springLayout.putConstraint(SpringLayout.WEST, mes, 23, SpringLayout.EAST, dia);
+		springLayout.putConstraint(SpringLayout.NORTH, dia, 6, SpringLayout.SOUTH, fechavisual);
+		springLayout.putConstraint(SpringLayout.WEST, dia, 75, SpringLayout.EAST, listaasig);
+		springLayout.putConstraint(SpringLayout.NORTH, fechavisual, 48, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, camponombre, -34, SpringLayout.NORTH, contenidoapuntes);
+		springLayout.putConstraint(SpringLayout.WEST, contenidoapuntes, 170, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.NORTH, listaasig, 73, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, nombreapuntes, 176, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, nombreapuntes, -6, SpringLayout.NORTH, camponombre);
+		springLayout.putConstraint(SpringLayout.EAST, crearApuntes, -379, SpringLayout.EAST, this);
+		setLayout(springLayout);
 				
 		// Anadimos los componentes al panel
 		this.add(nombreapuntes);
-		
-		rigidArea = Box.createRigidArea(new Dimension(0, 20));
-		add(rigidArea);
 		this.add(camponombre);
-		
-		rigidArea_1 = Box.createRigidArea(new Dimension(20, 0));
-		add(rigidArea_1);
 		this.add(visible);
-		
-		rigidArea_2 = Box.createRigidArea(new Dimension(20, 40));
-		add(rigidArea_2);
 		this.add(novisible);
 		
-		rigidArea_3 = Box.createRigidArea(new Dimension(20, 20));
-		add(rigidArea_3);
-		
 		this.add(contenidoapuntes);
-		this.add(campotexto);
 		this.add(fechavisual);
 		this.add(dia);
 		this.add(mes);
 		this.add(anyo);
-
-		rigidArea_4 = Box.createRigidArea(new Dimension(1000, 30));
-		add(rigidArea_4);
 		this.add(crearApuntes);
-		
-		rigidArea_5 = Box.createRigidArea(new Dimension(0, 50));
-		add(rigidArea_5);
 		this.add(listaasig);
 		
 		// Anade el controlador para el boton de crear asignatura
 		ControladorAgregarContenido controlador = new ControladorAgregarContenido(contenedor.getContenedorProf().getVentana(),this);
+		
+		scrollPane = new JScrollPane();
+		springLayout.putConstraint(SpringLayout.SOUTH, contenidoapuntes, -6, SpringLayout.NORTH, scrollPane);
+		springLayout.putConstraint(SpringLayout.WEST, camponombre, 0, SpringLayout.WEST, scrollPane);
+		springLayout.putConstraint(SpringLayout.EAST, camponombre, 511, SpringLayout.WEST, scrollPane);
+		springLayout.putConstraint(SpringLayout.NORTH, crearApuntes, 64, SpringLayout.SOUTH, scrollPane);
+		springLayout.putConstraint(SpringLayout.NORTH, scrollPane, 271, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, scrollPane, -185, SpringLayout.SOUTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, scrollPane, 38, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, scrollPane, 549, SpringLayout.WEST, this);
+		add(scrollPane);
+		
+		JEditorPane editorPane = new JEditorPane();
+		scrollPane.setViewportView(editorPane);
+		
+		JLabel lblAsignatura = DefaultComponentFactory.getInstance().createLabel("Asignatura :");
+		springLayout.putConstraint(SpringLayout.WEST, fechavisual, 104, SpringLayout.EAST, lblAsignatura);
+		springLayout.putConstraint(SpringLayout.NORTH, lblAsignatura, 48, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, lblAsignatura, 85, SpringLayout.WEST, this);
+		lblAsignatura.setForeground(SystemColor.activeCaption);
+		lblAsignatura.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
+		add(lblAsignatura);
 						
 		// Configurar el panel con el controlador
 		this.setControlador(controlador);
@@ -155,13 +180,6 @@ private PanelContenido contenedor;
 		return camponombre.getText();
 	}
 	
-	/**
-	 * Devuelve el contenido de los apuntes creados
-	 * @return Texto
-	 */
-	public String getContenidoApuntes(){
-		return campotexto.getText();
-	}
 	
 	/**
 	 * Obtiene el dia introducido
@@ -244,6 +262,4 @@ private PanelContenido contenedor;
 		
  
 	 }
-	
-
 }

@@ -16,6 +16,10 @@ import javax.swing.UIManager;
 import Asignatura.Asignatura;
 import Controladores.ControladorAccederContenido;
 import Controladores.ControladorEditarContenido;
+import javax.swing.JLabel;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
+import java.awt.Font;
+import java.awt.SystemColor;
 
 /**
  * Clase que implementa el panel principal
@@ -42,6 +46,7 @@ public class PanelPrincipal extends JPanel{
 	 * @param cont Panel del contenido 
 	 */
 	public PanelPrincipal(PanelContenido cont){
+		setBackground(UIManager.getColor("Checkbox.select"));
 		
 		ControladorAccederContenido controlador = new ControladorAccederContenido(this);
 		ControladorEditarContenido controla= new ControladorEditarContenido(this);
@@ -51,12 +56,13 @@ public class PanelPrincipal extends JPanel{
 
 		
 		 acceder = new JButton("Acceder");
+		 springLayout.putConstraint(SpringLayout.NORTH, acceder, 613, SpringLayout.NORTH, this);
+		 springLayout.putConstraint(SpringLayout.WEST, acceder, 155, SpringLayout.WEST, this);
 		
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		springLayout.putConstraint(SpringLayout.WEST, tabbedPane, 155, SpringLayout.WEST, this);
-		springLayout.putConstraint(SpringLayout.EAST, tabbedPane, 614, SpringLayout.WEST, this);
-		springLayout.putConstraint(SpringLayout.SOUTH, tabbedPane, -184, SpringLayout.SOUTH, this);
-		springLayout.putConstraint(SpringLayout.NORTH, tabbedPane, 115, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, tabbedPane, 86, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, tabbedPane, -132, SpringLayout.NORTH, acceder);
+		springLayout.putConstraint(SpringLayout.EAST, tabbedPane, 674, SpringLayout.WEST, this);
 		
 		
 		scrollPane = new JScrollPane();
@@ -75,7 +81,6 @@ public class PanelPrincipal extends JPanel{
 
 		if(cont.getContenedorProf()!=null){
 			
-		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		this.contenedorProf = cont.getContenedorProf();
 
 		
@@ -97,7 +102,6 @@ public class PanelPrincipal extends JPanel{
 		
 		}else{
 			
-			setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 			this.contenedorAlum = cont.getContenedorAlum();
 		
 			springLayout.putConstraint(SpringLayout.NORTH, acceder, 28, SpringLayout.SOUTH, scrollPane);
@@ -110,10 +114,17 @@ public class PanelPrincipal extends JPanel{
 		}
 		
 		this.setControlador(controlador,"acceder");
-		
-		springLayout.putConstraint(SpringLayout.NORTH, acceder, 61, SpringLayout.SOUTH, tabbedPane);
-		springLayout.putConstraint(SpringLayout.WEST, acceder, 0, SpringLayout.WEST, tabbedPane);
 		add(acceder);
+		
+		JLabel lblEcourses = DefaultComponentFactory.getInstance().createTitle("eCourses");
+		springLayout.putConstraint(SpringLayout.NORTH, lblEcourses, 81, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, lblEcourses, -561, SpringLayout.SOUTH, this);
+		springLayout.putConstraint(SpringLayout.NORTH, tabbedPane, 38, SpringLayout.SOUTH, lblEcourses);
+		springLayout.putConstraint(SpringLayout.WEST, lblEcourses, 200, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, lblEcourses, -213, SpringLayout.EAST, this);
+		lblEcourses.setForeground(SystemColor.activeCaption);
+		lblEcourses.setFont(new Font("Nimbus Sans L", Font.BOLD | Font.ITALIC, 74));
+		add(lblEcourses);
 	}
 	
 	/**
@@ -154,7 +165,6 @@ public class PanelPrincipal extends JPanel{
 	 * Funcion que actualiza el estado del panel principal
 	 */
 	public void actualizarAsignaturas(){
-		
 		ArrayList<Asignatura> asig;
 		
 		if(this.contenedorProf != null){

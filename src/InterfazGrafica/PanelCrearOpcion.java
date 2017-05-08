@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 
 import Controladores.ControladorCrearPregunta;
 import Examen.Pregunta;
@@ -38,7 +39,7 @@ public class PanelCrearOpcion extends JPanel{
 	 * @param pan Panel pregunta redactar
 	 */
 	public PanelCrearOpcion(PanelContenido cont, PanelCrearPreguntaRedactar pan){
-		
+		setBackground(UIManager.getColor("Checkbox.select"));
 		this.contenedor = cont;
 		this.pregunta = pan.getPregunta();
 		this.redactar = pan;

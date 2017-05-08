@@ -16,6 +16,10 @@ import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JEditorPane;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
+import java.awt.Font;
+import java.awt.SystemColor;
 /**
  * Clase que implementa el panel para editar un apunte
  * @author Miguel Angel Marroyo, Blanca Martinez Donoso
@@ -41,16 +45,15 @@ public class PanelEditarApunte extends JPanel{
 	 */
 	public PanelEditarApunte(PanelContenido cont){
 		
-		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		setBackground(UIManager.getColor("Checkbox.select"));
 		
 		this.springLayout = new SpringLayout();
 		setLayout(springLayout);
 		
 		this.scrollPane = new JScrollPane();
-		this.springLayout.putConstraint(SpringLayout.NORTH, scrollPane, 178, SpringLayout.NORTH, this);
-		this.springLayout.putConstraint(SpringLayout.WEST, scrollPane, 57, SpringLayout.WEST, this);
-		this.springLayout.putConstraint(SpringLayout.SOUTH, scrollPane, -321, SpringLayout.SOUTH, this);
-		this.springLayout.putConstraint(SpringLayout.EAST, scrollPane, -52, SpringLayout.EAST, this);
+		this.springLayout.putConstraint(SpringLayout.NORTH, scrollPane, 268, SpringLayout.NORTH, this);
+		this.springLayout.putConstraint(SpringLayout.WEST, scrollPane, 58, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, scrollPane, -51, SpringLayout.EAST, this);
 		this.scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		this.add(scrollPane);
 		
@@ -62,20 +65,20 @@ public class PanelEditarApunte extends JPanel{
 		this.contenedorProf = cont.getContenedorProf();
 		
 		this.titulonew = new JEditorPane();
-		this.springLayout.putConstraint(SpringLayout.WEST, this.titulonew, 145, SpringLayout.WEST, this);
-		springLayout.putConstraint(SpringLayout.SOUTH, titulonew, -62, SpringLayout.NORTH, scrollPane);
-		this.springLayout.putConstraint(SpringLayout.EAST, this.titulonew, -171, SpringLayout.EAST, this);
+		springLayout.putConstraint(SpringLayout.WEST, titulonew, 149, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.EAST, titulonew, -167, SpringLayout.EAST, this);
 		this.add(titulonew);
 		
 		this.visible = new JRadioButton("Apuntes visibles");
-		visible.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		visible.setBackground(UIManager.getColor("Checkbox.select"));
 		
 		this.novisible = new JRadioButton("Apuntes no visibles");
-		springLayout.putConstraint(SpringLayout.NORTH, visible, 0, SpringLayout.NORTH, novisible);
-		springLayout.putConstraint(SpringLayout.WEST, visible, 86, SpringLayout.EAST, novisible);
-		springLayout.putConstraint(SpringLayout.NORTH, novisible, 56, SpringLayout.SOUTH, scrollPane);
-		springLayout.putConstraint(SpringLayout.EAST, novisible, -439, SpringLayout.EAST, this);
-		novisible.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
+		springLayout.putConstraint(SpringLayout.NORTH, novisible, 421, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, scrollPane, -17, SpringLayout.NORTH, novisible);
+		springLayout.putConstraint(SpringLayout.NORTH, visible, 6, SpringLayout.SOUTH, novisible);
+		springLayout.putConstraint(SpringLayout.WEST, visible, 10, SpringLayout.WEST, novisible);
+		springLayout.putConstraint(SpringLayout.WEST, novisible, 103, SpringLayout.WEST, this);
+		novisible.setBackground(UIManager.getColor("Checkbox.select"));
 		
 		this.visibilidad = new ButtonGroup();
 		
@@ -85,13 +88,35 @@ public class PanelEditarApunte extends JPanel{
 		this.add(visible);
 		
 		guardar = new JButton("Guardar");
-		springLayout.putConstraint(SpringLayout.NORTH, guardar, 61, SpringLayout.SOUTH, novisible);
-		springLayout.putConstraint(SpringLayout.WEST, guardar, 334, SpringLayout.WEST, this);
-		springLayout.putConstraint(SpringLayout.EAST, guardar, 437, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.NORTH, guardar, -1, SpringLayout.NORTH, visible);
+		springLayout.putConstraint(SpringLayout.WEST, guardar, 147, SpringLayout.EAST, visible);
+		springLayout.putConstraint(SpringLayout.EAST, guardar, 504, SpringLayout.WEST, this);
 		
 		ControladorEditarContenido cont1 = new ControladorEditarContenido(this);
 		this.setControlador(cont1);
 		add(guardar);
+		
+		JLabel lblContenido = DefaultComponentFactory.getInstance().createLabel("Contenido : ");
+		springLayout.putConstraint(SpringLayout.SOUTH, titulonew, -24, SpringLayout.NORTH, lblContenido);
+		springLayout.putConstraint(SpringLayout.WEST, lblContenido, 0, SpringLayout.WEST, guardar);
+		springLayout.putConstraint(SpringLayout.SOUTH, lblContenido, -6, SpringLayout.NORTH, scrollPane);
+		lblContenido.setForeground(SystemColor.activeCaption);
+		lblContenido.setFont(new Font("Nimbus Sans L", Font.BOLD, 17));
+		add(lblContenido);
+		
+		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("Titulo : ");
+		springLayout.putConstraint(SpringLayout.WEST, lblNewJgoodiesLabel, 414, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, lblNewJgoodiesLabel, -6, SpringLayout.NORTH, titulonew);
+		lblNewJgoodiesLabel.setForeground(SystemColor.activeCaption);
+		lblNewJgoodiesLabel.setFont(new Font("Nimbus Sans L", Font.BOLD, 17));
+		add(lblNewJgoodiesLabel);
+		
+		JLabel lblEditarApuntes = DefaultComponentFactory.getInstance().createTitle("Editar Apuntes");
+		springLayout.putConstraint(SpringLayout.WEST, lblEditarApuntes, 339, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, lblEditarApuntes, -39, SpringLayout.NORTH, lblNewJgoodiesLabel);
+		lblEditarApuntes.setForeground(SystemColor.activeCaption);
+		lblEditarApuntes.setFont(new Font("Nimbus Sans L", Font.BOLD, 32));
+		add(lblEditarApuntes);
 		
 		
 	}

@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 
 import Asignatura.Asignatura;
 import Asignatura.Tema;
@@ -58,7 +59,7 @@ public class PanelCrearEjercicio extends JPanel {
 	 * @param cont Panel de contenido
 	 */
 	public PanelCrearEjercicio(PanelContenido cont) {
-
+		setBackground(UIManager.getColor("Checkbox.select"));
 		this.contenedor = cont;
 
 		this.listatemas = new JComboBox<String>();
