@@ -39,6 +39,7 @@ public class PanelAdministrar extends JPanel{
 	private JButton denegar;
 	private JButton expulsar;
 	private JButton readmitir;
+	private JButton estadisticas;
 	
 	
 	/**
@@ -65,6 +66,7 @@ public class PanelAdministrar extends JPanel{
 		this.denegar = new JButton("Denegar Matricula");
 		this.expulsar = new JButton("Expulsar");
 		this.readmitir = new JButton("Readmitir");
+		this.estadisticas = new JButton("Ver estadisticas");
 
 		this.add(tablaMatricula);
 		this.add(tablaExpulsion);
@@ -73,6 +75,7 @@ public class PanelAdministrar extends JPanel{
 		this.add(denegar);
 		this.add(expulsar);
 		this.add(readmitir);
+		this.add(estadisticas);
 		
 		ControladorAdministrar controlador = new ControladorAdministrar(contenedor.getContenedorProf().getVentana(),this);
 		
@@ -90,6 +93,7 @@ public class PanelAdministrar extends JPanel{
 		 denegar.addActionListener(c);
 		 expulsar.addActionListener(c);
 		 readmitir.addActionListener(c);
+		 estadisticas.addActionListener(c);
 	 }
 	
 	

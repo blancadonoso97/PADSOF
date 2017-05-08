@@ -2,9 +2,12 @@ package Controladores;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import Asignatura.Tema;
+import Examen.Ejercicio;
 import InterfazGrafica.PanelAdministrar;
 import InterfazGrafica.VentanaInicial;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
@@ -120,6 +123,24 @@ public class ControladorAdministrar implements ActionListener {
 
 			}
 
+		}else if (e.getActionCommand().equals("Ver estadisticas")){
+			
+			ArrayList<Tema> temas = panel.getAsignaturaAsig().getTemas();
+			
+			for(Tema a: temas){
+				
+				ArrayList<Ejercicio> ejercicios = a.getEjercicios();
+				
+				for (Ejercicio b: ejercicios){
+					
+					JOptionPane.showMessageDialog(panel,"El ejercicio " + b.getNombre() + " dentro del tema " + a.getNombre() + " ha sido realizado por un "+ b.getPorcentajeAlumnosRealizado() + "% de los cuales " + b.getPorcentajeAlumnosReCorrectamente() + "% lo han realizado correctamente", "Estadisticas", JOptionPane.INFORMATION_MESSAGE);
+
+				}
+				
+				
+			}
+			
+			
 		}
 
 	}
