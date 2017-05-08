@@ -434,7 +434,7 @@ public class PanelContenido extends JPanel {
 				this.add(this.opcion3);
 				cartas.show(this, "Opcion3");
 				
-<<<<<<< HEAD
+
 			}else if(nombre.equals("RealizarEj")){
 				
 				this.removeAll();
@@ -454,9 +454,7 @@ public class PanelContenido extends JPanel {
 				panelnotas.actualizarTabla();
 				this.add(this.panelnotas);
 				cartas.show(this, "Notas");
-				
-=======
->>>>>>> 0e0501e1529a4b02d968ae1b530117a978f26893
+
 			}
 			
 		}
