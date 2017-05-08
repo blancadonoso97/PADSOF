@@ -181,7 +181,8 @@ public class PanelAdministrar extends JPanel{
 	public Asignatura getAsignaturaAsig(){
 		
 		int columna = tablaAsignaturas.getSelectedColumn();
-		String nombreAsig = tablaAsignaturas.getModel().getValueAt(0, columna).toString();
+		int fila = tablaAsignaturas.getSelectedRow();
+		String nombreAsig = tablaAsignaturas.getModel().getValueAt(fila, columna).toString();
 		
 		return contenedor.getContenedorProf().getVentana().getSistema().getAsignatura(nombreAsig);
 	}
