@@ -94,8 +94,6 @@ public class PanelContenido extends JPanel {
 		// Panel principal
 		this.paginaprinc = new PanelPrincipal(this);
 		
-		this.panelnotas = new PanelVerNotas(this);
-		
 		this.panelasig = new PanelAsignatura(this);
 		
 		this.paneltem = new PanelTema(this);
@@ -128,7 +126,7 @@ public class PanelContenido extends JPanel {
 		cartas.addLayoutComponent(this.paneledtem, "EditarTem");
 		cartas.addLayoutComponent(this.paneledtem, "EditarAp");
 		cartas.addLayoutComponent(this.paneledtem, "EditarEj");
-		cartas.addLayoutComponent(this.panelnotas, "Notas");
+		
 		
 		cartas.addLayoutComponent(this.preguntamultiple, "Multiple");
 		cartas.addLayoutComponent(this.preguntatest, "Test");
@@ -181,12 +179,14 @@ public class PanelContenido extends JPanel {
 		
 		this.panelej = new PanelEjercicio(this);
 		
+		this.panelnotas = new PanelVerNotas(this);
+		
 		cartas.addLayoutComponent(this.solicitarmatricula, "Matricula");
 		cartas.addLayoutComponent(this.paginaprinc, "Principal");
 		cartas.addLayoutComponent(this.panelasig, "AccederAsig");
 		cartas.addLayoutComponent(this.paneltem, "AccederTem");
 		cartas.addLayoutComponent(this.panelej, "AccederEj");
-
+		cartas.addLayoutComponent(this.panelnotas, "Notas");
 		cartas.addLayoutComponent(this.panelej, "RealizarEj");
 		
 		this.paginaprinc.actualizarAsignaturas();
@@ -449,14 +449,14 @@ public class PanelContenido extends JPanel {
 				this.add(this.panelej);
 				cartas.show(this, "RealizarEj");
 				
-			}else if(nombre.equals("RealizarEj")){
-				
-				panelnotas.actualizarTabla();
-				this.add(this.panelnotas);
-				cartas.show(this, "Notas");
-
 			}
 			
+		}else if(nombre.equals("Notas")){
+			
+			panelnotas.actualizarTabla();
+			this.add(this.panelnotas);
+			cartas.show(this, "Notas");
+
 		}
 		
 	}

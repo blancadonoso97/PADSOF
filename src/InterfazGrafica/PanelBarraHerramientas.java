@@ -61,10 +61,8 @@ public class PanelBarraHerramientas extends JPanel {
 	private ArrayList<Asignatura> asigna;
 	private DefaultMutableTreeNode nodohijo;
 	private DefaultMutableTreeNode nodonieto;
-	private DefaultMutableTreeNode asignaturas = new DefaultMutableTreeNode("Asignaturas"); // Raiz
-																							// del
-																							// arbol
-																							// contenido
+	private DefaultMutableTreeNode asignaturas = new DefaultMutableTreeNode("Asignaturas"); // Raiz del arbol contenido
+																						
 	private PanelProfesor contProfe;
 	private PanelAlumno contAlumno;
 	private Component rigidArea_4;
@@ -133,7 +131,9 @@ public class PanelBarraHerramientas extends JPanel {
 		
 		this.contenido = new JTree(modelo);
 		this.principal = new JButton("Pagina Principal");
+		
 		controlador = new ControladorBarraHerramientas(contAlumno.getVentana(), this);
+		
 		pane = new JScrollPane();
 
 	}
@@ -331,9 +331,10 @@ public class PanelBarraHerramientas extends JPanel {
 					nodohijo = (DefaultMutableTreeNode) modelo.getChild(asignaturas, i);
 					int j = 0;
 					for (Tema t : a.getTemas()) {
+						
 						if (t.esVisible() == true) {
 							modelo.insertNodeInto(new DefaultMutableTreeNode(t.getNombre()), nodohijo, j);
-							nodonieto = (DefaultMutableTreeNode) modelo.getChild(nodohijo, i);
+							nodonieto = (DefaultMutableTreeNode) modelo.getChild(nodohijo, j);
 
 							x = 0;
 							for (Apuntes ap : t.getApuntes()) {
