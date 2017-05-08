@@ -25,7 +25,6 @@ import javax.swing.JList;
 import javax.swing.JRadioButton;
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Font;
 import java.awt.SystemColor;
 /**
@@ -148,7 +147,7 @@ public class PanelEditarTema extends JPanel{
 		springLayout.putConstraint(SpringLayout.EAST, titulonew, 575, SpringLayout.WEST, this);
 		add(titulonew);
 		
-		JLabel lblNuevoNombreDel = DefaultComponentFactory.getInstance().createLabel("nuevo nombre del tema : ");
+		JLabel lblNuevoNombreDel = new JLabel("nuevo nombre del tema : ");
 		lblNuevoNombreDel.setForeground(SystemColor.activeCaption);
 		lblNuevoNombreDel.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
 		springLayout.putConstraint(SpringLayout.WEST, lblNuevoNombreDel, 310, SpringLayout.WEST, this);

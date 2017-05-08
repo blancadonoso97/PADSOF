@@ -14,7 +14,6 @@ import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.SystemColor;
 
 /**
@@ -89,7 +88,7 @@ public class PanelInicioSesion extends JPanel {
 		layout.putConstraint(SpringLayout.VERTICAL_CENTER, nombre, 0, SpringLayout.VERTICAL_CENTER, id);
 		layout.putConstraint(SpringLayout.VERTICAL_CENTER, contrasena, 0, SpringLayout.VERTICAL_CENTER, password);
 		
-		JLabel lblEcourses = DefaultComponentFactory.getInstance().createTitle("eCourses");
+		JLabel lblEcourses = new JLabel("eCourses");
 		layout.putConstraint(SpringLayout.NORTH, lblEcourses, -142, SpringLayout.NORTH, id);
 		layout.putConstraint(SpringLayout.WEST, lblEcourses, 218, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.SOUTH, lblEcourses, -38, SpringLayout.NORTH, nombre);

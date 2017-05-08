@@ -17,7 +17,6 @@ import javax.swing.SpringLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JLabel;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Font;
 import java.awt.SystemColor;
 
@@ -110,7 +109,7 @@ public class PanelMatricula extends JPanel {
 		listpendientes = new JList<String>(modelopen);
 		scrollPane_2.setViewportView(listpendientes);
 		
-		JLabel lblMatriculas = DefaultComponentFactory.getInstance().createTitle("Matriculas");
+		JLabel lblMatriculas = new JLabel("Matriculas");
 		lblMatriculas.setForeground(SystemColor.activeCaption);
 		lblMatriculas.setFont(new Font("Nimbus Sans L", Font.BOLD, 32));
 		springLayout.putConstraint(SpringLayout.NORTH, lblMatriculas, 57, SpringLayout.NORTH, this);

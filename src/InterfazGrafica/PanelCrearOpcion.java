@@ -14,7 +14,6 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import javax.swing.SpringLayout;
 import javax.swing.JLabel;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 /**
  * Clase para definir el panel de crear opcion
@@ -76,14 +75,14 @@ public class PanelCrearOpcion extends JPanel{
 		// Anade el controlador para el boton de crear opcion
 		ControladorCrearPregunta controlador = new ControladorCrearPregunta(contenedor.getContenedorProf().getVentana(), this);
 		
-		JLabel lblEnunciado = DefaultComponentFactory.getInstance().createLabel("Enunciado :");
+		JLabel lblEnunciado = new JLabel("Enunciado :");
 		springLayout.putConstraint(SpringLayout.WEST, lblEnunciado, 386, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, lblEnunciado, -6, SpringLayout.NORTH, enunciado);
 		lblEnunciado.setForeground(SystemColor.activeCaption);
 		lblEnunciado.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
 		add(lblEnunciado);
 		
-		JLabel lblNuevaOpcion = DefaultComponentFactory.getInstance().createTitle("Nueva Opcion");
+		JLabel lblNuevaOpcion = new JLabel("Nueva Opcion");
 		springLayout.putConstraint(SpringLayout.NORTH, lblNuevaOpcion, 77, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, lblNuevaOpcion, 326, SpringLayout.WEST, this);
 		lblNuevaOpcion.setForeground(SystemColor.activeCaption);
@@ -146,14 +145,14 @@ public class PanelCrearOpcion extends JPanel{
 
 		// Configurar el panel con el controlador
 		this.setControlador(controlador);
-		JLabel lblEnunciado = DefaultComponentFactory.getInstance().createLabel("Enunciado :");
+		JLabel lblEnunciado = new JLabel("Enunciado :");
 		springLayout.putConstraint(SpringLayout.WEST, lblEnunciado, 386, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, lblEnunciado, -6, SpringLayout.NORTH, enunciado);
 		lblEnunciado.setForeground(SystemColor.activeCaption);
 		lblEnunciado.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
 		add(lblEnunciado);
 		
-		JLabel lblNuevaOpcion = DefaultComponentFactory.getInstance().createTitle("Nueva Opcion");
+		JLabel lblNuevaOpcion = new JLabel("Nueva Opcion");
 		springLayout.putConstraint(SpringLayout.NORTH, lblNuevaOpcion, 77, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, lblNuevaOpcion, 326, SpringLayout.WEST, this);
 		lblNuevaOpcion.setForeground(SystemColor.activeCaption);
@@ -204,14 +203,14 @@ public class PanelCrearOpcion extends JPanel{
 		// Anade el controlador para el boton de crear opcion
 				ControladorCrearPregunta controlador = new ControladorCrearPregunta(contenedor.getContenedorProf().getVentana(), this);
 		
-		JLabel lblEnunciado = DefaultComponentFactory.getInstance().createLabel("Enunciado :");
+		JLabel lblEnunciado = new JLabel("Enunciado :");
 		springLayout.putConstraint(SpringLayout.WEST, lblEnunciado, 386, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, lblEnunciado, -6, SpringLayout.NORTH, enunciado);
 		lblEnunciado.setForeground(SystemColor.activeCaption);
 		lblEnunciado.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
 		add(lblEnunciado);
 		
-		JLabel lblNuevaOpcion = DefaultComponentFactory.getInstance().createTitle("Nueva Opcion");
+		JLabel lblNuevaOpcion = new JLabel("Nueva Opcion");
 		springLayout.putConstraint(SpringLayout.NORTH, lblNuevaOpcion, 77, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, lblNuevaOpcion, 326, SpringLayout.WEST, this);
 		lblNuevaOpcion.setForeground(SystemColor.activeCaption);

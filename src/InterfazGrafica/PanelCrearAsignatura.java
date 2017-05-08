@@ -15,7 +15,6 @@ import javax.swing.SpringLayout;
 import java.awt.SystemColor;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 /**
  * Clase para definir el panel de crear asignatura
@@ -92,7 +91,7 @@ public class PanelCrearAsignatura extends JPanel{
 		// Anade el controlador para el boton de crear asignatura
 		ControladorAgregarContenido controlador = new ControladorAgregarContenido(contenedor.getContenedorProf().getVentana(),this);
 		
-		JLabel lblNuevaAsignatura = DefaultComponentFactory.getInstance().createTitle("Nueva Asignatura");
+		JLabel lblNuevaAsignatura = new JLabel("Nueva Asignatura");
 		springLayout.putConstraint(SpringLayout.NORTH, lblNuevaAsignatura, 46, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, lblNuevaAsignatura, 258, SpringLayout.WEST, this);
 		lblNuevaAsignatura.setForeground(SystemColor.activeCaption);

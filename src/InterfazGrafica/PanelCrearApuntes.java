@@ -21,7 +21,6 @@ import javax.swing.SpringLayout;
 import javax.swing.JEditorPane;
 import java.awt.SystemColor;
 import java.awt.Font;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 /**
  * Clase para definir el panel de crear Apuntes
@@ -151,7 +150,7 @@ private PanelContenido contenedor;
 		JEditorPane editorPane = new JEditorPane();
 		scrollPane.setViewportView(editorPane);
 		
-		JLabel lblAsignatura = DefaultComponentFactory.getInstance().createLabel("Asignatura :");
+		JLabel lblAsignatura = new JLabel("Asignatura :");
 		springLayout.putConstraint(SpringLayout.WEST, fechavisual, 104, SpringLayout.EAST, lblAsignatura);
 		springLayout.putConstraint(SpringLayout.NORTH, lblAsignatura, 48, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, lblAsignatura, 85, SpringLayout.WEST, this);

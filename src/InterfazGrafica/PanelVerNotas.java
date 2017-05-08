@@ -14,7 +14,6 @@ import eCourses.Alumno;
 import javax.swing.SpringLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Font;
 import java.awt.SystemColor;
 
@@ -59,7 +58,7 @@ public class PanelVerNotas extends JPanel{
 		springLayout.putConstraint(SpringLayout.WEST, tablaNotas, 219, SpringLayout.WEST, this);
 		this.tablaNotas.setModel(modelo);
 		
-		JLabel lblMisNotas = DefaultComponentFactory.getInstance().createTitle("Notas");
+		JLabel lblMisNotas = new JLabel("Notas");
 		springLayout.putConstraint(SpringLayout.WEST, lblMisNotas, 415, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, lblMisNotas, -62, SpringLayout.NORTH, scrollPane);
 		lblMisNotas.setForeground(SystemColor.activeCaption);

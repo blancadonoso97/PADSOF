@@ -17,7 +17,6 @@ import Asignatura.Asignatura;
 import Asignatura.Tema;
 import Controladores.ControladorAgregarContenido;
 import javax.swing.SpringLayout;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Font;
 import java.awt.SystemColor;
 
@@ -101,14 +100,14 @@ public class PanelCrearSubtema extends JPanel{
 		// Anade el controlador para el boton de crear asignatura
 		ControladorAgregarContenido controlador = new ControladorAgregarContenido(contenedor.getContenedorProf().getVentana(),this);
 		
-		JLabel lblTema = DefaultComponentFactory.getInstance().createLabel("Tema :");
+		JLabel lblTema = new JLabel("Tema :");
 		springLayout.putConstraint(SpringLayout.NORTH, lblTema, 4, SpringLayout.NORTH, novisible);
 		springLayout.putConstraint(SpringLayout.WEST, lblTema, 133, SpringLayout.WEST, this);
 		lblTema.setForeground(SystemColor.activeCaption);
 		lblTema.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
 		add(lblTema);
 		
-		JLabel lblNuevoSubtema = DefaultComponentFactory.getInstance().createTitle("Nuevo Subtema");
+		JLabel lblNuevoSubtema = new JLabel("Nuevo Subtema");
 		springLayout.putConstraint(SpringLayout.NORTH, lblNuevoSubtema, 122, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, lblNuevoSubtema, 318, SpringLayout.WEST, this);
 		lblNuevoSubtema.setForeground(SystemColor.activeCaption);

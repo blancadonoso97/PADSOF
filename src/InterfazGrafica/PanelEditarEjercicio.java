@@ -17,7 +17,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JList;
 import javax.swing.JLabel;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Font;
 import java.awt.SystemColor;
 
@@ -101,7 +100,7 @@ public class PanelEditarEjercicio extends JPanel{
 			
 			ControladorEditarContenido cont1 = new ControladorEditarContenido(this);
 			
-			JLabel lblEditarEjercicio = DefaultComponentFactory.getInstance().createTitle("Editar Ejercicio");
+			JLabel lblEditarEjercicio = new JLabel("Editar Ejercicio");
 			springLayout.putConstraint(SpringLayout.WEST, lblEditarEjercicio, 274, SpringLayout.WEST, this);
 			springLayout.putConstraint(SpringLayout.SOUTH, lblEditarEjercicio, -27, SpringLayout.NORTH, tabbedPane);
 			lblEditarEjercicio.setForeground(SystemColor.activeCaption);

@@ -17,7 +17,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.JEditorPane;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Font;
 import java.awt.SystemColor;
 /**
@@ -96,7 +95,7 @@ public class PanelEditarApunte extends JPanel{
 		this.setControlador(cont1);
 		add(guardar);
 		
-		JLabel lblContenido = DefaultComponentFactory.getInstance().createLabel("Contenido : ");
+		JLabel lblContenido = new JLabel("Contenido : ");
 		springLayout.putConstraint(SpringLayout.SOUTH, titulonew, -24, SpringLayout.NORTH, lblContenido);
 		springLayout.putConstraint(SpringLayout.WEST, lblContenido, 0, SpringLayout.WEST, guardar);
 		springLayout.putConstraint(SpringLayout.SOUTH, lblContenido, -6, SpringLayout.NORTH, scrollPane);
@@ -104,14 +103,14 @@ public class PanelEditarApunte extends JPanel{
 		lblContenido.setFont(new Font("Nimbus Sans L", Font.BOLD, 17));
 		add(lblContenido);
 		
-		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("Titulo : ");
+		JLabel lblNewJgoodiesLabel = new JLabel("Titulo : ");
 		springLayout.putConstraint(SpringLayout.WEST, lblNewJgoodiesLabel, 414, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, lblNewJgoodiesLabel, -6, SpringLayout.NORTH, titulonew);
 		lblNewJgoodiesLabel.setForeground(SystemColor.activeCaption);
 		lblNewJgoodiesLabel.setFont(new Font("Nimbus Sans L", Font.BOLD, 17));
 		add(lblNewJgoodiesLabel);
 		
-		JLabel lblEditarApuntes = DefaultComponentFactory.getInstance().createTitle("Editar Apuntes");
+		JLabel lblEditarApuntes = new JLabel("Editar Apuntes");
 		springLayout.putConstraint(SpringLayout.WEST, lblEditarApuntes, 339, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, lblEditarApuntes, -39, SpringLayout.NORTH, lblNewJgoodiesLabel);
 		lblEditarApuntes.setForeground(SystemColor.activeCaption);

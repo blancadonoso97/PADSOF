@@ -12,7 +12,6 @@ import Controladores.ControladorCrearPregunta;
 import Examen.Ejercicio;
 import Examen.Pregunta;
 import javax.swing.SpringLayout;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Font;
 import java.awt.SystemColor;
 
@@ -98,7 +97,7 @@ public class PanelCrearPreguntaMultiple extends JPanel{
 		
 		ControladorCrearPregunta controlador = new ControladorCrearPregunta(contenedor.getContenido().getContenedorProf().getVentana(), this);
 		
-		JLabel lblNuevaPreguntaMultiple = DefaultComponentFactory.getInstance().createTitle("Nueva Pregunta Multiple");
+		JLabel lblNuevaPreguntaMultiple = new JLabel("Nueva Pregunta Multiple");
 		springLayout.putConstraint(SpringLayout.NORTH, lblNuevaPreguntaMultiple, 56, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, lblNuevaPreguntaMultiple, 272, SpringLayout.WEST, this);
 		lblNuevaPreguntaMultiple.setForeground(SystemColor.activeCaption);

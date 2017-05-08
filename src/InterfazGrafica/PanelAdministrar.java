@@ -19,7 +19,6 @@ import javax.swing.JTabbedPane;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Font;
 import java.awt.SystemColor;
 
@@ -114,7 +113,7 @@ public class PanelAdministrar extends JPanel{
 		springLayout.putConstraint(SpringLayout.NORTH, tablaAsignaturas, 17, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, tablaAsignaturas, 335, SpringLayout.WEST, this);
 		
-		JLabel lblAdministracionAsignaturas = DefaultComponentFactory.getInstance().createTitle("Administracion Asignaturas");
+		JLabel lblAdministracionAsignaturas = new JLabel("Administracion Asignaturas");
 		springLayout.putConstraint(SpringLayout.WEST, lblAdministracionAsignaturas, 208, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, lblAdministracionAsignaturas, -48, SpringLayout.NORTH, tabbedPane);
 		lblAdministracionAsignaturas.setForeground(SystemColor.activeCaption);

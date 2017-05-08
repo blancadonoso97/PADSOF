@@ -12,7 +12,6 @@ import Controladores.ControladorCrearPregunta;
 import Examen.Ejercicio;
 import Examen.Pregunta;
 import javax.swing.SpringLayout;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Font;
 import java.awt.SystemColor;
 
@@ -97,7 +96,7 @@ public class PanelCrearPreguntaRedactar extends JPanel{
 		
 		ControladorCrearPregunta controlador = new ControladorCrearPregunta(contenedor.getContenido().getContenedorProf().getVentana(), this);
 		
-		JLabel lblNuevaPreguntaRedactar = DefaultComponentFactory.getInstance().createTitle("Nueva Pregunta Redactar");
+		JLabel lblNuevaPreguntaRedactar = new JLabel("Nueva Pregunta Redactar");
 		springLayout.putConstraint(SpringLayout.WEST, lblNuevaPreguntaRedactar, 285, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, lblNuevaPreguntaRedactar, -65, SpringLayout.NORTH, nombre);
 		lblNuevaPreguntaRedactar.setForeground(SystemColor.activeCaption);

@@ -15,7 +15,6 @@ import Asignatura.Asignatura;
 import Controladores.ControladorAgregarContenido;
 import javax.swing.UIManager;
 import javax.swing.SpringLayout;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Font;
 import java.awt.SystemColor;
 
@@ -99,14 +98,14 @@ public class PanelCrearTema extends JPanel{
 		springLayout.putConstraint(SpringLayout.EAST, crearTema, -413, SpringLayout.EAST, this);
 		this.add(crearTema);
 		
-		JLabel lblNuevoTema = DefaultComponentFactory.getInstance().createTitle("Nuevo Tema");
+		JLabel lblNuevoTema = new JLabel("Nuevo Tema");
 		springLayout.putConstraint(SpringLayout.NORTH, lblNuevoTema, 109, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, lblNuevoTema, 325, SpringLayout.WEST, this);
 		lblNuevoTema.setForeground(SystemColor.activeCaption);
 		lblNuevoTema.setFont(new Font("Nimbus Sans L", Font.BOLD, 31));
 		add(lblNuevoTema);
 		
-		JLabel lblAsignatura = DefaultComponentFactory.getInstance().createLabel("Asignatura:");
+		JLabel lblAsignatura = new JLabel("Asignatura:");
 		springLayout.putConstraint(SpringLayout.NORTH, lblAsignatura, 4, SpringLayout.NORTH, visible);
 		springLayout.putConstraint(SpringLayout.WEST, lblAsignatura, 151, SpringLayout.WEST, this);
 		lblAsignatura.setForeground(SystemColor.activeCaption);
