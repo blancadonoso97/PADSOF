@@ -83,6 +83,7 @@ public class ControladorCrearPregunta implements ActionListener{
 		
 	}
 	
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
