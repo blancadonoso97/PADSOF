@@ -11,6 +11,10 @@ import javax.swing.UIManager;
 import Controladores.ControladorCrearPregunta;
 import Examen.Ejercicio;
 import Examen.Pregunta;
+import javax.swing.SpringLayout;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
+import java.awt.Font;
+import java.awt.SystemColor;
 
 /**
  * Clase para definir el panel de crear pregunta de tipo test
@@ -51,10 +55,36 @@ public class PanelCrearPreguntaTest extends JPanel{
 		this.resta = new JTextField(2);
 		this.opcion = new JButton("Crear nueva opcion");
 		this.nombre = new JLabel("Enunciado de la pregunta");
+		nombre.setForeground(SystemColor.activeCaption);
+		nombre.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
 		this.sumalab = new JLabel("La pregunta correcta suma x puntos:");
+		sumalab.setForeground(SystemColor.activeCaption);
+		sumalab.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
 		this.restalab = new JLabel("La pregunta incorrecta resta x puntos:");
+		restalab.setForeground(SystemColor.activeCaption);
+		restalab.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
 		this.crear = new JButton("Crear pregunta test");
 		this.volver = new JButton("Volver");
+		SpringLayout springLayout = new SpringLayout();
+		springLayout.putConstraint(SpringLayout.SOUTH, nombre, -4, SpringLayout.NORTH, enunciado);
+		springLayout.putConstraint(SpringLayout.EAST, nombre, 0, SpringLayout.EAST, crear);
+		springLayout.putConstraint(SpringLayout.WEST, enunciado, 195, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, enunciado, -50, SpringLayout.NORTH, suma);
+		springLayout.putConstraint(SpringLayout.NORTH, resta, -2, SpringLayout.NORTH, sumalab);
+		springLayout.putConstraint(SpringLayout.WEST, resta, 36, SpringLayout.EAST, restalab);
+		springLayout.putConstraint(SpringLayout.NORTH, restalab, 0, SpringLayout.NORTH, sumalab);
+		springLayout.putConstraint(SpringLayout.WEST, restalab, 46, SpringLayout.EAST, suma);
+		springLayout.putConstraint(SpringLayout.WEST, opcion, 168, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.NORTH, suma, -2, SpringLayout.NORTH, sumalab);
+		springLayout.putConstraint(SpringLayout.WEST, suma, 27, SpringLayout.EAST, sumalab);
+		springLayout.putConstraint(SpringLayout.WEST, sumalab, 37, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, sumalab, -157, SpringLayout.NORTH, opcion);
+		springLayout.putConstraint(SpringLayout.WEST, crear, 337, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, crear, -63, SpringLayout.NORTH, opcion);
+		springLayout.putConstraint(SpringLayout.NORTH, volver, 0, SpringLayout.NORTH, opcion);
+		springLayout.putConstraint(SpringLayout.WEST, volver, 177, SpringLayout.EAST, opcion);
+		springLayout.putConstraint(SpringLayout.SOUTH, opcion, -170, SpringLayout.SOUTH, this);
+		setLayout(springLayout);
 		
 		this.add(nombre);
 		this.add(enunciado);
@@ -67,6 +97,13 @@ public class PanelCrearPreguntaTest extends JPanel{
 		this.add(volver);
 		
 		ControladorCrearPregunta controlador = new ControladorCrearPregunta(contenedor.getContenido().getContenedorProf().getVentana(), this);
+		
+		JLabel lblNuevaPreguntaTest = DefaultComponentFactory.getInstance().createTitle("Nueva Pregunta Test");
+		springLayout.putConstraint(SpringLayout.WEST, lblNuevaPreguntaTest, 268, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, lblNuevaPreguntaTest, -70, SpringLayout.NORTH, nombre);
+		lblNuevaPreguntaTest.setForeground(SystemColor.activeCaption);
+		lblNuevaPreguntaTest.setFont(new Font("Nimbus Sans L", Font.BOLD, 31));
+		add(lblNuevaPreguntaTest);
 		
 		this.setControlador(controlador);
 		
@@ -153,5 +190,4 @@ public class PanelCrearPreguntaTest extends JPanel{
 	public void setPregunta(Pregunta preg){
 		preguntacreada = preg;
 	}
-	
 }

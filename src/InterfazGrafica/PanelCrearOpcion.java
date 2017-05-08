@@ -10,6 +10,11 @@ import javax.swing.UIManager;
 
 import Controladores.ControladorCrearPregunta;
 import Examen.Pregunta;
+import java.awt.Font;
+import java.awt.SystemColor;
+import javax.swing.SpringLayout;
+import javax.swing.JLabel;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 /**
  * Clase para definir el panel de crear opcion
@@ -37,6 +42,7 @@ public class PanelCrearOpcion extends JPanel{
 	 * Constructor de la clase PanelCrearOpcion
 	 * @param cont Panel contenido
 	 * @param pan Panel pregunta redactar
+	 * @wbp.parser.constructor
 	 */
 	public PanelCrearOpcion(PanelContenido cont, PanelCrearPreguntaRedactar pan){
 		setBackground(UIManager.getColor("Checkbox.select"));
@@ -46,8 +52,21 @@ public class PanelCrearOpcion extends JPanel{
 		
 		this.enunciado = new JTextField(40);
 		this.escorrecta = new JRadioButton("Opcion correcta");
+		escorrecta.setForeground(SystemColor.activeCaption);
+		escorrecta.setBackground(UIManager.getColor("Checkbox.select"));
+		escorrecta.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
 		this.crearopcion = new JButton("Crear opcion");
 		this.volver = new JButton("Volver");
+		SpringLayout springLayout = new SpringLayout();
+		springLayout.putConstraint(SpringLayout.NORTH, escorrecta, 304, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, enunciado, 206, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, enunciado, -50, SpringLayout.NORTH, escorrecta);
+		springLayout.putConstraint(SpringLayout.WEST, escorrecta, 359, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.NORTH, volver, 0, SpringLayout.NORTH, crearopcion);
+		springLayout.putConstraint(SpringLayout.WEST, volver, 167, SpringLayout.EAST, crearopcion);
+		springLayout.putConstraint(SpringLayout.WEST, crearopcion, 228, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, crearopcion, -199, SpringLayout.SOUTH, this);
+		setLayout(springLayout);
 		
 		this.add(enunciado);
 		this.add(escorrecta);
@@ -56,6 +75,13 @@ public class PanelCrearOpcion extends JPanel{
 		
 		// Anade el controlador para el boton de crear opcion
 		ControladorCrearPregunta controlador = new ControladorCrearPregunta(contenedor.getContenedorProf().getVentana(), this);
+		
+		JLabel lblEnunciado = DefaultComponentFactory.getInstance().createLabel("Enunciado :");
+		springLayout.putConstraint(SpringLayout.WEST, lblEnunciado, 386, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, lblEnunciado, -6, SpringLayout.NORTH, enunciado);
+		lblEnunciado.setForeground(SystemColor.activeCaption);
+		lblEnunciado.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
+		add(lblEnunciado);
 
 		// Configurar el panel con el controlador
 		this.setControlador(controlador);
@@ -203,6 +229,4 @@ public class PanelCrearOpcion extends JPanel{
 	 public PanelCrearPreguntaTest getTest(){
 		 return test;
 	 }
-	 
-
 }
