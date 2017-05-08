@@ -46,6 +46,10 @@ public class PanelCrearTema extends JPanel{
 	private Component rigidArea_5;
 	private Component rigidArea_6;
 	
+	/**
+	 * Constructor que implementa la intefaz grafica del panel crear un tema
+	 * @param cont panel del contenido
+	 */
 	public PanelCrearTema(PanelContenido cont){
 		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		

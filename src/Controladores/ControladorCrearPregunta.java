@@ -1,6 +1,7 @@
 package Controladores;
 
 import java.awt.event.ActionEvent;
+
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,6 +21,11 @@ import InterfazGrafica.VentanaInicial;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
+/**
+ * Clase que implementa el controlador de los botones de crear una pregunta
+ * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ *
+ */
 public class ControladorCrearPregunta implements ActionListener{
 
 	private VentanaInicial ventana;

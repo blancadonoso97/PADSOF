@@ -14,6 +14,11 @@ import InterfazGrafica.VentanaInicial;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
+/**
+ * Clase que implementa el controlador de los botones de crear un ejercicio
+ * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ *
+ */
 public class ControladorCrearEjercicio implements ActionListener {
 
 	private VentanaInicial ventana;

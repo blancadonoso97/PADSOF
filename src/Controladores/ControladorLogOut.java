@@ -17,7 +17,7 @@ public class ControladorLogOut implements ActionListener{
 	private VentanaInicial ventana;
 	
 	/**
-	 * Constructor de la clase ControladorInicioSesion
+	 * Constructor de la clase ControladorLogOut
 	 * @param vent Ventana asociada
 	 */
 	public ControladorLogOut(VentanaInicial vent){

@@ -11,7 +11,7 @@ import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 
 /**
- * Clase para definir el controlador del boton Crear Asignatura -> (PanelCrearAsignatura)
+ * Clase para definir el controlador de los botones de la barra de herramientas
  * 
  * @author Miguel Angel Bouzada, Blanca Martinez Donoso
  *
@@ -22,9 +22,9 @@ public class ControladorBarraHerramientas implements ActionListener{
 	private PanelBarraHerramientas panel;
 	
 	/**
-	 * Constructor de la clase ControladorCrearAsignatura
+	 * Constructor de la clase ControladorBarraHerramientas
 	 * @param vent Ventana asociada al panel
-	 * @param pan Panel asociado al controlador
+	 * @param pan panel de la barra de herramientas
 	 */
 	public ControladorBarraHerramientas(VentanaInicial vent, PanelBarraHerramientas pan){
 	

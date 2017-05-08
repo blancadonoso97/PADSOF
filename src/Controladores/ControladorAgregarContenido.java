@@ -3,6 +3,7 @@ package Controladores;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
@@ -16,7 +17,7 @@ import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 /**
- * Clase para definir el controlador del boton Crear Asignatura -> (PanelCrearAsignatura)
+ * Clase para definir el controlador de los botones de agregar contenido
  * 
  * @author Miguel Angel Bouzada, Blanca Martinez Donoso
  *
@@ -106,7 +107,9 @@ public class ControladorAgregarContenido implements ActionListener{
 					 JOptionPane.showMessageDialog(panelasig, "Error al crear la asignatura", "Error", JOptionPane.ERROR_MESSAGE);
 					 return;
 				 }else{
+					panelasig.getContenedor().getContenedorProf().getPanelHerramientas().actualizarestado();
 					 JOptionPane.showMessageDialog(panelasig, "La asignatura " + panelasig.getNombreAsig() + " ha sido creada", "Crear asignatura", JOptionPane.INFORMATION_MESSAGE);
+					 
 					 return;
 				 }
 			} catch (HeadlessException e1) {
@@ -114,6 +117,12 @@ public class ControladorAgregarContenido implements ActionListener{
 			} catch (InvalidEmailAddressException e1) {
 				e1.printStackTrace();
 			} catch (FailedInternetConnectionException e1) {
+				e1.printStackTrace();
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			 
@@ -129,6 +138,7 @@ public class ControladorAgregarContenido implements ActionListener{
 					 JOptionPane.showMessageDialog(paneltema, "Error al crear el tema", "Error", JOptionPane.ERROR_MESSAGE);
 					 return;
 				 }else{
+					 paneltema.getContenedor().getContenedorProf().getPanelHerramientas().actualizarestado();
 					 JOptionPane.showMessageDialog(paneltema, "El tema " + paneltema.getNombreTema() + " ha sido creado", "Crear tema", JOptionPane.INFORMATION_MESSAGE);
 					 return;
 				 }
@@ -137,6 +147,12 @@ public class ControladorAgregarContenido implements ActionListener{
 			} catch (InvalidEmailAddressException e1) {
 				e1.printStackTrace();
 			} catch (FailedInternetConnectionException e1) {
+				e1.printStackTrace();
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			 
@@ -156,6 +172,7 @@ public class ControladorAgregarContenido implements ActionListener{
 					 JOptionPane.showMessageDialog(panelapuntes, "Error al crear los apuntes", "Error", JOptionPane.ERROR_MESSAGE);
 					 return;
 				 }else{
+					 panelapuntes.getContenedor().getContenedorProf().getPanelHerramientas().actualizarestado();
 					 JOptionPane.showMessageDialog(panelapuntes, "Los apuntes " + panelapuntes.getNombreApuntes() + " han sido creados", "Crear apuntes", JOptionPane.INFORMATION_MESSAGE);
 					 return;
 				 }
@@ -164,6 +181,12 @@ public class ControladorAgregarContenido implements ActionListener{
 			} catch (InvalidEmailAddressException e1) {
 				e1.printStackTrace();
 			} catch (FailedInternetConnectionException e1) {
+				e1.printStackTrace();
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			 
@@ -180,6 +203,7 @@ public class ControladorAgregarContenido implements ActionListener{
 					 JOptionPane.showMessageDialog(panelsubtema, "Error al crear el subtema", "Error", JOptionPane.ERROR_MESSAGE);
 					 return;
 				 }else{
+					 panelsubtema.getContenedor().getContenedorProf().getPanelHerramientas().actualizarestado();
 					 JOptionPane.showMessageDialog(panelsubtema, "El subtema " + panelsubtema.getNombreSubtema() + " ha sido creado", "Crear subtema", JOptionPane.INFORMATION_MESSAGE);
 					 return;
 				 }
@@ -188,6 +212,12 @@ public class ControladorAgregarContenido implements ActionListener{
 			} catch (InvalidEmailAddressException e1) {
 				e1.printStackTrace();
 			} catch (FailedInternetConnectionException e1) {
+				e1.printStackTrace();
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			 
@@ -200,7 +230,7 @@ public class ControladorAgregarContenido implements ActionListener{
 			 }
 			 
 			 // Crear el ejercicio (con todas sus preguntas ya añadidas)
-			 
+			 /*panelejercicio.getContenedor().getContenedorProf().getPanelHerramientas().actualizarestado();*/
 		 }
 		
 		

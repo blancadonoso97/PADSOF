@@ -1,7 +1,12 @@
 package InterfazGrafica;
 
 import java.awt.BorderLayout;
+import java.io.IOException;
+
 import javax.swing.JPanel;
+
+import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 
 /**
@@ -22,8 +27,12 @@ public class PanelProfesor extends JPanel{
 	/**
 	 * Constructor de la clase PanelAlumno
 	 * @param vent Ventana que contiene el panel
+	 * @throws IOException 
+	 * @throws FailedInternetConnectionException 
+	 * @throws InvalidEmailAddressException 
+	 * @throws ClassNotFoundException 
 	 */
-	public PanelProfesor(VentanaInicial vent){
+	public PanelProfesor(VentanaInicial vent) throws ClassNotFoundException, InvalidEmailAddressException, FailedInternetConnectionException, IOException{
 		
 		this.ventana = vent;
 		
@@ -35,6 +44,7 @@ public class PanelProfesor extends JPanel{
 		
 		this.contenido = new PanelContenido(this);
 		
+		this.barraHerramientas.actualizarestado();
 		this.add(barraHerramientas, BorderLayout.WEST);
 		this.add(contenido);
 		

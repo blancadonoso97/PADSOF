@@ -1,6 +1,6 @@
 package InterfazGrafica;
 
-import java.awt.Font;
+
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,6 +23,11 @@ import javax.swing.JScrollPane;
 import javax.swing.SpringLayout;
 import javax.swing.JTabbedPane;
 
+/**
+ * Clase que implementa el panel del tema
+ * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ *
+ */
 public class PanelTema extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -42,7 +47,11 @@ public class PanelTema extends JPanel {
 	private JButton editar;
 	private JButton acceder;
 	
-	PanelTema(PanelContenido cont){
+	/**
+	 * Constructor que implementa la interfaz grafica del panel del tema
+	 * @param cont panel del contenido
+	 */
+	public PanelTema(PanelContenido cont){
 		
 		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		
@@ -53,15 +62,14 @@ public class PanelTema extends JPanel {
 		setLayout(springLayout);
 
 		this.acceder = new JButton("Acceder");
-		springLayout.putConstraint(SpringLayout.WEST, acceder, 309, SpringLayout.WEST, this);
-		springLayout.putConstraint(SpringLayout.EAST, acceder, -371, SpringLayout.EAST, this);
-		acceder.setFont(new Font("WenQuanYi Micro Hei Mono", Font.BOLD, 12));
+		
 		this.setControlador(controlador,"acceder");
 		
 		this.add(acceder);
 		
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		springLayout.putConstraint(SpringLayout.NORTH, acceder, 40, SpringLayout.SOUTH, tabbedPane);
+		springLayout.putConstraint(SpringLayout.EAST, acceder, 116, SpringLayout.WEST, tabbedPane);
 		springLayout.putConstraint(SpringLayout.NORTH, tabbedPane, 115, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, tabbedPane, 68, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, tabbedPane, -203, SpringLayout.SOUTH, this);
@@ -70,7 +78,7 @@ public class PanelTema extends JPanel {
 		
 		
 		scrollPane = new JScrollPane();
-		springLayout.putConstraint(SpringLayout.SOUTH, acceder, 38, SpringLayout.SOUTH, scrollPane);
+		springLayout.putConstraint(SpringLayout.SOUTH, acceder, 57, SpringLayout.SOUTH, scrollPane);
 		tabbedPane.addTab("Apuntes", null, scrollPane, null);
 		springLayout.putConstraint(SpringLayout.NORTH, scrollPane, 137, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, scrollPane, -167, SpringLayout.SOUTH, this);
@@ -95,7 +103,9 @@ public class PanelTema extends JPanel {
 		springLayout.putConstraint(SpringLayout.EAST, scrollPane_2, -28, SpringLayout.EAST, this);
 		springLayout.putConstraint(SpringLayout.NORTH, scrollPane_2, 188, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, scrollPane_2, -180, SpringLayout.SOUTH, this);
-		
+
+		springLayout.putConstraint(SpringLayout.NORTH, acceder, 61, SpringLayout.SOUTH, tabbedPane);
+		springLayout.putConstraint(SpringLayout.WEST, acceder, 0, SpringLayout.WEST, tabbedPane);
 		
 		listasubtemas = new JList<String>(subtemas);
 		scrollPane_2.setViewportView(listasubtemas);
@@ -139,15 +149,26 @@ public class PanelTema extends JPanel {
 		
 	}
 	
-
+	/**
+	 * Funcion que devuelve el panel del alumno
+	 * @return panel del profesor
+	 */
 	public PanelAlumno getPanelAlumno(){
 		return this.contenedorAlum;
 	}
 	
+	/**
+	 * Funcion que devuelve el panel del profesor
+	 * @return panel del profesor
+	 */
 	public PanelProfesor getPanelProf(){
 		return this.contenedorProf;
 	}
 	
+	/**
+	 * Funcion que devuelve el nombre del tema 
+	 * @return nombre del tema
+	 */
 	public String getNombreTema(){
 		if(this.contenedorProf != null){
 			return this.contenedorProf.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado();
@@ -157,6 +178,10 @@ public class PanelTema extends JPanel {
 	}
 
 	
+	/**
+	 * Funcion que devuelve el nombre del apunte seleccionado
+	 * @return nombre del apunte seleccionado
+	 */
 	public String getNombreApunteSeleccionado(){
 		if(this.listaapuntes.getSelectedValue() == null){
 			return "";
@@ -167,6 +192,10 @@ public class PanelTema extends JPanel {
 		}
 	}
 	
+	/**
+	 * Funcion que devuelve el nombre del ejercicio seleccionado
+	 * @return nombre del ejercicio seleccionado
+	 */
 	public String getNombreEjercicioSeleccionado(){
 		
 		if(this.listaejercicios.getSelectedValue() == null){
@@ -179,6 +208,10 @@ public class PanelTema extends JPanel {
 		
 	}
 	
+	/**
+	 * FUncion que devuelve el nombre del subtema seleccionado
+	 * @return nombre del subtema seleccionado
+	 */
 	public String getNombreSubtemaSeleccionado(){
 
 		if(this.listasubtemas.getSelectedValue() == null){
@@ -191,13 +224,20 @@ public class PanelTema extends JPanel {
 		
 	}
 	
+	/**
+	 *  Funcion que actualiza el contenido del tema 
+	 * @throws ClassNotFoundException
+	 * @throws InvalidEmailAddressException
+	 * @throws FailedInternetConnectionException
+	 * @throws IOException
+	 */
 	public void actualizarContenido() throws ClassNotFoundException, InvalidEmailAddressException, FailedInternetConnectionException, IOException{
 	
 		ArrayList<Tema> tem;
 		ArrayList<Apuntes> apun;
 		ArrayList<Ejercicio> ej;
 		
-		this.add(acceder);
+		
 		
 		if(!this.getNombreSubtemaSeleccionado().equals("") && !this.getNombreSubtemaSeleccionado().equals("varios")  ){
 			
@@ -441,7 +481,11 @@ public class PanelTema extends JPanel {
 			
 	}
 	
-	
+	/**
+	 * Funcion que modifica el controlador del boton
+	 * @param c controlador elegido
+	 * @param nombre nombre del boton
+	 */
 	public void setControlador(ActionListener c,String nombre){
 		if(nombre.equals("acceder")){
 			acceder.addActionListener(c);

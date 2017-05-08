@@ -11,15 +11,20 @@ import InterfazGrafica.VentanaInicial;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
+/**
+ * Clase que define el controlador de los botones del panel de la solicitud de matricula
+ * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ *
+ */
 public class ControladorMatricula  implements ActionListener{
 
 	private VentanaInicial ventana;
 	private PanelMatricula panel;
 	
 	/**
-	 * Constructor de la clase ControladorInicioSesion
-	 * @param sist Sistema (eCourses)
-	 * @param pan Panel asociado al controlador
+	 * Constructor de la clase ControladorMatricula
+	 * @param vent ventana inicial
+	 * @param pan Panel asociado al panel del matricula
 	 */
 	public ControladorMatricula(VentanaInicial vent, PanelMatricula pan){
 	

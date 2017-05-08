@@ -17,6 +17,11 @@ import Asignatura.Tema;
 import Controladores.ControladorAccederContenido;
 import Controladores.ControladorEditarContenido;
 
+/**
+ * Clase que implementa el panel de una asignatura 
+ * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ *
+ */
 public class PanelAsignatura extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -29,7 +34,11 @@ public class PanelAsignatura extends JPanel {
 	private JTabbedPane tabbedPane;
 	private JButton editar;
 	
-	PanelAsignatura(PanelContenido cont){
+	/**
+	 * Constructor que implementa la interfaz grafica del panel una asignatura
+	 * @param cont panel del contenido
+	 */
+	public PanelAsignatura(PanelContenido cont){
 		
 		ControladorAccederContenido controlador = new ControladorAccederContenido(this);
 		ControladorEditarContenido controla= new ControladorEditarContenido(this);
@@ -104,15 +113,26 @@ public class PanelAsignatura extends JPanel {
 		add(acceder);
 	}
 	
-
+	/**
+	 * Funcion que devuelve el panel del alumno
+	 * @return panel del alumno
+	 */
 	public PanelAlumno getPanelAlumno(){
 		return this.contenedorAlum;
 	}
 	
+	/**
+	 * Funcion que devuelve el panel de profesor 
+	 * @return panel del profesor
+	 */
 	public PanelProfesor getPanelProf(){
 		return this.contenedorProf;
 	}
-			
+		
+	/**
+	 * Funcion que devuelve el nombre del tema seleccionado
+	 * @return nombre del tema seleccionado
+	 */
 	public String getNombreTemaSeleccionado(){
 		if(this.listatemas.getSelectedValue() == null){
 			return "";
@@ -122,6 +142,10 @@ public class PanelAsignatura extends JPanel {
 		}
 	}
 	
+	/**
+	 * Funcion que devuelve el nombre de la asignatura 
+	 * @return nombre de la asignatura
+	 */
 	public String getNombreAsignatura(){
 		if(this.contenedorProf != null){
 			return this.contenedorProf.getPanelContenido().getPanelPrincipal().getNombreAsignaturaSeleccionada();

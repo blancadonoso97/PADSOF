@@ -1,6 +1,7 @@
 package InterfazGrafica;
 
 import javax.swing.JPanel;
+
 import javax.swing.SpringLayout;
 import javax.swing.UIManager;
 
@@ -16,6 +17,12 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 
+/**
+ * Clase que implementa el panel para editar una asignatura
+ * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ *
+ */
+
 public class PanelEditarAsignatura  extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
@@ -28,7 +35,11 @@ public class PanelEditarAsignatura  extends JPanel{
 	private JButton anyadir;
 	private JButton eliminar;
 	
-	PanelEditarAsignatura(PanelContenido cont){
+	/**
+	 * Contructor que implementa la interfaz grafica del panel editar una asignatura
+	 * @param cont panel del contenido
+	 */
+	public PanelEditarAsignatura(PanelContenido cont){
 		
 		this.contenedorProf = cont.getContenedorProf();
 		
@@ -70,6 +81,11 @@ public class PanelEditarAsignatura  extends JPanel{
 		
 	}
 	
+	/**
+	 * Funcion que se encarga de modificar el controlador de los botones del panel
+	 * @param c controlador elegido
+	 * @param nombre nombre del boton elegido
+	 */
 	public void setControlador(ActionListener c,String nombre){
 		if(nombre.equals("anyadir")){
 			this.anyadir.addActionListener(c);
@@ -80,6 +96,10 @@ public class PanelEditarAsignatura  extends JPanel{
 		}
 	}
 	
+	/**
+	 * Funcion que devuelve el nombre del tema seleccionado
+	 * @return String del nombre del tema
+	 */
 	public String getNombreTemaSeleccionado(){
 		if(this.listatemas.getSelectedValue() == null){
 			return "";
@@ -89,14 +109,27 @@ public class PanelEditarAsignatura  extends JPanel{
 		}
 	}
 	
+	/**
+	 * Funcion que devuelve el panel del profesor
+	 * @return PanelProfesor panel del profesor
+	 */
 	public PanelProfesor getPanelProf(){
 		return this.contenedorProf;
 	}
+	
+	/**
+	 * Funcion que devuelve el nombre de la asignatura
+	 * @return String nombre de la asignatura
+	 */
 	public String getNombreAsignatura(){
 	
 		return this.contenedorProf.getPanelContenido().getPanelPrincipal().getNombreAsignaturaSeleccionada();
-		
+
 	}
+	
+	/**
+	 * Funcion que se encarga de actualizar el panel sobre el contenido de la asignatura
+	 */
 	public void actualizarAsignatura(){
 		
 		ArrayList<Tema> tem;

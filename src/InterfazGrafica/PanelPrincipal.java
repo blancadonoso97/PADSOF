@@ -17,6 +17,11 @@ import Asignatura.Asignatura;
 import Controladores.ControladorAccederContenido;
 import Controladores.ControladorEditarContenido;
 
+/**
+ * Clase que implementa el panel principal
+ * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ *
+ */
 public class PanelPrincipal extends JPanel{
 
 	
@@ -31,7 +36,11 @@ public class PanelPrincipal extends JPanel{
 	private JTabbedPane tabbedPane;
 	private JButton acceder;
 	
-	PanelPrincipal(PanelContenido cont){
+	/**
+	 * Constructor que implementa la interfaz grafica del panel principal
+	 * @param cont panel del contenido 
+	 */
+	public PanelPrincipal(PanelContenido cont){
 		ControladorAccederContenido controlador = new ControladorAccederContenido(this);
 		ControladorEditarContenido controla= new ControladorEditarContenido(this);
 		SpringLayout springLayout = new SpringLayout();
@@ -106,15 +115,26 @@ public class PanelPrincipal extends JPanel{
 		add(acceder);
 	}
 	
-
+	/**
+	 * Funcion que devuelve el panel del alumno 
+	 * @return panel del alumno
+	 */
 	public PanelAlumno getPanelAlumno(){
 		return this.contenedorAlum;
 	}
 	
+	/**
+	 * Funcion que devuelve el panel del profesor
+	 * @return panel del profesor
+	 */
 	public PanelProfesor getPanelProfesor(){
 		return this.contenedorProf;
 	}
 			
+	/**
+	 * Funcion que devuelve el nombre de la asignatura seleccionada
+	 * @return nombre de la asignatura seleccionada
+	 */
 	public String getNombreAsignaturaSeleccionada(){
 		
 		if(this.listasignaturas.getSelectedValue() == null){
@@ -129,8 +149,9 @@ public class PanelPrincipal extends JPanel{
 		}
 	}
 	
-	
-	
+	/**
+	 * Funcion que actualiza el estado del panel principal
+	 */
 	public void actualizarAsignaturas(){
 		
 		ArrayList<Asignatura> asig;
@@ -179,7 +200,11 @@ public class PanelPrincipal extends JPanel{
 			
 	}
 	
-	
+	/**
+	 * Funcion que modifica el controlador de los botones
+	 * @param c controlador elegido
+	 * @param nombreBoton nombre del boton
+	 */
 	public void setControlador(ActionListener c,String nombreBoton){
 		if(nombreBoton.equals("acceder")){
 			acceder.addActionListener(c);

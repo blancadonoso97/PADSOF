@@ -21,6 +21,11 @@ import InterfazGrafica.PanelTema;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
+/**
+ * Clase que implementa el controlador de los botones para editar el contenido de los paneles
+ * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ *
+ */
 public class ControladorEditarContenido   implements ActionListener{
 	
 	private PanelPrincipal panelp;
@@ -29,10 +34,10 @@ public class ControladorEditarContenido   implements ActionListener{
 	private PanelEditarApunte panelap;
 	private PanelAsignatura panelas;
 	private PanelTema paneltem;
+	
 	/**
-	 * Constructor de la clase ControladorInicioSesion
-	 * @param sist Sistema (eCourses)
-	 * @param pan Panel asociado al controlador
+	 * Constructor de la clase ControladorEditarContenido
+	 * @param pan panel principal
 	 */
 	public ControladorEditarContenido(PanelPrincipal pan){
 	
@@ -40,29 +45,51 @@ public class ControladorEditarContenido   implements ActionListener{
 		
 	}
 	
+	/**
+	 * Constructor de la clase ControladorEditarContenido
+	 * @param pan panel de editar una asignatura
+	 */
 	public ControladorEditarContenido(PanelEditarAsignatura pan){
 		
 		this.panela = pan;
 		
 	}
 
+	/**
+	 * Constructor de la clase ControladorEditarContenido
+	 * @param pan2 panel de una asignatura
+	 */
 	public ControladorEditarContenido(PanelAsignatura pan2){
 		
 		this.panelas = pan2;
 		
 	}
+	
+	/**
+	 * Constructor de la clase ControladorEditarContenido
+	 * @param pan panel de editar un tema
+	 */
 	public ControladorEditarContenido(PanelEditarTema pan){
 		
 		this.panelt = pan;
 		
 	}
 	
+	
+	/**
+	 * Constructor de la clase ControladorEditarContenido
+	 * @param pan panel de un tema
+	 */
 	public ControladorEditarContenido(PanelTema pan){
 		
 		this.paneltem = pan;
 		
 	}
 	
+	/**
+	 * Constructor de la clase ControladorEditarContenido
+	 * @param pan panel de editar un apunte
+	 */
 	public ControladorEditarContenido(PanelEditarApunte pan){
 		
 		this.panelap = pan;
