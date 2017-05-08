@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 
 import eCourses.Sistema;
+import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 /**
  * Clase para ejecutar la interfaz grafica
@@ -12,7 +14,7 @@ import eCourses.Sistema;
  */
 public class TestInterfaz {
 
-	public static void main(String[] args)  throws ClassNotFoundException, IOException{
+	public static void main(String[] args)  throws ClassNotFoundException, IOException, InvalidEmailAddressException, FailedInternetConnectionException{
 		
 		Sistema sistema = Sistema.getInstance();
 		
@@ -24,6 +26,7 @@ public class TestInterfaz {
 			sistema = sistema.cargarSistema("sistema.txt");
 			
 		}
+		
 		
 		new VentanaInicial(sistema);
 		

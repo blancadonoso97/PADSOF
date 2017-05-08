@@ -62,14 +62,14 @@ public class PanelTema extends JPanel {
 		setLayout(springLayout);
 
 		this.acceder = new JButton("Acceder");
-		springLayout.putConstraint(SpringLayout.WEST, acceder, 309, SpringLayout.WEST, this);
-		springLayout.putConstraint(SpringLayout.EAST, acceder, -371, SpringLayout.EAST, this);
+		
 		this.setControlador(controlador,"acceder");
 		
 		this.add(acceder);
 		
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		springLayout.putConstraint(SpringLayout.NORTH, acceder, 40, SpringLayout.SOUTH, tabbedPane);
+		springLayout.putConstraint(SpringLayout.EAST, acceder, 116, SpringLayout.WEST, tabbedPane);
 		springLayout.putConstraint(SpringLayout.NORTH, tabbedPane, 115, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, tabbedPane, 68, SpringLayout.WEST, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, tabbedPane, -203, SpringLayout.SOUTH, this);
@@ -78,7 +78,7 @@ public class PanelTema extends JPanel {
 		
 		
 		scrollPane = new JScrollPane();
-		springLayout.putConstraint(SpringLayout.SOUTH, acceder, 38, SpringLayout.SOUTH, scrollPane);
+		springLayout.putConstraint(SpringLayout.SOUTH, acceder, 57, SpringLayout.SOUTH, scrollPane);
 		tabbedPane.addTab("Apuntes", null, scrollPane, null);
 		springLayout.putConstraint(SpringLayout.NORTH, scrollPane, 137, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, scrollPane, -167, SpringLayout.SOUTH, this);
@@ -103,7 +103,9 @@ public class PanelTema extends JPanel {
 		springLayout.putConstraint(SpringLayout.EAST, scrollPane_2, -28, SpringLayout.EAST, this);
 		springLayout.putConstraint(SpringLayout.NORTH, scrollPane_2, 188, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, scrollPane_2, -180, SpringLayout.SOUTH, this);
-		
+
+		springLayout.putConstraint(SpringLayout.NORTH, acceder, 61, SpringLayout.SOUTH, tabbedPane);
+		springLayout.putConstraint(SpringLayout.WEST, acceder, 0, SpringLayout.WEST, tabbedPane);
 		
 		listasubtemas = new JList<String>(subtemas);
 		scrollPane_2.setViewportView(listasubtemas);
@@ -235,7 +237,7 @@ public class PanelTema extends JPanel {
 		ArrayList<Apuntes> apun;
 		ArrayList<Ejercicio> ej;
 		
-		this.add(acceder);
+		
 		
 		if(!this.getNombreSubtemaSeleccionado().equals("") && !this.getNombreSubtemaSeleccionado().equals("varios")  ){
 			

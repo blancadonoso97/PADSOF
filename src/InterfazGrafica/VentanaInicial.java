@@ -9,6 +9,9 @@ import javax.swing.JPanel;
 
 import Controladores.ControladorInicioSesion;
 import eCourses.Sistema;
+import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
+
 import javax.swing.UIManager;
 import java.awt.Color;
 
@@ -30,7 +33,7 @@ public class VentanaInicial extends JFrame{
 	private PanelAlumno panelalumno;
 	private PanelProfesor panelprofesor;
 	
-	public VentanaInicial(Sistema sist) throws IOException{
+	public VentanaInicial(Sistema sist) throws IOException, ClassNotFoundException, InvalidEmailAddressException, FailedInternetConnectionException{
 		
 		getContentPane().setForeground(Color.WHITE);
 		getContentPane().setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.background"));
@@ -83,12 +86,17 @@ public class VentanaInicial extends JFrame{
 	/**
 	 * Permite cambiar entre paneles
 	 * @param nombre Nombre del panel al que se quiere cambiar
+	 * @throws IOException 
+	 * @throws FailedInternetConnectionException 
+	 * @throws InvalidEmailAddressException 
+	 * @throws ClassNotFoundException 
 	 */
-	public void cambiarCarta(String nombre){
+	public void cambiarCarta(String nombre) throws ClassNotFoundException, InvalidEmailAddressException, FailedInternetConnectionException, IOException{
 		
 		if(nombre.equals("Inicio")){
 			cartas.show(contenedor, "Inicio");
 		}else if(nombre.equals("Alumno")){
+			this.panelalumno.getPanelHerramientas().actualizarestado();
 			this.panelalumno.getPanelContenido().getPanelPrincipal().actualizarAsignaturas();
 			cartas.show(contenedor, "Alumno");
 		}else if(nombre.equals("Profesor")){
