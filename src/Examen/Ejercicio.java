@@ -305,7 +305,8 @@ public class Ejercicio implements Serializable{
 		}
 		
 		for(Pregunta p : preguntas){
-			if(p.equals(pregunta)){
+			
+			if(p == pregunta){
 				return false;
 			}
 		}

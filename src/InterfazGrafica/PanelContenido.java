@@ -271,6 +271,11 @@ public class PanelContenido extends JPanel {
 			
 		}else if(nombre.equals("Ejercicio")){
 			
+			
+			preguntamultiple.setPregunta(null);
+			preguntatest.setPregunta(null);
+			preguntaredactar.setPregunta(null);
+			
 			this.removeAll();
 			this.ejercicios.actualizarTabla();
 			this.add(this.ejercicios);
