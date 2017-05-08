@@ -329,6 +329,7 @@ public class PanelContenido extends JPanel {
 		else if(nombre.equals("AccederEj")){
 			
 			this.removeAll();
+			this.panelej.actualizarejercicio();
 			this.add(this.panelej);
 			cartas.show(this, "AccederEj");
 		}
