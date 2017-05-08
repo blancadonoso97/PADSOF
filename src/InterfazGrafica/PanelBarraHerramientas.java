@@ -212,13 +212,17 @@ public class PanelBarraHerramientas extends JPanel {
 			this.setControlador("Ejercicio", controlador);
 
 			asigna = this.contProfe.getVentana().getSistema().getAsignaturas();
-			
+
 			if (asignaturas.getChildCount() > 0) {
-				modelo.removeNodeFromParent((DefaultMutableTreeNode) asignaturas.getChildAt(0));
+				contenido.setModel(null);
 			}
 
 			int x = 0;
 			int i = 0;
+			
+			modelo = new DefaultTreeModel(asignaturas);
+			
+			contenido.setModel(modelo);
 			
 			modelo = (DefaultTreeModel)contenido.getModel();
 
