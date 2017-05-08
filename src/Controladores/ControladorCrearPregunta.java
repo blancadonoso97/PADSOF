@@ -23,7 +23,7 @@ import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 /**
  * Clase que implementa el controlador de los botones de crear una pregunta
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class ControladorCrearPregunta implements ActionListener{
@@ -37,11 +37,8 @@ public class ControladorCrearPregunta implements ActionListener{
 	
 	/**
 	 * Constructor para la clase PanelCrearPreguntaRedactar
-	 * 
-	 * @param vent
-	 *            Ventana asociada al panel
-	 * @param pan
-	 *            Panel crear pregunta redactar
+	 * @param vent Ventana asociada al panel
+	 * @param pan Panel crear pregunta redactar
 	 */
 	public ControladorCrearPregunta(VentanaInicial vent, PanelCrearPreguntaRedactar pan) {
 
@@ -52,11 +49,8 @@ public class ControladorCrearPregunta implements ActionListener{
 
 	/**
 	 * Constructor para la clase PanelCrearPreguntaTest
-	 * 
-	 * @param vent
-	 *            Ventana asociada al panel
-	 * @param pan
-	 *            Panel crear pregunta test
+	 * @param vent Ventana asociada al panel
+	 * @param pan Panel crear pregunta test
 	 */
 	public ControladorCrearPregunta(VentanaInicial vent, PanelCrearPreguntaTest pan) {
 
@@ -67,11 +61,8 @@ public class ControladorCrearPregunta implements ActionListener{
 
 	/**
 	 * Constructor para la clase PanelCrearPreguntaMultiple
-	 * 
-	 * @param vent
-	 *            Ventana asociada al panel
-	 * @param pan
-	 *            Panel crear pregunta multiple
+	 * @param vent Ventana asociada al panel
+	 * @param pan Panel crear pregunta multiple
 	 */
 	public ControladorCrearPregunta(VentanaInicial vent, PanelCrearPreguntaMultiple pan) {
 
@@ -107,11 +98,7 @@ public class ControladorCrearPregunta implements ActionListener{
 				
 				JOptionPane.showMessageDialog(panelpreguntaredactar, "La pregunta ha sido creada", "Crear pregunta", JOptionPane.INFORMATION_MESSAGE);
 				return;
-				
-				
 			}
-			
-			
 
 		} else if (e.getActionCommand().equals("Crear pregunta test")) {
 
@@ -125,11 +112,8 @@ public class ControladorCrearPregunta implements ActionListener{
 				
 				JOptionPane.showMessageDialog(panelpreguntatest, "La pregunta ha sido creada", "Crear pregunta", JOptionPane.INFORMATION_MESSAGE);
 				return;
-				
-				
+
 			}
-			
-			
 
 		} else if (e.getActionCommand().equals("Crear pregunta multiple")) {
 
@@ -144,10 +128,8 @@ public class ControladorCrearPregunta implements ActionListener{
 				JOptionPane.showMessageDialog(panelpreguntamultiple, "La pregunta ha sido creada", "Crear pregunta", JOptionPane.INFORMATION_MESSAGE);
 				return;
 				
-				
 			}
-			
-			
+
 
 		}else if (e.getActionCommand().equals("Volver")){
 			

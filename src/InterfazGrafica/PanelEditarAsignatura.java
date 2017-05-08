@@ -19,25 +19,30 @@ import javax.swing.JButton;
 
 /**
  * Clase que implementa el panel para editar una asignatura
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * 
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 
 public class PanelEditarAsignatura  extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
+	
 	private PanelProfesor contenedorProf;
+	
 	private JTabbedPane tabbedPane;
 	private SpringLayout springLayout;
 	private DefaultListModel<String> temas = new DefaultListModel<String>(); 
+	
 	private JList<String> listatemas;
+	
 	private JButton editar;
 	private JButton anyadir;
 	private JButton eliminar;
 	
 	/**
 	 * Contructor que implementa la interfaz grafica del panel editar una asignatura
-	 * @param cont panel del contenido
+	 * @param cont Panel del contenido
 	 */
 	public PanelEditarAsignatura(PanelContenido cont){
 		
@@ -137,9 +142,9 @@ public class PanelEditarAsignatura  extends JPanel{
 		tem = this.contenedorProf.getVentana().getSistema().getAsignatura(this.contenedorProf.getPanelContenido().getPanelPrincipal().getNombreAsignaturaSeleccionada()).getTemas();
 		
 		temas.removeAllElements();
+		
 		if(!tem.isEmpty()){
-			
-				
+
 			for(Tema a : tem){
 				temas.addElement(a.getNombre());
 			}

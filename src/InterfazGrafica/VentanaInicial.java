@@ -17,7 +17,7 @@ import java.awt.Color;
 
 /**
  * Clase para definir la ventana principal del programa
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class VentanaInicial extends JFrame{
@@ -33,6 +33,14 @@ public class VentanaInicial extends JFrame{
 	private PanelAlumno panelalumno;
 	private PanelProfesor panelprofesor;
 	
+	/**
+	 * Constructor de la clase VentanaInicial
+	 * @param sist Sistema de la aplicacion
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 * @throws InvalidEmailAddressException
+	 * @throws FailedInternetConnectionException
+	 */
 	public VentanaInicial(Sistema sist) throws IOException, ClassNotFoundException, InvalidEmailAddressException, FailedInternetConnectionException{
 		
 		getContentPane().setForeground(Color.WHITE);

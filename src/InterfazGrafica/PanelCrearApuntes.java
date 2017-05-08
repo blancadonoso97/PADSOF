@@ -22,7 +22,7 @@ import java.awt.Dimension;
 /**
  * Clase para definir el panel de crear Apuntes
  * 
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class PanelCrearApuntes extends JPanel{

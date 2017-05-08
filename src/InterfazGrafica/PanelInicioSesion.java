@@ -1,6 +1,5 @@
 package InterfazGrafica;
 
-
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
@@ -17,7 +16,7 @@ import javax.swing.UIManager;
 /**
  * Clase para definir el panel de inicio de sesion
  * 
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class PanelInicioSesion extends JPanel {
@@ -39,6 +38,7 @@ public class PanelInicioSesion extends JPanel {
 	 * @throws IOException
 	 */
 	public PanelInicioSesion(VentanaInicial vent) throws IOException {
+		
 		setForeground(UIManager.getColor("PasswordField.background"));
 		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 
@@ -50,6 +50,7 @@ public class PanelInicioSesion extends JPanel {
 		
 		ImageIcon icono = new ImageIcon("eCourses.png", "Logo");
 		this.imagen = new JLabel(icono);
+		
 		layout.putConstraint(SpringLayout.WEST, imagen, 174, SpringLayout.WEST, this);
 		layout.putConstraint(SpringLayout.EAST, imagen, -169, SpringLayout.EAST, this);
 		imagen.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
@@ -81,10 +82,7 @@ public class PanelInicioSesion extends JPanel {
 		this.add(password);
 		this.add(boton);
 		this.add(imagen);
-				
-		// Reorganizar la posicion de los componentes
-		
-		// Campo id
+
 		layout.putConstraint(SpringLayout.VERTICAL_CENTER, id, 0, SpringLayout.VERTICAL_CENTER, this);
 		layout.putConstraint(SpringLayout.HORIZONTAL_CENTER, id, 0, SpringLayout.HORIZONTAL_CENTER, this);
 		layout.putConstraint(SpringLayout.VERTICAL_CENTER, nombre, 0, SpringLayout.VERTICAL_CENTER, id);

@@ -8,11 +8,10 @@ import javax.swing.JPanel;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
-
 /**
  * Clase para definir el panel cuando se inicia sesion como Profesor
  * 
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class PanelProfesor extends JPanel{

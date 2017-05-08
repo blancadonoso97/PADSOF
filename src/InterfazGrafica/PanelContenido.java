@@ -13,7 +13,7 @@ import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 /**
  * Clase para definir el panel de contenido dentro del panel de profesor o alumno
  * 
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class PanelContenido extends JPanel {
@@ -80,11 +80,10 @@ public class PanelContenido extends JPanel {
 		// Panel crear ejercicio
 		this.ejercicios = new PanelCrearEjercicio(this);
 		
+		// Paneles preguntas
 		this.preguntamultiple = new PanelCrearPreguntaMultiple(ejercicios);
 		this.preguntaredactar = new PanelCrearPreguntaRedactar(ejercicios);
 		this.preguntatest = new PanelCrearPreguntaTest(ejercicios);
-		
-		
 		
 		// Panel administar
 		this.paneladmin = new PanelAdministrar(this);
@@ -100,6 +99,7 @@ public class PanelContenido extends JPanel {
 		
 		this.panelej = new PanelEjercicio(this);
 		
+		// Paneles de edicion
 		this.paneledasig = new PanelEditarAsignatura(this);
 		
 		this.paneledtem = new PanelEditarTema(this);
@@ -128,7 +128,6 @@ public class PanelContenido extends JPanel {
 		cartas.addLayoutComponent(this.preguntatest, "Test");
 		cartas.addLayoutComponent(this.preguntaredactar, "Redactar");
 		
-		
 		ControladorCrearEjercicio controlador = new ControladorCrearEjercicio(this.getContenedorProf().getVentana(), preguntamultiple);
 		
 		this.ejercicios.setControladorMult(controlador);
@@ -144,10 +143,7 @@ public class PanelContenido extends JPanel {
 		ControladorCrearEjercicio controlador4 = new ControladorCrearEjercicio(this.getContenedorProf().getVentana(), this.ejercicios);
 		
 		this.ejercicios.setControlador(controlador4);
-		
-		// Controladores para cambiar al panel de opcion desde los paneles de crear pregunta
-		
-		
+
 		this.paginaprinc.actualizarAsignaturas();
 		this.add(this.paginaprinc);
 		
@@ -178,7 +174,6 @@ public class PanelContenido extends JPanel {
 		
 		this.panelej = new PanelEjercicio(this);
 		
-		// Anadir panelpaneltemes
 		cartas.addLayoutComponent(this.solicitarmatricula, "Matricula");
 		cartas.addLayoutComponent(this.paginaprinc, "Principal");
 		cartas.addLayoutComponent(this.panelasig, "AccederAsig");
@@ -360,6 +355,7 @@ public class PanelContenido extends JPanel {
 			cartas.show(this, "EditarEj");
 			
 		}else if(nombre.equals("Multiple")){
+			
 			preguntamultiple = new PanelCrearPreguntaMultiple(ejercicios);
 			preguntamultiple.setEjercicio(ejercicios.getEjercicio());
 			cartas.addLayoutComponent(preguntamultiple, "Multiple");
@@ -367,6 +363,7 @@ public class PanelContenido extends JPanel {
 			cartas.show(this, "Multiple");
 			
 		}else if(nombre.equals("Test")){
+			
 			preguntatest = new PanelCrearPreguntaTest(ejercicios);
 			preguntatest.setEjercicio(ejercicios.getEjercicio());
 			cartas.addLayoutComponent(preguntatest, "Test");
@@ -374,6 +371,7 @@ public class PanelContenido extends JPanel {
 			cartas.show(this, "Test");
 			
 		}else if(nombre.equals("Redactar")){
+			
 			preguntaredactar = new PanelCrearPreguntaRedactar(ejercicios);
 			preguntaredactar.setEjercicio(ejercicios.getEjercicio());
 			cartas.addLayoutComponent(preguntaredactar, "Redactar");
@@ -383,23 +381,29 @@ public class PanelContenido extends JPanel {
 		}else if(nombre.equals("Opcion")){
 			
 			if(preguntaredactar.getPregunta() != null){
+				
 				this.opcion1 = new PanelCrearOpcion(this, preguntaredactar);
 				cartas.addLayoutComponent(this.opcion1, "Opcion1");
 				opcion1.setPregunta(preguntaredactar.getPregunta());
 				this.add(this.opcion1);
 				cartas.show(this, "Opcion1");
+				
 			}else if(preguntatest.getPregunta() != null){
+				
 				this.opcion2 = new PanelCrearOpcion(this, preguntatest);
 				cartas.addLayoutComponent(this.opcion2, "Opcion2");
 				opcion2.setPregunta(preguntatest.getPregunta());
 				this.add(this.opcion2);
 				cartas.show(this, "Opcion2");
+				
 			}else if (preguntamultiple.getPregunta() != null){
+				
 				this.opcion3 = new PanelCrearOpcion(this, preguntamultiple);
 				cartas.addLayoutComponent(this.opcion3, "Opcion3");
 				opcion3.setPregunta(preguntamultiple.getPregunta());;
 				this.add(this.opcion3);
 				cartas.show(this, "Opcion3");
+				
 			}
 			
 		}

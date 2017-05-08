@@ -25,31 +25,36 @@ import javax.swing.JTabbedPane;
 
 /**
  * Clase que implementa el panel del tema
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class PanelTema extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	
 	private PanelProfesor contenedorProf;
 	private PanelAlumno contenedorAlum;
 	
 	private DefaultListModel<String> subtemas = new DefaultListModel<String>(); 
 	private DefaultListModel<String> apuntes = new DefaultListModel<String>(); 
 	private DefaultListModel<String> ejercicios = new DefaultListModel<String>(); 
+	
 	private JScrollPane scrollPane;
 	private JScrollPane scrollPane_1;
 	private JScrollPane scrollPane_2;
+	
 	private JTabbedPane tabbedPane;
+	
 	private JList<String> listasubtemas;
 	private JList<String> listaapuntes;
 	private JList<String> listaejercicios;
+	
 	private JButton editar;
 	private JButton acceder;
 	
 	/**
 	 * Constructor que implementa la interfaz grafica del panel del tema
-	 * @param cont panel del contenido
+	 * @param cont Panel del contenido
 	 */
 	public PanelTema(PanelContenido cont){
 		
@@ -151,25 +156,26 @@ public class PanelTema extends JPanel {
 	
 	/**
 	 * Funcion que devuelve el panel del alumno
-	 * @return panel del profesor
+	 * @return contenedorAlum
 	 */
 	public PanelAlumno getPanelAlumno(){
-		return this.contenedorAlum;
+		return contenedorAlum;
 	}
 	
 	/**
 	 * Funcion que devuelve el panel del profesor
-	 * @return panel del profesor
+	 * @return contenedorProf
 	 */
 	public PanelProfesor getPanelProf(){
-		return this.contenedorProf;
+		return contenedorProf;
 	}
 	
 	/**
 	 * Funcion que devuelve el nombre del tema 
-	 * @return nombre del tema
+	 * @return Nombre del tema
 	 */
 	public String getNombreTema(){
+		
 		if(this.contenedorProf != null){
 			return this.contenedorProf.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado();
 		}else{
@@ -180,9 +186,10 @@ public class PanelTema extends JPanel {
 	
 	/**
 	 * Funcion que devuelve el nombre del apunte seleccionado
-	 * @return nombre del apunte seleccionado
+	 * @return Nombre del apunte seleccionado
 	 */
 	public String getNombreApunteSeleccionado(){
+		
 		if(this.listaapuntes.getSelectedValue() == null){
 			return "";
 		}else if(this.listaapuntes.getSelectedValue() != null && (this.listaejercicios.getSelectedValue()!=null || this.listasubtemas.getSelectedValue()!=null)){
@@ -194,7 +201,7 @@ public class PanelTema extends JPanel {
 	
 	/**
 	 * Funcion que devuelve el nombre del ejercicio seleccionado
-	 * @return nombre del ejercicio seleccionado
+	 * @return Nombre del ejercicio seleccionado
 	 */
 	public String getNombreEjercicioSeleccionado(){
 		
@@ -210,7 +217,7 @@ public class PanelTema extends JPanel {
 	
 	/**
 	 * FUncion que devuelve el nombre del subtema seleccionado
-	 * @return nombre del subtema seleccionado
+	 * @return Nombre del subtema seleccionado
 	 */
 	public String getNombreSubtemaSeleccionado(){
 
@@ -236,9 +243,7 @@ public class PanelTema extends JPanel {
 		ArrayList<Tema> tem;
 		ArrayList<Apuntes> apun;
 		ArrayList<Ejercicio> ej;
-		
-		
-		
+	
 		if(!this.getNombreSubtemaSeleccionado().equals("") && !this.getNombreSubtemaSeleccionado().equals("varios")  ){
 			
 			if(this.contenedorProf != null){

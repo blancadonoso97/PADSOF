@@ -19,7 +19,8 @@ import Controladores.ControladorEditarContenido;
 
 /**
  * Clase que implementa el panel principal
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * 
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class PanelPrincipal extends JPanel{
@@ -38,11 +39,13 @@ public class PanelPrincipal extends JPanel{
 	
 	/**
 	 * Constructor que implementa la interfaz grafica del panel principal
-	 * @param cont panel del contenido 
+	 * @param cont Panel del contenido 
 	 */
 	public PanelPrincipal(PanelContenido cont){
+		
 		ControladorAccederContenido controlador = new ControladorAccederContenido(this);
 		ControladorEditarContenido controla= new ControladorEditarContenido(this);
+		
 		SpringLayout springLayout = new SpringLayout();
 		setLayout(springLayout);
 
@@ -67,12 +70,9 @@ public class PanelPrincipal extends JPanel{
 		scrollPane.setViewportView(listasignaturas);
 		
 		tabbedPane.addTab("Asignaturas", null, scrollPane, null);
-		
-		
+				
 		this.add(tabbedPane);
 
-
-		
 		if(cont.getContenedorProf()!=null){
 			
 		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
@@ -96,6 +96,7 @@ public class PanelPrincipal extends JPanel{
 		this.add(editar);
 		
 		}else{
+			
 			setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 			this.contenedorAlum = cont.getContenedorAlum();
 		
@@ -117,23 +118,23 @@ public class PanelPrincipal extends JPanel{
 	
 	/**
 	 * Funcion que devuelve el panel del alumno 
-	 * @return panel del alumno
+	 * @return contenedorAlum
 	 */
 	public PanelAlumno getPanelAlumno(){
-		return this.contenedorAlum;
+		return contenedorAlum;
 	}
 	
 	/**
 	 * Funcion que devuelve el panel del profesor
-	 * @return panel del profesor
+	 * @return contenedorProf
 	 */
 	public PanelProfesor getPanelProfesor(){
-		return this.contenedorProf;
+		return contenedorProf;
 	}
 			
 	/**
 	 * Funcion que devuelve el nombre de la asignatura seleccionada
-	 * @return nombre de la asignatura seleccionada
+	 * @return Nombre de la asignatura seleccionada
 	 */
 	public String getNombreAsignaturaSeleccionada(){
 		
@@ -202,8 +203,8 @@ public class PanelPrincipal extends JPanel{
 	
 	/**
 	 * Funcion que modifica el controlador de los botones
-	 * @param c controlador elegido
-	 * @param nombreBoton nombre del boton
+	 * @param c Controlador elegido
+	 * @param nombreBoton Nombre del boton
 	 */
 	public void setControlador(ActionListener c,String nombreBoton){
 		if(nombreBoton.equals("acceder")){

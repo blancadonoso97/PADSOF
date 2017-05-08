@@ -16,7 +16,7 @@ import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 /**
  * Clase que implementa el controlador de los botones de crear un ejercicio
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class ControladorCrearEjercicio implements ActionListener {
@@ -41,11 +41,8 @@ public class ControladorCrearEjercicio implements ActionListener {
 	
 	/**
 	 * Constructor para la clase PanelCrearPreguntaRedactar
-	 * 
-	 * @param vent
-	 *            Ventana asociada al panel
-	 * @param pan
-	 *            Panel crear pregunta redactar
+	 * @param vent Ventana asociada al panel
+	 * @param pan Panel crear pregunta redactar
 	 */
 	public ControladorCrearEjercicio(VentanaInicial vent, PanelCrearPreguntaRedactar pan) {
 
@@ -56,11 +53,8 @@ public class ControladorCrearEjercicio implements ActionListener {
 
 	/**
 	 * Constructor para la clase PanelCrearPreguntaTest
-	 * 
-	 * @param vent
-	 *            Ventana asociada al panel
-	 * @param pan
-	 *            Panel crear pregunta test
+	 * @param vent Ventana asociada al panel
+	 * @param pan Panel crear pregunta test
 	 */
 	public ControladorCrearEjercicio(VentanaInicial vent, PanelCrearPreguntaTest pan) {
 
@@ -71,11 +65,8 @@ public class ControladorCrearEjercicio implements ActionListener {
 
 	/**
 	 * Constructor para la clase PanelCrearPreguntaMultiple
-	 * 
-	 * @param vent
-	 *            Ventana asociada al panel
-	 * @param pan
-	 *            Panel crear pregunta multiple
+	 * @param vent Ventana asociada al panel
+	 * @param pan Panel crear pregunta multiple
 	 */
 	public ControladorCrearEjercicio(VentanaInicial vent, PanelCrearPreguntaMultiple pan) {
 

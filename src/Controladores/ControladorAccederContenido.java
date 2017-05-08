@@ -16,7 +16,7 @@ import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
  * Clase que implementa el controlador de los botones para acceder a un
  * contenido de los distintos paneles
  * 
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class ControladorAccederContenido implements ActionListener {
@@ -27,9 +27,7 @@ public class ControladorAccederContenido implements ActionListener {
 
 	/**
 	 * Constructor de la clase ControladorAccederContenido
-	 * 
-	 * @param pan
-	 *            panel principal
+	 * @param pan Panel principal
 	 */
 	public ControladorAccederContenido(PanelPrincipal pan) {
 
@@ -39,9 +37,7 @@ public class ControladorAccederContenido implements ActionListener {
 
 	/**
 	 * Constructor de la clase ControladorAccederContenido
-	 * 
-	 * @param pan
-	 *            panel de una asignatura
+	 * @param pan Panel de una asignatura
 	 */
 	public ControladorAccederContenido(PanelAsignatura pan) {
 
@@ -51,9 +47,7 @@ public class ControladorAccederContenido implements ActionListener {
 
 	/**
 	 * Constructor de la clase ControladorAccederContenido
-	 * 
-	 * @param pan
-	 *            panel de un tema
+	 * @param pan Panel de un tema
 	 */
 	public ControladorAccederContenido(PanelTema pan) {
 

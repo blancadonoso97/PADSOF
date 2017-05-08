@@ -21,13 +21,13 @@ import javax.swing.JLabel;
 
 /**
  * Clase que implementa el panel del ejercicio
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class PanelEjercicio extends JPanel{
 		
-		
 		private static final long serialVersionUID = 1L;
+		
 		private PanelAlumno contenedorAlum;
 		private JButton realizar;
 		private JTabbedPane tabbedPane;
@@ -36,7 +36,7 @@ public class PanelEjercicio extends JPanel{
 		
 		/**
 		 * Constructor que immplementa la interfaz grafica del panel de un ejercicio
-		 * @param cont
+		 * @param cont Panel de contenido
 		 */
 		public PanelEjercicio(PanelContenido cont){
 		
@@ -138,6 +138,7 @@ public class PanelEjercicio extends JPanel{
 		 * Funcion que responde a un ejercicio
 		 */
 		public void responderEjercicio(){
+			
 			int i;
 			
 			for(i=0; i<this.ejercicio.getNPreguntas();i++){

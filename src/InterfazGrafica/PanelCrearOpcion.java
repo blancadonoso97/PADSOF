@@ -13,7 +13,7 @@ import Examen.Pregunta;
 /**
  * Clase para definir el panel de crear opcion
  * 
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class PanelCrearOpcion extends JPanel{

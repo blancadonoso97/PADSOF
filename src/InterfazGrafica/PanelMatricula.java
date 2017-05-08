@@ -19,28 +19,32 @@ import javax.swing.JTabbedPane;
 
 /**
  * Clase que implementa el panel de la matricula
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class PanelMatricula extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
+	
 	private PanelAlumno contenedorAlum;
 	
 	private DefaultListModel<String> modelopen = new DefaultListModel<String>(); 
 	private DefaultListModel<String> modeloasign = new DefaultListModel<String>(); 
 	private DefaultListModel<String> modelomat = new DefaultListModel<String>(); 
+	
 	private JScrollPane scrollPane;
 	private JScrollPane scrollPane_1;
 	private JScrollPane scrollPane_2;
+	
 	private JList<String> listasignaturas;
 	private JList<String> listmatriculadas;
 	private JList<String> listpendientes;
+	
 	private JButton boton;
 	
 	/**
 	 * Constructor que implementa la interfaz grafica del panel para solicitud matricula 
-	 * @param cont panel del contenido
+	 * @param cont Panel del contenido
 	 */
 	public PanelMatricula(PanelAlumno cont){
 		

@@ -18,7 +18,7 @@ import javax.swing.JEditorPane;
 import javax.swing.JButton;
 /**
  * Clase que implementa el panel para editar un apunte
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class PanelEditarApunte extends JPanel{
@@ -130,6 +130,7 @@ public class PanelEditarApunte extends JPanel{
 	  * Funcion que actualiza el estado de los apuntes despues de haberlos editado
 	  */
 	public void actualizarApunte(){
+		
 		if(!this.titulonew.getText().isEmpty()){
 			if(!this.contenedorProf.getPanelContenido().getPanelEdTem().getNombreApunteSeleccionado().equals("")){
 				this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelEdTem().getNombreTema()).getApunte(this.contenedorProf.getPanelContenido().getPanelEdTem().getNombreApunteSeleccionado()).setTexto(this.texto.getText());

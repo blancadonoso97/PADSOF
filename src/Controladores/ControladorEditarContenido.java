@@ -23,7 +23,7 @@ import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 /**
  * Clase que implementa el controlador de los botones para editar el contenido de los paneles
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class ControladorEditarContenido   implements ActionListener{
@@ -37,7 +37,7 @@ public class ControladorEditarContenido   implements ActionListener{
 	
 	/**
 	 * Constructor de la clase ControladorEditarContenido
-	 * @param pan panel principal
+	 * @param pan Panel principal
 	 */
 	public ControladorEditarContenido(PanelPrincipal pan){
 	
@@ -47,7 +47,7 @@ public class ControladorEditarContenido   implements ActionListener{
 	
 	/**
 	 * Constructor de la clase ControladorEditarContenido
-	 * @param pan panel de editar una asignatura
+	 * @param pan Panel de editar una asignatura
 	 */
 	public ControladorEditarContenido(PanelEditarAsignatura pan){
 		
@@ -57,7 +57,7 @@ public class ControladorEditarContenido   implements ActionListener{
 
 	/**
 	 * Constructor de la clase ControladorEditarContenido
-	 * @param pan2 panel de una asignatura
+	 * @param pan2 Panel de una asignatura
 	 */
 	public ControladorEditarContenido(PanelAsignatura pan2){
 		
@@ -67,7 +67,7 @@ public class ControladorEditarContenido   implements ActionListener{
 	
 	/**
 	 * Constructor de la clase ControladorEditarContenido
-	 * @param pan panel de editar un tema
+	 * @param pan Panel de editar un tema
 	 */
 	public ControladorEditarContenido(PanelEditarTema pan){
 		
@@ -78,7 +78,7 @@ public class ControladorEditarContenido   implements ActionListener{
 	
 	/**
 	 * Constructor de la clase ControladorEditarContenido
-	 * @param pan panel de un tema
+	 * @param pan Panel de un tema
 	 */
 	public ControladorEditarContenido(PanelTema pan){
 		
@@ -88,7 +88,7 @@ public class ControladorEditarContenido   implements ActionListener{
 	
 	/**
 	 * Constructor de la clase ControladorEditarContenido
-	 * @param pan panel de editar un apunte
+	 * @param pan Panel de editar un apunte
 	 */
 	public ControladorEditarContenido(PanelEditarApunte pan){
 		
@@ -96,7 +96,6 @@ public class ControladorEditarContenido   implements ActionListener{
 		
 	}
 	
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 	
@@ -228,10 +227,10 @@ public class ControladorEditarContenido   implements ActionListener{
 				contenedor.setLayout(new FlowLayout());
 				
 				// crear componentes
-				
 				JLabel etiqueta = new JLabel("Introduzca que tipo de elemento desea añadir: ");
 				JTextField campo = new JTextField(10);
 				JButton boton = new JButton("Haz click");
+				
 				// añadir componentes al contenedor
 				contenedor.add(etiqueta);
 				contenedor.add(campo);

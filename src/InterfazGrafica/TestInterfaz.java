@@ -10,7 +10,7 @@ import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 /**
  * Clase para ejecutar la interfaz grafica
  * 
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  */
 public class TestInterfaz {
 
@@ -26,7 +26,6 @@ public class TestInterfaz {
 			sistema = sistema.cargarSistema("sistema.txt");
 			
 		}
-		
 		
 		new VentanaInicial(sistema);
 		

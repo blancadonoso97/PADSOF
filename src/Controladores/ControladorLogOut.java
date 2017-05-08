@@ -9,7 +9,7 @@ import InterfazGrafica.VentanaInicial;
 /**
  * Clase para definir el controlador de los botones de LogOut
  * 
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class ControladorLogOut implements ActionListener{

@@ -35,8 +35,7 @@ import java.awt.Color;
 import javax.swing.border.LineBorder;
 
 /**
- * Clase para definir el panel de herramientas dentro del panel de profesor o
- * alumno
+ * Clase para definir el panel de herramientas dentro del panel de profesor o alumno
  * 
  * @author Miguel Angel Bouzada, Blanca Martinez Donoso
  *
@@ -77,29 +76,34 @@ public class PanelBarraHerramientas extends JPanel {
 
 	/**
 	 * Contructor del panel de herramientas para el profesor
-	 * 
-	 * @param profesor
-	 *            Profesor
-	 * @wbp.parser.constructor
+	 * @param profesor Panel del profesor
 	 */
-
 	public PanelBarraHerramientas(PanelProfesor profesor) {
+		
 		setBackground(SystemColor.menu);
 		layout = new BoxLayout(this, 1);
+		
 		this.contProfe = profesor;
+		
 		controlador = new ControladorBarraHerramientas(contProfe.getVentana(), this);
+		
 		this.hola = new JLabel("Bienvenido a");
 		this.tema = new JButton("Crear Tema");
 		this.ejercicio = new JButton("Crear Ejercicio");
+		
 		ImageIcon icono = new ImageIcon("eCourses.png", "Logo");
+		
 		this.imagen = new JLabel(icono);
+		
 		this.modelo = new DefaultTreeModel(asignaturas);
 		this.asignatura = new JButton("Crear Asignatura");
 		this.subtema = new JButton("Crear Subtema");
 		this.apuntes = new JButton("Crear Apuntes");
 		this.administrar = new JButton("Administrar");
 		this.principal = new JButton("Pagina Principal");
+		
 		pane = new JScrollPane();
+		
 		this.contenido = new JTree(modelo);
 		this.desconectar = new JButton("Cerrar Sesion");
 
@@ -107,20 +111,23 @@ public class PanelBarraHerramientas extends JPanel {
 
 	/**
 	 * Constructor del panel de herramientas para el alumno
-	 * 
-	 * @param alumno
-	 *            Alumno logueado
+	 * @param alumno Panel del alumno log
 	 */
 	public PanelBarraHerramientas(PanelAlumno alumno) {
 
 		this.contAlumno = alumno;
 		layout = new BoxLayout(this, 1);
+		
 		this.hola = new JLabel("Bienvenido a");
+		
 		this.modelo = new DefaultTreeModel(asignaturas);
+		
 		this.matricula = new JButton("Solicitar Matricula");
 		this.desconectar = new JButton("Cerrar Sesion");
+		
 		ImageIcon icono = new ImageIcon("eCourses.png", "Logo");
 		this.imagen = new JLabel(icono);
+		
 		this.contenido = new JTree(modelo);
 		this.principal = new JButton("Pagina Principal");
 		controlador = new ControladorBarraHerramientas(contAlumno.getVentana(), this);
@@ -130,7 +137,6 @@ public class PanelBarraHerramientas extends JPanel {
 
 	/**
 	 * Obtiene el panel del alumno
-	 * 
 	 * @return contAlumno
 	 */
 	public PanelAlumno getPanelAlumno() {
@@ -139,7 +145,6 @@ public class PanelBarraHerramientas extends JPanel {
 
 	/**
 	 * Obtiene el panel del profesor
-	 * 
 	 * @return contProfe
 	 */
 	public PanelProfesor getPanelProfe() {
@@ -148,7 +153,6 @@ public class PanelBarraHerramientas extends JPanel {
 
 	/**
 	 * Actualiza el estado de la barra de herramientas
-	 * 
 	 * @throws ClassNotFoundException
 	 * @throws InvalidEmailAddressException
 	 * @throws FailedInternetConnectionException
@@ -290,16 +294,11 @@ public class PanelBarraHerramientas extends JPanel {
 
 			this.add(Box.createRigidArea(new Dimension(0, 20)));
 
-			// Pruebas
-
 			if (this.contAlumno.getVentana().getSistema().getAlumnoLog() != null) {
 
 				rigidArea_2 = Box.createRigidArea(new Dimension(0, 20));
 				add(rigidArea_2);
 
-				// Creacion del controlador
-
-				// Configurar los botones con el controlador
 				this.setControlador("Matricula", controlador);
 				this.setControlador("Logout", controlador);
 				this.setControlador("Principal", controlador);
@@ -379,9 +378,7 @@ public class PanelBarraHerramientas extends JPanel {
 
 	/**
 	 * Anade un controlador al boton
-	 * 
-	 * @param c
-	 *            Controlador a anadir
+	 * @param c Controlador a anadir
 	 */
 	public void setControlador(String nombreBoton, ActionListener c) {
 

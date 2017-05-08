@@ -17,7 +17,7 @@ import Examen.Ejercicio;
 /**
  * Clase para definir el panel de crear ejercicio
  * 
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class PanelCrearEjercicio extends JPanel {
@@ -55,7 +55,6 @@ public class PanelCrearEjercicio extends JPanel {
 
 	/**
 	 * Constructor de la clase PanelCrearEjercicio
-	 * 
 	 * @param cont Panel de contenido
 	 */
 	public PanelCrearEjercicio(PanelContenido cont) {

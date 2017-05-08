@@ -17,7 +17,7 @@ import eCourses.SolicitudMatricula;
 /**
  * Clase para definir el panel de administrar contenido, ver notas, ver matriculas, expulsar
  * 
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class PanelAdministrar extends JPanel{

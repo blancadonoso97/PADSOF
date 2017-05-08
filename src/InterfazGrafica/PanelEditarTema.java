@@ -25,7 +25,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JEditorPane;
 /**
  * Clase que define el panel que permitira editar un tema
- * @author  Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author  Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class PanelEditarTema extends JPanel{
@@ -35,12 +35,15 @@ public class PanelEditarTema extends JPanel{
 	private DefaultListModel<String> subtemas = new DefaultListModel<String>(); 
 	private DefaultListModel<String> apuntes = new DefaultListModel<String>(); 
 	private DefaultListModel<String> ejercicios = new DefaultListModel<String>(); 
+	
 	private JList<String> listaejercicios;
 	private JList<String> listaapuntes;
 	private JList<String> listasubtemas;
+	
 	private JButton editar;
 	private JButton anyadir;
 	private JButton eliminar;
+	
 	private JScrollPane scrollPane;
 	private SpringLayout springLayout;
 	private JRadioButton visible;
@@ -48,13 +51,15 @@ public class PanelEditarTema extends JPanel{
 	private ButtonGroup visibilidad;
 	private JButton guardar;
 	private JEditorPane titulonew;
+	
 	private static final long serialVersionUID = 1L;
 	
 	/**
 	 * Constructor que implementa la interfaz grafica del panel que edita un tema
-	 * @param cont panel del contenido
+	 * @param cont Panel del contenido
 	 */
 	public PanelEditarTema(PanelContenido cont){
+		
 		this.springLayout = new SpringLayout();
 		setLayout(springLayout);
 		
@@ -192,7 +197,7 @@ public class PanelEditarTema extends JPanel{
 	
 	/**
 	 * Funcion que devuelve el panel del profesor
-	 * @return PanelProfesor panel del profesor
+	 * @return PanelProfesor Panel del profesor
 	 */
 	public PanelProfesor getPanelProf(){
 		return this.contenedorProf;
@@ -213,7 +218,6 @@ public class PanelEditarTema extends JPanel{
 	
 	/**
 	 * Funcion que actualiza el tema despues de ser editado o cuando se accede a el
-	 * 
 	 * @throws ClassNotFoundException
 	 * @throws InvalidEmailAddressException
 	 * @throws FailedInternetConnectionException
@@ -227,9 +231,7 @@ public class PanelEditarTema extends JPanel{
 		
 		
 		if(!this.getNombreSubtemaSeleccionado().equals("") && !this.getNombreSubtemaSeleccionado().equals("varios")  ){
-			
-			
-				 
+
 			Tema TemaPadre =this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelEdAsig().getNombreTemaSeleccionado());
 					 
 			for(Tema t : TemaPadre.getTemas()){

@@ -14,7 +14,7 @@ import InterfazGrafica.PanelInicioSesion;
 /**
  * Clase para definir el controlador de la ventana Inicio Sesion
  * 
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class ControladorInicioSesion implements ActionListener{

@@ -21,7 +21,7 @@ import java.awt.Dimension;
 /**
  * Clase para definir el panel de crear tema
  * 
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class PanelCrearTema extends JPanel{

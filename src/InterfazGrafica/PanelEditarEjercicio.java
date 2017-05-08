@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 
 /**
  * Clase que implementa el panel para editar un ejercicio
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class PanelEditarEjercicio extends JPanel{
@@ -17,8 +17,10 @@ public class PanelEditarEjercicio extends JPanel{
 	 * @param cont panel del contenido
 	 */
 	public PanelEditarEjercicio(PanelContenido cont){
+		
 		JLabel texto = new JLabel("Estas dentro de editar ejercicio");
 		this.add(texto);
+	
 	}
 	
 	

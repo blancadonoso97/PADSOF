@@ -11,7 +11,7 @@ import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 /**
  * Clase para definir el panel cuando se inicia sesion como Alumno
  * 
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class PanelAlumno extends JPanel{
@@ -61,15 +61,20 @@ public class PanelAlumno extends JPanel{
 		 
 	 }
 	
+	 /**
+	  * Devuelve el panel de herramientas
+	  * @return barraHerramientas;
+	  */
 	 public PanelBarraHerramientas getPanelHerramientas(){
-		 return this.barraHerramientas;
+		 return barraHerramientas;
 	 }
+	 
 	 /**
 	  * Devuelve el panel del contenido 
 	  * @return  panel del contenido
 	  */
 	 public PanelContenido getPanelContenido(){
-		 return this.contenido;
+		 return contenido;
 	 }
 
 }

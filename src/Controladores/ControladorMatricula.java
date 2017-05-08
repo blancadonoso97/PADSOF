@@ -13,7 +13,7 @@ import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
 /**
  * Clase que define el controlador de los botones del panel de la solicitud de matricula
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class ControladorMatricula  implements ActionListener{

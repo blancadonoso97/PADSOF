@@ -19,7 +19,7 @@ import Controladores.ControladorEditarContenido;
 
 /**
  * Clase que implementa el panel de una asignatura 
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class PanelAsignatura extends JPanel {
@@ -36,7 +36,7 @@ public class PanelAsignatura extends JPanel {
 	
 	/**
 	 * Constructor que implementa la interfaz grafica del panel una asignatura
-	 * @param cont panel del contenido
+	 * @param cont Panel del contenido
 	 */
 	public PanelAsignatura(PanelContenido cont){
 		
@@ -115,18 +115,18 @@ public class PanelAsignatura extends JPanel {
 	
 	/**
 	 * Funcion que devuelve el panel del alumno
-	 * @return panel del alumno
+	 * @return contenedorAlum
 	 */
 	public PanelAlumno getPanelAlumno(){
-		return this.contenedorAlum;
+		return contenedorAlum;
 	}
 	
 	/**
 	 * Funcion que devuelve el panel de profesor 
-	 * @return panel del profesor
+	 * @return contenedorProf
 	 */
 	public PanelProfesor getPanelProf(){
-		return this.contenedorProf;
+		return contenedorProf;
 	}
 		
 	/**
@@ -134,10 +134,11 @@ public class PanelAsignatura extends JPanel {
 	 * @return nombre del tema seleccionado
 	 */
 	public String getNombreTemaSeleccionado(){
-		if(this.listatemas.getSelectedValue() == null){
+		
+		if(listatemas.getSelectedValue() == null){
 			return "";
 		}else{
-			return this.listatemas.getSelectedValue();
+			return listatemas.getSelectedValue();
 			
 		}
 	}
@@ -147,18 +148,21 @@ public class PanelAsignatura extends JPanel {
 	 * @return nombre de la asignatura
 	 */
 	public String getNombreAsignatura(){
-		if(this.contenedorProf != null){
-			return this.contenedorProf.getPanelContenido().getPanelPrincipal().getNombreAsignaturaSeleccionada();
+		
+		if(contenedorProf != null){
+			return contenedorProf.getPanelContenido().getPanelPrincipal().getNombreAsignaturaSeleccionada();
 		}else{
-			return this.contenedorAlum.getPanelContenido().getPanelPrincipal().getNombreAsignaturaSeleccionada();
+			return contenedorAlum.getPanelContenido().getPanelPrincipal().getNombreAsignaturaSeleccionada();
 		}
 		
 	}
 
-	
+	/**
+	 * Actualiza la tabla de temas
+	 */
 	public void actualizarTemas(){
 		
-	ArrayList<Tema> tem;
+		ArrayList<Tema> tem;
 		
 		if(this.contenedorProf != null){
 			
@@ -210,7 +214,11 @@ public class PanelAsignatura extends JPanel {
 			
 	}
 	
-	
+	/**
+	 * Anade un controlador a los botones
+	 * @param c Controlador
+	 * @param nombre Nombre del boton
+	 */
 	public void setControlador(ActionListener c,String nombre){
 		if(nombre.equals("acceder")){
 			acceder.addActionListener(c);

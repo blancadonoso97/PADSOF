@@ -19,7 +19,7 @@ import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 /**
  * Clase para definir el controlador de los botones de agregar contenido
  * 
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class ControladorAgregarContenido implements ActionListener{
@@ -229,10 +229,7 @@ public class ControladorAgregarContenido implements ActionListener{
 				 return;
 			 }
 			 
-			 // Crear el ejercicio (con todas sus preguntas ya añadidas)
-			 /*panelejercicio.getContenedor().getContenedorProf().getPanelHerramientas().actualizarestado();*/
 		 }
-		
 		
 	}
 	

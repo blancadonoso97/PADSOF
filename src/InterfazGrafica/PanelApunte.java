@@ -12,7 +12,7 @@ import java.awt.Font;
 
 /**
  * Clase que implementa el panel que mostrara el apunte 
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class PanelApunte extends JPanel{
@@ -59,7 +59,7 @@ public class PanelApunte extends JPanel{
 	}
 
 	/**
-	 * Funcion que se encarga de actualizar el estado de los apuntes 
+	 * Actualiza el estado de los apuntes 
 	 */
 	public void actualizarApuntes(){
 	

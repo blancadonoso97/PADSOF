@@ -19,11 +19,10 @@ import Asignatura.Asignatura;
 import Asignatura.Tema;
 import Controladores.ControladorAgregarContenido;
 
-
 /**
  * Clase para definir el panel de crear subtema
  * 
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class PanelCrearSubtema extends JPanel{

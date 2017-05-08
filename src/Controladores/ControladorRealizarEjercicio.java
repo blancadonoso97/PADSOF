@@ -7,7 +7,7 @@ import InterfazGrafica.PanelEjercicio;
 
 /**
  * Clase que define el controlador de los botones del panel de realizar un ejercicio
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class ControladorRealizarEjercicio  implements ActionListener {
@@ -29,4 +29,14 @@ public class ControladorRealizarEjercicio  implements ActionListener {
 		
 		
 	}
+	
+	/**
+	 * Devuelve el panel del ejercicio
+	 * @return panelej
+	 */
+	public PanelEjercicio getPanelEjercicio(){
+		return panelej;
+	}
+	
+	
 }

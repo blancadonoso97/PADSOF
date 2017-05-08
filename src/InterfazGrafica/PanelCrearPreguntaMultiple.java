@@ -14,7 +14,7 @@ import Examen.Pregunta;
 /**
  * Clase para definir el panel de crear pregunta de tipo opcion multiple
  * 
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class PanelCrearPreguntaMultiple extends JPanel{

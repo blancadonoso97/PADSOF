@@ -18,7 +18,7 @@ import java.awt.Dimension;
 /**
  * Clase para definir el panel de crear asignatura
  * 
- * @author Miguel Angel Bouzada, Blanca Martinez Donoso
+ * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */
 public class PanelCrearAsignatura extends JPanel{
@@ -45,6 +45,7 @@ public class PanelCrearAsignatura extends JPanel{
 	 * @param cont Panel de contenido
 	 */
 	public PanelCrearAsignatura(PanelContenido cont){
+		
 		setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		
 		this.contenedor = cont;
