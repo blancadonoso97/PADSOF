@@ -65,28 +65,30 @@ public class PanelApunte extends JPanel{
 	
 		if(this.contenedorProf!=null){
 		
-			//this.titulo = DefaultComponentFactory.getInstance().createTitle(this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelTema().getNombreTema()).getApunte(this.contenedorProf.getPanelContenido().getPanelTema().getNombreApunteSeleccionado()).getTitulo());
-			//this.springLayout.putConstraint(SpringLayout.NORTH, this.scrollPane, 13, SpringLayout.SOUTH, this.titulo);
-			//this.springLayout.putConstraint(SpringLayout.SOUTH, this.titulo, -504, SpringLayout.SOUTH, this);
-			//this.springLayout.putConstraint(SpringLayout.WEST, this.titulo, 318, SpringLayout.WEST, this);
-			//this.titulo.setFont(new Font("Dialog", Font.BOLD, 15));
-			//this.titulo.setHorizontalAlignment(SwingConstants.CENTER);
+			this.titulo = new JLabel(this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelTema().getNombreTema()).getApunte(this.contenedorProf.getPanelContenido().getPanelTema().getNombreApunteSeleccionado()).getTitulo());
+			
+			this.springLayout.putConstraint(SpringLayout.NORTH, this.scrollPane, 13, SpringLayout.SOUTH, this.titulo);
+			this.springLayout.putConstraint(SpringLayout.SOUTH, this.titulo, -504, SpringLayout.SOUTH, this);
+			this.springLayout.putConstraint(SpringLayout.WEST, this.titulo, 318, SpringLayout.WEST, this);
+			this.titulo.setFont(new Font("Dialog", Font.BOLD, 15));
+			this.titulo.setHorizontalAlignment(SwingConstants.CENTER);
 
 			this.contenido.setText(this.contenedorProf.getVentana().getSistema().getTema(this.contenedorProf.getPanelContenido().getPanelTema().getNombreTema()).getApunte(this.contenedorProf.getPanelContenido().getPanelTema().getNombreApunteSeleccionado()).getTexto());
 			
 		}else{
 			
-			//this.titulo = DefaultComponentFactory.getInstance().createTitle(this.contenedorAlum.getVentana().getSistema().getTema(this.contenedorAlum.getPanelContenido().getPanelTema().getNombreTema()).getApunte(this.contenedorAlum.getPanelContenido().getPanelTema().getNombreApunteSeleccionado()).getTitulo());
-			//this.springLayout.putConstraint(SpringLayout.NORTH, this.scrollPane, 13, SpringLayout.SOUTH, this.titulo);
-			//this.springLayout.putConstraint(SpringLayout.SOUTH, this.titulo, -504, SpringLayout.SOUTH, this);
-			//this.springLayout.putConstraint(SpringLayout.WEST, this.titulo, 318, SpringLayout.WEST, this);
-			//this.titulo.setFont(new Font("Dialog", Font.BOLD, 15));
-			//this.titulo.setHorizontalAlignment(SwingConstants.CENTER);
+			this.titulo = new JLabel(this.contenedorAlum.getVentana().getSistema().getTema(this.contenedorAlum.getPanelContenido().getPanelTema().getNombreTema()).getApunte(this.contenedorAlum.getPanelContenido().getPanelTema().getNombreApunteSeleccionado()).getTitulo());
+			
+			this.springLayout.putConstraint(SpringLayout.NORTH, this.scrollPane, 13, SpringLayout.SOUTH, this.titulo);
+			this.springLayout.putConstraint(SpringLayout.SOUTH, this.titulo, -504, SpringLayout.SOUTH, this);
+			this.springLayout.putConstraint(SpringLayout.WEST, this.titulo, 318, SpringLayout.WEST, this);
+			this.titulo.setFont(new Font("Dialog", Font.BOLD, 15));
+			this.titulo.setHorizontalAlignment(SwingConstants.CENTER);
 			
 			this.contenido.setText(this.contenedorAlum.getVentana().getSistema().getTema(this.contenedorAlum.getPanelContenido().getPanelTema().getNombreTema()).getApunte(this.contenedorAlum.getPanelContenido().getPanelTema().getNombreApunteSeleccionado()).getTexto());
 		}
 		
-		//this.add(titulo);
+		this.add(titulo);
 		scrollPane.setColumnHeaderView(contenido);
 	}
 }
