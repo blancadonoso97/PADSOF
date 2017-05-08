@@ -186,4 +186,12 @@ public class PanelEjercicio extends JPanel{
 			this.realizar.addActionListener(c);
 			
 		}
+		
+		/**
+		 * Devuelve el panel del alumno
+		 * @return contenedorAlum
+		 */
+		public PanelAlumno getPanelAlumno(){
+			return contenedorAlum;
+		}
 }
