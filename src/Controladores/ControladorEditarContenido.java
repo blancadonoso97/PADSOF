@@ -599,6 +599,7 @@ public class ControladorEditarContenido  implements ActionListener{
 				paneledej.getPanelProfesor().getPanelContenido().getPanelCrearEjercicio().setEjercicio(paneledej.getEjercicio());
 				paneledej.getContenedor().getPanelCrearEjercicio().getEjercicio().BorrarPregunta(paneledej.getPregunta());
 				
+				JOptionPane.showMessageDialog(paneledej, "Pregunta borrada correctamente", "Borrar pregunta", JOptionPane.INFORMATION_MESSAGE);
 				
 			}
 		}
