@@ -2,10 +2,13 @@ package Controladores;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
 import InterfazGrafica.VentanaInicial;
+import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
+import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 import InterfazGrafica.PanelInicioSesion;
 
 /**
@@ -45,9 +48,21 @@ public class ControladorInicioSesion implements ActionListener{
 		 }
 		 
 		if(ventana.getSistema().getEsProfesor()){
-			ventana.cambiarCarta("Profesor");
+			try {
+				ventana.cambiarCarta("Profesor");
+			} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+					| IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}else if(ventana.getSistema().getEsProfesor() == false && ventana.getSistema().getLogIn()){
-			ventana.cambiarCarta("Alumno");
+			try {
+				ventana.cambiarCarta("Alumno");
+			} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+					| IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		
 		
