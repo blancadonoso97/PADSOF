@@ -75,6 +75,8 @@ public class ControladorCrearEjercicio implements ActionListener {
 
 	}
 
+
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -124,7 +126,6 @@ public class ControladorCrearEjercicio implements ActionListener {
 			}
 
 		}else if (e.getActionCommand().equals("Crear Ejercicio")){
-			
 			
 			try {
 				if(ventana.getSistema().agregarEjercicio(panelejercicio.getTema(), panelejercicio.comprobarSeleccion(), panelejercicio.getPeso(), panelejercicio.getDiaIni(), panelejercicio.getMesIni(), panelejercicio.getAnyoIni(), 

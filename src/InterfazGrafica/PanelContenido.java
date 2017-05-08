@@ -381,6 +381,7 @@ public class PanelContenido extends JPanel {
 		}else if(nombre.equals("EditarEj")){
 			
 			this.removeAll();
+			this.paneledej.actualizarejercicio();
 			this.add(this.paneledej);
 			cartas.show(this, "EditarEj");
 			
@@ -504,4 +505,10 @@ public class PanelContenido extends JPanel {
 	public PanelMatricula getMatricula(){
 		return this.solicitarmatricula;
 	}
+	
+	public PanelEditarEjercicio getPanelEditarEjercicio(){
+		return this.paneledej;
+	}
+	
+	
 }

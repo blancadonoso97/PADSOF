@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import InterfazGrafica.PanelAsignatura;
 import InterfazGrafica.PanelEditarApunte;
 import InterfazGrafica.PanelEditarAsignatura;
+import InterfazGrafica.PanelEditarEjercicio;
 import InterfazGrafica.PanelEditarTema;
 import InterfazGrafica.PanelPrincipal;
 import InterfazGrafica.PanelTema;
@@ -34,6 +35,7 @@ public class ControladorEditarContenido   implements ActionListener{
 	private PanelEditarApunte panelap;
 	private PanelAsignatura panelas;
 	private PanelTema paneltem;
+	private PanelEditarEjercicio paneledej;
 	
 	/**
 	 * Constructor de la clase ControladorEditarContenido
@@ -93,6 +95,12 @@ public class ControladorEditarContenido   implements ActionListener{
 	public ControladorEditarContenido(PanelEditarApunte pan){
 		
 		this.panelap = pan;
+		
+	}
+	
+	public ControladorEditarContenido(PanelEditarEjercicio pan){
+		
+		this.paneledej = pan;
 		
 	}
 	
@@ -545,6 +553,56 @@ public class ControladorEditarContenido   implements ActionListener{
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+			}
+		}else if(paneledej != null){
+			if(e.getActionCommand().equals("Crear pregunta multiple")){
+				
+				try {
+					this.paneledej.getPanelProfesor().getPanelContenido().cambiarCarta("Multiple");
+				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+						| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}else if(e.getActionCommand().equals("Crear pregunta redactar")){
+				
+				try {
+					this.paneledej.getPanelProfesor().getPanelContenido().cambiarCarta("Redactar");
+				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+						| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
+			}else if(e.getActionCommand().equals("Crear pregunta test")){
+
+				try {
+					this.paneledej.getPanelProfesor().getPanelContenido().cambiarCarta("Test");
+				} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
+						| IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
+				
+			}else if(e.getActionCommand().equals("Borrar pregunta test")){
+				
+				
+				
+				
+			}else if(e.getActionCommand().equals("Borrar pregunta redactar")){
+				
+				
+				
+				
+			}else if(e.getActionCommand().equals("Borrar pregunta multiple")){
+				
+				
+				
+				
 			}
 		}
 	}
