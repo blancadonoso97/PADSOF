@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import InterfazGrafica.PanelAsignatura;
 import InterfazGrafica.PanelPrincipal;
 import InterfazGrafica.PanelTema;
+import eCourses.Alumno;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
@@ -54,6 +55,8 @@ public class ControladorAccederContenido implements ActionListener {
 		this.panelt = pan;
 
 	}
+	
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -348,17 +351,14 @@ public class ControladorAccederContenido implements ActionListener {
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				} else {
-					if(panelt.getPanelAlumno().getVentana().getSistema().getAlumnoLog()
-					.getAsignatura(panelt.getPanelAlumno().getPanelContenido().getPanelAsignatura()
-							.getNombreAsignatura())
-					.getTema(panelt.getNombreTema()).getEjercicio(panelt.getNombreEjercicioSeleccionado()).
-					getAlumno(panelt.getPanelAlumno().getVentana().getSistema().getAlumnoLog().getNombre()).
-					getId() == panelt.getPanelAlumno().getVentana().getSistema().getAlumnoLog().getId() ){
+
+					for(Alumno a : panelt.getEjercicio().getAlumnos()){
 						
-					JOptionPane.showMessageDialog(panelt, "Solo puede realizar una vez el ejercicio", "Error",
-								JOptionPane.ERROR_MESSAGE);
-					return;	
-						
+						if(a.getId() == panelt.getPanelAlumno().getVentana().getSistema().getAlumnoLog().getId()){
+							JOptionPane.showMessageDialog(panelt, "No puede realizar mas de una vez el mismo ejercicio", "Error", JOptionPane.ERROR_MESSAGE);
+							return;
+						}
+					}
 					}
 					try {
 						panelt.getPanelAlumno().getPanelContenido().cambiarCarta("AccederEj");
@@ -373,6 +373,5 @@ public class ControladorAccederContenido implements ActionListener {
 
 		}
 
-	}
 
 }

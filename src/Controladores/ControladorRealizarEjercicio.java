@@ -4,8 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
 
 import InterfazGrafica.PanelEjercicio;
+import eCourses.Alumno;
 import es.uam.eps.padsof.emailconnection.FailedInternetConnectionException;
 import es.uam.eps.padsof.emailconnection.InvalidEmailAddressException;
 
@@ -32,6 +34,8 @@ public class ControladorRealizarEjercicio  implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("Realizar")){
 			try {
+				
+				
 				panelej.getPanelAlumno().getPanelContenido().cambiarCarta("RealizarEj");
 			} catch (ClassNotFoundException | InvalidEmailAddressException | FailedInternetConnectionException
 					| IOException e1) {

@@ -170,6 +170,20 @@ public class PanelTema extends JPanel {
 		return contenedorProf;
 	}
 	
+	public Ejercicio getEjercicio(){
+		
+		if(this.contenedorAlum != null){
+			return this.contenedorAlum.getVentana().getSistema().getTema
+			(this.contenedorAlum.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado())
+			.getEjercicio(this.getNombreEjercicioSeleccionado());
+			
+		}else {
+			return this.contenedorProf.getVentana().getSistema().getTema
+					(this.contenedorProf.getPanelContenido().getPanelAsignatura().getNombreTemaSeleccionado())
+					.getEjercicio(this.getNombreEjercicioSeleccionado());
+					
+		}
+	}
 	/**
 	 * Funcion que devuelve el nombre del tema 
 	 * @return Nombre del tema
