@@ -17,7 +17,6 @@ import Asignatura.Asignatura;
 import Controladores.ControladorAccederContenido;
 import Controladores.ControladorEditarContenido;
 import javax.swing.JLabel;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Font;
 import java.awt.SystemColor;
 
@@ -116,7 +115,7 @@ public class PanelPrincipal extends JPanel{
 		this.setControlador(controlador,"acceder");
 		add(acceder);
 		
-		JLabel lblEcourses = DefaultComponentFactory.getInstance().createTitle("eCourses");
+		JLabel lblEcourses = new JLabel("eCourses");
 		springLayout.putConstraint(SpringLayout.NORTH, lblEcourses, 81, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.SOUTH, lblEcourses, -561, SpringLayout.SOUTH, this);
 		springLayout.putConstraint(SpringLayout.NORTH, tabbedPane, 38, SpringLayout.SOUTH, lblEcourses);
