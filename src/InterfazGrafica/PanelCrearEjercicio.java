@@ -77,6 +77,7 @@ public class PanelCrearEjercicio extends JPanel {
 		this.crearejercicio = new JButton("Crear Ejercicio");
 
 		this.ordenado = new JRadioButton("Preguntas ordenadas");
+		ordenado.setBackground(UIManager.getColor("Button.select"));
 
 		this.peso = new JTextField(3);
 

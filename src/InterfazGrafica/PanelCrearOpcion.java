@@ -82,6 +82,13 @@ public class PanelCrearOpcion extends JPanel{
 		lblEnunciado.setForeground(SystemColor.activeCaption);
 		lblEnunciado.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
 		add(lblEnunciado);
+		
+		JLabel lblNuevaOpcion = DefaultComponentFactory.getInstance().createTitle("Nueva Opcion");
+		springLayout.putConstraint(SpringLayout.NORTH, lblNuevaOpcion, 77, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, lblNuevaOpcion, 326, SpringLayout.WEST, this);
+		lblNuevaOpcion.setForeground(SystemColor.activeCaption);
+		lblNuevaOpcion.setFont(new Font("Nimbus Sans L", Font.BOLD, 31));
+		add(lblNuevaOpcion);
 
 		// Configurar el panel con el controlador
 		this.setControlador(controlador);
@@ -110,8 +117,48 @@ public class PanelCrearOpcion extends JPanel{
 		this.add(crearopcion);
 		this.add(volver);
 		
+		
+		this.enunciado = new JTextField(40);
+		this.escorrecta = new JRadioButton("Opcion correcta");
+		escorrecta.setForeground(SystemColor.activeCaption);
+		escorrecta.setBackground(UIManager.getColor("Checkbox.select"));
+		escorrecta.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
+		this.crearopcion = new JButton("Crear opcion");
+		this.volver = new JButton("Volver");
+		SpringLayout springLayout = new SpringLayout();
+		springLayout.putConstraint(SpringLayout.NORTH, escorrecta, 304, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, enunciado, 206, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, enunciado, -50, SpringLayout.NORTH, escorrecta);
+		springLayout.putConstraint(SpringLayout.WEST, escorrecta, 359, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.NORTH, volver, 0, SpringLayout.NORTH, crearopcion);
+		springLayout.putConstraint(SpringLayout.WEST, volver, 167, SpringLayout.EAST, crearopcion);
+		springLayout.putConstraint(SpringLayout.WEST, crearopcion, 228, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, crearopcion, -199, SpringLayout.SOUTH, this);
+		setLayout(springLayout);
+		
+		this.add(enunciado);
+		this.add(escorrecta);
+		this.add(crearopcion);
+		this.add(volver);
+		
 		// Anade el controlador para el boton de crear opcion
 		ControladorCrearPregunta controlador = new ControladorCrearPregunta(contenedor.getContenedorProf().getVentana(), this);
+
+		// Configurar el panel con el controlador
+		this.setControlador(controlador);
+		JLabel lblEnunciado = DefaultComponentFactory.getInstance().createLabel("Enunciado :");
+		springLayout.putConstraint(SpringLayout.WEST, lblEnunciado, 386, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, lblEnunciado, -6, SpringLayout.NORTH, enunciado);
+		lblEnunciado.setForeground(SystemColor.activeCaption);
+		lblEnunciado.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
+		add(lblEnunciado);
+		
+		JLabel lblNuevaOpcion = DefaultComponentFactory.getInstance().createTitle("Nueva Opcion");
+		springLayout.putConstraint(SpringLayout.NORTH, lblNuevaOpcion, 77, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, lblNuevaOpcion, 326, SpringLayout.WEST, this);
+		lblNuevaOpcion.setForeground(SystemColor.activeCaption);
+		lblNuevaOpcion.setFont(new Font("Nimbus Sans L", Font.BOLD, 31));
+		add(lblNuevaOpcion);
 
 		// Configurar el panel con el controlador
 		this.setControlador(controlador);
@@ -126,14 +173,28 @@ public class PanelCrearOpcion extends JPanel{
 	 */
 	public PanelCrearOpcion(PanelContenido cont, PanelCrearPreguntaTest pan){
 		
+		setBackground(UIManager.getColor("Checkbox.select"));
 		this.contenedor = cont;
 		this.pregunta = pan.getPregunta();
 		this.test = pan;
 		
 		this.enunciado = new JTextField(40);
 		this.escorrecta = new JRadioButton("Opcion correcta");
+		escorrecta.setForeground(SystemColor.activeCaption);
+		escorrecta.setBackground(UIManager.getColor("Checkbox.select"));
+		escorrecta.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
 		this.crearopcion = new JButton("Crear opcion");
 		this.volver = new JButton("Volver");
+		SpringLayout springLayout = new SpringLayout();
+		springLayout.putConstraint(SpringLayout.NORTH, escorrecta, 304, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, enunciado, 206, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, enunciado, -50, SpringLayout.NORTH, escorrecta);
+		springLayout.putConstraint(SpringLayout.WEST, escorrecta, 359, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.NORTH, volver, 0, SpringLayout.NORTH, crearopcion);
+		springLayout.putConstraint(SpringLayout.WEST, volver, 167, SpringLayout.EAST, crearopcion);
+		springLayout.putConstraint(SpringLayout.WEST, crearopcion, 228, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, crearopcion, -199, SpringLayout.SOUTH, this);
+		setLayout(springLayout);
 		
 		this.add(enunciado);
 		this.add(escorrecta);
@@ -141,11 +202,25 @@ public class PanelCrearOpcion extends JPanel{
 		this.add(volver);
 		
 		// Anade el controlador para el boton de crear opcion
-		ControladorCrearPregunta controlador = new ControladorCrearPregunta(contenedor.getContenedorProf().getVentana(), this);
+				ControladorCrearPregunta controlador = new ControladorCrearPregunta(contenedor.getContenedorProf().getVentana(), this);
+		
+		JLabel lblEnunciado = DefaultComponentFactory.getInstance().createLabel("Enunciado :");
+		springLayout.putConstraint(SpringLayout.WEST, lblEnunciado, 386, SpringLayout.WEST, this);
+		springLayout.putConstraint(SpringLayout.SOUTH, lblEnunciado, -6, SpringLayout.NORTH, enunciado);
+		lblEnunciado.setForeground(SystemColor.activeCaption);
+		lblEnunciado.setFont(new Font("Nimbus Sans L", Font.BOLD, 16));
+		add(lblEnunciado);
+		
+		JLabel lblNuevaOpcion = DefaultComponentFactory.getInstance().createTitle("Nueva Opcion");
+		springLayout.putConstraint(SpringLayout.NORTH, lblNuevaOpcion, 77, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, lblNuevaOpcion, 326, SpringLayout.WEST, this);
+		lblNuevaOpcion.setForeground(SystemColor.activeCaption);
+		lblNuevaOpcion.setFont(new Font("Nimbus Sans L", Font.BOLD, 31));
+		add(lblNuevaOpcion);
 
 		// Configurar el panel con el controlador
 		this.setControlador(controlador);
-		
+
 		
 	}
 	
