@@ -113,6 +113,7 @@ public class PanelEditarEjercicio extends JPanel{
 			ejercicio = this.getEjercicio();
 			
 			if(!ejercicio.getPreguntas().isEmpty()){
+				
 				preguntas.removeAllElements();
 					
 				for(Pregunta a : ejercicio.getPreguntas()){
