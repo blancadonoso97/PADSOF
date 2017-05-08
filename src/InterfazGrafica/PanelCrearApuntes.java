@@ -9,6 +9,8 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import Asignatura.Asignatura;
@@ -35,7 +37,9 @@ private PanelContenido contenedor;
 	private JTextField camponombre;
 	private JLabel contenidoapuntes;
 	private JLabel fechavisual;
-	private JTextField campotexto;
+	private JTextArea campotexto;
+	@SuppressWarnings("unused")
+	private JScrollPane scroll;
 	private JTextField dia;
 	private JTextField mes;
 	private JTextField anyo;
@@ -70,7 +74,8 @@ private PanelContenido contenedor;
 		this.camponombre = new JTextField(30);
 		
 		this.contenidoapuntes = new JLabel("Contenido de los apuntes:");
-		this.campotexto = new JTextField(20);
+		this.campotexto = new JTextArea(20, 40);
+		this.scroll = new JScrollPane(campotexto);
 		
 		this.fechavisual = new JLabel("Fecha de inicio: Dia/Mes/Año");
 		

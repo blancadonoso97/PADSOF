@@ -325,18 +325,21 @@ public class PanelBarraHerramientas extends JPanel {
 				}
 
 				int i = 0;
-				int x;
+				
 				for (Asignatura a : asigna) {
+					
 					modelo.insertNodeInto(new DefaultMutableTreeNode(a.getNombre()), asignaturas, i);
 					nodohijo = (DefaultMutableTreeNode) modelo.getChild(asignaturas, i);
+					
 					int j = 0;
+					
 					for (Tema t : a.getTemas()) {
 						
 						if (t.esVisible() == true) {
 							modelo.insertNodeInto(new DefaultMutableTreeNode(t.getNombre()), nodohijo, j);
 							nodonieto = (DefaultMutableTreeNode) modelo.getChild(nodohijo, j);
 
-							x = 0;
+							int x = 0;
 							for (Apuntes ap : t.getApuntes()) {
 								if (ap.getVisible() == true) {
 									modelo.insertNodeInto(new DefaultMutableTreeNode(ap.getTitulo()), nodonieto, x);

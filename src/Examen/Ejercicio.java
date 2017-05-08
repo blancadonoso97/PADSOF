@@ -61,7 +61,7 @@ public class Ejercicio implements Serializable{
 		this.fechaFin.set(Calendar.MONTH, mesF);
 		this.fechaFin.set(Calendar.DATE, diaF);
 		this.nombre = newNombre;
-		this.visible=getVisible();
+		this.visible = getVisible();
 		this.ordenado = ord;
 
 	}
