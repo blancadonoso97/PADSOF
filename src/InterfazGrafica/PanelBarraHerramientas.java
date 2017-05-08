@@ -212,12 +212,15 @@ public class PanelBarraHerramientas extends JPanel {
 			this.setControlador("Ejercicio", controlador);
 
 			asigna = this.contProfe.getVentana().getSistema().getAsignaturas();
+			
 			if (asignaturas.getChildCount() > 0) {
 				modelo.removeNodeFromParent((DefaultMutableTreeNode) asignaturas.getChildAt(0));
 			}
 
-			int i = 0;
 			int x = 0;
+			int i = 0;
+			
+			modelo = (DefaultTreeModel)contenido.getModel();
 
 			for (Asignatura a : asigna) {
 
@@ -225,10 +228,12 @@ public class PanelBarraHerramientas extends JPanel {
 				nodohijo = (DefaultMutableTreeNode) modelo.getChild(asignaturas, i);
 
 				int j = 0;
+				
 
 				for (Tema t : a.getTemas()) {
+					
 					modelo.insertNodeInto(new DefaultMutableTreeNode(t.getNombre()), nodohijo, j);
-					nodonieto = (DefaultMutableTreeNode) modelo.getChild(nodohijo, i);
+					nodonieto = (DefaultMutableTreeNode) modelo.getChild(nodohijo, j);
 
 					x = 0;
 					for (Apuntes ap : t.getApuntes()) {
@@ -245,6 +250,7 @@ public class PanelBarraHerramientas extends JPanel {
 					}
 					j++;
 				}
+				
 				i++;
 			}
 
