@@ -385,16 +385,19 @@ public class PanelContenido extends JPanel {
 			if(preguntaredactar.getPregunta() != null){
 				this.opcion1 = new PanelCrearOpcion(this, preguntaredactar);
 				cartas.addLayoutComponent(this.opcion1, "Opcion1");
+				opcion1.setPregunta(preguntaredactar.getPregunta());
 				this.add(this.opcion1);
 				cartas.show(this, "Opcion1");
 			}else if(preguntatest.getPregunta() != null){
 				this.opcion2 = new PanelCrearOpcion(this, preguntatest);
 				cartas.addLayoutComponent(this.opcion2, "Opcion2");
+				opcion2.setPregunta(preguntatest.getPregunta());
 				this.add(this.opcion2);
 				cartas.show(this, "Opcion2");
 			}else if (preguntamultiple.getPregunta() != null){
 				this.opcion3 = new PanelCrearOpcion(this, preguntamultiple);
 				cartas.addLayoutComponent(this.opcion3, "Opcion3");
+				opcion3.setPregunta(preguntamultiple.getPregunta());;
 				this.add(this.opcion3);
 				cartas.show(this, "Opcion3");
 			}

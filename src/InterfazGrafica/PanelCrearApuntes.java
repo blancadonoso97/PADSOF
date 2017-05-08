@@ -99,11 +99,11 @@ private PanelContenido contenedor;
 		
 		rigidArea_1 = Box.createRigidArea(new Dimension(20, 0));
 		add(rigidArea_1);
-		this.add(novisible);
+		this.add(visible);
 		
 		rigidArea_2 = Box.createRigidArea(new Dimension(300, 40));
 		add(rigidArea_2);
-		this.add(visible);
+		this.add(novisible);
 		
 		rigidArea_3 = Box.createRigidArea(new Dimension(120, 200));
 		add(rigidArea_3);
