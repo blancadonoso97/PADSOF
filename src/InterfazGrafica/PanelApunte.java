@@ -12,6 +12,7 @@ import java.awt.Font;
 
 /**
  * Clase que implementa el panel que mostrara el apunte 
+ * 
  * @author Miguel Angel Marroyo, Blanca Martinez Donoso
  *
  */

@@ -594,20 +594,12 @@ public class ControladorEditarContenido  implements ActionListener{
 				
 				
 				
-			}else if(e.getActionCommand().equals("Borrar pregunta test")){
+			}else if(e.getActionCommand().equals("Borrar pregunta")){
 				
+				paneledej.getPanelProfesor().getPanelContenido().getPanelCrearEjercicio().setEjercicio(paneledej.getEjercicio());
+				paneledej.getContenedor().getPanelCrearEjercicio().getEjercicio().BorrarPregunta(paneledej.getPregunta());
 				
-				
-				
-			}else if(e.getActionCommand().equals("Borrar pregunta redactar")){
-				
-				
-				
-				
-			}else if(e.getActionCommand().equals("Borrar pregunta multiple")){
-				
-				
-				
+				JOptionPane.showMessageDialog(paneledej, "Pregunta borrada correctamente", "Borrar pregunta", JOptionPane.INFORMATION_MESSAGE);
 				
 			}
 		}
